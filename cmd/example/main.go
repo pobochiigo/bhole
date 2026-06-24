@@ -23,8 +23,8 @@ func main() {
 	restClient := transport.NewRESTClient(baseURL, rawClient)
 
 	// Initialize the business services using our ConnectRPC client constructors
-	var launchesService launch.Service = launchclient.NewLaunchClient(restClient, baseURL)
-	var agenciesService agency.Service = agencyclient.NewAgencyClient(restClient, baseURL)
+	launchesService := launchclient.NewLaunchClient(restClient, baseURL)
+	agenciesService := agencyclient.NewAgencyClient(restClient, baseURL)
 
 	ctx := context.Background()
 

@@ -735,7 +735,7 @@ func NewRESTClient(baseURL string, client *http.Client) *RESTClient {
 		if err != nil {{
 			return nil, err
 		}}
-		defer restResp.Body.Close()
+		defer func() {{{{ _ = restResp.Body.Close() }}}}()
 
 		if restResp.StatusCode != http.StatusOK {{
 			return makeErrorResponse(restResp)
@@ -776,7 +776,7 @@ func NewRESTClient(baseURL string, client *http.Client) *RESTClient {
 		if err != nil {{
 			return nil, err
 		}}
-		defer restResp.Body.Close()
+		defer func() {{{{ _ = restResp.Body.Close() }}}}()
 
 		if restResp.StatusCode != http.StatusOK {{
 			return makeErrorResponse(restResp)

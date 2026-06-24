@@ -36,8 +36,6 @@ def main():
         '"fmt"',
         '"log"',
         '"net/http"',
-        '"golang.org/x/net/http2"',
-        '"golang.org/x/net/http2/h2c"',
     ]
     for feature in sorted(RESOURCES.keys()):
         imports.append(f'{feature} "com.gitlab/pobochiigo/bhole/internal/{feature}"')
@@ -103,12 +101,18 @@ func main() {
 	// Wrap mux with CORS middleware
 	handler := corsMiddleware(mux)
 
-	// Enable HTTP/2 h2c (HTTP/2 cleartext) for ConnectRPC
-	h2Handler := h2c.NewHandler(handler, &http2.Server{})
-
 	port := ":8080"
 	fmt.Printf("ConnectRPC API server starting on http://localhost%s\\n", port)
-	if err := http.ListenAndServe(port, h2Handler); err != nil {
+
+	srv := &http.Server{
+		Addr:    port,
+		Handler: handler,
+	}
+	srv.Protocols = new(http.Protocols)
+	srv.Protocols.SetHTTP1(true)
+	srv.Protocols.SetUnencryptedHTTP2(true)
+
+	if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		log.Fatalf("Server failed: %v", err)
 	}
 }

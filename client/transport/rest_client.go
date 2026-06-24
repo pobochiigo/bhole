@@ -1628,7 +1628,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -1667,7 +1667,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -1709,7 +1709,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -1748,7 +1748,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -1790,7 +1790,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -1829,7 +1829,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -1871,7 +1871,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -1910,7 +1910,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -1952,7 +1952,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -1991,7 +1991,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2033,7 +2033,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2072,7 +2072,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2114,7 +2114,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2153,7 +2153,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2195,7 +2195,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2234,7 +2234,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2276,7 +2276,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2315,7 +2315,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2357,7 +2357,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2396,7 +2396,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2438,7 +2438,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2477,7 +2477,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2519,7 +2519,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2558,7 +2558,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2600,7 +2600,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2639,7 +2639,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2681,7 +2681,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2720,7 +2720,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2762,7 +2762,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2801,7 +2801,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2843,7 +2843,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2882,7 +2882,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2924,7 +2924,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -2963,7 +2963,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -3005,7 +3005,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
@@ -3044,7 +3044,7 @@ func (c *RESTClient) Do(req *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer restResp.Body.Close()
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		if restResp.StatusCode != http.StatusOK {
 			return makeErrorResponse(restResp)
