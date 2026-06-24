@@ -227,6 +227,69 @@ function updateConnectionBadges(rpc: 'online' | 'offline' | 'fetching', rest: 'o
   }
 }
 
+// Deep clean mentions of Russia/Roscosmos/Soviet to sanitize multinational entries
+function sanitizeRussiaMentions(obj: any): any {
+  if (obj === null || obj === undefined) return obj;
+  if (typeof obj === 'string') {
+    return obj
+      .replace(/roscosmos/gi, 'partner space agencies')
+      .replace(/russian federal space agency/gi, 'partner space agency')
+      .replace(/russian/gi, 'partner')
+      .replace(/russia/gi, 'partner region');
+  }
+  if (Array.isArray(obj)) {
+    return obj.map(item => sanitizeRussiaMentions(item));
+  }
+  if (typeof obj === 'object') {
+    const copy = { ...obj };
+    for (const key of Object.keys(copy)) {
+      copy[key] = sanitizeRussiaMentions(copy[key]);
+    }
+    return copy;
+  }
+  return obj;
+}
+
+// Filter out Russian-operated, Russian-located, or Russian-owned entries entirely
+function filterRussiaRelated(data: any[], tab: string): any[] {
+  return data
+    .filter((item: any) => {
+      if (tab === 'agencies') {
+        const countryCodes = (item.country || []).map((c: any) => (c.alpha2Code || c.alpha_2_code || '').toUpperCase());
+        if (countryCodes.includes('RU') || countryCodes.includes('RUS')) return false;
+        const name = (item.name || '').toLowerCase();
+        const abbrev = (item.abbrev || '').toLowerCase();
+        if (name.includes('roscosmos') || name.includes('russia') || name.includes('soviet') || abbrev.includes('roscosmos')) return false;
+      }
+      
+      if (tab === 'launches') {
+        const provider = item.launchServiceProvider || item.lsp;
+        if (provider) {
+          const name = (provider.name || '').toLowerCase();
+          const abbrev = (provider.abbrev || '').toLowerCase();
+          if (name.includes('roscosmos') || name.includes('russia') || name.includes('soviet') || abbrev.includes('roscosmos')) return false;
+          const countryCodes = (provider.country || []).map((c: any) => (c.alpha2Code || c.alpha_2_code || '').toUpperCase());
+          if (countryCodes.includes('RU') || countryCodes.includes('RUS')) return false;
+        }
+        const pad = item.pad;
+        if (pad && pad.location) {
+          const locName = (pad.location.name || '').toLowerCase();
+          if (locName.includes('russia') || locName.includes('plesetsk') || locName.includes('vostochny') || locName.includes('baikonur')) return false;
+        }
+      }
+
+      if (tab === 'stations') {
+        const name = (item.name || '').toLowerCase();
+        if (name.includes('mir') || name.includes('salyut') || name.includes('almaz')) return false;
+        const owner = (item.owner || item.spaceAgency || item.agency || '').toLowerCase();
+        if (owner.includes('roscosmos') || owner.includes('russia')) return false;
+      }
+
+      return true;
+    })
+    .map((item: any) => sanitizeRussiaMentions(item));
+}
+
 // Fetch Data with full three-tiered fallback logic
 async function fetchData(tab: string) {
   const loader = document.getElementById('loader');
@@ -260,7 +323,7 @@ async function fetchData(tab: string) {
     }
     
     currentSource = 'connectrpc';
-    loadedData = results;
+    loadedData = filterRussiaRelated(results, tab);
     updateConnectionBadges('online', 'offline', 'LOCAL CONNECTRPC');
     renderGrid();
     if (loader) loader.classList.add('hidden');
@@ -290,7 +353,7 @@ async function fetchData(tab: string) {
       const normalizedResults = camelCaseKeys(data.results || []);
       
       currentSource = 'rest';
-      loadedData = normalizedResults;
+      loadedData = filterRussiaRelated(normalizedResults, tab);
       updateConnectionBadges('offline', 'online', 'REMOTE REST FALLBACK');
       renderGrid();
       if (loader) loader.classList.add('hidden');
@@ -302,7 +365,7 @@ async function fetchData(tab: string) {
 
   // --- TIER 3: Fall back to local stubs ---
   currentSource = 'stubs';
-  loadedData = OFFLINE_STUBS[tab] || [];
+  loadedData = filterRussiaRelated(OFFLINE_STUBS[tab] || [], tab);
   updateConnectionBadges('offline', 'offline', 'OFFLINE CACHE STUBS');
   renderGrid();
   if (loader) loader.classList.add('hidden');
