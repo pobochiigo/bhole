@@ -35,9 +35,15 @@ jobs:
             client/ts/package-lock.json
             web/package-lock.json
 
+      - name: Setup Buf
+        uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+
       - name: Install & Build TS SDK Client
         run: |
           npm ci --prefix client/ts
+          buf generate proto --template '{"version":"v1","plugins":[{"name":"es","path":"client/ts/node_modules/.bin/protoc-gen-es","out":"client/ts/src/gen","opt":"target=ts"}]}'
           npm run build --prefix client/ts
 
       - name: Install & Build Web Dashboard
