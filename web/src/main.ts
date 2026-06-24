@@ -2,7 +2,8 @@ import './style.css';
 import { createClient, createConnectTransport, Launch, Agency, SpaceStation, CelestialBody } from 'bhole-client';
 
 // Define the API base URLs
-const LOCAL_RPC_URL = 'http://localhost:8080';
+const urlParams = new URLSearchParams(window.location.search);
+const LOCAL_RPC_URL = urlParams.get('api') || import.meta.env.VITE_API_URL || 'http://localhost:8080';
 const FALLBACK_REST_URL = 'https://lldev.thespacedevs.com/2.3.0';
 
 // Setup ConnectRPC Transport and Clients
