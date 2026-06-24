@@ -3,8 +3,8 @@ package payload
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizpayload "com.gitlab/pobochiigo/bhole/internal/payload"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizpayload "github.com/pobochiigo/bhole/internal/payload"
 )
 
 type endpoints struct {

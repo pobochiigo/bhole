@@ -7,9 +7,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	launchv1 "com.gitlab/pobochiigo/bhole/proto/launch/v1"
-	"com.gitlab/pobochiigo/bhole/proto/launch/v1/launchv1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	launchv1 "github.com/pobochiigo/bhole/proto/launch/v1"
+	"github.com/pobochiigo/bhole/proto/launch/v1/launchv1connect"
 	"connectrpc.com/connect"
 )
 

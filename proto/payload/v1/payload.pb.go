@@ -1858,7 +1858,7 @@ const file_payload_v1_payload_proto_rawDesc = "" +
 	"\x0ePayloadService\x12Q\n" +
 	"\fListPayloads\x12\x1f.payload.v1.ListPayloadsRequest\x1a .payload.v1.ListPayloadsResponse\x12K\n" +
 	"\n" +
-	"GetPayload\x12\x1d.payload.v1.GetPayloadRequest\x1a\x1e.payload.v1.GetPayloadResponseB8Z6com.gitlab/pobochiigo/bhole/proto/payload/v1;payloadv1b\x06proto3"
+	"GetPayload\x12\x1d.payload.v1.GetPayloadRequest\x1a\x1e.payload.v1.GetPayloadResponseB8Z6github.com/pobochiigo/bhole/proto/payload/v1;payloadv1b\x06proto3"
 
 var (
 	file_payload_v1_payload_proto_rawDescOnce sync.Once

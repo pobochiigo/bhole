@@ -3,9 +3,9 @@ package astronaut
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	astronautv1 "com.gitlab/pobochiigo/bhole/proto/astronaut/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/astronaut/v1/astronautv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	astronautv1 "github.com/pobochiigo/bhole/proto/astronaut/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/astronaut/v1/astronautv1connect"
 	"connectrpc.com/connect"
 )
 

@@ -3,8 +3,8 @@ package pad
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizpad "com.gitlab/pobochiigo/bhole/internal/pad"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizpad "github.com/pobochiigo/bhole/internal/pad"
 )
 
 type endpoints struct {

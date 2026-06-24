@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package launcher.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/launcher/v1;launcherv1";
+option go_package = "github.com/pobochiigo/bhole/proto/launcher/v1;launcherv1";
 
 message Image {
   optional string credit = 1;

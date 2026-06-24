@@ -3,9 +3,9 @@ package update
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	updatev1 "com.gitlab/pobochiigo/bhole/proto/update/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/update/v1/updatev1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	updatev1 "github.com/pobochiigo/bhole/proto/update/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/update/v1/updatev1connect"
 	"connectrpc.com/connect"
 )
 

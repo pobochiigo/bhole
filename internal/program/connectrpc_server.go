@@ -3,9 +3,9 @@ package program
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	programv1 "com.gitlab/pobochiigo/bhole/proto/program/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/program/v1/programv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	programv1 "github.com/pobochiigo/bhole/proto/program/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/program/v1/programv1connect"
 	"connectrpc.com/connect"
 )
 

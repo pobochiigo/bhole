@@ -3,8 +3,8 @@ package docking_event
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizdocking_event "com.gitlab/pobochiigo/bhole/internal/docking_event"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizdocking_event "github.com/pobochiigo/bhole/internal/docking_event"
 )
 
 type endpoints struct {

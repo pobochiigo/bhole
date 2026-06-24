@@ -3,9 +3,9 @@ package docking_event
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	docking_eventv1 "com.gitlab/pobochiigo/bhole/proto/docking_event/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/docking_event/v1/docking_eventv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	docking_eventv1 "github.com/pobochiigo/bhole/proto/docking_event/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/docking_event/v1/docking_eventv1connect"
 	"connectrpc.com/connect"
 )
 

@@ -3,8 +3,8 @@ package location
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizlocation "com.gitlab/pobochiigo/bhole/internal/location"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizlocation "github.com/pobochiigo/bhole/internal/location"
 )
 
 type endpoints struct {

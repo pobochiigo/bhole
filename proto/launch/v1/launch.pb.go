@@ -9755,7 +9755,7 @@ const file_launch_v1_launch_proto_rawDesc = "" +
 	"\x06launch\x18\x01 \x01(\v2\x11.launch.v1.LaunchR\x06launch2\xa8\x01\n" +
 	"\rLaunchService\x12O\n" +
 	"\fListLaunches\x12\x1e.launch.v1.ListLaunchesRequest\x1a\x1f.launch.v1.ListLaunchesResponse\x12F\n" +
-	"\tGetLaunch\x12\x1b.launch.v1.GetLaunchRequest\x1a\x1c.launch.v1.GetLaunchResponseB6Z4com.gitlab/pobochiigo/bhole/proto/launch/v1;launchv1b\x06proto3"
+	"\tGetLaunch\x12\x1b.launch.v1.GetLaunchRequest\x1a\x1c.launch.v1.GetLaunchResponseB6Z4github.com/pobochiigo/bhole/proto/launch/v1;launchv1b\x06proto3"
 
 var (
 	file_launch_v1_launch_proto_rawDescOnce sync.Once

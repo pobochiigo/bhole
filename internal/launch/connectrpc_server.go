@@ -3,9 +3,9 @@ package launch
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	launchv1 "com.gitlab/pobochiigo/bhole/proto/launch/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/launch/v1/launchv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	launchv1 "github.com/pobochiigo/bhole/proto/launch/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/launch/v1/launchv1connect"
 	"connectrpc.com/connect"
 )
 

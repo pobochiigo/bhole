@@ -2209,7 +2209,7 @@ const file_expedition_v1_expedition_proto_rawDesc = "" +
 	"expedition2\xd1\x01\n" +
 	"\x11ExpeditionService\x12`\n" +
 	"\x0fListExpeditions\x12%.expedition.v1.ListExpeditionsRequest\x1a&.expedition.v1.ListExpeditionsResponse\x12Z\n" +
-	"\rGetExpedition\x12#.expedition.v1.GetExpeditionRequest\x1a$.expedition.v1.GetExpeditionResponseB>Z<com.gitlab/pobochiigo/bhole/proto/expedition/v1;expeditionv1b\x06proto3"
+	"\rGetExpedition\x12#.expedition.v1.GetExpeditionRequest\x1a$.expedition.v1.GetExpeditionResponseB>Z<github.com/pobochiigo/bhole/proto/expedition/v1;expeditionv1b\x06proto3"
 
 var (
 	file_expedition_v1_expedition_proto_rawDescOnce sync.Once

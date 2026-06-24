@@ -3,8 +3,8 @@ package program
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizprogram "com.gitlab/pobochiigo/bhole/internal/program"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizprogram "github.com/pobochiigo/bhole/internal/program"
 )
 
 type endpoints struct {

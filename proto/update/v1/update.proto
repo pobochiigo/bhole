@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package update.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/update/v1;updatev1";
+option go_package = "github.com/pobochiigo/bhole/proto/update/v1;updatev1";
 
 message Update {
   optional string comment = 1;

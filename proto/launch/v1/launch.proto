@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package launch.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/launch/v1;launchv1";
+option go_package = "github.com/pobochiigo/bhole/proto/launch/v1;launchv1";
 
 message AgencyDetailed {
   string abbrev = 1;

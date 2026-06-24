@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package celestial_body.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/celestial_body/v1;celestial_bodyv1";
+option go_package = "github.com/pobochiigo/bhole/proto/celestial_body/v1;celestial_bodyv1";
 
 message CelestialBody {
   bool atmosphere = 1;

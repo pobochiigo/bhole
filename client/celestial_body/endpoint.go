@@ -3,8 +3,8 @@ package celestial_body
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizcelestial_body "com.gitlab/pobochiigo/bhole/internal/celestial_body"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizcelestial_body "github.com/pobochiigo/bhole/internal/celestial_body"
 )
 
 type endpoints struct {

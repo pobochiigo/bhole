@@ -3,8 +3,8 @@ package launch
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizlaunch "com.gitlab/pobochiigo/bhole/internal/launch"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizlaunch "github.com/pobochiigo/bhole/internal/launch"
 )
 
 type endpoints struct {

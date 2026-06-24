@@ -3,8 +3,8 @@ package landing
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizlanding "com.gitlab/pobochiigo/bhole/internal/landing"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizlanding "github.com/pobochiigo/bhole/internal/landing"
 )
 
 type endpoints struct {

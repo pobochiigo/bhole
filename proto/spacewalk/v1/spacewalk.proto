@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package spacewalk.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/spacewalk/v1;spacewalkv1";
+option go_package = "github.com/pobochiigo/bhole/proto/spacewalk/v1;spacewalkv1";
 
 message AgencyDetailed {
   string abbrev = 1;

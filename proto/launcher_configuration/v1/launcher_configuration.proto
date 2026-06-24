@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package launcher_configuration.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/launcher_configuration/v1;launcher_configurationv1";
+option go_package = "github.com/pobochiigo/bhole/proto/launcher_configuration/v1;launcher_configurationv1";
 
 message AgencyDetailed {
   string abbrev = 1;

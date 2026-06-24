@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package event.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/event/v1;eventv1";
+option go_package = "github.com/pobochiigo/bhole/proto/event/v1;eventv1";
 
 message AgencyMini {
   string abbrev = 1;

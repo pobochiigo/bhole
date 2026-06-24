@@ -3,9 +3,9 @@ package celestial_body
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	celestial_bodyv1 "com.gitlab/pobochiigo/bhole/proto/celestial_body/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/celestial_body/v1/celestial_bodyv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	celestial_bodyv1 "github.com/pobochiigo/bhole/proto/celestial_body/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/celestial_body/v1/celestial_bodyv1connect"
 	"connectrpc.com/connect"
 )
 

@@ -2618,7 +2618,7 @@ const file_launcher_configuration_v1_launcher_configuration_proto_rawDesc = "" +
 	"\x16launcher_configuration\x18\x01 \x01(\v20.launcher_configuration.v1.LauncherConfigurationR\x15launcherConfiguration2\xd0\x02\n" +
 	"\x1cLauncherConfigurationService\x12\x99\x01\n" +
 	"\x1aListLauncherConfigurations\x12<.launcher_configuration.v1.ListLauncherConfigurationsRequest\x1a=.launcher_configuration.v1.ListLauncherConfigurationsResponse\x12\x93\x01\n" +
-	"\x18GetLauncherConfiguration\x12:.launcher_configuration.v1.GetLauncherConfigurationRequest\x1a;.launcher_configuration.v1.GetLauncherConfigurationResponseBVZTcom.gitlab/pobochiigo/bhole/proto/launcher_configuration/v1;launcher_configurationv1b\x06proto3"
+	"\x18GetLauncherConfiguration\x12:.launcher_configuration.v1.GetLauncherConfigurationRequest\x1a;.launcher_configuration.v1.GetLauncherConfigurationResponseBVZTgithub.com/pobochiigo/bhole/proto/launcher_configuration/v1;launcher_configurationv1b\x06proto3"
 
 var (
 	file_launcher_configuration_v1_launcher_configuration_proto_rawDescOnce sync.Once

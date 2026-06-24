@@ -289,7 +289,7 @@ def main():
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/bhole/client/endpoint"
 )
 
 type Endpoints struct {{
@@ -325,9 +325,9 @@ func makeGet{feature_camel}Endpoint(svc Service) endpoint.Endpoint[*Get{feature_
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	{feature}v1 "com.gitlab/pobochiigo/bhole/proto/{feature}/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	{feature}v1 "github.com/pobochiigo/bhole/proto/{feature}/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"
 	"connectrpc.com/connect"
 )
 

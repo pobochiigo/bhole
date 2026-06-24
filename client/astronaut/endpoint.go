@@ -3,8 +3,8 @@ package astronaut
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizastronaut "com.gitlab/pobochiigo/bhole/internal/astronaut"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizastronaut "github.com/pobochiigo/bhole/internal/astronaut"
 )
 
 type endpoints struct {

@@ -988,7 +988,7 @@ const file_launcher_v1_launcher_proto_rawDesc = "" +
 	"\blauncher\x18\x01 \x01(\v2\x15.launcher.v1.LauncherR\blauncher2\xbb\x01\n" +
 	"\x0fLauncherService\x12V\n" +
 	"\rListLaunchers\x12!.launcher.v1.ListLaunchersRequest\x1a\".launcher.v1.ListLaunchersResponse\x12P\n" +
-	"\vGetLauncher\x12\x1f.launcher.v1.GetLauncherRequest\x1a .launcher.v1.GetLauncherResponseB:Z8com.gitlab/pobochiigo/bhole/proto/launcher/v1;launcherv1b\x06proto3"
+	"\vGetLauncher\x12\x1f.launcher.v1.GetLauncherRequest\x1a .launcher.v1.GetLauncherResponseB:Z8github.com/pobochiigo/bhole/proto/launcher/v1;launcherv1b\x06proto3"
 
 var (
 	file_launcher_v1_launcher_proto_rawDescOnce sync.Once

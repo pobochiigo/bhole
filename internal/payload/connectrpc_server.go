@@ -3,9 +3,9 @@ package payload
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	payloadv1 "com.gitlab/pobochiigo/bhole/proto/payload/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/payload/v1/payloadv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	payloadv1 "github.com/pobochiigo/bhole/proto/payload/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/payload/v1/payloadv1connect"
 	"connectrpc.com/connect"
 )
 

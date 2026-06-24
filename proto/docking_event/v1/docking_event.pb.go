@@ -6666,7 +6666,7 @@ const file_docking_event_v1_docking_event_proto_rawDesc = "" +
 	"\rdocking_event\x18\x01 \x01(\v2\x1e.docking_event.v1.DockingEventR\fdockingEvent2\xeb\x01\n" +
 	"\x13DockingEventService\x12l\n" +
 	"\x11ListDockingEvents\x12*.docking_event.v1.ListDockingEventsRequest\x1a+.docking_event.v1.ListDockingEventsResponse\x12f\n" +
-	"\x0fGetDockingEvent\x12(.docking_event.v1.GetDockingEventRequest\x1a).docking_event.v1.GetDockingEventResponseBDZBcom.gitlab/pobochiigo/bhole/proto/docking_event/v1;docking_eventv1b\x06proto3"
+	"\x0fGetDockingEvent\x12(.docking_event.v1.GetDockingEventRequest\x1a).docking_event.v1.GetDockingEventResponseBDZBgithub.com/pobochiigo/bhole/proto/docking_event/v1;docking_eventv1b\x06proto3"
 
 var (
 	file_docking_event_v1_docking_event_proto_rawDescOnce sync.Once

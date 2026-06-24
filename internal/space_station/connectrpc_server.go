@@ -3,9 +3,9 @@ package space_station
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	space_stationv1 "com.gitlab/pobochiigo/bhole/proto/space_station/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/space_station/v1/space_stationv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	space_stationv1 "github.com/pobochiigo/bhole/proto/space_station/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/space_station/v1/space_stationv1connect"
 	"connectrpc.com/connect"
 )
 

@@ -3,8 +3,8 @@ package agency
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizagency "com.gitlab/pobochiigo/bhole/internal/agency"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizagency "github.com/pobochiigo/bhole/internal/agency"
 )
 
 type endpoints struct {

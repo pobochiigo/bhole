@@ -5999,7 +5999,7 @@ const file_spacecraft_v1_spacecraft_proto_rawDesc = "" +
 	"spacecraft2\xd1\x01\n" +
 	"\x11SpacecraftService\x12`\n" +
 	"\x0fListSpacecrafts\x12%.spacecraft.v1.ListSpacecraftsRequest\x1a&.spacecraft.v1.ListSpacecraftsResponse\x12Z\n" +
-	"\rGetSpacecraft\x12#.spacecraft.v1.GetSpacecraftRequest\x1a$.spacecraft.v1.GetSpacecraftResponseB>Z<com.gitlab/pobochiigo/bhole/proto/spacecraft/v1;spacecraftv1b\x06proto3"
+	"\rGetSpacecraft\x12#.spacecraft.v1.GetSpacecraftRequest\x1a$.spacecraft.v1.GetSpacecraftResponseB>Z<github.com/pobochiigo/bhole/proto/spacecraft/v1;spacecraftv1b\x06proto3"
 
 var (
 	file_spacecraft_v1_spacecraft_proto_rawDescOnce sync.Once

@@ -5,10 +5,10 @@
 package locationv1connect
 
 import (
-	v1 "com.gitlab/pobochiigo/bhole/proto/location/v1"
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
+	v1 "github.com/pobochiigo/bhole/proto/location/v1"
 	http "net/http"
 	strings "strings"
 )

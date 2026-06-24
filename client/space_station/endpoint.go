@@ -3,8 +3,8 @@ package space_station
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizspace_station "com.gitlab/pobochiigo/bhole/internal/space_station"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizspace_station "github.com/pobochiigo/bhole/internal/space_station"
 )
 
 type endpoints struct {

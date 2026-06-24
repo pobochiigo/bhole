@@ -3,8 +3,8 @@ package spacewalk
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizspacewalk "com.gitlab/pobochiigo/bhole/internal/spacewalk"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizspacewalk "github.com/pobochiigo/bhole/internal/spacewalk"
 )
 
 type endpoints struct {

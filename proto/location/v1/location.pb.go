@@ -1478,7 +1478,7 @@ const file_location_v1_location_proto_rawDesc = "" +
 	"\blocation\x18\x01 \x01(\v2\x15.location.v1.LocationR\blocation2\xbb\x01\n" +
 	"\x0fLocationService\x12V\n" +
 	"\rListLocations\x12!.location.v1.ListLocationsRequest\x1a\".location.v1.ListLocationsResponse\x12P\n" +
-	"\vGetLocation\x12\x1f.location.v1.GetLocationRequest\x1a .location.v1.GetLocationResponseB:Z8com.gitlab/pobochiigo/bhole/proto/location/v1;locationv1b\x06proto3"
+	"\vGetLocation\x12\x1f.location.v1.GetLocationRequest\x1a .location.v1.GetLocationResponseB:Z8github.com/pobochiigo/bhole/proto/location/v1;locationv1b\x06proto3"
 
 var (
 	file_location_v1_location_proto_rawDescOnce sync.Once

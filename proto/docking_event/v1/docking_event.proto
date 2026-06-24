@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package docking_event.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/docking_event/v1;docking_eventv1";
+option go_package = "github.com/pobochiigo/bhole/proto/docking_event/v1;docking_eventv1";
 
 message AgencyDetailed {
   string abbrev = 1;

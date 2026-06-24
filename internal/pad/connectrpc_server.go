@@ -3,9 +3,9 @@ package pad
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	padv1 "com.gitlab/pobochiigo/bhole/proto/pad/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/pad/v1/padv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	padv1 "github.com/pobochiigo/bhole/proto/pad/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/pad/v1/padv1connect"
 	"connectrpc.com/connect"
 )
 

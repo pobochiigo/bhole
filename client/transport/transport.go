@@ -3,7 +3,7 @@ package transport
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/bhole/client/endpoint"
 	"connectrpc.com/connect"
 )
 

@@ -3,8 +3,8 @@ package expedition
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizexpedition "com.gitlab/pobochiigo/bhole/internal/expedition"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizexpedition "github.com/pobochiigo/bhole/internal/expedition"
 )
 
 type endpoints struct {

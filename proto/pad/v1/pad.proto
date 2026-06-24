@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package pad.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/pad/v1;padv1";
+option go_package = "github.com/pobochiigo/bhole/proto/pad/v1;padv1";
 
 message AgencyNormal {
   string abbrev = 1;

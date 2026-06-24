@@ -3,10 +3,10 @@ package location
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	bizlocation "com.gitlab/pobochiigo/bhole/internal/location"
-	locationv1 "com.gitlab/pobochiigo/bhole/proto/location/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/location/v1/locationv1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	bizlocation "github.com/pobochiigo/bhole/internal/location"
+	locationv1 "github.com/pobochiigo/bhole/proto/location/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/location/v1/locationv1connect"
 	"connectrpc.com/connect"
 )
 

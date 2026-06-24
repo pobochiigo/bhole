@@ -8413,7 +8413,7 @@ const file_landing_v1_landing_proto_rawDesc = "" +
 	"\x0eLandingService\x12Q\n" +
 	"\fListLandings\x12\x1f.landing.v1.ListLandingsRequest\x1a .landing.v1.ListLandingsResponse\x12K\n" +
 	"\n" +
-	"GetLanding\x12\x1d.landing.v1.GetLandingRequest\x1a\x1e.landing.v1.GetLandingResponseB8Z6com.gitlab/pobochiigo/bhole/proto/landing/v1;landingv1b\x06proto3"
+	"GetLanding\x12\x1d.landing.v1.GetLandingRequest\x1a\x1e.landing.v1.GetLandingResponseB8Z6github.com/pobochiigo/bhole/proto/landing/v1;landingv1b\x06proto3"
 
 var (
 	file_landing_v1_landing_proto_rawDescOnce sync.Once

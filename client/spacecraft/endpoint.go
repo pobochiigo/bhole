@@ -3,8 +3,8 @@ package spacecraft
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizspacecraft "com.gitlab/pobochiigo/bhole/internal/spacecraft"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizspacecraft "github.com/pobochiigo/bhole/internal/spacecraft"
 )
 
 type endpoints struct {

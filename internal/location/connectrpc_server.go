@@ -3,9 +3,9 @@ package location
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	locationv1 "com.gitlab/pobochiigo/bhole/proto/location/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/location/v1/locationv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	locationv1 "github.com/pobochiigo/bhole/proto/location/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/location/v1/locationv1connect"
 	"connectrpc.com/connect"
 )
 

@@ -3,8 +3,8 @@ package update
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizupdate "com.gitlab/pobochiigo/bhole/internal/update"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizupdate "github.com/pobochiigo/bhole/internal/update"
 )
 
 type endpoints struct {

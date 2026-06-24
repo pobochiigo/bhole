@@ -1036,7 +1036,7 @@ const file_program_v1_program_proto_rawDesc = "" +
 	"\x0eProgramService\x12Q\n" +
 	"\fListPrograms\x12\x1f.program.v1.ListProgramsRequest\x1a .program.v1.ListProgramsResponse\x12K\n" +
 	"\n" +
-	"GetProgram\x12\x1d.program.v1.GetProgramRequest\x1a\x1e.program.v1.GetProgramResponseB8Z6com.gitlab/pobochiigo/bhole/proto/program/v1;programv1b\x06proto3"
+	"GetProgram\x12\x1d.program.v1.GetProgramRequest\x1a\x1e.program.v1.GetProgramResponseB8Z6github.com/pobochiigo/bhole/proto/program/v1;programv1b\x06proto3"
 
 var (
 	file_program_v1_program_proto_rawDescOnce sync.Once

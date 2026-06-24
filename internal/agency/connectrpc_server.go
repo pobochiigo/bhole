@@ -3,9 +3,9 @@ package agency
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	agencyv1 "com.gitlab/pobochiigo/bhole/proto/agency/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	agencyv1 "github.com/pobochiigo/bhole/proto/agency/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
 	"connectrpc.com/connect"
 )
 

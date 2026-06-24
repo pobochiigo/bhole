@@ -3,10 +3,10 @@ package celestial_body
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	bizcelestial_body "com.gitlab/pobochiigo/bhole/internal/celestial_body"
-	celestial_bodyv1 "com.gitlab/pobochiigo/bhole/proto/celestial_body/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/celestial_body/v1/celestial_bodyv1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	bizcelestial_body "github.com/pobochiigo/bhole/internal/celestial_body"
+	celestial_bodyv1 "github.com/pobochiigo/bhole/proto/celestial_body/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/celestial_body/v1/celestial_bodyv1connect"
 	"connectrpc.com/connect"
 )
 

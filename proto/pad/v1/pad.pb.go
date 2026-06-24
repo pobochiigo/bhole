@@ -1585,7 +1585,7 @@ const file_pad_v1_pad_proto_rawDesc = "" +
 	"\n" +
 	"PadService\x12=\n" +
 	"\bListPads\x12\x17.pad.v1.ListPadsRequest\x1a\x18.pad.v1.ListPadsResponse\x127\n" +
-	"\x06GetPad\x12\x15.pad.v1.GetPadRequest\x1a\x16.pad.v1.GetPadResponseB0Z.com.gitlab/pobochiigo/bhole/proto/pad/v1;padv1b\x06proto3"
+	"\x06GetPad\x12\x15.pad.v1.GetPadRequest\x1a\x16.pad.v1.GetPadResponseB0Z.github.com/pobochiigo/bhole/proto/pad/v1;padv1b\x06proto3"
 
 var (
 	file_pad_v1_pad_proto_rawDescOnce sync.Once

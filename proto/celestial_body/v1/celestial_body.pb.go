@@ -1117,7 +1117,7 @@ const file_celestial_body_v1_celestial_body_proto_rawDesc = "" +
 	"\x0ecelestial_body\x18\x01 \x01(\v2 .celestial_body.v1.CelestialBodyR\rcelestialBody2\xf9\x01\n" +
 	"\x14CelestialBodyService\x12t\n" +
 	"\x13ListCelestialBodies\x12-.celestial_body.v1.ListCelestialBodiesRequest\x1a..celestial_body.v1.ListCelestialBodiesResponse\x12k\n" +
-	"\x10GetCelestialBody\x12*.celestial_body.v1.GetCelestialBodyRequest\x1a+.celestial_body.v1.GetCelestialBodyResponseBFZDcom.gitlab/pobochiigo/bhole/proto/celestial_body/v1;celestial_bodyv1b\x06proto3"
+	"\x10GetCelestialBody\x12*.celestial_body.v1.GetCelestialBodyRequest\x1a+.celestial_body.v1.GetCelestialBodyResponseBFZDgithub.com/pobochiigo/bhole/proto/celestial_body/v1;celestial_bodyv1b\x06proto3"
 
 var (
 	file_celestial_body_v1_celestial_body_proto_rawDescOnce sync.Once

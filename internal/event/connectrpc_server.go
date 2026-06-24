@@ -3,9 +3,9 @@ package event
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/internal/transport"
-	eventv1 "com.gitlab/pobochiigo/bhole/proto/event/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/event/v1/eventv1connect"
+	"github.com/pobochiigo/bhole/internal/transport"
+	eventv1 "github.com/pobochiigo/bhole/proto/event/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/event/v1/eventv1connect"
 	"connectrpc.com/connect"
 )
 

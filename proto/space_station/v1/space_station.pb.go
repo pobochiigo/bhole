@@ -7580,7 +7580,7 @@ const file_space_station_v1_space_station_proto_rawDesc = "" +
 	"\rspace_station\x18\x01 \x01(\v2\x1e.space_station.v1.SpaceStationR\fspaceStation2\xeb\x01\n" +
 	"\x13SpaceStationService\x12l\n" +
 	"\x11ListSpaceStations\x12*.space_station.v1.ListSpaceStationsRequest\x1a+.space_station.v1.ListSpaceStationsResponse\x12f\n" +
-	"\x0fGetSpaceStation\x12(.space_station.v1.GetSpaceStationRequest\x1a).space_station.v1.GetSpaceStationResponseBDZBcom.gitlab/pobochiigo/bhole/proto/space_station/v1;space_stationv1b\x06proto3"
+	"\x0fGetSpaceStation\x12(.space_station.v1.GetSpaceStationRequest\x1a).space_station.v1.GetSpaceStationResponseBDZBgithub.com/pobochiigo/bhole/proto/space_station/v1;space_stationv1b\x06proto3"
 
 var (
 	file_space_station_v1_space_station_proto_rawDescOnce sync.Once

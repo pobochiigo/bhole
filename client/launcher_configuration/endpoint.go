@@ -3,8 +3,8 @@ package launcher_configuration
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizlauncher_configuration "com.gitlab/pobochiigo/bhole/internal/launcher_configuration"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizlauncher_configuration "github.com/pobochiigo/bhole/internal/launcher_configuration"
 )
 
 type endpoints struct {

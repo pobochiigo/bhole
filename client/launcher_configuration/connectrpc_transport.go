@@ -3,10 +3,10 @@ package launcher_configuration
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	bizlauncher_configuration "com.gitlab/pobochiigo/bhole/internal/launcher_configuration"
-	launcher_configurationv1 "com.gitlab/pobochiigo/bhole/proto/launcher_configuration/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/launcher_configuration/v1/launcher_configurationv1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	bizlauncher_configuration "github.com/pobochiigo/bhole/internal/launcher_configuration"
+	launcher_configurationv1 "github.com/pobochiigo/bhole/proto/launcher_configuration/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/launcher_configuration/v1/launcher_configurationv1connect"
 	"connectrpc.com/connect"
 )
 

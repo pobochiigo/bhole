@@ -3725,7 +3725,7 @@ const file_agency_v1_agency_proto_rawDesc = "" +
 	"\x06agency\x18\x01 \x01(\v2\x11.agency.v1.AgencyR\x06agency2\xa8\x01\n" +
 	"\rAgencyService\x12O\n" +
 	"\fListAgencies\x12\x1e.agency.v1.ListAgenciesRequest\x1a\x1f.agency.v1.ListAgenciesResponse\x12F\n" +
-	"\tGetAgency\x12\x1b.agency.v1.GetAgencyRequest\x1a\x1c.agency.v1.GetAgencyResponseB6Z4com.gitlab/pobochiigo/bhole/proto/agency/v1;agencyv1b\x06proto3"
+	"\tGetAgency\x12\x1b.agency.v1.GetAgencyRequest\x1a\x1c.agency.v1.GetAgencyResponseB6Z4github.com/pobochiigo/bhole/proto/agency/v1;agencyv1b\x06proto3"
 
 var (
 	file_agency_v1_agency_proto_rawDescOnce sync.Once

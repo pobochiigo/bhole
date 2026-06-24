@@ -8136,7 +8136,7 @@ const file_spacewalk_v1_spacewalk_proto_rawDesc = "" +
 	"\tspacewalk\x18\x01 \x01(\v2\x17.spacewalk.v1.SpacewalkR\tspacewalk2\xc6\x01\n" +
 	"\x10SpacewalkService\x12[\n" +
 	"\x0eListSpacewalks\x12#.spacewalk.v1.ListSpacewalksRequest\x1a$.spacewalk.v1.ListSpacewalksResponse\x12U\n" +
-	"\fGetSpacewalk\x12!.spacewalk.v1.GetSpacewalkRequest\x1a\".spacewalk.v1.GetSpacewalkResponseB<Z:com.gitlab/pobochiigo/bhole/proto/spacewalk/v1;spacewalkv1b\x06proto3"
+	"\fGetSpacewalk\x12!.spacewalk.v1.GetSpacewalkRequest\x1a\".spacewalk.v1.GetSpacewalkResponseB<Z:github.com/pobochiigo/bhole/proto/spacewalk/v1;spacewalkv1b\x06proto3"
 
 var (
 	file_spacewalk_v1_spacewalk_proto_rawDescOnce sync.Once

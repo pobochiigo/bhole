@@ -3,8 +3,8 @@ package launcher
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizlauncher "com.gitlab/pobochiigo/bhole/internal/launcher"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizlauncher "github.com/pobochiigo/bhole/internal/launcher"
 )
 
 type endpoints struct {

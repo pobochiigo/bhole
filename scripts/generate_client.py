@@ -375,7 +375,7 @@ def main():
 
 package {feature}.v1;
 
-option go_package = "com.gitlab/pobochiigo/bhole/proto/{feature}/v1;{feature}v1";
+option go_package = "github.com/pobochiigo/bhole/proto/{feature}/v1;{feature}v1";
 
 """
         # Define messages for all dependent schemas
@@ -500,8 +500,8 @@ type Service interface {{
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	biz{feature} "com.gitlab/pobochiigo/bhole/internal/{feature}"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	biz{feature} "github.com/pobochiigo/bhole/internal/{feature}"
 )
 
 type endpoints struct {{
@@ -526,10 +526,10 @@ func (c *endpoints) Get{feature_camel}(ctx context.Context, req *biz{feature}.Ge
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	biz{feature} "com.gitlab/pobochiigo/bhole/internal/{feature}"
-	{feature}v1 "com.gitlab/pobochiigo/bhole/proto/{feature}/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	biz{feature} "github.com/pobochiigo/bhole/internal/{feature}"
+	{feature}v1 "github.com/pobochiigo/bhole/proto/{feature}/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"
 	"connectrpc.com/connect"
 )
 
@@ -656,7 +656,7 @@ import (
 """
     # Import all proto packages
     for feature in sorted(RESOURCES.keys()):
-        rest_go_content += f'\t{feature}v1 "com.gitlab/pobochiigo/bhole/proto/{feature}/v1"\n'
+        rest_go_content += f'\t{feature}v1 "github.com/pobochiigo/bhole/proto/{feature}/v1"\n'
     rest_go_content += ")\n\n"
     
     rest_go_content += """type RESTClient struct {

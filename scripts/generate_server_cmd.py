@@ -38,8 +38,8 @@ def main():
         '"net/http"',
     ]
     for feature in sorted(RESOURCES.keys()):
-        imports.append(f'{feature} "com.gitlab/pobochiigo/bhole/internal/{feature}"')
-        imports.append(f'{feature}v1connect "com.gitlab/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"')
+        imports.append(f'{feature} "github.com/pobochiigo/bhole/internal/{feature}"')
+        imports.append(f'{feature}v1connect "github.com/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"')
         
     main_content = f"""package main
 

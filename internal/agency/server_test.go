@@ -6,9 +6,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"com.gitlab/pobochiigo/bhole/internal/agency"
-	agencyv1 "com.gitlab/pobochiigo/bhole/proto/agency/v1"
-	"com.gitlab/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
+	"github.com/pobochiigo/bhole/internal/agency"
+	agencyv1 "github.com/pobochiigo/bhole/proto/agency/v1"
+	"github.com/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
 	"connectrpc.com/connect"
 )
 

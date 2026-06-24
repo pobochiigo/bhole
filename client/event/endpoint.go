@@ -3,8 +3,8 @@ package event
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/endpoint"
-	bizevent "com.gitlab/pobochiigo/bhole/internal/event"
+	"github.com/pobochiigo/bhole/client/endpoint"
+	bizevent "github.com/pobochiigo/bhole/internal/event"
 )
 
 type endpoints struct {

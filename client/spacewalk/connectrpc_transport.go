@@ -3,10 +3,10 @@ package spacewalk
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	bizspacewalk "com.gitlab/pobochiigo/bhole/internal/spacewalk"
-	spacewalkv1 "com.gitlab/pobochiigo/bhole/proto/spacewalk/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/spacewalk/v1/spacewalkv1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	bizspacewalk "github.com/pobochiigo/bhole/internal/spacewalk"
+	spacewalkv1 "github.com/pobochiigo/bhole/proto/spacewalk/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/spacewalk/v1/spacewalkv1connect"
 	"connectrpc.com/connect"
 )
 

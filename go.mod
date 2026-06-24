@@ -1,4 +1,4 @@
-module com.gitlab/pobochiigo/bhole
+module github.com/pobochiigo/bhole
 
 go 1.26.4
 

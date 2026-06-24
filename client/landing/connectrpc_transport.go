@@ -3,10 +3,10 @@ package landing
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	bizlanding "com.gitlab/pobochiigo/bhole/internal/landing"
-	landingv1 "com.gitlab/pobochiigo/bhole/proto/landing/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/landing/v1/landingv1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	bizlanding "github.com/pobochiigo/bhole/internal/landing"
+	landingv1 "github.com/pobochiigo/bhole/proto/landing/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/landing/v1/landingv1connect"
 	"connectrpc.com/connect"
 )
 

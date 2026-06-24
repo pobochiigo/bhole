@@ -373,7 +373,7 @@ const file_update_v1_update_proto_rawDesc = "" +
 	"\x06update\x18\x01 \x01(\v2\x11.update.v1.UpdateR\x06update2\xa5\x01\n" +
 	"\rUpdateService\x12L\n" +
 	"\vListUpdates\x12\x1d.update.v1.ListUpdatesRequest\x1a\x1e.update.v1.ListUpdatesResponse\x12F\n" +
-	"\tGetUpdate\x12\x1b.update.v1.GetUpdateRequest\x1a\x1c.update.v1.GetUpdateResponseB6Z4com.gitlab/pobochiigo/bhole/proto/update/v1;updatev1b\x06proto3"
+	"\tGetUpdate\x12\x1b.update.v1.GetUpdateRequest\x1a\x1c.update.v1.GetUpdateResponseB6Z4github.com/pobochiigo/bhole/proto/update/v1;updatev1b\x06proto3"
 
 var (
 	file_update_v1_update_proto_rawDescOnce sync.Once

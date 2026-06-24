@@ -3,10 +3,10 @@ package expedition
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	bizexpedition "com.gitlab/pobochiigo/bhole/internal/expedition"
-	expeditionv1 "com.gitlab/pobochiigo/bhole/proto/expedition/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/expedition/v1/expeditionv1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	bizexpedition "github.com/pobochiigo/bhole/internal/expedition"
+	expeditionv1 "github.com/pobochiigo/bhole/proto/expedition/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/expedition/v1/expeditionv1connect"
 	"connectrpc.com/connect"
 )
 

@@ -2814,7 +2814,7 @@ const file_event_v1_event_proto_rawDesc = "" +
 	"\fEventService\x12G\n" +
 	"\n" +
 	"ListEvents\x12\x1b.event.v1.ListEventsRequest\x1a\x1c.event.v1.ListEventsResponse\x12A\n" +
-	"\bGetEvent\x12\x19.event.v1.GetEventRequest\x1a\x1a.event.v1.GetEventResponseB4Z2com.gitlab/pobochiigo/bhole/proto/event/v1;eventv1b\x06proto3"
+	"\bGetEvent\x12\x19.event.v1.GetEventRequest\x1a\x1a.event.v1.GetEventResponseB4Z2github.com/pobochiigo/bhole/proto/event/v1;eventv1b\x06proto3"
 
 var (
 	file_event_v1_event_proto_rawDescOnce sync.Once

@@ -1295,7 +1295,7 @@ const file_astronaut_v1_astronaut_proto_rawDesc = "" +
 	"\tastronaut\x18\x01 \x01(\v2\x17.astronaut.v1.AstronautR\tastronaut2\xc6\x01\n" +
 	"\x10AstronautService\x12[\n" +
 	"\x0eListAstronauts\x12#.astronaut.v1.ListAstronautsRequest\x1a$.astronaut.v1.ListAstronautsResponse\x12U\n" +
-	"\fGetAstronaut\x12!.astronaut.v1.GetAstronautRequest\x1a\".astronaut.v1.GetAstronautResponseB<Z:com.gitlab/pobochiigo/bhole/proto/astronaut/v1;astronautv1b\x06proto3"
+	"\fGetAstronaut\x12!.astronaut.v1.GetAstronautRequest\x1a\".astronaut.v1.GetAstronautResponseB<Z:github.com/pobochiigo/bhole/proto/astronaut/v1;astronautv1b\x06proto3"
 
 var (
 	file_astronaut_v1_astronaut_proto_rawDescOnce sync.Once

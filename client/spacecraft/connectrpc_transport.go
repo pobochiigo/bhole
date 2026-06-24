@@ -3,10 +3,10 @@ package spacecraft
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	bizspacecraft "com.gitlab/pobochiigo/bhole/internal/spacecraft"
-	spacecraftv1 "com.gitlab/pobochiigo/bhole/proto/spacecraft/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/spacecraft/v1/spacecraftv1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	bizspacecraft "github.com/pobochiigo/bhole/internal/spacecraft"
+	spacecraftv1 "github.com/pobochiigo/bhole/proto/spacecraft/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/spacecraft/v1/spacecraftv1connect"
 	"connectrpc.com/connect"
 )
 

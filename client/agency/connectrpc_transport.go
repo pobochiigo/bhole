@@ -3,10 +3,10 @@ package agency
 import (
 	"context"
 
-	"com.gitlab/pobochiigo/bhole/client/transport"
-	bizagency "com.gitlab/pobochiigo/bhole/internal/agency"
-	agencyv1 "com.gitlab/pobochiigo/bhole/proto/agency/v1"
-	v1connect "com.gitlab/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
+	"github.com/pobochiigo/bhole/client/transport"
+	bizagency "github.com/pobochiigo/bhole/internal/agency"
+	agencyv1 "github.com/pobochiigo/bhole/proto/agency/v1"
+	v1connect "github.com/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
 	"connectrpc.com/connect"
 )
 
