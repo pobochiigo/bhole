@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: proto/update/v1/update.proto
+// source: update/v1/update.proto
 
 package updatev1
 
@@ -35,7 +35,7 @@ type Update struct {
 
 func (x *Update) Reset() {
 	*x = Update{}
-	mi := &file_proto_update_v1_update_proto_msgTypes[0]
+	mi := &file_update_v1_update_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +47,7 @@ func (x *Update) String() string {
 func (*Update) ProtoMessage() {}
 
 func (x *Update) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_update_v1_update_proto_msgTypes[0]
+	mi := &file_update_v1_update_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +60,7 @@ func (x *Update) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Update.ProtoReflect.Descriptor instead.
 func (*Update) Descriptor() ([]byte, []int) {
-	return file_proto_update_v1_update_proto_rawDescGZIP(), []int{0}
+	return file_update_v1_update_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Update) GetComment() string {
@@ -117,7 +117,7 @@ type ListUpdatesRequest struct {
 
 func (x *ListUpdatesRequest) Reset() {
 	*x = ListUpdatesRequest{}
-	mi := &file_proto_update_v1_update_proto_msgTypes[1]
+	mi := &file_update_v1_update_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -129,7 +129,7 @@ func (x *ListUpdatesRequest) String() string {
 func (*ListUpdatesRequest) ProtoMessage() {}
 
 func (x *ListUpdatesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_update_v1_update_proto_msgTypes[1]
+	mi := &file_update_v1_update_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -142,7 +142,7 @@ func (x *ListUpdatesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUpdatesRequest.ProtoReflect.Descriptor instead.
 func (*ListUpdatesRequest) Descriptor() ([]byte, []int) {
-	return file_proto_update_v1_update_proto_rawDescGZIP(), []int{1}
+	return file_update_v1_update_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListUpdatesRequest) GetLimit() int32 {
@@ -185,7 +185,7 @@ type ListUpdatesResponse struct {
 
 func (x *ListUpdatesResponse) Reset() {
 	*x = ListUpdatesResponse{}
-	mi := &file_proto_update_v1_update_proto_msgTypes[2]
+	mi := &file_update_v1_update_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -197,7 +197,7 @@ func (x *ListUpdatesResponse) String() string {
 func (*ListUpdatesResponse) ProtoMessage() {}
 
 func (x *ListUpdatesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_update_v1_update_proto_msgTypes[2]
+	mi := &file_update_v1_update_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -210,7 +210,7 @@ func (x *ListUpdatesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUpdatesResponse.ProtoReflect.Descriptor instead.
 func (*ListUpdatesResponse) Descriptor() ([]byte, []int) {
-	return file_proto_update_v1_update_proto_rawDescGZIP(), []int{2}
+	return file_update_v1_update_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListUpdatesResponse) GetCount() int32 {
@@ -251,7 +251,7 @@ type GetUpdateRequest struct {
 
 func (x *GetUpdateRequest) Reset() {
 	*x = GetUpdateRequest{}
-	mi := &file_proto_update_v1_update_proto_msgTypes[3]
+	mi := &file_update_v1_update_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -263,7 +263,7 @@ func (x *GetUpdateRequest) String() string {
 func (*GetUpdateRequest) ProtoMessage() {}
 
 func (x *GetUpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_update_v1_update_proto_msgTypes[3]
+	mi := &file_update_v1_update_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -276,7 +276,7 @@ func (x *GetUpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUpdateRequest.ProtoReflect.Descriptor instead.
 func (*GetUpdateRequest) Descriptor() ([]byte, []int) {
-	return file_proto_update_v1_update_proto_rawDescGZIP(), []int{3}
+	return file_update_v1_update_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetUpdateRequest) GetId() int32 {
@@ -302,7 +302,7 @@ type GetUpdateResponse struct {
 
 func (x *GetUpdateResponse) Reset() {
 	*x = GetUpdateResponse{}
-	mi := &file_proto_update_v1_update_proto_msgTypes[4]
+	mi := &file_update_v1_update_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -314,7 +314,7 @@ func (x *GetUpdateResponse) String() string {
 func (*GetUpdateResponse) ProtoMessage() {}
 
 func (x *GetUpdateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_update_v1_update_proto_msgTypes[4]
+	mi := &file_update_v1_update_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -327,7 +327,7 @@ func (x *GetUpdateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUpdateResponse.ProtoReflect.Descriptor instead.
 func (*GetUpdateResponse) Descriptor() ([]byte, []int) {
-	return file_proto_update_v1_update_proto_rawDescGZIP(), []int{4}
+	return file_update_v1_update_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetUpdateResponse) GetUpdate() *Update {
@@ -337,11 +337,11 @@ func (x *GetUpdateResponse) GetUpdate() *Update {
 	return nil
 }
 
-var File_proto_update_v1_update_proto protoreflect.FileDescriptor
+var File_update_v1_update_proto protoreflect.FileDescriptor
 
-const file_proto_update_v1_update_proto_rawDesc = "" +
+const file_update_v1_update_proto_rawDesc = "" +
 	"\n" +
-	"\x1cproto/update/v1/update.proto\x12\tupdate.v1\"\xfe\x01\n" +
+	"\x16update/v1/update.proto\x12\tupdate.v1\"\xfe\x01\n" +
 	"\x06Update\x12\x1d\n" +
 	"\acomment\x18\x01 \x01(\tH\x00R\acomment\x88\x01\x01\x12\"\n" +
 	"\n" +
@@ -376,26 +376,26 @@ const file_proto_update_v1_update_proto_rawDesc = "" +
 	"\tGetUpdate\x12\x1b.update.v1.GetUpdateRequest\x1a\x1c.update.v1.GetUpdateResponseB6Z4com.gitlab/pobochiigo/bhole/proto/update/v1;updatev1b\x06proto3"
 
 var (
-	file_proto_update_v1_update_proto_rawDescOnce sync.Once
-	file_proto_update_v1_update_proto_rawDescData []byte
+	file_update_v1_update_proto_rawDescOnce sync.Once
+	file_update_v1_update_proto_rawDescData []byte
 )
 
-func file_proto_update_v1_update_proto_rawDescGZIP() []byte {
-	file_proto_update_v1_update_proto_rawDescOnce.Do(func() {
-		file_proto_update_v1_update_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_update_v1_update_proto_rawDesc), len(file_proto_update_v1_update_proto_rawDesc)))
+func file_update_v1_update_proto_rawDescGZIP() []byte {
+	file_update_v1_update_proto_rawDescOnce.Do(func() {
+		file_update_v1_update_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_update_v1_update_proto_rawDesc), len(file_update_v1_update_proto_rawDesc)))
 	})
-	return file_proto_update_v1_update_proto_rawDescData
+	return file_update_v1_update_proto_rawDescData
 }
 
-var file_proto_update_v1_update_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_proto_update_v1_update_proto_goTypes = []any{
+var file_update_v1_update_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_update_v1_update_proto_goTypes = []any{
 	(*Update)(nil),              // 0: update.v1.Update
 	(*ListUpdatesRequest)(nil),  // 1: update.v1.ListUpdatesRequest
 	(*ListUpdatesResponse)(nil), // 2: update.v1.ListUpdatesResponse
 	(*GetUpdateRequest)(nil),    // 3: update.v1.GetUpdateRequest
 	(*GetUpdateResponse)(nil),   // 4: update.v1.GetUpdateResponse
 }
-var file_proto_update_v1_update_proto_depIdxs = []int32{
+var file_update_v1_update_proto_depIdxs = []int32{
 	0, // 0: update.v1.ListUpdatesResponse.results:type_name -> update.v1.Update
 	0, // 1: update.v1.GetUpdateResponse.update:type_name -> update.v1.Update
 	1, // 2: update.v1.UpdateService.ListUpdates:input_type -> update.v1.ListUpdatesRequest
@@ -409,27 +409,27 @@ var file_proto_update_v1_update_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_proto_update_v1_update_proto_init() }
-func file_proto_update_v1_update_proto_init() {
-	if File_proto_update_v1_update_proto != nil {
+func init() { file_update_v1_update_proto_init() }
+func file_update_v1_update_proto_init() {
+	if File_update_v1_update_proto != nil {
 		return
 	}
-	file_proto_update_v1_update_proto_msgTypes[0].OneofWrappers = []any{}
+	file_update_v1_update_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_update_v1_update_proto_rawDesc), len(file_proto_update_v1_update_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_update_v1_update_proto_rawDesc), len(file_update_v1_update_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_update_v1_update_proto_goTypes,
-		DependencyIndexes: file_proto_update_v1_update_proto_depIdxs,
-		MessageInfos:      file_proto_update_v1_update_proto_msgTypes,
+		GoTypes:           file_update_v1_update_proto_goTypes,
+		DependencyIndexes: file_update_v1_update_proto_depIdxs,
+		MessageInfos:      file_update_v1_update_proto_msgTypes,
 	}.Build()
-	File_proto_update_v1_update_proto = out.File
-	file_proto_update_v1_update_proto_goTypes = nil
-	file_proto_update_v1_update_proto_depIdxs = nil
+	File_update_v1_update_proto = out.File
+	file_update_v1_update_proto_goTypes = nil
+	file_update_v1_update_proto_depIdxs = nil
 }

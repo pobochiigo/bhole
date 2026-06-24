@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: proto/spacecraft/v1/spacecraft.proto
+// source: spacecraft/v1/spacecraft.proto
 
 package spacecraftv1
 
@@ -64,7 +64,7 @@ type AgencyDetailed struct {
 
 func (x *AgencyDetailed) Reset() {
 	*x = AgencyDetailed{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[0]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -76,7 +76,7 @@ func (x *AgencyDetailed) String() string {
 func (*AgencyDetailed) ProtoMessage() {}
 
 func (x *AgencyDetailed) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[0]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -89,7 +89,7 @@ func (x *AgencyDetailed) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyDetailed.ProtoReflect.Descriptor instead.
 func (*AgencyDetailed) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{0}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AgencyDetailed) GetAbbrev() string {
@@ -351,7 +351,7 @@ type AgencyMini struct {
 
 func (x *AgencyMini) Reset() {
 	*x = AgencyMini{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[1]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -363,7 +363,7 @@ func (x *AgencyMini) String() string {
 func (*AgencyMini) ProtoMessage() {}
 
 func (x *AgencyMini) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[1]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -376,7 +376,7 @@ func (x *AgencyMini) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyMini.ProtoReflect.Descriptor instead.
 func (*AgencyMini) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{1}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AgencyMini) GetAbbrev() string {
@@ -446,7 +446,7 @@ type AgencyNormal struct {
 
 func (x *AgencyNormal) Reset() {
 	*x = AgencyNormal{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[2]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -458,7 +458,7 @@ func (x *AgencyNormal) String() string {
 func (*AgencyNormal) ProtoMessage() {}
 
 func (x *AgencyNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[2]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -471,7 +471,7 @@ func (x *AgencyNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyNormal.ProtoReflect.Descriptor instead.
 func (*AgencyNormal) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{2}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *AgencyNormal) GetAbbrev() string {
@@ -603,7 +603,7 @@ type AgencyType struct {
 
 func (x *AgencyType) Reset() {
 	*x = AgencyType{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[3]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -615,7 +615,7 @@ func (x *AgencyType) String() string {
 func (*AgencyType) ProtoMessage() {}
 
 func (x *AgencyType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[3]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -628,7 +628,7 @@ func (x *AgencyType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyType.ProtoReflect.Descriptor instead.
 func (*AgencyType) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{3}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AgencyType) GetId() int32 {
@@ -671,7 +671,7 @@ type CelestialBodyDetailed struct {
 
 func (x *CelestialBodyDetailed) Reset() {
 	*x = CelestialBodyDetailed{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[4]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -683,7 +683,7 @@ func (x *CelestialBodyDetailed) String() string {
 func (*CelestialBodyDetailed) ProtoMessage() {}
 
 func (x *CelestialBodyDetailed) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[4]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -696,7 +696,7 @@ func (x *CelestialBodyDetailed) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CelestialBodyDetailed.ProtoReflect.Descriptor instead.
 func (*CelestialBodyDetailed) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{4}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CelestialBodyDetailed) GetAtmosphere() bool {
@@ -836,7 +836,7 @@ type CelestialBodyMini struct {
 
 func (x *CelestialBodyMini) Reset() {
 	*x = CelestialBodyMini{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[5]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -848,7 +848,7 @@ func (x *CelestialBodyMini) String() string {
 func (*CelestialBodyMini) ProtoMessage() {}
 
 func (x *CelestialBodyMini) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[5]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -861,7 +861,7 @@ func (x *CelestialBodyMini) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CelestialBodyMini.ProtoReflect.Descriptor instead.
 func (*CelestialBodyMini) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{5}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CelestialBodyMini) GetId() int32 {
@@ -905,7 +905,7 @@ type CelestialBodyNormal struct {
 
 func (x *CelestialBodyNormal) Reset() {
 	*x = CelestialBodyNormal{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[6]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -917,7 +917,7 @@ func (x *CelestialBodyNormal) String() string {
 func (*CelestialBodyNormal) ProtoMessage() {}
 
 func (x *CelestialBodyNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[6]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -930,7 +930,7 @@ func (x *CelestialBodyNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CelestialBodyNormal.ProtoReflect.Descriptor instead.
 func (*CelestialBodyNormal) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{6}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CelestialBodyNormal) GetAtmosphere() bool {
@@ -1027,7 +1027,7 @@ type CelestialBodyType struct {
 
 func (x *CelestialBodyType) Reset() {
 	*x = CelestialBodyType{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[7]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1039,7 +1039,7 @@ func (x *CelestialBodyType) String() string {
 func (*CelestialBodyType) ProtoMessage() {}
 
 func (x *CelestialBodyType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[7]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1052,7 +1052,7 @@ func (x *CelestialBodyType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CelestialBodyType.ProtoReflect.Descriptor instead.
 func (*CelestialBodyType) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{7}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CelestialBodyType) GetId() int32 {
@@ -1083,7 +1083,7 @@ type Country struct {
 
 func (x *Country) Reset() {
 	*x = Country{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[8]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1095,7 +1095,7 @@ func (x *Country) String() string {
 func (*Country) ProtoMessage() {}
 
 func (x *Country) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[8]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1108,7 +1108,7 @@ func (x *Country) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Country.ProtoReflect.Descriptor instead.
 func (*Country) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{8}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Country) GetAlpha_2Code() string {
@@ -1169,7 +1169,7 @@ type Image struct {
 
 func (x *Image) Reset() {
 	*x = Image{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[9]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1181,7 +1181,7 @@ func (x *Image) String() string {
 func (*Image) ProtoMessage() {}
 
 func (x *Image) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[9]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1194,7 +1194,7 @@ func (x *Image) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Image.ProtoReflect.Descriptor instead.
 func (*Image) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{9}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Image) GetCredit() string {
@@ -1265,7 +1265,7 @@ type ImageLicense struct {
 
 func (x *ImageLicense) Reset() {
 	*x = ImageLicense{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[10]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1277,7 +1277,7 @@ func (x *ImageLicense) String() string {
 func (*ImageLicense) ProtoMessage() {}
 
 func (x *ImageLicense) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[10]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1290,7 +1290,7 @@ func (x *ImageLicense) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageLicense.ProtoReflect.Descriptor instead.
 func (*ImageLicense) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{10}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ImageLicense) GetId() int32 {
@@ -1332,7 +1332,7 @@ type ImageVariant struct {
 
 func (x *ImageVariant) Reset() {
 	*x = ImageVariant{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[11]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1344,7 +1344,7 @@ func (x *ImageVariant) String() string {
 func (*ImageVariant) ProtoMessage() {}
 
 func (x *ImageVariant) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[11]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1357,7 +1357,7 @@ func (x *ImageVariant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariant.ProtoReflect.Descriptor instead.
 func (*ImageVariant) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{11}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ImageVariant) GetId() int32 {
@@ -1391,7 +1391,7 @@ type ImageVariantType struct {
 
 func (x *ImageVariantType) Reset() {
 	*x = ImageVariantType{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[12]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1403,7 +1403,7 @@ func (x *ImageVariantType) String() string {
 func (*ImageVariantType) ProtoMessage() {}
 
 func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[12]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1416,7 +1416,7 @@ func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariantType.ProtoReflect.Descriptor instead.
 func (*ImageVariantType) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{12}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ImageVariantType) GetId() int32 {
@@ -1449,7 +1449,7 @@ type InfoURL struct {
 
 func (x *InfoURL) Reset() {
 	*x = InfoURL{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[13]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1461,7 +1461,7 @@ func (x *InfoURL) String() string {
 func (*InfoURL) ProtoMessage() {}
 
 func (x *InfoURL) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[13]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1474,7 +1474,7 @@ func (x *InfoURL) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InfoURL.ProtoReflect.Descriptor instead.
 func (*InfoURL) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{13}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *InfoURL) GetDescription() string {
@@ -1543,7 +1543,7 @@ type InfoURLType struct {
 
 func (x *InfoURLType) Reset() {
 	*x = InfoURLType{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[14]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1555,7 +1555,7 @@ func (x *InfoURLType) String() string {
 func (*InfoURLType) ProtoMessage() {}
 
 func (x *InfoURLType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[14]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1568,7 +1568,7 @@ func (x *InfoURLType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InfoURLType.ProtoReflect.Descriptor instead.
 func (*InfoURLType) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{14}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *InfoURLType) GetId() int32 {
@@ -1601,7 +1601,7 @@ type Landing struct {
 
 func (x *Landing) Reset() {
 	*x = Landing{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[15]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1613,7 +1613,7 @@ func (x *Landing) String() string {
 func (*Landing) ProtoMessage() {}
 
 func (x *Landing) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[15]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1626,7 +1626,7 @@ func (x *Landing) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Landing.ProtoReflect.Descriptor instead.
 func (*Landing) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{15}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *Landing) GetAttempt() bool {
@@ -1706,7 +1706,7 @@ type LandingLocation struct {
 
 func (x *LandingLocation) Reset() {
 	*x = LandingLocation{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[16]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1718,7 +1718,7 @@ func (x *LandingLocation) String() string {
 func (*LandingLocation) ProtoMessage() {}
 
 func (x *LandingLocation) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[16]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1731,7 +1731,7 @@ func (x *LandingLocation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LandingLocation.ProtoReflect.Descriptor instead.
 func (*LandingLocation) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{16}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *LandingLocation) GetAbbrev() string {
@@ -1837,7 +1837,7 @@ type LandingType struct {
 
 func (x *LandingType) Reset() {
 	*x = LandingType{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[17]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1849,7 +1849,7 @@ func (x *LandingType) String() string {
 func (*LandingType) ProtoMessage() {}
 
 func (x *LandingType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[17]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1862,7 +1862,7 @@ func (x *LandingType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LandingType.ProtoReflect.Descriptor instead.
 func (*LandingType) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{17}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *LandingType) GetAbbrev() string {
@@ -1904,7 +1904,7 @@ type Language struct {
 
 func (x *Language) Reset() {
 	*x = Language{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[18]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1916,7 +1916,7 @@ func (x *Language) String() string {
 func (*Language) ProtoMessage() {}
 
 func (x *Language) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[18]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1929,7 +1929,7 @@ func (x *Language) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Language.ProtoReflect.Descriptor instead.
 func (*Language) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{18}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *Language) GetCode() string {
@@ -1993,7 +1993,7 @@ type LaunchNormal struct {
 
 func (x *LaunchNormal) Reset() {
 	*x = LaunchNormal{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[19]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2005,7 +2005,7 @@ func (x *LaunchNormal) String() string {
 func (*LaunchNormal) ProtoMessage() {}
 
 func (x *LaunchNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[19]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2018,7 +2018,7 @@ func (x *LaunchNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LaunchNormal.ProtoReflect.Descriptor instead.
 func (*LaunchNormal) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{19}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *LaunchNormal) GetAgencyLaunchAttemptCount() int32 {
@@ -2257,7 +2257,7 @@ type LaunchStatus struct {
 
 func (x *LaunchStatus) Reset() {
 	*x = LaunchStatus{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[20]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2269,7 +2269,7 @@ func (x *LaunchStatus) String() string {
 func (*LaunchStatus) ProtoMessage() {}
 
 func (x *LaunchStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[20]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2282,7 +2282,7 @@ func (x *LaunchStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LaunchStatus.ProtoReflect.Descriptor instead.
 func (*LaunchStatus) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{20}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *LaunchStatus) GetAbbrev() string {
@@ -2324,7 +2324,7 @@ type LauncherConfigFamilyMini struct {
 
 func (x *LauncherConfigFamilyMini) Reset() {
 	*x = LauncherConfigFamilyMini{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[21]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2336,7 +2336,7 @@ func (x *LauncherConfigFamilyMini) String() string {
 func (*LauncherConfigFamilyMini) ProtoMessage() {}
 
 func (x *LauncherConfigFamilyMini) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[21]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2349,7 +2349,7 @@ func (x *LauncherConfigFamilyMini) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LauncherConfigFamilyMini.ProtoReflect.Descriptor instead.
 func (*LauncherConfigFamilyMini) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{21}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *LauncherConfigFamilyMini) GetId() int32 {
@@ -2388,7 +2388,7 @@ type LauncherConfigList struct {
 
 func (x *LauncherConfigList) Reset() {
 	*x = LauncherConfigList{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[22]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2400,7 +2400,7 @@ func (x *LauncherConfigList) String() string {
 func (*LauncherConfigList) ProtoMessage() {}
 
 func (x *LauncherConfigList) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[22]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2413,7 +2413,7 @@ func (x *LauncherConfigList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LauncherConfigList.ProtoReflect.Descriptor instead.
 func (*LauncherConfigList) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{22}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *LauncherConfigList) GetFamilies() []*LauncherConfigFamilyMini {
@@ -2488,7 +2488,7 @@ type Location struct {
 
 func (x *Location) Reset() {
 	*x = Location{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[23]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2500,7 +2500,7 @@ func (x *Location) String() string {
 func (*Location) ProtoMessage() {}
 
 func (x *Location) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[23]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2513,7 +2513,7 @@ func (x *Location) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Location.ProtoReflect.Descriptor instead.
 func (*Location) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{23}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *Location) GetActive() bool {
@@ -2643,7 +2643,7 @@ type LocationSerializerNoCelestialBody struct {
 
 func (x *LocationSerializerNoCelestialBody) Reset() {
 	*x = LocationSerializerNoCelestialBody{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[24]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2655,7 +2655,7 @@ func (x *LocationSerializerNoCelestialBody) String() string {
 func (*LocationSerializerNoCelestialBody) ProtoMessage() {}
 
 func (x *LocationSerializerNoCelestialBody) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[24]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2668,7 +2668,7 @@ func (x *LocationSerializerNoCelestialBody) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use LocationSerializerNoCelestialBody.ProtoReflect.Descriptor instead.
 func (*LocationSerializerNoCelestialBody) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{24}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *LocationSerializerNoCelestialBody) GetActive() bool {
@@ -2786,7 +2786,7 @@ type Mission struct {
 
 func (x *Mission) Reset() {
 	*x = Mission{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[25]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2798,7 +2798,7 @@ func (x *Mission) String() string {
 func (*Mission) ProtoMessage() {}
 
 func (x *Mission) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[25]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2811,7 +2811,7 @@ func (x *Mission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Mission.ProtoReflect.Descriptor instead.
 func (*Mission) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{25}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *Mission) GetAgencies() []*AgencyDetailed {
@@ -2891,7 +2891,7 @@ type MissionPatch struct {
 
 func (x *MissionPatch) Reset() {
 	*x = MissionPatch{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[26]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2903,7 +2903,7 @@ func (x *MissionPatch) String() string {
 func (*MissionPatch) ProtoMessage() {}
 
 func (x *MissionPatch) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[26]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2916,7 +2916,7 @@ func (x *MissionPatch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MissionPatch.ProtoReflect.Descriptor instead.
 func (*MissionPatch) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{26}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *MissionPatch) GetAgency() *AgencyMini {
@@ -2973,7 +2973,7 @@ type NetPrecision struct {
 
 func (x *NetPrecision) Reset() {
 	*x = NetPrecision{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[27]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2985,7 +2985,7 @@ func (x *NetPrecision) String() string {
 func (*NetPrecision) ProtoMessage() {}
 
 func (x *NetPrecision) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[27]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2998,7 +2998,7 @@ func (x *NetPrecision) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetPrecision.ProtoReflect.Descriptor instead.
 func (*NetPrecision) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{27}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *NetPrecision) GetAbbrev() string {
@@ -3041,7 +3041,7 @@ type Orbit struct {
 
 func (x *Orbit) Reset() {
 	*x = Orbit{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[28]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3053,7 +3053,7 @@ func (x *Orbit) String() string {
 func (*Orbit) ProtoMessage() {}
 
 func (x *Orbit) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[28]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3066,7 +3066,7 @@ func (x *Orbit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Orbit.ProtoReflect.Descriptor instead.
 func (*Orbit) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{28}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *Orbit) GetAbbrev() string {
@@ -3123,7 +3123,7 @@ type Pad struct {
 
 func (x *Pad) Reset() {
 	*x = Pad{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[29]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3135,7 +3135,7 @@ func (x *Pad) String() string {
 func (*Pad) ProtoMessage() {}
 
 func (x *Pad) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[29]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3148,7 +3148,7 @@ func (x *Pad) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Pad.ProtoReflect.Descriptor instead.
 func (*Pad) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{29}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *Pad) GetActive() bool {
@@ -3298,7 +3298,7 @@ type ProgramNormal struct {
 
 func (x *ProgramNormal) Reset() {
 	*x = ProgramNormal{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[30]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3310,7 +3310,7 @@ func (x *ProgramNormal) String() string {
 func (*ProgramNormal) ProtoMessage() {}
 
 func (x *ProgramNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[30]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3323,7 +3323,7 @@ func (x *ProgramNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProgramNormal.ProtoReflect.Descriptor instead.
 func (*ProgramNormal) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{30}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ProgramNormal) GetAgencies() []*AgencyMini {
@@ -3427,7 +3427,7 @@ type ProgramType struct {
 
 func (x *ProgramType) Reset() {
 	*x = ProgramType{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[31]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3439,7 +3439,7 @@ func (x *ProgramType) String() string {
 func (*ProgramType) ProtoMessage() {}
 
 func (x *ProgramType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[31]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3452,7 +3452,7 @@ func (x *ProgramType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProgramType.ProtoReflect.Descriptor instead.
 func (*ProgramType) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{31}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ProgramType) GetId() int32 {
@@ -3479,7 +3479,7 @@ type RocketNormal struct {
 
 func (x *RocketNormal) Reset() {
 	*x = RocketNormal{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[32]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3491,7 +3491,7 @@ func (x *RocketNormal) String() string {
 func (*RocketNormal) ProtoMessage() {}
 
 func (x *RocketNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[32]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3504,7 +3504,7 @@ func (x *RocketNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RocketNormal.ProtoReflect.Descriptor instead.
 func (*RocketNormal) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{32}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *RocketNormal) GetConfiguration() *LauncherConfigList {
@@ -3533,7 +3533,7 @@ type SocialMedia struct {
 
 func (x *SocialMedia) Reset() {
 	*x = SocialMedia{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[33]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3545,7 +3545,7 @@ func (x *SocialMedia) String() string {
 func (*SocialMedia) ProtoMessage() {}
 
 func (x *SocialMedia) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[33]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3558,7 +3558,7 @@ func (x *SocialMedia) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialMedia.ProtoReflect.Descriptor instead.
 func (*SocialMedia) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{33}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *SocialMedia) GetId() int32 {
@@ -3600,7 +3600,7 @@ type SocialMediaLink struct {
 
 func (x *SocialMediaLink) Reset() {
 	*x = SocialMediaLink{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[34]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3612,7 +3612,7 @@ func (x *SocialMediaLink) String() string {
 func (*SocialMediaLink) ProtoMessage() {}
 
 func (x *SocialMediaLink) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[34]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3625,7 +3625,7 @@ func (x *SocialMediaLink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialMediaLink.ProtoReflect.Descriptor instead.
 func (*SocialMediaLink) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{34}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *SocialMediaLink) GetId() int32 {
@@ -3687,7 +3687,7 @@ type SpacecraftConfigDetailed struct {
 
 func (x *SpacecraftConfigDetailed) Reset() {
 	*x = SpacecraftConfigDetailed{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[35]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3699,7 +3699,7 @@ func (x *SpacecraftConfigDetailed) String() string {
 func (*SpacecraftConfigDetailed) ProtoMessage() {}
 
 func (x *SpacecraftConfigDetailed) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[35]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3712,7 +3712,7 @@ func (x *SpacecraftConfigDetailed) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacecraftConfigDetailed.ProtoReflect.Descriptor instead.
 func (*SpacecraftConfigDetailed) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{35}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *SpacecraftConfigDetailed) GetAgency() *AgencyNormal {
@@ -3947,7 +3947,7 @@ type SpacecraftConfigFamilyDetailed struct {
 
 func (x *SpacecraftConfigFamilyDetailed) Reset() {
 	*x = SpacecraftConfigFamilyDetailed{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[36]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3959,7 +3959,7 @@ func (x *SpacecraftConfigFamilyDetailed) String() string {
 func (*SpacecraftConfigFamilyDetailed) ProtoMessage() {}
 
 func (x *SpacecraftConfigFamilyDetailed) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[36]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3972,7 +3972,7 @@ func (x *SpacecraftConfigFamilyDetailed) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacecraftConfigFamilyDetailed.ProtoReflect.Descriptor instead.
 func (*SpacecraftConfigFamilyDetailed) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{36}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *SpacecraftConfigFamilyDetailed) GetAttemptedLandings() int32 {
@@ -4084,7 +4084,7 @@ type SpacecraftConfigFamilyMini struct {
 
 func (x *SpacecraftConfigFamilyMini) Reset() {
 	*x = SpacecraftConfigFamilyMini{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[37]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4096,7 +4096,7 @@ func (x *SpacecraftConfigFamilyMini) String() string {
 func (*SpacecraftConfigFamilyMini) ProtoMessage() {}
 
 func (x *SpacecraftConfigFamilyMini) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[37]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4109,7 +4109,7 @@ func (x *SpacecraftConfigFamilyMini) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacecraftConfigFamilyMini.ProtoReflect.Descriptor instead.
 func (*SpacecraftConfigFamilyMini) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{37}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *SpacecraftConfigFamilyMini) GetId() int32 {
@@ -4148,7 +4148,7 @@ type SpacecraftConfigFamilyNormal struct {
 
 func (x *SpacecraftConfigFamilyNormal) Reset() {
 	*x = SpacecraftConfigFamilyNormal{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[38]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4160,7 +4160,7 @@ func (x *SpacecraftConfigFamilyNormal) String() string {
 func (*SpacecraftConfigFamilyNormal) ProtoMessage() {}
 
 func (x *SpacecraftConfigFamilyNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[38]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4173,7 +4173,7 @@ func (x *SpacecraftConfigFamilyNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacecraftConfigFamilyNormal.ProtoReflect.Descriptor instead.
 func (*SpacecraftConfigFamilyNormal) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{38}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *SpacecraftConfigFamilyNormal) GetDescription() string {
@@ -4242,7 +4242,7 @@ type SpacecraftConfigNormal struct {
 
 func (x *SpacecraftConfigNormal) Reset() {
 	*x = SpacecraftConfigNormal{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[39]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4254,7 +4254,7 @@ func (x *SpacecraftConfigNormal) String() string {
 func (*SpacecraftConfigNormal) ProtoMessage() {}
 
 func (x *SpacecraftConfigNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[39]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4267,7 +4267,7 @@ func (x *SpacecraftConfigNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacecraftConfigNormal.ProtoReflect.Descriptor instead.
 func (*SpacecraftConfigNormal) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{39}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *SpacecraftConfigNormal) GetAgency() *AgencyMini {
@@ -4343,7 +4343,7 @@ type SpacecraftConfigType struct {
 
 func (x *SpacecraftConfigType) Reset() {
 	*x = SpacecraftConfigType{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[40]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4355,7 +4355,7 @@ func (x *SpacecraftConfigType) String() string {
 func (*SpacecraftConfigType) ProtoMessage() {}
 
 func (x *SpacecraftConfigType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[40]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4368,7 +4368,7 @@ func (x *SpacecraftConfigType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacecraftConfigType.ProtoReflect.Descriptor instead.
 func (*SpacecraftConfigType) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{40}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *SpacecraftConfigType) GetId() int32 {
@@ -4410,7 +4410,7 @@ type Spacecraft struct {
 
 func (x *Spacecraft) Reset() {
 	*x = Spacecraft{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[41]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4422,7 +4422,7 @@ func (x *Spacecraft) String() string {
 func (*Spacecraft) ProtoMessage() {}
 
 func (x *Spacecraft) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[41]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4435,7 +4435,7 @@ func (x *Spacecraft) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Spacecraft.ProtoReflect.Descriptor instead.
 func (*Spacecraft) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{41}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *Spacecraft) GetDescription() string {
@@ -4575,7 +4575,7 @@ type SpacecraftFlightNormal struct {
 
 func (x *SpacecraftFlightNormal) Reset() {
 	*x = SpacecraftFlightNormal{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[42]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4587,7 +4587,7 @@ func (x *SpacecraftFlightNormal) String() string {
 func (*SpacecraftFlightNormal) ProtoMessage() {}
 
 func (x *SpacecraftFlightNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[42]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4600,7 +4600,7 @@ func (x *SpacecraftFlightNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacecraftFlightNormal.ProtoReflect.Descriptor instead.
 func (*SpacecraftFlightNormal) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{42}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *SpacecraftFlightNormal) GetDestination() string {
@@ -4697,7 +4697,7 @@ type SpacecraftNormal struct {
 
 func (x *SpacecraftNormal) Reset() {
 	*x = SpacecraftNormal{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[43]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4709,7 +4709,7 @@ func (x *SpacecraftNormal) String() string {
 func (*SpacecraftNormal) ProtoMessage() {}
 
 func (x *SpacecraftNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[43]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4722,7 +4722,7 @@ func (x *SpacecraftNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacecraftNormal.ProtoReflect.Descriptor instead.
 func (*SpacecraftNormal) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{43}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *SpacecraftNormal) GetDescription() string {
@@ -4847,7 +4847,7 @@ type SpacecraftStatus struct {
 
 func (x *SpacecraftStatus) Reset() {
 	*x = SpacecraftStatus{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[44]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4859,7 +4859,7 @@ func (x *SpacecraftStatus) String() string {
 func (*SpacecraftStatus) ProtoMessage() {}
 
 func (x *SpacecraftStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[44]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4872,7 +4872,7 @@ func (x *SpacecraftStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacecraftStatus.ProtoReflect.Descriptor instead.
 func (*SpacecraftStatus) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{44}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *SpacecraftStatus) GetId() int32 {
@@ -4909,7 +4909,7 @@ type VidURL struct {
 
 func (x *VidURL) Reset() {
 	*x = VidURL{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[45]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4921,7 +4921,7 @@ func (x *VidURL) String() string {
 func (*VidURL) ProtoMessage() {}
 
 func (x *VidURL) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[45]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4934,7 +4934,7 @@ func (x *VidURL) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VidURL.ProtoReflect.Descriptor instead.
 func (*VidURL) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{45}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *VidURL) GetDescription() string {
@@ -5031,7 +5031,7 @@ type VidURLType struct {
 
 func (x *VidURLType) Reset() {
 	*x = VidURLType{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[46]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5043,7 +5043,7 @@ func (x *VidURLType) String() string {
 func (*VidURLType) ProtoMessage() {}
 
 func (x *VidURLType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[46]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5056,7 +5056,7 @@ func (x *VidURLType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VidURLType.ProtoReflect.Descriptor instead.
 func (*VidURLType) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{46}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *VidURLType) GetId() int32 {
@@ -5085,7 +5085,7 @@ type ListSpacecraftsRequest struct {
 
 func (x *ListSpacecraftsRequest) Reset() {
 	*x = ListSpacecraftsRequest{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[47]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5097,7 +5097,7 @@ func (x *ListSpacecraftsRequest) String() string {
 func (*ListSpacecraftsRequest) ProtoMessage() {}
 
 func (x *ListSpacecraftsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[47]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5110,7 +5110,7 @@ func (x *ListSpacecraftsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSpacecraftsRequest.ProtoReflect.Descriptor instead.
 func (*ListSpacecraftsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{47}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *ListSpacecraftsRequest) GetLimit() int32 {
@@ -5153,7 +5153,7 @@ type ListSpacecraftsResponse struct {
 
 func (x *ListSpacecraftsResponse) Reset() {
 	*x = ListSpacecraftsResponse{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[48]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5165,7 +5165,7 @@ func (x *ListSpacecraftsResponse) String() string {
 func (*ListSpacecraftsResponse) ProtoMessage() {}
 
 func (x *ListSpacecraftsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[48]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5178,7 +5178,7 @@ func (x *ListSpacecraftsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSpacecraftsResponse.ProtoReflect.Descriptor instead.
 func (*ListSpacecraftsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{48}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *ListSpacecraftsResponse) GetCount() int32 {
@@ -5219,7 +5219,7 @@ type GetSpacecraftRequest struct {
 
 func (x *GetSpacecraftRequest) Reset() {
 	*x = GetSpacecraftRequest{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[49]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5231,7 +5231,7 @@ func (x *GetSpacecraftRequest) String() string {
 func (*GetSpacecraftRequest) ProtoMessage() {}
 
 func (x *GetSpacecraftRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[49]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5244,7 +5244,7 @@ func (x *GetSpacecraftRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSpacecraftRequest.ProtoReflect.Descriptor instead.
 func (*GetSpacecraftRequest) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{49}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *GetSpacecraftRequest) GetId() int32 {
@@ -5270,7 +5270,7 @@ type GetSpacecraftResponse struct {
 
 func (x *GetSpacecraftResponse) Reset() {
 	*x = GetSpacecraftResponse{}
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[50]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5282,7 +5282,7 @@ func (x *GetSpacecraftResponse) String() string {
 func (*GetSpacecraftResponse) ProtoMessage() {}
 
 func (x *GetSpacecraftResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_spacecraft_v1_spacecraft_proto_msgTypes[50]
+	mi := &file_spacecraft_v1_spacecraft_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5295,7 +5295,7 @@ func (x *GetSpacecraftResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSpacecraftResponse.ProtoReflect.Descriptor instead.
 func (*GetSpacecraftResponse) Descriptor() ([]byte, []int) {
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{50}
+	return file_spacecraft_v1_spacecraft_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *GetSpacecraftResponse) GetSpacecraft() *Spacecraft {
@@ -5305,11 +5305,11 @@ func (x *GetSpacecraftResponse) GetSpacecraft() *Spacecraft {
 	return nil
 }
 
-var File_proto_spacecraft_v1_spacecraft_proto protoreflect.FileDescriptor
+var File_spacecraft_v1_spacecraft_proto protoreflect.FileDescriptor
 
-const file_proto_spacecraft_v1_spacecraft_proto_rawDesc = "" +
+const file_spacecraft_v1_spacecraft_proto_rawDesc = "" +
 	"\n" +
-	"$proto/spacecraft/v1/spacecraft.proto\x12\rspacecraft.v1\"\x82\x11\n" +
+	"\x1espacecraft/v1/spacecraft.proto\x12\rspacecraft.v1\"\x82\x11\n" +
 	"\x0eAgencyDetailed\x12\x16\n" +
 	"\x06abbrev\x18\x01 \x01(\tR\x06abbrev\x12)\n" +
 	"\radministrator\x18\x02 \x01(\tH\x00R\radministrator\x88\x01\x01\x122\n" +
@@ -6002,19 +6002,19 @@ const file_proto_spacecraft_v1_spacecraft_proto_rawDesc = "" +
 	"\rGetSpacecraft\x12#.spacecraft.v1.GetSpacecraftRequest\x1a$.spacecraft.v1.GetSpacecraftResponseB>Z<com.gitlab/pobochiigo/bhole/proto/spacecraft/v1;spacecraftv1b\x06proto3"
 
 var (
-	file_proto_spacecraft_v1_spacecraft_proto_rawDescOnce sync.Once
-	file_proto_spacecraft_v1_spacecraft_proto_rawDescData []byte
+	file_spacecraft_v1_spacecraft_proto_rawDescOnce sync.Once
+	file_spacecraft_v1_spacecraft_proto_rawDescData []byte
 )
 
-func file_proto_spacecraft_v1_spacecraft_proto_rawDescGZIP() []byte {
-	file_proto_spacecraft_v1_spacecraft_proto_rawDescOnce.Do(func() {
-		file_proto_spacecraft_v1_spacecraft_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_spacecraft_v1_spacecraft_proto_rawDesc), len(file_proto_spacecraft_v1_spacecraft_proto_rawDesc)))
+func file_spacecraft_v1_spacecraft_proto_rawDescGZIP() []byte {
+	file_spacecraft_v1_spacecraft_proto_rawDescOnce.Do(func() {
+		file_spacecraft_v1_spacecraft_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_spacecraft_v1_spacecraft_proto_rawDesc), len(file_spacecraft_v1_spacecraft_proto_rawDesc)))
 	})
-	return file_proto_spacecraft_v1_spacecraft_proto_rawDescData
+	return file_spacecraft_v1_spacecraft_proto_rawDescData
 }
 
-var file_proto_spacecraft_v1_spacecraft_proto_msgTypes = make([]protoimpl.MessageInfo, 51)
-var file_proto_spacecraft_v1_spacecraft_proto_goTypes = []any{
+var file_spacecraft_v1_spacecraft_proto_msgTypes = make([]protoimpl.MessageInfo, 51)
+var file_spacecraft_v1_spacecraft_proto_goTypes = []any{
 	(*AgencyDetailed)(nil),                    // 0: spacecraft.v1.AgencyDetailed
 	(*AgencyMini)(nil),                        // 1: spacecraft.v1.AgencyMini
 	(*AgencyNormal)(nil),                      // 2: spacecraft.v1.AgencyNormal
@@ -6067,7 +6067,7 @@ var file_proto_spacecraft_v1_spacecraft_proto_goTypes = []any{
 	(*GetSpacecraftRequest)(nil),              // 49: spacecraft.v1.GetSpacecraftRequest
 	(*GetSpacecraftResponse)(nil),             // 50: spacecraft.v1.GetSpacecraftResponse
 }
-var file_proto_spacecraft_v1_spacecraft_proto_depIdxs = []int32{
+var file_spacecraft_v1_spacecraft_proto_depIdxs = []int32{
 	8,  // 0: spacecraft.v1.AgencyDetailed.country:type_name -> spacecraft.v1.Country
 	9,  // 1: spacecraft.v1.AgencyDetailed.image:type_name -> spacecraft.v1.Image
 	9,  // 2: spacecraft.v1.AgencyDetailed.logo:type_name -> spacecraft.v1.Image
@@ -6163,50 +6163,50 @@ var file_proto_spacecraft_v1_spacecraft_proto_depIdxs = []int32{
 	0,  // [0:84] is the sub-list for field type_name
 }
 
-func init() { file_proto_spacecraft_v1_spacecraft_proto_init() }
-func file_proto_spacecraft_v1_spacecraft_proto_init() {
-	if File_proto_spacecraft_v1_spacecraft_proto != nil {
+func init() { file_spacecraft_v1_spacecraft_proto_init() }
+func file_spacecraft_v1_spacecraft_proto_init() {
+	if File_spacecraft_v1_spacecraft_proto != nil {
 		return
 	}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[0].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[2].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[4].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[6].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[9].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[10].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[13].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[15].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[16].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[17].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[19].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[23].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[24].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[29].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[30].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[33].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[34].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[35].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[36].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[38].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[41].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[42].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[43].OneofWrappers = []any{}
-	file_proto_spacecraft_v1_spacecraft_proto_msgTypes[45].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[0].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[2].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[4].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[6].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[9].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[10].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[13].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[15].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[16].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[17].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[19].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[23].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[24].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[29].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[30].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[33].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[34].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[35].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[36].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[38].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[41].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[42].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[43].OneofWrappers = []any{}
+	file_spacecraft_v1_spacecraft_proto_msgTypes[45].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_spacecraft_v1_spacecraft_proto_rawDesc), len(file_proto_spacecraft_v1_spacecraft_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_spacecraft_v1_spacecraft_proto_rawDesc), len(file_spacecraft_v1_spacecraft_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   51,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_spacecraft_v1_spacecraft_proto_goTypes,
-		DependencyIndexes: file_proto_spacecraft_v1_spacecraft_proto_depIdxs,
-		MessageInfos:      file_proto_spacecraft_v1_spacecraft_proto_msgTypes,
+		GoTypes:           file_spacecraft_v1_spacecraft_proto_goTypes,
+		DependencyIndexes: file_spacecraft_v1_spacecraft_proto_depIdxs,
+		MessageInfos:      file_spacecraft_v1_spacecraft_proto_msgTypes,
 	}.Build()
-	File_proto_spacecraft_v1_spacecraft_proto = out.File
-	file_proto_spacecraft_v1_spacecraft_proto_goTypes = nil
-	file_proto_spacecraft_v1_spacecraft_proto_depIdxs = nil
+	File_spacecraft_v1_spacecraft_proto = out.File
+	file_spacecraft_v1_spacecraft_proto_goTypes = nil
+	file_spacecraft_v1_spacecraft_proto_depIdxs = nil
 }

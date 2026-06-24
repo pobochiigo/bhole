@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: proto/launcher_configuration/v1/launcher_configuration.proto
+// source: launcher_configuration/v1/launcher_configuration.proto
 
 package launcher_configurationv1
 
@@ -64,7 +64,7 @@ type AgencyDetailed struct {
 
 func (x *AgencyDetailed) Reset() {
 	*x = AgencyDetailed{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[0]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -76,7 +76,7 @@ func (x *AgencyDetailed) String() string {
 func (*AgencyDetailed) ProtoMessage() {}
 
 func (x *AgencyDetailed) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[0]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -89,7 +89,7 @@ func (x *AgencyDetailed) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyDetailed.ProtoReflect.Descriptor instead.
 func (*AgencyDetailed) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{0}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AgencyDetailed) GetAbbrev() string {
@@ -351,7 +351,7 @@ type AgencyMini struct {
 
 func (x *AgencyMini) Reset() {
 	*x = AgencyMini{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[1]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -363,7 +363,7 @@ func (x *AgencyMini) String() string {
 func (*AgencyMini) ProtoMessage() {}
 
 func (x *AgencyMini) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[1]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -376,7 +376,7 @@ func (x *AgencyMini) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyMini.ProtoReflect.Descriptor instead.
 func (*AgencyMini) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{1}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AgencyMini) GetAbbrev() string {
@@ -446,7 +446,7 @@ type AgencyNormal struct {
 
 func (x *AgencyNormal) Reset() {
 	*x = AgencyNormal{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[2]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -458,7 +458,7 @@ func (x *AgencyNormal) String() string {
 func (*AgencyNormal) ProtoMessage() {}
 
 func (x *AgencyNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[2]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -471,7 +471,7 @@ func (x *AgencyNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyNormal.ProtoReflect.Descriptor instead.
 func (*AgencyNormal) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{2}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *AgencyNormal) GetAbbrev() string {
@@ -603,7 +603,7 @@ type AgencyType struct {
 
 func (x *AgencyType) Reset() {
 	*x = AgencyType{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[3]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -615,7 +615,7 @@ func (x *AgencyType) String() string {
 func (*AgencyType) ProtoMessage() {}
 
 func (x *AgencyType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[3]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -628,7 +628,7 @@ func (x *AgencyType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyType.ProtoReflect.Descriptor instead.
 func (*AgencyType) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{3}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AgencyType) GetId() int32 {
@@ -659,7 +659,7 @@ type Country struct {
 
 func (x *Country) Reset() {
 	*x = Country{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[4]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -671,7 +671,7 @@ func (x *Country) String() string {
 func (*Country) ProtoMessage() {}
 
 func (x *Country) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[4]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -684,7 +684,7 @@ func (x *Country) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Country.ProtoReflect.Descriptor instead.
 func (*Country) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{4}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Country) GetAlpha_2Code() string {
@@ -745,7 +745,7 @@ type Image struct {
 
 func (x *Image) Reset() {
 	*x = Image{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[5]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -757,7 +757,7 @@ func (x *Image) String() string {
 func (*Image) ProtoMessage() {}
 
 func (x *Image) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[5]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -770,7 +770,7 @@ func (x *Image) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Image.ProtoReflect.Descriptor instead.
 func (*Image) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{5}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Image) GetCredit() string {
@@ -841,7 +841,7 @@ type ImageLicense struct {
 
 func (x *ImageLicense) Reset() {
 	*x = ImageLicense{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[6]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -853,7 +853,7 @@ func (x *ImageLicense) String() string {
 func (*ImageLicense) ProtoMessage() {}
 
 func (x *ImageLicense) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[6]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -866,7 +866,7 @@ func (x *ImageLicense) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageLicense.ProtoReflect.Descriptor instead.
 func (*ImageLicense) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{6}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ImageLicense) GetId() int32 {
@@ -908,7 +908,7 @@ type ImageVariant struct {
 
 func (x *ImageVariant) Reset() {
 	*x = ImageVariant{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[7]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -920,7 +920,7 @@ func (x *ImageVariant) String() string {
 func (*ImageVariant) ProtoMessage() {}
 
 func (x *ImageVariant) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[7]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -933,7 +933,7 @@ func (x *ImageVariant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariant.ProtoReflect.Descriptor instead.
 func (*ImageVariant) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{7}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ImageVariant) GetId() int32 {
@@ -967,7 +967,7 @@ type ImageVariantType struct {
 
 func (x *ImageVariantType) Reset() {
 	*x = ImageVariantType{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[8]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -979,7 +979,7 @@ func (x *ImageVariantType) String() string {
 func (*ImageVariantType) ProtoMessage() {}
 
 func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[8]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -992,7 +992,7 @@ func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariantType.ProtoReflect.Descriptor instead.
 func (*ImageVariantType) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{8}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ImageVariantType) GetId() int32 {
@@ -1057,7 +1057,7 @@ type LauncherConfiguration struct {
 
 func (x *LauncherConfiguration) Reset() {
 	*x = LauncherConfiguration{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[9]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1069,7 +1069,7 @@ func (x *LauncherConfiguration) String() string {
 func (*LauncherConfiguration) ProtoMessage() {}
 
 func (x *LauncherConfiguration) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[9]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1082,7 +1082,7 @@ func (x *LauncherConfiguration) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LauncherConfiguration.ProtoReflect.Descriptor instead.
 func (*LauncherConfiguration) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{9}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *LauncherConfiguration) GetActive() bool {
@@ -1390,7 +1390,7 @@ type LauncherConfigFamilyDetailed struct {
 
 func (x *LauncherConfigFamilyDetailed) Reset() {
 	*x = LauncherConfigFamilyDetailed{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[10]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1402,7 +1402,7 @@ func (x *LauncherConfigFamilyDetailed) String() string {
 func (*LauncherConfigFamilyDetailed) ProtoMessage() {}
 
 func (x *LauncherConfigFamilyDetailed) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[10]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1415,7 +1415,7 @@ func (x *LauncherConfigFamilyDetailed) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LauncherConfigFamilyDetailed.ProtoReflect.Descriptor instead.
 func (*LauncherConfigFamilyDetailed) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{10}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *LauncherConfigFamilyDetailed) GetActive() bool {
@@ -1548,7 +1548,7 @@ type LauncherConfigFamilyMini struct {
 
 func (x *LauncherConfigFamilyMini) Reset() {
 	*x = LauncherConfigFamilyMini{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[11]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1560,7 +1560,7 @@ func (x *LauncherConfigFamilyMini) String() string {
 func (*LauncherConfigFamilyMini) ProtoMessage() {}
 
 func (x *LauncherConfigFamilyMini) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[11]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1573,7 +1573,7 @@ func (x *LauncherConfigFamilyMini) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LauncherConfigFamilyMini.ProtoReflect.Descriptor instead.
 func (*LauncherConfigFamilyMini) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{11}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *LauncherConfigFamilyMini) GetId() int32 {
@@ -1610,7 +1610,7 @@ type LauncherConfigFamilyNormal struct {
 
 func (x *LauncherConfigFamilyNormal) Reset() {
 	*x = LauncherConfigFamilyNormal{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[12]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1622,7 +1622,7 @@ func (x *LauncherConfigFamilyNormal) String() string {
 func (*LauncherConfigFamilyNormal) ProtoMessage() {}
 
 func (x *LauncherConfigFamilyNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[12]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1635,7 +1635,7 @@ func (x *LauncherConfigFamilyNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LauncherConfigFamilyNormal.ProtoReflect.Descriptor instead.
 func (*LauncherConfigFamilyNormal) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{12}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *LauncherConfigFamilyNormal) GetId() int32 {
@@ -1687,7 +1687,7 @@ type MissionPatch struct {
 
 func (x *MissionPatch) Reset() {
 	*x = MissionPatch{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[13]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1699,7 +1699,7 @@ func (x *MissionPatch) String() string {
 func (*MissionPatch) ProtoMessage() {}
 
 func (x *MissionPatch) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[13]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1712,7 +1712,7 @@ func (x *MissionPatch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MissionPatch.ProtoReflect.Descriptor instead.
 func (*MissionPatch) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{13}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *MissionPatch) GetAgency() *AgencyMini {
@@ -1778,7 +1778,7 @@ type ProgramNormal struct {
 
 func (x *ProgramNormal) Reset() {
 	*x = ProgramNormal{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[14]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1790,7 +1790,7 @@ func (x *ProgramNormal) String() string {
 func (*ProgramNormal) ProtoMessage() {}
 
 func (x *ProgramNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[14]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1803,7 +1803,7 @@ func (x *ProgramNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProgramNormal.ProtoReflect.Descriptor instead.
 func (*ProgramNormal) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{14}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ProgramNormal) GetAgencies() []*AgencyMini {
@@ -1907,7 +1907,7 @@ type ProgramType struct {
 
 func (x *ProgramType) Reset() {
 	*x = ProgramType{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[15]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1919,7 +1919,7 @@ func (x *ProgramType) String() string {
 func (*ProgramType) ProtoMessage() {}
 
 func (x *ProgramType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[15]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1932,7 +1932,7 @@ func (x *ProgramType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProgramType.ProtoReflect.Descriptor instead.
 func (*ProgramType) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{15}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ProgramType) GetId() int32 {
@@ -1961,7 +1961,7 @@ type SocialMedia struct {
 
 func (x *SocialMedia) Reset() {
 	*x = SocialMedia{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[16]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1973,7 +1973,7 @@ func (x *SocialMedia) String() string {
 func (*SocialMedia) ProtoMessage() {}
 
 func (x *SocialMedia) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[16]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1986,7 +1986,7 @@ func (x *SocialMedia) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialMedia.ProtoReflect.Descriptor instead.
 func (*SocialMedia) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{16}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SocialMedia) GetId() int32 {
@@ -2028,7 +2028,7 @@ type SocialMediaLink struct {
 
 func (x *SocialMediaLink) Reset() {
 	*x = SocialMediaLink{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[17]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2040,7 +2040,7 @@ func (x *SocialMediaLink) String() string {
 func (*SocialMediaLink) ProtoMessage() {}
 
 func (x *SocialMediaLink) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[17]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2053,7 +2053,7 @@ func (x *SocialMediaLink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialMediaLink.ProtoReflect.Descriptor instead.
 func (*SocialMediaLink) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{17}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SocialMediaLink) GetId() int32 {
@@ -2089,7 +2089,7 @@ type ListLauncherConfigurationsRequest struct {
 
 func (x *ListLauncherConfigurationsRequest) Reset() {
 	*x = ListLauncherConfigurationsRequest{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[18]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2101,7 +2101,7 @@ func (x *ListLauncherConfigurationsRequest) String() string {
 func (*ListLauncherConfigurationsRequest) ProtoMessage() {}
 
 func (x *ListLauncherConfigurationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[18]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2114,7 +2114,7 @@ func (x *ListLauncherConfigurationsRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ListLauncherConfigurationsRequest.ProtoReflect.Descriptor instead.
 func (*ListLauncherConfigurationsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{18}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ListLauncherConfigurationsRequest) GetLimit() int32 {
@@ -2157,7 +2157,7 @@ type ListLauncherConfigurationsResponse struct {
 
 func (x *ListLauncherConfigurationsResponse) Reset() {
 	*x = ListLauncherConfigurationsResponse{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[19]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2169,7 +2169,7 @@ func (x *ListLauncherConfigurationsResponse) String() string {
 func (*ListLauncherConfigurationsResponse) ProtoMessage() {}
 
 func (x *ListLauncherConfigurationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[19]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2182,7 +2182,7 @@ func (x *ListLauncherConfigurationsResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ListLauncherConfigurationsResponse.ProtoReflect.Descriptor instead.
 func (*ListLauncherConfigurationsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{19}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ListLauncherConfigurationsResponse) GetCount() int32 {
@@ -2223,7 +2223,7 @@ type GetLauncherConfigurationRequest struct {
 
 func (x *GetLauncherConfigurationRequest) Reset() {
 	*x = GetLauncherConfigurationRequest{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[20]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2235,7 +2235,7 @@ func (x *GetLauncherConfigurationRequest) String() string {
 func (*GetLauncherConfigurationRequest) ProtoMessage() {}
 
 func (x *GetLauncherConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[20]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2248,7 +2248,7 @@ func (x *GetLauncherConfigurationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLauncherConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*GetLauncherConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{20}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetLauncherConfigurationRequest) GetId() int32 {
@@ -2274,7 +2274,7 @@ type GetLauncherConfigurationResponse struct {
 
 func (x *GetLauncherConfigurationResponse) Reset() {
 	*x = GetLauncherConfigurationResponse{}
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[21]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2286,7 +2286,7 @@ func (x *GetLauncherConfigurationResponse) String() string {
 func (*GetLauncherConfigurationResponse) ProtoMessage() {}
 
 func (x *GetLauncherConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[21]
+	mi := &file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2299,7 +2299,7 @@ func (x *GetLauncherConfigurationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLauncherConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*GetLauncherConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{21}
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *GetLauncherConfigurationResponse) GetLauncherConfiguration() *LauncherConfiguration {
@@ -2309,11 +2309,11 @@ func (x *GetLauncherConfigurationResponse) GetLauncherConfiguration() *LauncherC
 	return nil
 }
 
-var File_proto_launcher_configuration_v1_launcher_configuration_proto protoreflect.FileDescriptor
+var File_launcher_configuration_v1_launcher_configuration_proto protoreflect.FileDescriptor
 
-const file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDesc = "" +
+const file_launcher_configuration_v1_launcher_configuration_proto_rawDesc = "" +
 	"\n" +
-	"<proto/launcher_configuration/v1/launcher_configuration.proto\x12\x19launcher_configuration.v1\"\xca\x11\n" +
+	"6launcher_configuration/v1/launcher_configuration.proto\x12\x19launcher_configuration.v1\"\xca\x11\n" +
 	"\x0eAgencyDetailed\x12\x16\n" +
 	"\x06abbrev\x18\x01 \x01(\tR\x06abbrev\x12)\n" +
 	"\radministrator\x18\x02 \x01(\tH\x00R\radministrator\x88\x01\x01\x122\n" +
@@ -2621,19 +2621,19 @@ const file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDesc 
 	"\x18GetLauncherConfiguration\x12:.launcher_configuration.v1.GetLauncherConfigurationRequest\x1a;.launcher_configuration.v1.GetLauncherConfigurationResponseBVZTcom.gitlab/pobochiigo/bhole/proto/launcher_configuration/v1;launcher_configurationv1b\x06proto3"
 
 var (
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescOnce sync.Once
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescData []byte
+	file_launcher_configuration_v1_launcher_configuration_proto_rawDescOnce sync.Once
+	file_launcher_configuration_v1_launcher_configuration_proto_rawDescData []byte
 )
 
-func file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP() []byte {
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescOnce.Do(func() {
-		file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDesc), len(file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDesc)))
+func file_launcher_configuration_v1_launcher_configuration_proto_rawDescGZIP() []byte {
+	file_launcher_configuration_v1_launcher_configuration_proto_rawDescOnce.Do(func() {
+		file_launcher_configuration_v1_launcher_configuration_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_launcher_configuration_v1_launcher_configuration_proto_rawDesc), len(file_launcher_configuration_v1_launcher_configuration_proto_rawDesc)))
 	})
-	return file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDescData
+	return file_launcher_configuration_v1_launcher_configuration_proto_rawDescData
 }
 
-var file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
-var file_proto_launcher_configuration_v1_launcher_configuration_proto_goTypes = []any{
+var file_launcher_configuration_v1_launcher_configuration_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
+var file_launcher_configuration_v1_launcher_configuration_proto_goTypes = []any{
 	(*AgencyDetailed)(nil),                     // 0: launcher_configuration.v1.AgencyDetailed
 	(*AgencyMini)(nil),                         // 1: launcher_configuration.v1.AgencyMini
 	(*AgencyNormal)(nil),                       // 2: launcher_configuration.v1.AgencyNormal
@@ -2657,7 +2657,7 @@ var file_proto_launcher_configuration_v1_launcher_configuration_proto_goTypes = 
 	(*GetLauncherConfigurationRequest)(nil),    // 20: launcher_configuration.v1.GetLauncherConfigurationRequest
 	(*GetLauncherConfigurationResponse)(nil),   // 21: launcher_configuration.v1.GetLauncherConfigurationResponse
 }
-var file_proto_launcher_configuration_v1_launcher_configuration_proto_depIdxs = []int32{
+var file_launcher_configuration_v1_launcher_configuration_proto_depIdxs = []int32{
 	4,  // 0: launcher_configuration.v1.AgencyDetailed.country:type_name -> launcher_configuration.v1.Country
 	5,  // 1: launcher_configuration.v1.AgencyDetailed.image:type_name -> launcher_configuration.v1.Image
 	5,  // 2: launcher_configuration.v1.AgencyDetailed.logo:type_name -> launcher_configuration.v1.Image
@@ -2701,35 +2701,35 @@ var file_proto_launcher_configuration_v1_launcher_configuration_proto_depIdxs = 
 	0,  // [0:32] is the sub-list for field type_name
 }
 
-func init() { file_proto_launcher_configuration_v1_launcher_configuration_proto_init() }
-func file_proto_launcher_configuration_v1_launcher_configuration_proto_init() {
-	if File_proto_launcher_configuration_v1_launcher_configuration_proto != nil {
+func init() { file_launcher_configuration_v1_launcher_configuration_proto_init() }
+func file_launcher_configuration_v1_launcher_configuration_proto_init() {
+	if File_launcher_configuration_v1_launcher_configuration_proto != nil {
 		return
 	}
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[0].OneofWrappers = []any{}
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[2].OneofWrappers = []any{}
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[5].OneofWrappers = []any{}
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[6].OneofWrappers = []any{}
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[9].OneofWrappers = []any{}
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[10].OneofWrappers = []any{}
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[14].OneofWrappers = []any{}
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[16].OneofWrappers = []any{}
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes[17].OneofWrappers = []any{}
+	file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[0].OneofWrappers = []any{}
+	file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[2].OneofWrappers = []any{}
+	file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[5].OneofWrappers = []any{}
+	file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[6].OneofWrappers = []any{}
+	file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[9].OneofWrappers = []any{}
+	file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[10].OneofWrappers = []any{}
+	file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[14].OneofWrappers = []any{}
+	file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[16].OneofWrappers = []any{}
+	file_launcher_configuration_v1_launcher_configuration_proto_msgTypes[17].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDesc), len(file_proto_launcher_configuration_v1_launcher_configuration_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_launcher_configuration_v1_launcher_configuration_proto_rawDesc), len(file_launcher_configuration_v1_launcher_configuration_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_launcher_configuration_v1_launcher_configuration_proto_goTypes,
-		DependencyIndexes: file_proto_launcher_configuration_v1_launcher_configuration_proto_depIdxs,
-		MessageInfos:      file_proto_launcher_configuration_v1_launcher_configuration_proto_msgTypes,
+		GoTypes:           file_launcher_configuration_v1_launcher_configuration_proto_goTypes,
+		DependencyIndexes: file_launcher_configuration_v1_launcher_configuration_proto_depIdxs,
+		MessageInfos:      file_launcher_configuration_v1_launcher_configuration_proto_msgTypes,
 	}.Build()
-	File_proto_launcher_configuration_v1_launcher_configuration_proto = out.File
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_goTypes = nil
-	file_proto_launcher_configuration_v1_launcher_configuration_proto_depIdxs = nil
+	File_launcher_configuration_v1_launcher_configuration_proto = out.File
+	file_launcher_configuration_v1_launcher_configuration_proto_goTypes = nil
+	file_launcher_configuration_v1_launcher_configuration_proto_depIdxs = nil
 }

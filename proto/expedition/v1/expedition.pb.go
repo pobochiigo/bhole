@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: proto/expedition/v1/expedition.proto
+// source: expedition/v1/expedition.proto
 
 package expeditionv1
 
@@ -35,7 +35,7 @@ type AgencyMini struct {
 
 func (x *AgencyMini) Reset() {
 	*x = AgencyMini{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[0]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +47,7 @@ func (x *AgencyMini) String() string {
 func (*AgencyMini) ProtoMessage() {}
 
 func (x *AgencyMini) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[0]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +60,7 @@ func (x *AgencyMini) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyMini.ProtoReflect.Descriptor instead.
 func (*AgencyMini) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{0}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AgencyMini) GetAbbrev() string {
@@ -130,7 +130,7 @@ type AgencyNormal struct {
 
 func (x *AgencyNormal) Reset() {
 	*x = AgencyNormal{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[1]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -142,7 +142,7 @@ func (x *AgencyNormal) String() string {
 func (*AgencyNormal) ProtoMessage() {}
 
 func (x *AgencyNormal) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[1]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -155,7 +155,7 @@ func (x *AgencyNormal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyNormal.ProtoReflect.Descriptor instead.
 func (*AgencyNormal) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{1}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AgencyNormal) GetAbbrev() string {
@@ -287,7 +287,7 @@ type AgencyType struct {
 
 func (x *AgencyType) Reset() {
 	*x = AgencyType{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[2]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -299,7 +299,7 @@ func (x *AgencyType) String() string {
 func (*AgencyType) ProtoMessage() {}
 
 func (x *AgencyType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[2]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -312,7 +312,7 @@ func (x *AgencyType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyType.ProtoReflect.Descriptor instead.
 func (*AgencyType) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{2}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *AgencyType) GetId() int32 {
@@ -357,7 +357,7 @@ type AstronautDetailed struct {
 
 func (x *AstronautDetailed) Reset() {
 	*x = AstronautDetailed{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[3]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -369,7 +369,7 @@ func (x *AstronautDetailed) String() string {
 func (*AstronautDetailed) ProtoMessage() {}
 
 func (x *AstronautDetailed) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[3]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -382,7 +382,7 @@ func (x *AstronautDetailed) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AstronautDetailed.ProtoReflect.Descriptor instead.
 func (*AstronautDetailed) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{3}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AstronautDetailed) GetAge() int32 {
@@ -536,7 +536,7 @@ type AstronautFlight struct {
 
 func (x *AstronautFlight) Reset() {
 	*x = AstronautFlight{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[4]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -548,7 +548,7 @@ func (x *AstronautFlight) String() string {
 func (*AstronautFlight) ProtoMessage() {}
 
 func (x *AstronautFlight) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[4]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -561,7 +561,7 @@ func (x *AstronautFlight) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AstronautFlight.ProtoReflect.Descriptor instead.
 func (*AstronautFlight) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{4}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *AstronautFlight) GetAstronaut() *AstronautDetailed {
@@ -596,7 +596,7 @@ type AstronautRole struct {
 
 func (x *AstronautRole) Reset() {
 	*x = AstronautRole{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[5]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -608,7 +608,7 @@ func (x *AstronautRole) String() string {
 func (*AstronautRole) ProtoMessage() {}
 
 func (x *AstronautRole) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[5]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -621,7 +621,7 @@ func (x *AstronautRole) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AstronautRole.ProtoReflect.Descriptor instead.
 func (*AstronautRole) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{5}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *AstronautRole) GetId() int32 {
@@ -655,7 +655,7 @@ type AstronautStatus struct {
 
 func (x *AstronautStatus) Reset() {
 	*x = AstronautStatus{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[6]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -667,7 +667,7 @@ func (x *AstronautStatus) String() string {
 func (*AstronautStatus) ProtoMessage() {}
 
 func (x *AstronautStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[6]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -680,7 +680,7 @@ func (x *AstronautStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AstronautStatus.ProtoReflect.Descriptor instead.
 func (*AstronautStatus) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{6}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *AstronautStatus) GetId() int32 {
@@ -707,7 +707,7 @@ type AstronautType struct {
 
 func (x *AstronautType) Reset() {
 	*x = AstronautType{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[7]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -719,7 +719,7 @@ func (x *AstronautType) String() string {
 func (*AstronautType) ProtoMessage() {}
 
 func (x *AstronautType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[7]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -732,7 +732,7 @@ func (x *AstronautType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AstronautType.ProtoReflect.Descriptor instead.
 func (*AstronautType) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{7}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *AstronautType) GetId() int32 {
@@ -763,7 +763,7 @@ type Country struct {
 
 func (x *Country) Reset() {
 	*x = Country{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[8]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -775,7 +775,7 @@ func (x *Country) String() string {
 func (*Country) ProtoMessage() {}
 
 func (x *Country) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[8]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -788,7 +788,7 @@ func (x *Country) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Country.ProtoReflect.Descriptor instead.
 func (*Country) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{8}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Country) GetAlpha_2Code() string {
@@ -851,7 +851,7 @@ type Expedition struct {
 
 func (x *Expedition) Reset() {
 	*x = Expedition{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[9]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -863,7 +863,7 @@ func (x *Expedition) String() string {
 func (*Expedition) ProtoMessage() {}
 
 func (x *Expedition) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[9]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -876,7 +876,7 @@ func (x *Expedition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Expedition.ProtoReflect.Descriptor instead.
 func (*Expedition) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{9}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Expedition) GetCrew() []*AstronautFlight {
@@ -965,7 +965,7 @@ type Image struct {
 
 func (x *Image) Reset() {
 	*x = Image{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[10]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -977,7 +977,7 @@ func (x *Image) String() string {
 func (*Image) ProtoMessage() {}
 
 func (x *Image) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[10]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -990,7 +990,7 @@ func (x *Image) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Image.ProtoReflect.Descriptor instead.
 func (*Image) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{10}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Image) GetCredit() string {
@@ -1061,7 +1061,7 @@ type ImageLicense struct {
 
 func (x *ImageLicense) Reset() {
 	*x = ImageLicense{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[11]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1073,7 +1073,7 @@ func (x *ImageLicense) String() string {
 func (*ImageLicense) ProtoMessage() {}
 
 func (x *ImageLicense) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[11]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1086,7 +1086,7 @@ func (x *ImageLicense) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageLicense.ProtoReflect.Descriptor instead.
 func (*ImageLicense) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{11}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ImageLicense) GetId() int32 {
@@ -1128,7 +1128,7 @@ type ImageVariant struct {
 
 func (x *ImageVariant) Reset() {
 	*x = ImageVariant{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[12]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1140,7 +1140,7 @@ func (x *ImageVariant) String() string {
 func (*ImageVariant) ProtoMessage() {}
 
 func (x *ImageVariant) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[12]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1153,7 +1153,7 @@ func (x *ImageVariant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariant.ProtoReflect.Descriptor instead.
 func (*ImageVariant) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{12}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ImageVariant) GetId() int32 {
@@ -1187,7 +1187,7 @@ type ImageVariantType struct {
 
 func (x *ImageVariantType) Reset() {
 	*x = ImageVariantType{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[13]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1199,7 +1199,7 @@ func (x *ImageVariantType) String() string {
 func (*ImageVariantType) ProtoMessage() {}
 
 func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[13]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1212,7 +1212,7 @@ func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariantType.ProtoReflect.Descriptor instead.
 func (*ImageVariantType) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{13}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ImageVariantType) GetId() int32 {
@@ -1243,7 +1243,7 @@ type MissionPatch struct {
 
 func (x *MissionPatch) Reset() {
 	*x = MissionPatch{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[14]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1255,7 +1255,7 @@ func (x *MissionPatch) String() string {
 func (*MissionPatch) ProtoMessage() {}
 
 func (x *MissionPatch) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[14]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1268,7 +1268,7 @@ func (x *MissionPatch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MissionPatch.ProtoReflect.Descriptor instead.
 func (*MissionPatch) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{14}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *MissionPatch) GetAgency() *AgencyMini {
@@ -1325,7 +1325,7 @@ type SocialMedia struct {
 
 func (x *SocialMedia) Reset() {
 	*x = SocialMedia{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[15]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1337,7 +1337,7 @@ func (x *SocialMedia) String() string {
 func (*SocialMedia) ProtoMessage() {}
 
 func (x *SocialMedia) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[15]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1350,7 +1350,7 @@ func (x *SocialMedia) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialMedia.ProtoReflect.Descriptor instead.
 func (*SocialMedia) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{15}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SocialMedia) GetId() int32 {
@@ -1392,7 +1392,7 @@ type SocialMediaLink struct {
 
 func (x *SocialMediaLink) Reset() {
 	*x = SocialMediaLink{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[16]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1404,7 +1404,7 @@ func (x *SocialMediaLink) String() string {
 func (*SocialMediaLink) ProtoMessage() {}
 
 func (x *SocialMediaLink) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[16]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1417,7 +1417,7 @@ func (x *SocialMediaLink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialMediaLink.ProtoReflect.Descriptor instead.
 func (*SocialMediaLink) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{16}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SocialMediaLink) GetId() int32 {
@@ -1460,7 +1460,7 @@ type SpaceStationDetailed struct {
 
 func (x *SpaceStationDetailed) Reset() {
 	*x = SpaceStationDetailed{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[17]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1472,7 +1472,7 @@ func (x *SpaceStationDetailed) String() string {
 func (*SpaceStationDetailed) ProtoMessage() {}
 
 func (x *SpaceStationDetailed) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[17]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1485,7 +1485,7 @@ func (x *SpaceStationDetailed) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpaceStationDetailed.ProtoReflect.Descriptor instead.
 func (*SpaceStationDetailed) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{17}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SpaceStationDetailed) GetDeorbited() string {
@@ -1575,7 +1575,7 @@ type SpaceStationStatus struct {
 
 func (x *SpaceStationStatus) Reset() {
 	*x = SpaceStationStatus{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[18]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1587,7 +1587,7 @@ func (x *SpaceStationStatus) String() string {
 func (*SpaceStationStatus) ProtoMessage() {}
 
 func (x *SpaceStationStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[18]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1600,7 +1600,7 @@ func (x *SpaceStationStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpaceStationStatus.ProtoReflect.Descriptor instead.
 func (*SpaceStationStatus) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{18}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *SpaceStationStatus) GetId() int32 {
@@ -1627,7 +1627,7 @@ type SpaceStationType struct {
 
 func (x *SpaceStationType) Reset() {
 	*x = SpaceStationType{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[19]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1639,7 +1639,7 @@ func (x *SpaceStationType) String() string {
 func (*SpaceStationType) ProtoMessage() {}
 
 func (x *SpaceStationType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[19]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1652,7 +1652,7 @@ func (x *SpaceStationType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpaceStationType.ProtoReflect.Descriptor instead.
 func (*SpaceStationType) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{19}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *SpaceStationType) GetId() int32 {
@@ -1685,7 +1685,7 @@ type SpacewalkList struct {
 
 func (x *SpacewalkList) Reset() {
 	*x = SpacewalkList{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[20]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1697,7 +1697,7 @@ func (x *SpacewalkList) String() string {
 func (*SpacewalkList) ProtoMessage() {}
 
 func (x *SpacewalkList) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[20]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1710,7 +1710,7 @@ func (x *SpacewalkList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpacewalkList.ProtoReflect.Descriptor instead.
 func (*SpacewalkList) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{20}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *SpacewalkList) GetDuration() string {
@@ -1781,7 +1781,7 @@ type ListExpeditionsRequest struct {
 
 func (x *ListExpeditionsRequest) Reset() {
 	*x = ListExpeditionsRequest{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[21]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1793,7 +1793,7 @@ func (x *ListExpeditionsRequest) String() string {
 func (*ListExpeditionsRequest) ProtoMessage() {}
 
 func (x *ListExpeditionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[21]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1806,7 +1806,7 @@ func (x *ListExpeditionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListExpeditionsRequest.ProtoReflect.Descriptor instead.
 func (*ListExpeditionsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{21}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ListExpeditionsRequest) GetLimit() int32 {
@@ -1849,7 +1849,7 @@ type ListExpeditionsResponse struct {
 
 func (x *ListExpeditionsResponse) Reset() {
 	*x = ListExpeditionsResponse{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[22]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1861,7 +1861,7 @@ func (x *ListExpeditionsResponse) String() string {
 func (*ListExpeditionsResponse) ProtoMessage() {}
 
 func (x *ListExpeditionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[22]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1874,7 +1874,7 @@ func (x *ListExpeditionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListExpeditionsResponse.ProtoReflect.Descriptor instead.
 func (*ListExpeditionsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{22}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListExpeditionsResponse) GetCount() int32 {
@@ -1915,7 +1915,7 @@ type GetExpeditionRequest struct {
 
 func (x *GetExpeditionRequest) Reset() {
 	*x = GetExpeditionRequest{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[23]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1927,7 +1927,7 @@ func (x *GetExpeditionRequest) String() string {
 func (*GetExpeditionRequest) ProtoMessage() {}
 
 func (x *GetExpeditionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[23]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1940,7 +1940,7 @@ func (x *GetExpeditionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetExpeditionRequest.ProtoReflect.Descriptor instead.
 func (*GetExpeditionRequest) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{23}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetExpeditionRequest) GetId() int32 {
@@ -1966,7 +1966,7 @@ type GetExpeditionResponse struct {
 
 func (x *GetExpeditionResponse) Reset() {
 	*x = GetExpeditionResponse{}
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[24]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1978,7 +1978,7 @@ func (x *GetExpeditionResponse) String() string {
 func (*GetExpeditionResponse) ProtoMessage() {}
 
 func (x *GetExpeditionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_expedition_v1_expedition_proto_msgTypes[24]
+	mi := &file_expedition_v1_expedition_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1991,7 +1991,7 @@ func (x *GetExpeditionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetExpeditionResponse.ProtoReflect.Descriptor instead.
 func (*GetExpeditionResponse) Descriptor() ([]byte, []int) {
-	return file_proto_expedition_v1_expedition_proto_rawDescGZIP(), []int{24}
+	return file_expedition_v1_expedition_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetExpeditionResponse) GetExpedition() *Expedition {
@@ -2001,11 +2001,11 @@ func (x *GetExpeditionResponse) GetExpedition() *Expedition {
 	return nil
 }
 
-var File_proto_expedition_v1_expedition_proto protoreflect.FileDescriptor
+var File_expedition_v1_expedition_proto protoreflect.FileDescriptor
 
-const file_proto_expedition_v1_expedition_proto_rawDesc = "" +
+const file_expedition_v1_expedition_proto_rawDesc = "" +
 	"\n" +
-	"$proto/expedition/v1/expedition.proto\x12\rexpedition.v1\"\xae\x01\n" +
+	"\x1eexpedition/v1/expedition.proto\x12\rexpedition.v1\"\xae\x01\n" +
 	"\n" +
 	"AgencyMini\x12\x16\n" +
 	"\x06abbrev\x18\x01 \x01(\tR\x06abbrev\x12\x0e\n" +
@@ -2212,19 +2212,19 @@ const file_proto_expedition_v1_expedition_proto_rawDesc = "" +
 	"\rGetExpedition\x12#.expedition.v1.GetExpeditionRequest\x1a$.expedition.v1.GetExpeditionResponseB>Z<com.gitlab/pobochiigo/bhole/proto/expedition/v1;expeditionv1b\x06proto3"
 
 var (
-	file_proto_expedition_v1_expedition_proto_rawDescOnce sync.Once
-	file_proto_expedition_v1_expedition_proto_rawDescData []byte
+	file_expedition_v1_expedition_proto_rawDescOnce sync.Once
+	file_expedition_v1_expedition_proto_rawDescData []byte
 )
 
-func file_proto_expedition_v1_expedition_proto_rawDescGZIP() []byte {
-	file_proto_expedition_v1_expedition_proto_rawDescOnce.Do(func() {
-		file_proto_expedition_v1_expedition_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_expedition_v1_expedition_proto_rawDesc), len(file_proto_expedition_v1_expedition_proto_rawDesc)))
+func file_expedition_v1_expedition_proto_rawDescGZIP() []byte {
+	file_expedition_v1_expedition_proto_rawDescOnce.Do(func() {
+		file_expedition_v1_expedition_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_expedition_v1_expedition_proto_rawDesc), len(file_expedition_v1_expedition_proto_rawDesc)))
 	})
-	return file_proto_expedition_v1_expedition_proto_rawDescData
+	return file_expedition_v1_expedition_proto_rawDescData
 }
 
-var file_proto_expedition_v1_expedition_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
-var file_proto_expedition_v1_expedition_proto_goTypes = []any{
+var file_expedition_v1_expedition_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_expedition_v1_expedition_proto_goTypes = []any{
 	(*AgencyMini)(nil),              // 0: expedition.v1.AgencyMini
 	(*AgencyNormal)(nil),            // 1: expedition.v1.AgencyNormal
 	(*AgencyType)(nil),              // 2: expedition.v1.AgencyType
@@ -2251,7 +2251,7 @@ var file_proto_expedition_v1_expedition_proto_goTypes = []any{
 	(*GetExpeditionRequest)(nil),    // 23: expedition.v1.GetExpeditionRequest
 	(*GetExpeditionResponse)(nil),   // 24: expedition.v1.GetExpeditionResponse
 }
-var file_proto_expedition_v1_expedition_proto_depIdxs = []int32{
+var file_expedition_v1_expedition_proto_depIdxs = []int32{
 	2,  // 0: expedition.v1.AgencyMini.type:type_name -> expedition.v1.AgencyType
 	8,  // 1: expedition.v1.AgencyNormal.country:type_name -> expedition.v1.Country
 	10, // 2: expedition.v1.AgencyNormal.image:type_name -> expedition.v1.Image
@@ -2293,35 +2293,35 @@ var file_proto_expedition_v1_expedition_proto_depIdxs = []int32{
 	0,  // [0:30] is the sub-list for field type_name
 }
 
-func init() { file_proto_expedition_v1_expedition_proto_init() }
-func file_proto_expedition_v1_expedition_proto_init() {
-	if File_proto_expedition_v1_expedition_proto != nil {
+func init() { file_expedition_v1_expedition_proto_init() }
+func file_expedition_v1_expedition_proto_init() {
+	if File_expedition_v1_expedition_proto != nil {
 		return
 	}
-	file_proto_expedition_v1_expedition_proto_msgTypes[1].OneofWrappers = []any{}
-	file_proto_expedition_v1_expedition_proto_msgTypes[3].OneofWrappers = []any{}
-	file_proto_expedition_v1_expedition_proto_msgTypes[9].OneofWrappers = []any{}
-	file_proto_expedition_v1_expedition_proto_msgTypes[10].OneofWrappers = []any{}
-	file_proto_expedition_v1_expedition_proto_msgTypes[11].OneofWrappers = []any{}
-	file_proto_expedition_v1_expedition_proto_msgTypes[15].OneofWrappers = []any{}
-	file_proto_expedition_v1_expedition_proto_msgTypes[16].OneofWrappers = []any{}
-	file_proto_expedition_v1_expedition_proto_msgTypes[17].OneofWrappers = []any{}
-	file_proto_expedition_v1_expedition_proto_msgTypes[20].OneofWrappers = []any{}
+	file_expedition_v1_expedition_proto_msgTypes[1].OneofWrappers = []any{}
+	file_expedition_v1_expedition_proto_msgTypes[3].OneofWrappers = []any{}
+	file_expedition_v1_expedition_proto_msgTypes[9].OneofWrappers = []any{}
+	file_expedition_v1_expedition_proto_msgTypes[10].OneofWrappers = []any{}
+	file_expedition_v1_expedition_proto_msgTypes[11].OneofWrappers = []any{}
+	file_expedition_v1_expedition_proto_msgTypes[15].OneofWrappers = []any{}
+	file_expedition_v1_expedition_proto_msgTypes[16].OneofWrappers = []any{}
+	file_expedition_v1_expedition_proto_msgTypes[17].OneofWrappers = []any{}
+	file_expedition_v1_expedition_proto_msgTypes[20].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_expedition_v1_expedition_proto_rawDesc), len(file_proto_expedition_v1_expedition_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_expedition_v1_expedition_proto_rawDesc), len(file_expedition_v1_expedition_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_expedition_v1_expedition_proto_goTypes,
-		DependencyIndexes: file_proto_expedition_v1_expedition_proto_depIdxs,
-		MessageInfos:      file_proto_expedition_v1_expedition_proto_msgTypes,
+		GoTypes:           file_expedition_v1_expedition_proto_goTypes,
+		DependencyIndexes: file_expedition_v1_expedition_proto_depIdxs,
+		MessageInfos:      file_expedition_v1_expedition_proto_msgTypes,
 	}.Build()
-	File_proto_expedition_v1_expedition_proto = out.File
-	file_proto_expedition_v1_expedition_proto_goTypes = nil
-	file_proto_expedition_v1_expedition_proto_depIdxs = nil
+	File_expedition_v1_expedition_proto = out.File
+	file_expedition_v1_expedition_proto_goTypes = nil
+	file_expedition_v1_expedition_proto_depIdxs = nil
 }

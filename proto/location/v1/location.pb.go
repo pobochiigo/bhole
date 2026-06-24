@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: proto/location/v1/location.proto
+// source: location/v1/location.proto
 
 package locationv1
 
@@ -35,7 +35,7 @@ type AgencyMini struct {
 
 func (x *AgencyMini) Reset() {
 	*x = AgencyMini{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[0]
+	mi := &file_location_v1_location_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +47,7 @@ func (x *AgencyMini) String() string {
 func (*AgencyMini) ProtoMessage() {}
 
 func (x *AgencyMini) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[0]
+	mi := &file_location_v1_location_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +60,7 @@ func (x *AgencyMini) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyMini.ProtoReflect.Descriptor instead.
 func (*AgencyMini) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{0}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AgencyMini) GetAbbrev() string {
@@ -115,7 +115,7 @@ type AgencyType struct {
 
 func (x *AgencyType) Reset() {
 	*x = AgencyType{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[1]
+	mi := &file_location_v1_location_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -127,7 +127,7 @@ func (x *AgencyType) String() string {
 func (*AgencyType) ProtoMessage() {}
 
 func (x *AgencyType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[1]
+	mi := &file_location_v1_location_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -140,7 +140,7 @@ func (x *AgencyType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgencyType.ProtoReflect.Descriptor instead.
 func (*AgencyType) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{1}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AgencyType) GetId() int32 {
@@ -183,7 +183,7 @@ type CelestialBodyDetailed struct {
 
 func (x *CelestialBodyDetailed) Reset() {
 	*x = CelestialBodyDetailed{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[2]
+	mi := &file_location_v1_location_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -195,7 +195,7 @@ func (x *CelestialBodyDetailed) String() string {
 func (*CelestialBodyDetailed) ProtoMessage() {}
 
 func (x *CelestialBodyDetailed) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[2]
+	mi := &file_location_v1_location_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -208,7 +208,7 @@ func (x *CelestialBodyDetailed) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CelestialBodyDetailed.ProtoReflect.Descriptor instead.
 func (*CelestialBodyDetailed) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{2}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CelestialBodyDetailed) GetAtmosphere() bool {
@@ -347,7 +347,7 @@ type CelestialBodyType struct {
 
 func (x *CelestialBodyType) Reset() {
 	*x = CelestialBodyType{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[3]
+	mi := &file_location_v1_location_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -359,7 +359,7 @@ func (x *CelestialBodyType) String() string {
 func (*CelestialBodyType) ProtoMessage() {}
 
 func (x *CelestialBodyType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[3]
+	mi := &file_location_v1_location_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -372,7 +372,7 @@ func (x *CelestialBodyType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CelestialBodyType.ProtoReflect.Descriptor instead.
 func (*CelestialBodyType) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{3}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CelestialBodyType) GetId() int32 {
@@ -403,7 +403,7 @@ type Country struct {
 
 func (x *Country) Reset() {
 	*x = Country{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[4]
+	mi := &file_location_v1_location_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -415,7 +415,7 @@ func (x *Country) String() string {
 func (*Country) ProtoMessage() {}
 
 func (x *Country) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[4]
+	mi := &file_location_v1_location_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -428,7 +428,7 @@ func (x *Country) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Country.ProtoReflect.Descriptor instead.
 func (*Country) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{4}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Country) GetAlpha_2Code() string {
@@ -489,7 +489,7 @@ type Image struct {
 
 func (x *Image) Reset() {
 	*x = Image{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[5]
+	mi := &file_location_v1_location_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -501,7 +501,7 @@ func (x *Image) String() string {
 func (*Image) ProtoMessage() {}
 
 func (x *Image) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[5]
+	mi := &file_location_v1_location_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -514,7 +514,7 @@ func (x *Image) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Image.ProtoReflect.Descriptor instead.
 func (*Image) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{5}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Image) GetCredit() string {
@@ -585,7 +585,7 @@ type ImageLicense struct {
 
 func (x *ImageLicense) Reset() {
 	*x = ImageLicense{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[6]
+	mi := &file_location_v1_location_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -597,7 +597,7 @@ func (x *ImageLicense) String() string {
 func (*ImageLicense) ProtoMessage() {}
 
 func (x *ImageLicense) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[6]
+	mi := &file_location_v1_location_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -610,7 +610,7 @@ func (x *ImageLicense) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageLicense.ProtoReflect.Descriptor instead.
 func (*ImageLicense) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{6}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ImageLicense) GetId() int32 {
@@ -652,7 +652,7 @@ type ImageVariant struct {
 
 func (x *ImageVariant) Reset() {
 	*x = ImageVariant{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[7]
+	mi := &file_location_v1_location_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -664,7 +664,7 @@ func (x *ImageVariant) String() string {
 func (*ImageVariant) ProtoMessage() {}
 
 func (x *ImageVariant) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[7]
+	mi := &file_location_v1_location_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -677,7 +677,7 @@ func (x *ImageVariant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariant.ProtoReflect.Descriptor instead.
 func (*ImageVariant) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{7}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ImageVariant) GetId() int32 {
@@ -711,7 +711,7 @@ type ImageVariantType struct {
 
 func (x *ImageVariantType) Reset() {
 	*x = ImageVariantType{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[8]
+	mi := &file_location_v1_location_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -723,7 +723,7 @@ func (x *ImageVariantType) String() string {
 func (*ImageVariantType) ProtoMessage() {}
 
 func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[8]
+	mi := &file_location_v1_location_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -736,7 +736,7 @@ func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariantType.ProtoReflect.Descriptor instead.
 func (*ImageVariantType) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{8}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ImageVariantType) GetId() int32 {
@@ -777,7 +777,7 @@ type Location struct {
 
 func (x *Location) Reset() {
 	*x = Location{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[9]
+	mi := &file_location_v1_location_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -789,7 +789,7 @@ func (x *Location) String() string {
 func (*Location) ProtoMessage() {}
 
 func (x *Location) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[9]
+	mi := &file_location_v1_location_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -802,7 +802,7 @@ func (x *Location) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Location.ProtoReflect.Descriptor instead.
 func (*Location) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{9}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Location) GetActive() bool {
@@ -942,7 +942,7 @@ type PadSerializerNoLocation struct {
 
 func (x *PadSerializerNoLocation) Reset() {
 	*x = PadSerializerNoLocation{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[10]
+	mi := &file_location_v1_location_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -954,7 +954,7 @@ func (x *PadSerializerNoLocation) String() string {
 func (*PadSerializerNoLocation) ProtoMessage() {}
 
 func (x *PadSerializerNoLocation) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[10]
+	mi := &file_location_v1_location_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -967,7 +967,7 @@ func (x *PadSerializerNoLocation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PadSerializerNoLocation.ProtoReflect.Descriptor instead.
 func (*PadSerializerNoLocation) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{10}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PadSerializerNoLocation) GetActive() bool {
@@ -1101,7 +1101,7 @@ type ListLocationsRequest struct {
 
 func (x *ListLocationsRequest) Reset() {
 	*x = ListLocationsRequest{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[11]
+	mi := &file_location_v1_location_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1113,7 +1113,7 @@ func (x *ListLocationsRequest) String() string {
 func (*ListLocationsRequest) ProtoMessage() {}
 
 func (x *ListLocationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[11]
+	mi := &file_location_v1_location_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1126,7 +1126,7 @@ func (x *ListLocationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLocationsRequest.ProtoReflect.Descriptor instead.
 func (*ListLocationsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{11}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListLocationsRequest) GetLimit() int32 {
@@ -1169,7 +1169,7 @@ type ListLocationsResponse struct {
 
 func (x *ListLocationsResponse) Reset() {
 	*x = ListLocationsResponse{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[12]
+	mi := &file_location_v1_location_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1181,7 +1181,7 @@ func (x *ListLocationsResponse) String() string {
 func (*ListLocationsResponse) ProtoMessage() {}
 
 func (x *ListLocationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[12]
+	mi := &file_location_v1_location_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1194,7 +1194,7 @@ func (x *ListLocationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLocationsResponse.ProtoReflect.Descriptor instead.
 func (*ListLocationsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{12}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListLocationsResponse) GetCount() int32 {
@@ -1235,7 +1235,7 @@ type GetLocationRequest struct {
 
 func (x *GetLocationRequest) Reset() {
 	*x = GetLocationRequest{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[13]
+	mi := &file_location_v1_location_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1247,7 +1247,7 @@ func (x *GetLocationRequest) String() string {
 func (*GetLocationRequest) ProtoMessage() {}
 
 func (x *GetLocationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[13]
+	mi := &file_location_v1_location_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1260,7 +1260,7 @@ func (x *GetLocationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLocationRequest.ProtoReflect.Descriptor instead.
 func (*GetLocationRequest) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{13}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetLocationRequest) GetId() int32 {
@@ -1286,7 +1286,7 @@ type GetLocationResponse struct {
 
 func (x *GetLocationResponse) Reset() {
 	*x = GetLocationResponse{}
-	mi := &file_proto_location_v1_location_proto_msgTypes[14]
+	mi := &file_location_v1_location_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1298,7 +1298,7 @@ func (x *GetLocationResponse) String() string {
 func (*GetLocationResponse) ProtoMessage() {}
 
 func (x *GetLocationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_location_v1_location_proto_msgTypes[14]
+	mi := &file_location_v1_location_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1311,7 +1311,7 @@ func (x *GetLocationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLocationResponse.ProtoReflect.Descriptor instead.
 func (*GetLocationResponse) Descriptor() ([]byte, []int) {
-	return file_proto_location_v1_location_proto_rawDescGZIP(), []int{14}
+	return file_location_v1_location_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetLocationResponse) GetLocation() *Location {
@@ -1321,11 +1321,11 @@ func (x *GetLocationResponse) GetLocation() *Location {
 	return nil
 }
 
-var File_proto_location_v1_location_proto protoreflect.FileDescriptor
+var File_location_v1_location_proto protoreflect.FileDescriptor
 
-const file_proto_location_v1_location_proto_rawDesc = "" +
+const file_location_v1_location_proto_rawDesc = "" +
 	"\n" +
-	" proto/location/v1/location.proto\x12\vlocation.v1\"\xac\x01\n" +
+	"\x1alocation/v1/location.proto\x12\vlocation.v1\"\xac\x01\n" +
 	"\n" +
 	"AgencyMini\x12\x16\n" +
 	"\x06abbrev\x18\x01 \x01(\tR\x06abbrev\x12\x0e\n" +
@@ -1481,19 +1481,19 @@ const file_proto_location_v1_location_proto_rawDesc = "" +
 	"\vGetLocation\x12\x1f.location.v1.GetLocationRequest\x1a .location.v1.GetLocationResponseB:Z8com.gitlab/pobochiigo/bhole/proto/location/v1;locationv1b\x06proto3"
 
 var (
-	file_proto_location_v1_location_proto_rawDescOnce sync.Once
-	file_proto_location_v1_location_proto_rawDescData []byte
+	file_location_v1_location_proto_rawDescOnce sync.Once
+	file_location_v1_location_proto_rawDescData []byte
 )
 
-func file_proto_location_v1_location_proto_rawDescGZIP() []byte {
-	file_proto_location_v1_location_proto_rawDescOnce.Do(func() {
-		file_proto_location_v1_location_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_location_v1_location_proto_rawDesc), len(file_proto_location_v1_location_proto_rawDesc)))
+func file_location_v1_location_proto_rawDescGZIP() []byte {
+	file_location_v1_location_proto_rawDescOnce.Do(func() {
+		file_location_v1_location_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_location_v1_location_proto_rawDesc), len(file_location_v1_location_proto_rawDesc)))
 	})
-	return file_proto_location_v1_location_proto_rawDescData
+	return file_location_v1_location_proto_rawDescData
 }
 
-var file_proto_location_v1_location_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
-var file_proto_location_v1_location_proto_goTypes = []any{
+var file_location_v1_location_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_location_v1_location_proto_goTypes = []any{
 	(*AgencyMini)(nil),              // 0: location.v1.AgencyMini
 	(*AgencyType)(nil),              // 1: location.v1.AgencyType
 	(*CelestialBodyDetailed)(nil),   // 2: location.v1.CelestialBodyDetailed
@@ -1510,7 +1510,7 @@ var file_proto_location_v1_location_proto_goTypes = []any{
 	(*GetLocationRequest)(nil),      // 13: location.v1.GetLocationRequest
 	(*GetLocationResponse)(nil),     // 14: location.v1.GetLocationResponse
 }
-var file_proto_location_v1_location_proto_depIdxs = []int32{
+var file_location_v1_location_proto_depIdxs = []int32{
 	1,  // 0: location.v1.AgencyMini.type:type_name -> location.v1.AgencyType
 	5,  // 1: location.v1.CelestialBodyDetailed.image:type_name -> location.v1.Image
 	3,  // 2: location.v1.CelestialBodyDetailed.type:type_name -> location.v1.CelestialBodyType
@@ -1537,31 +1537,31 @@ var file_proto_location_v1_location_proto_depIdxs = []int32{
 	0,  // [0:15] is the sub-list for field type_name
 }
 
-func init() { file_proto_location_v1_location_proto_init() }
-func file_proto_location_v1_location_proto_init() {
-	if File_proto_location_v1_location_proto != nil {
+func init() { file_location_v1_location_proto_init() }
+func file_location_v1_location_proto_init() {
+	if File_location_v1_location_proto != nil {
 		return
 	}
-	file_proto_location_v1_location_proto_msgTypes[2].OneofWrappers = []any{}
-	file_proto_location_v1_location_proto_msgTypes[5].OneofWrappers = []any{}
-	file_proto_location_v1_location_proto_msgTypes[6].OneofWrappers = []any{}
-	file_proto_location_v1_location_proto_msgTypes[9].OneofWrappers = []any{}
-	file_proto_location_v1_location_proto_msgTypes[10].OneofWrappers = []any{}
+	file_location_v1_location_proto_msgTypes[2].OneofWrappers = []any{}
+	file_location_v1_location_proto_msgTypes[5].OneofWrappers = []any{}
+	file_location_v1_location_proto_msgTypes[6].OneofWrappers = []any{}
+	file_location_v1_location_proto_msgTypes[9].OneofWrappers = []any{}
+	file_location_v1_location_proto_msgTypes[10].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_location_v1_location_proto_rawDesc), len(file_proto_location_v1_location_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_location_v1_location_proto_rawDesc), len(file_location_v1_location_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_location_v1_location_proto_goTypes,
-		DependencyIndexes: file_proto_location_v1_location_proto_depIdxs,
-		MessageInfos:      file_proto_location_v1_location_proto_msgTypes,
+		GoTypes:           file_location_v1_location_proto_goTypes,
+		DependencyIndexes: file_location_v1_location_proto_depIdxs,
+		MessageInfos:      file_location_v1_location_proto_msgTypes,
 	}.Build()
-	File_proto_location_v1_location_proto = out.File
-	file_proto_location_v1_location_proto_goTypes = nil
-	file_proto_location_v1_location_proto_depIdxs = nil
+	File_location_v1_location_proto = out.File
+	file_location_v1_location_proto_goTypes = nil
+	file_location_v1_location_proto_depIdxs = nil
 }

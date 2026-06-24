@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+
+jobs:
+  proto:
+    name: Proto Check & Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Buf
+        uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+
+      - name: Lint Proto
+        run: buf lint proto
+
+      - name: Check Proto Format
+        run: buf format -d --exit-code proto
+
+  test:
+    name: Test Go Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Test Go
+        run: go test -v ./...
+
+  full_pipeline:
+    name: Full CI Pipeline
+    runs-on: ubuntu-latest
+    # Only run the full build, vulncheck, and linting checks on:
+    # 1. Pull requests
+    # 2. Pushes directly to develop or main
+    if: |
+      github.event_name == 'pull_request' ||
+      github.ref == 'refs/heads/develop' ||
+      github.ref == 'refs/heads/main'
+    needs: [proto, test]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Build Go
+        run: go build ./...
+
+      - name: Run govulncheck
+        uses: golang/govulncheck-action@v1
+        with:
+          go-version-file: go.mod
+
+      - name: Golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest

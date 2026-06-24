@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: proto/celestial_body/v1/celestial_body.proto
+// source: celestial_body/v1/celestial_body.proto
 
 package celestial_bodyv1
 
@@ -48,7 +48,7 @@ type CelestialBody struct {
 
 func (x *CelestialBody) Reset() {
 	*x = CelestialBody{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[0]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -60,7 +60,7 @@ func (x *CelestialBody) String() string {
 func (*CelestialBody) ProtoMessage() {}
 
 func (x *CelestialBody) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[0]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -73,7 +73,7 @@ func (x *CelestialBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CelestialBody.ProtoReflect.Descriptor instead.
 func (*CelestialBody) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{0}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CelestialBody) GetAtmosphere() bool {
@@ -219,7 +219,7 @@ type CelestialBodyType struct {
 
 func (x *CelestialBodyType) Reset() {
 	*x = CelestialBodyType{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[1]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -231,7 +231,7 @@ func (x *CelestialBodyType) String() string {
 func (*CelestialBodyType) ProtoMessage() {}
 
 func (x *CelestialBodyType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[1]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -244,7 +244,7 @@ func (x *CelestialBodyType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CelestialBodyType.ProtoReflect.Descriptor instead.
 func (*CelestialBodyType) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{1}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CelestialBodyType) GetId() int32 {
@@ -275,7 +275,7 @@ type Country struct {
 
 func (x *Country) Reset() {
 	*x = Country{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[2]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -287,7 +287,7 @@ func (x *Country) String() string {
 func (*Country) ProtoMessage() {}
 
 func (x *Country) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[2]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -300,7 +300,7 @@ func (x *Country) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Country.ProtoReflect.Descriptor instead.
 func (*Country) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{2}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Country) GetAlpha_2Code() string {
@@ -361,7 +361,7 @@ type Image struct {
 
 func (x *Image) Reset() {
 	*x = Image{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[3]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -373,7 +373,7 @@ func (x *Image) String() string {
 func (*Image) ProtoMessage() {}
 
 func (x *Image) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[3]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -386,7 +386,7 @@ func (x *Image) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Image.ProtoReflect.Descriptor instead.
 func (*Image) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{3}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Image) GetCredit() string {
@@ -457,7 +457,7 @@ type ImageLicense struct {
 
 func (x *ImageLicense) Reset() {
 	*x = ImageLicense{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[4]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -469,7 +469,7 @@ func (x *ImageLicense) String() string {
 func (*ImageLicense) ProtoMessage() {}
 
 func (x *ImageLicense) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[4]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -482,7 +482,7 @@ func (x *ImageLicense) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageLicense.ProtoReflect.Descriptor instead.
 func (*ImageLicense) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{4}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ImageLicense) GetId() int32 {
@@ -524,7 +524,7 @@ type ImageVariant struct {
 
 func (x *ImageVariant) Reset() {
 	*x = ImageVariant{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[5]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -536,7 +536,7 @@ func (x *ImageVariant) String() string {
 func (*ImageVariant) ProtoMessage() {}
 
 func (x *ImageVariant) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[5]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -549,7 +549,7 @@ func (x *ImageVariant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariant.ProtoReflect.Descriptor instead.
 func (*ImageVariant) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{5}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ImageVariant) GetId() int32 {
@@ -583,7 +583,7 @@ type ImageVariantType struct {
 
 func (x *ImageVariantType) Reset() {
 	*x = ImageVariantType{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[6]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -595,7 +595,7 @@ func (x *ImageVariantType) String() string {
 func (*ImageVariantType) ProtoMessage() {}
 
 func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[6]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -608,7 +608,7 @@ func (x *ImageVariantType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageVariantType.ProtoReflect.Descriptor instead.
 func (*ImageVariantType) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{6}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ImageVariantType) GetId() int32 {
@@ -647,7 +647,7 @@ type LocationSerializerNoCelestialBody struct {
 
 func (x *LocationSerializerNoCelestialBody) Reset() {
 	*x = LocationSerializerNoCelestialBody{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[7]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -659,7 +659,7 @@ func (x *LocationSerializerNoCelestialBody) String() string {
 func (*LocationSerializerNoCelestialBody) ProtoMessage() {}
 
 func (x *LocationSerializerNoCelestialBody) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[7]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -672,7 +672,7 @@ func (x *LocationSerializerNoCelestialBody) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use LocationSerializerNoCelestialBody.ProtoReflect.Descriptor instead.
 func (*LocationSerializerNoCelestialBody) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{7}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *LocationSerializerNoCelestialBody) GetActive() bool {
@@ -785,7 +785,7 @@ type ListCelestialBodiesRequest struct {
 
 func (x *ListCelestialBodiesRequest) Reset() {
 	*x = ListCelestialBodiesRequest{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[8]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -797,7 +797,7 @@ func (x *ListCelestialBodiesRequest) String() string {
 func (*ListCelestialBodiesRequest) ProtoMessage() {}
 
 func (x *ListCelestialBodiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[8]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -810,7 +810,7 @@ func (x *ListCelestialBodiesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCelestialBodiesRequest.ProtoReflect.Descriptor instead.
 func (*ListCelestialBodiesRequest) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{8}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListCelestialBodiesRequest) GetLimit() int32 {
@@ -853,7 +853,7 @@ type ListCelestialBodiesResponse struct {
 
 func (x *ListCelestialBodiesResponse) Reset() {
 	*x = ListCelestialBodiesResponse{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[9]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -865,7 +865,7 @@ func (x *ListCelestialBodiesResponse) String() string {
 func (*ListCelestialBodiesResponse) ProtoMessage() {}
 
 func (x *ListCelestialBodiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[9]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -878,7 +878,7 @@ func (x *ListCelestialBodiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCelestialBodiesResponse.ProtoReflect.Descriptor instead.
 func (*ListCelestialBodiesResponse) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{9}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ListCelestialBodiesResponse) GetCount() int32 {
@@ -919,7 +919,7 @@ type GetCelestialBodyRequest struct {
 
 func (x *GetCelestialBodyRequest) Reset() {
 	*x = GetCelestialBodyRequest{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[10]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -931,7 +931,7 @@ func (x *GetCelestialBodyRequest) String() string {
 func (*GetCelestialBodyRequest) ProtoMessage() {}
 
 func (x *GetCelestialBodyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[10]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -944,7 +944,7 @@ func (x *GetCelestialBodyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCelestialBodyRequest.ProtoReflect.Descriptor instead.
 func (*GetCelestialBodyRequest) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{10}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetCelestialBodyRequest) GetId() int32 {
@@ -970,7 +970,7 @@ type GetCelestialBodyResponse struct {
 
 func (x *GetCelestialBodyResponse) Reset() {
 	*x = GetCelestialBodyResponse{}
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[11]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -982,7 +982,7 @@ func (x *GetCelestialBodyResponse) String() string {
 func (*GetCelestialBodyResponse) ProtoMessage() {}
 
 func (x *GetCelestialBodyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_celestial_body_v1_celestial_body_proto_msgTypes[11]
+	mi := &file_celestial_body_v1_celestial_body_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -995,7 +995,7 @@ func (x *GetCelestialBodyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCelestialBodyResponse.ProtoReflect.Descriptor instead.
 func (*GetCelestialBodyResponse) Descriptor() ([]byte, []int) {
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{11}
+	return file_celestial_body_v1_celestial_body_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetCelestialBodyResponse) GetCelestialBody() *CelestialBody {
@@ -1005,11 +1005,11 @@ func (x *GetCelestialBodyResponse) GetCelestialBody() *CelestialBody {
 	return nil
 }
 
-var File_proto_celestial_body_v1_celestial_body_proto protoreflect.FileDescriptor
+var File_celestial_body_v1_celestial_body_proto protoreflect.FileDescriptor
 
-const file_proto_celestial_body_v1_celestial_body_proto_rawDesc = "" +
+const file_celestial_body_v1_celestial_body_proto_rawDesc = "" +
 	"\n" +
-	",proto/celestial_body/v1/celestial_body.proto\x12\x11celestial_body.v1\"\xf8\x06\n" +
+	"&celestial_body/v1/celestial_body.proto\x12\x11celestial_body.v1\"\xf8\x06\n" +
 	"\rCelestialBody\x12\x1e\n" +
 	"\n" +
 	"atmosphere\x18\x01 \x01(\bR\n" +
@@ -1120,19 +1120,19 @@ const file_proto_celestial_body_v1_celestial_body_proto_rawDesc = "" +
 	"\x10GetCelestialBody\x12*.celestial_body.v1.GetCelestialBodyRequest\x1a+.celestial_body.v1.GetCelestialBodyResponseBFZDcom.gitlab/pobochiigo/bhole/proto/celestial_body/v1;celestial_bodyv1b\x06proto3"
 
 var (
-	file_proto_celestial_body_v1_celestial_body_proto_rawDescOnce sync.Once
-	file_proto_celestial_body_v1_celestial_body_proto_rawDescData []byte
+	file_celestial_body_v1_celestial_body_proto_rawDescOnce sync.Once
+	file_celestial_body_v1_celestial_body_proto_rawDescData []byte
 )
 
-func file_proto_celestial_body_v1_celestial_body_proto_rawDescGZIP() []byte {
-	file_proto_celestial_body_v1_celestial_body_proto_rawDescOnce.Do(func() {
-		file_proto_celestial_body_v1_celestial_body_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_celestial_body_v1_celestial_body_proto_rawDesc), len(file_proto_celestial_body_v1_celestial_body_proto_rawDesc)))
+func file_celestial_body_v1_celestial_body_proto_rawDescGZIP() []byte {
+	file_celestial_body_v1_celestial_body_proto_rawDescOnce.Do(func() {
+		file_celestial_body_v1_celestial_body_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_celestial_body_v1_celestial_body_proto_rawDesc), len(file_celestial_body_v1_celestial_body_proto_rawDesc)))
 	})
-	return file_proto_celestial_body_v1_celestial_body_proto_rawDescData
+	return file_celestial_body_v1_celestial_body_proto_rawDescData
 }
 
-var file_proto_celestial_body_v1_celestial_body_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
-var file_proto_celestial_body_v1_celestial_body_proto_goTypes = []any{
+var file_celestial_body_v1_celestial_body_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_celestial_body_v1_celestial_body_proto_goTypes = []any{
 	(*CelestialBody)(nil),                     // 0: celestial_body.v1.CelestialBody
 	(*CelestialBodyType)(nil),                 // 1: celestial_body.v1.CelestialBodyType
 	(*Country)(nil),                           // 2: celestial_body.v1.Country
@@ -1146,7 +1146,7 @@ var file_proto_celestial_body_v1_celestial_body_proto_goTypes = []any{
 	(*GetCelestialBodyRequest)(nil),           // 10: celestial_body.v1.GetCelestialBodyRequest
 	(*GetCelestialBodyResponse)(nil),          // 11: celestial_body.v1.GetCelestialBodyResponse
 }
-var file_proto_celestial_body_v1_celestial_body_proto_depIdxs = []int32{
+var file_celestial_body_v1_celestial_body_proto_depIdxs = []int32{
 	3,  // 0: celestial_body.v1.CelestialBody.image:type_name -> celestial_body.v1.Image
 	7,  // 1: celestial_body.v1.CelestialBody.locations:type_name -> celestial_body.v1.LocationSerializerNoCelestialBody
 	1,  // 2: celestial_body.v1.CelestialBody.type:type_name -> celestial_body.v1.CelestialBodyType
@@ -1168,30 +1168,30 @@ var file_proto_celestial_body_v1_celestial_body_proto_depIdxs = []int32{
 	0,  // [0:10] is the sub-list for field type_name
 }
 
-func init() { file_proto_celestial_body_v1_celestial_body_proto_init() }
-func file_proto_celestial_body_v1_celestial_body_proto_init() {
-	if File_proto_celestial_body_v1_celestial_body_proto != nil {
+func init() { file_celestial_body_v1_celestial_body_proto_init() }
+func file_celestial_body_v1_celestial_body_proto_init() {
+	if File_celestial_body_v1_celestial_body_proto != nil {
 		return
 	}
-	file_proto_celestial_body_v1_celestial_body_proto_msgTypes[0].OneofWrappers = []any{}
-	file_proto_celestial_body_v1_celestial_body_proto_msgTypes[3].OneofWrappers = []any{}
-	file_proto_celestial_body_v1_celestial_body_proto_msgTypes[4].OneofWrappers = []any{}
-	file_proto_celestial_body_v1_celestial_body_proto_msgTypes[7].OneofWrappers = []any{}
+	file_celestial_body_v1_celestial_body_proto_msgTypes[0].OneofWrappers = []any{}
+	file_celestial_body_v1_celestial_body_proto_msgTypes[3].OneofWrappers = []any{}
+	file_celestial_body_v1_celestial_body_proto_msgTypes[4].OneofWrappers = []any{}
+	file_celestial_body_v1_celestial_body_proto_msgTypes[7].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_celestial_body_v1_celestial_body_proto_rawDesc), len(file_proto_celestial_body_v1_celestial_body_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_celestial_body_v1_celestial_body_proto_rawDesc), len(file_celestial_body_v1_celestial_body_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_celestial_body_v1_celestial_body_proto_goTypes,
-		DependencyIndexes: file_proto_celestial_body_v1_celestial_body_proto_depIdxs,
-		MessageInfos:      file_proto_celestial_body_v1_celestial_body_proto_msgTypes,
+		GoTypes:           file_celestial_body_v1_celestial_body_proto_goTypes,
+		DependencyIndexes: file_celestial_body_v1_celestial_body_proto_depIdxs,
+		MessageInfos:      file_celestial_body_v1_celestial_body_proto_msgTypes,
 	}.Build()
-	File_proto_celestial_body_v1_celestial_body_proto = out.File
-	file_proto_celestial_body_v1_celestial_body_proto_goTypes = nil
-	file_proto_celestial_body_v1_celestial_body_proto_depIdxs = nil
+	File_celestial_body_v1_celestial_body_proto = out.File
+	file_celestial_body_v1_celestial_body_proto_goTypes = nil
+	file_celestial_body_v1_celestial_body_proto_depIdxs = nil
 }
