@@ -43,7 +43,7 @@ jobs:
       - name: Install & Build TS SDK Client
         run: |
           npm ci --prefix client/ts
-          buf generate proto --template '{"version":"v1","plugins":[{"name":"es","path":"client/ts/node_modules/.bin/protoc-gen-es","out":"client/ts/src/gen","opt":"target=ts"}]}'
+          buf generate --template '{"version":"v1","plugins":[{"name":"es","path":"client/ts/node_modules/.bin/protoc-gen-es","out":"client/ts/src/gen","opt":"target=ts"}]}'
           npm run build --prefix client/ts
 
       - name: Install & Build Web Dashboard
