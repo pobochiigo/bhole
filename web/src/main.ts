@@ -628,7 +628,7 @@ function updateClock() {
 }
 
 // Initialize Application UI Controls
-document.addEventListener('DOMContentLoaded', () => {
+function init() {
   // Setup clock interval
   setInterval(updateClock, 1000);
   updateClock();
@@ -700,4 +700,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial fetch for the default tab
   fetchData('launches');
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
