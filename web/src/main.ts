@@ -699,6 +699,38 @@ function init() {
     if (e.key === 'Escape') closeModal();
   });
 
+  // Setup Mobile Drawer Toggle
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const sidebar = document.querySelector('.sidebar');
+  let overlay = document.querySelector('.sidebar-overlay');
+  
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+  }
+
+  if (toggleBtn && sidebar && overlay) {
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('visible');
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('visible');
+    });
+
+    // Auto-close sidebar on nav item click on mobile
+    const navLinks = sidebar.querySelectorAll('.nav-menu .nav-item');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay!.classList.remove('visible');
+      });
+    });
+  }
+
   // Initial fetch for the default tab
   fetchData('launches');
 }

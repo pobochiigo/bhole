@@ -784,50 +784,216 @@ body {
   background: var(--border-glow);
 }
 
+/* Mobile Navigation Controls & Drawer Backdrop Overlay */
+.mobile-nav-header {
+  display: none;
+}
+
+.mobile-menu-toggle {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.mobile-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.mobile-menu-toggle svg line {
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+/* Hamburger menu transition to "X" when open */
+.sidebar.open ~ .main-content .mobile-menu-toggle .line-1 {
+  opacity: 0;
+}
+.sidebar.open ~ .main-content .mobile-menu-toggle .line-2 {
+  transform: translateY(6px) rotate(45deg);
+}
+.sidebar.open ~ .main-content .mobile-menu-toggle .line-3 {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(3, 2, 7, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 140;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   #app {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    height: auto;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
   }
   
   .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 16px 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    z-index: 150;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(10, 8, 18, 0.95);
+    box-shadow: 20px 0 40px rgba(0, 0, 0, 0.6);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .mobile-nav-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .top-bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 16px;
     height: auto;
+    padding: 16px 24px;
+    align-items: center;
+    backdrop-filter: blur(15px);
   }
-  
-  .brand {
-    margin-bottom: 20px;
+
+  .search-box {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    width: 100% !important;
   }
-  
-  .nav-menu {
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 8px;
+
+  .connection-status-panel {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
   }
-  
-  .nav-item {
-    padding: 10px 16px;
-    white-space: nowrap;
+
+  .status-indicator {
+    padding: 4px 10px;
+    font-size: 12px;
   }
-  
+
+  .mode-badge {
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+
   .sidebar-footer {
     display: none;
   }
   
   .main-content {
-    height: calc(100vh - 180px);
-  }
-  
-  .top-bar {
-    padding: 0 24px;
+    height: 100%;
+    overflow: hidden;
   }
   
   .dashboard-viewport {
-    padding: 24px;
+    padding: 24px 16px;
+    height: calc(100vh - 140px); /* Adjust based on top-bar height */
+    overflow-y: auto;
   }
 }
+
+@media (max-width: 768px) {
+  .modal-card {
+    width: 100%;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+  .modal-body {
+    padding: 20px;
+  }
+  .modal-hero-img {
+    height: 200px;
+  }
+  .meta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .status-indicator {
+    padding: 6px 10px;
+  }
+  .indicator-label {
+    font-size: 11px;
+  }
+  #rest-api-status .indicator-label {
+    font-size: 0;
+  }
+  #rest-api-status .indicator-label::after {
+    content: 'REST';
+    font-size: 11px;
+  }
+  #connect-rpc-status .indicator-label {
+    font-size: 0;
+  }
+  #connect-rpc-status .indicator-label::after {
+    content: 'RPC';
+    font-size: 11px;
+  }
+  .mode-badge {
+    display: none; /* Hide mode badge on very small screens to make room */
+  }
+}
+
+@media (max-width: 576px) {
+  .viewport-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .stats-counter-badge {
+    align-items: flex-start;
+  }
+  .title-area h1 {
+    font-size: 26px;
+  }
+  .grid-layout {
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    padding: 16px;
+  }
+}
+
