@@ -1,0 +1,804 @@
+syntax = "proto3";
+
+package spacewalk.v1;
+
+option go_package = "com.gitlab/pobochiigo/bhole/proto/spacewalk/v1;spacewalkv1";
+
+message AgencyDetailed {
+  string abbrev = 1;
+  optional string administrator = 2;
+  optional int32 attempted_landings = 3;
+  optional int32 attempted_landings_payload = 4;
+  optional int32 attempted_landings_spacecraft = 5;
+  optional int32 consecutive_successful_landings = 6;
+  optional int32 consecutive_successful_launches = 7;
+  repeated Country country = 8;
+  optional string description = 9;
+  optional int32 failed_landings = 10;
+  optional int32 failed_landings_payload = 11;
+  optional int32 failed_landings_spacecraft = 12;
+  optional int32 failed_launches = 13;
+  bool featured = 14;
+  optional int32 founding_year = 15;
+  int32 id = 16;
+  Image image = 17;
+  optional string info_url = 18;
+  string launchers = 19;
+  Image logo = 20;
+  string name = 21;
+  optional string parent = 22;
+  optional int32 pending_launches = 23;
+  string response_mode = 24;
+  Image social_logo = 25;
+  repeated SocialMediaLink social_media_links = 26;
+  string spacecraft = 27;
+  optional int32 successful_landings = 28;
+  optional int32 successful_landings_payload = 29;
+  optional int32 successful_landings_spacecraft = 30;
+  optional int32 successful_launches = 31;
+  optional int32 total_launch_count = 32;
+  AgencyType type = 33;
+  string url = 34;
+  optional string wiki_url = 35;
+}
+
+message AgencyMini {
+  string abbrev = 1;
+  int32 id = 2;
+  string name = 3;
+  string response_mode = 4;
+  AgencyType type = 5;
+  string url = 6;
+}
+
+message AgencyNormal {
+  string abbrev = 1;
+  optional string administrator = 2;
+  repeated Country country = 3;
+  optional string description = 4;
+  bool featured = 5;
+  optional int32 founding_year = 6;
+  int32 id = 7;
+  Image image = 8;
+  string launchers = 9;
+  Image logo = 10;
+  string name = 11;
+  optional string parent = 12;
+  string response_mode = 13;
+  Image social_logo = 14;
+  string spacecraft = 15;
+  AgencyType type = 16;
+  string url = 17;
+}
+
+message AgencyType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message AstronautDetailed {
+  optional int32 age = 1;
+  AgencyMini agency = 2;
+  string bio = 3;
+  optional string date_of_birth = 4;
+  optional string date_of_death = 5;
+  string eva_time = 6;
+  optional string first_flight = 7;
+  int32 id = 8;
+  Image image = 9;
+  bool in_space = 10;
+  optional string last_flight = 11;
+  string name = 12;
+  repeated Country nationality = 13;
+  string response_mode = 14;
+  repeated SocialMediaLink social_media_links = 15;
+  AstronautStatus status = 16;
+  optional string time_in_space = 17;
+  AstronautType type = 18;
+  string url = 19;
+  optional string wiki = 20;
+}
+
+message AstronautFlight {
+  AstronautDetailed astronaut = 1;
+  int32 id = 2;
+  AstronautRole role = 3;
+}
+
+message AstronautRole {
+  int32 id = 1;
+  int32 priority = 2;
+  string role = 3;
+}
+
+message AstronautStatus {
+  int32 id = 1;
+  string name = 2;
+}
+
+message AstronautType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message CelestialBodyDetailed {
+  bool atmosphere = 1;
+  optional string description = 2;
+  optional float diameter = 3;
+  int32 failed_landings = 4;
+  int32 failed_launches = 5;
+  optional float gravity = 6;
+  int32 id = 7;
+  Image image = 8;
+  optional string length_of_day = 9;
+  optional float mass = 10;
+  string name = 11;
+  string response_mode = 12;
+  int32 successful_landings = 13;
+  int32 successful_launches = 14;
+  int32 total_attempted_landings = 15;
+  int32 total_attempted_launches = 16;
+  CelestialBodyType type = 17;
+  optional string wiki_url = 18;
+}
+
+message CelestialBodyMini {
+  int32 id = 1;
+  string name = 2;
+  string response_mode = 3;
+}
+
+message CelestialBodyNormal {
+  bool atmosphere = 1;
+  optional string description = 2;
+  optional float diameter = 3;
+  optional float gravity = 4;
+  int32 id = 5;
+  Image image = 6;
+  optional string length_of_day = 7;
+  optional float mass = 8;
+  string name = 9;
+  string response_mode = 10;
+  CelestialBodyType type = 11;
+  optional string wiki_url = 12;
+}
+
+message CelestialBodyType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Country {
+  string alpha_2_code = 1;
+  string alpha_3_code = 2;
+  int32 id = 3;
+  string name = 4;
+  string nationality_name = 5;
+  string nationality_name_composed = 6;
+}
+
+message DockingEventForChaserNormal {
+  optional string departure = 1;
+  string docking = 2;
+  DockingLocation docking_location = 3;
+  SpacecraftFlightNormal flight_vehicle_target = 4;
+  int32 id = 5;
+  PayloadFlightNormal payload_flight_target = 6;
+  SpaceStationNormal space_station_target = 7;
+  string url = 8;
+}
+
+message DockingLocation {
+  int32 id = 1;
+  string name = 2;
+  PayloadMini payload = 3;
+  SpacecraftConfigNormal spacecraft = 4;
+  SpaceStationMini spacestation = 5;
+}
+
+message EventNormal {
+  string date = 1;
+  NetPrecision date_precision = 2;
+  string description = 3;
+  int32 id = 4;
+  Image image = 5;
+  repeated InfoURL info_urls = 6;
+  optional string location = 7;
+  string name = 8;
+  string slug = 9;
+  EventType type = 10;
+  string url = 11;
+  repeated VidURL vid_urls = 12;
+  bool webcast_live = 13;
+}
+
+message EventType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message ExpeditionNormalSerializerForSpacewalk {
+  optional string end = 1;
+  int32 id = 2;
+  repeated MissionPatch mission_patches = 3;
+  string name = 4;
+  SpaceStationNormal spacestation = 5;
+  string start = 6;
+  string url = 7;
+}
+
+message Image {
+  optional string credit = 1;
+  int32 id = 2;
+  string image_url = 3;
+  ImageLicense license = 4;
+  string name = 5;
+  bool single_use = 6;
+  string thumbnail_url = 7;
+  repeated ImageVariant variants = 8;
+}
+
+message ImageLicense {
+  int32 id = 1;
+  optional string link = 2;
+  string name = 3;
+  int32 priority = 4;
+}
+
+message ImageVariant {
+  int32 id = 1;
+  string image_url = 2;
+  ImageVariantType type = 3;
+}
+
+message ImageVariantType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message InfoURL {
+  optional string description = 1;
+  optional string feature_image = 2;
+  Language language = 3;
+  int32 priority = 4;
+  optional string source = 5;
+  optional string title = 6;
+  InfoURLType type = 7;
+  string url = 8;
+}
+
+message InfoURLType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Landing {
+  bool attempt = 1;
+  string description = 2;
+  optional float downrange_distance = 3;
+  int32 id = 4;
+  LandingLocation landing_location = 5;
+  optional bool success = 6;
+  LandingType type = 7;
+  string url = 8;
+}
+
+message LandingLocation {
+  string abbrev = 1;
+  bool active = 2;
+  optional int32 attempted_landings = 3;
+  CelestialBodyNormal celestial_body = 4;
+  optional string description = 5;
+  optional int32 failed_landings = 6;
+  int32 id = 7;
+  Image image = 8;
+  optional float latitude = 9;
+  LocationSerializerNoCelestialBody location = 10;
+  optional float longitude = 11;
+  string name = 12;
+  optional int32 successful_landings = 13;
+}
+
+message LandingType {
+  string abbrev = 1;
+  optional string description = 2;
+  int32 id = 3;
+  string name = 4;
+}
+
+message Language {
+  string code = 1;
+  int32 id = 2;
+  string name = 3;
+}
+
+message LaunchNormal {
+  optional int32 agency_launch_attempt_count = 1;
+  optional int32 agency_launch_attempt_count_year = 2;
+  optional string failreason = 3;
+  optional string hashtag = 4;
+  string id = 5;
+  Image image = 6;
+  optional string infographic = 7;
+  string last_updated = 8;
+  optional string launch_designator = 9;
+  AgencyMini launch_service_provider = 10;
+  optional int32 location_launch_attempt_count = 11;
+  optional int32 location_launch_attempt_count_year = 12;
+  Mission mission = 13;
+  string name = 14;
+  string net = 15;
+  NetPrecision net_precision = 16;
+  optional int32 orbital_launch_attempt_count = 17;
+  optional int32 orbital_launch_attempt_count_year = 18;
+  Pad pad = 19;
+  optional int32 pad_launch_attempt_count = 20;
+  optional int32 pad_launch_attempt_count_year = 21;
+  optional int32 probability = 22;
+  repeated ProgramNormal program = 23;
+  string response_mode = 24;
+  RocketNormal rocket = 25;
+  string slug = 26;
+  LaunchStatus status = 27;
+  string url = 28;
+  optional string weather_concerns = 29;
+  bool webcast_live = 30;
+  string window_end = 31;
+  string window_start = 32;
+}
+
+message LaunchStatus {
+  string abbrev = 1;
+  string description = 2;
+  int32 id = 3;
+  string name = 4;
+}
+
+message LauncherConfigFamilyMini {
+  int32 id = 1;
+  string name = 2;
+  string response_mode = 3;
+}
+
+message LauncherConfigList {
+  repeated LauncherConfigFamilyMini families = 1;
+  string full_name = 2;
+  int32 id = 3;
+  string name = 4;
+  string response_mode = 5;
+  string url = 6;
+  string variant = 7;
+}
+
+message Location {
+  bool active = 1;
+  CelestialBodyDetailed celestial_body = 2;
+  Country country = 3;
+  optional string description = 4;
+  int32 id = 5;
+  Image image = 6;
+  optional float latitude = 7;
+  optional float longitude = 8;
+  optional string map_image = 9;
+  string name = 10;
+  string response_mode = 11;
+  string timezone_name = 12;
+  optional int32 total_landing_count = 13;
+  optional int32 total_launch_count = 14;
+  string url = 15;
+}
+
+message LocationSerializerNoCelestialBody {
+  bool active = 1;
+  Country country = 2;
+  optional string description = 3;
+  int32 id = 4;
+  Image image = 5;
+  optional float latitude = 6;
+  optional float longitude = 7;
+  optional string map_image = 8;
+  string name = 9;
+  string response_mode = 10;
+  string timezone_name = 11;
+  optional int32 total_landing_count = 12;
+  optional int32 total_launch_count = 13;
+  string url = 14;
+}
+
+message Mission {
+  repeated AgencyDetailed agencies = 1;
+  string description = 2;
+  int32 id = 3;
+  Image image = 4;
+  repeated InfoURL info_urls = 5;
+  string name = 6;
+  Orbit orbit = 7;
+  string type = 8;
+  repeated VidURL vid_urls = 9;
+}
+
+message MissionPatch {
+  AgencyMini agency = 1;
+  int32 id = 2;
+  string image_url = 3;
+  string name = 4;
+  int32 priority = 5;
+  string response_mode = 6;
+}
+
+message NetPrecision {
+  string abbrev = 1;
+  string description = 2;
+  int32 id = 3;
+  string name = 4;
+}
+
+message Orbit {
+  string abbrev = 1;
+  CelestialBodyMini celestial_body = 2;
+  int32 id = 3;
+  string name = 4;
+}
+
+message Pad {
+  bool active = 1;
+  repeated AgencyNormal agencies = 2;
+  Country country = 3;
+  optional string description = 4;
+  optional string fastest_turnaround = 5;
+  int32 id = 6;
+  Image image = 7;
+  optional string info_url = 8;
+  optional float latitude = 9;
+  Location location = 10;
+  optional float longitude = 11;
+  optional string map_image = 12;
+  optional string map_url = 13;
+  string name = 14;
+  optional int32 orbital_launch_attempt_count = 15;
+  optional int32 total_launch_count = 16;
+  string url = 17;
+  optional string wiki_url = 18;
+}
+
+message PayloadFlightNormal {
+  int32 amount = 1;
+  optional string destination = 2;
+  int32 id = 3;
+  Landing landing = 4;
+  LaunchNormal launch = 5;
+  PayloadNormal payload = 6;
+  string response_mode = 7;
+  string url = 8;
+}
+
+message PayloadMini {
+  int32 id = 1;
+  Image image = 2;
+  AgencyMini manufacturer = 3;
+  string name = 4;
+  AgencyMini operator = 5;
+  string response_mode = 6;
+  PayloadType type = 7;
+}
+
+message PayloadNormal {
+  optional int32 cost = 1;
+  string description = 2;
+  int32 id = 3;
+  Image image = 4;
+  string info_link = 5;
+  AgencyNormal manufacturer = 6;
+  optional float mass = 7;
+  string name = 8;
+  AgencyNormal operator = 9;
+  repeated ProgramMini program = 10;
+  string response_mode = 11;
+  PayloadType type = 12;
+  string wiki_link = 13;
+}
+
+message PayloadType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message ProgramMini {
+  int32 id = 1;
+  Image image = 2;
+  optional string info_url = 3;
+  string name = 4;
+  string response_mode = 5;
+  string url = 6;
+  optional string wiki_url = 7;
+}
+
+message ProgramNormal {
+  repeated AgencyMini agencies = 1;
+  optional string description = 2;
+  optional string end_date = 3;
+  int32 id = 4;
+  Image image = 5;
+  optional string info_url = 6;
+  repeated MissionPatch mission_patches = 7;
+  string name = 8;
+  string response_mode = 9;
+  optional string start_date = 10;
+  ProgramType type = 11;
+  string url = 12;
+  optional string wiki_url = 13;
+}
+
+message ProgramType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message RocketNormal {
+  LauncherConfigList configuration = 1;
+  int32 id = 2;
+}
+
+message SocialMedia {
+  int32 id = 1;
+  Image logo = 2;
+  string name = 3;
+  optional string url = 4;
+}
+
+message SocialMediaLink {
+  int32 id = 1;
+  SocialMedia social_media = 2;
+  optional string url = 3;
+}
+
+message SpaceStationMini {
+  int32 id = 1;
+  Image image = 2;
+  string name = 3;
+  string url = 4;
+}
+
+message SpaceStationNormal {
+  optional string deorbited = 1;
+  string description = 2;
+  string founded = 3;
+  int32 id = 4;
+  Image image = 5;
+  string name = 6;
+  optional string orbit = 7;
+  SpaceStationStatus status = 8;
+  SpaceStationType type = 9;
+  string url = 10;
+}
+
+message SpaceStationStatus {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SpaceStationType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SpacecraftConfigDetailed {
+  AgencyNormal agency = 1;
+  optional int32 attempted_landings = 2;
+  string capability = 3;
+  optional int32 crew_capacity = 4;
+  string details = 5;
+  optional float diameter = 6;
+  optional int32 failed_landings = 7;
+  optional int32 failed_launches = 8;
+  repeated SpacecraftConfigFamilyDetailed family = 9;
+  optional string fastest_turnaround = 10;
+  optional string flight_life = 11;
+  optional float height = 12;
+  string history = 13;
+  bool human_rated = 14;
+  int32 id = 15;
+  Image image = 16;
+  bool in_use = 17;
+  string info_link = 18;
+  optional string maiden_flight = 19;
+  string name = 20;
+  optional int32 payload_capacity = 21;
+  optional int32 payload_return_capacity = 22;
+  string response_mode = 23;
+  optional int32 spacecraft_flown = 24;
+  optional int32 successful_landings = 25;
+  optional int32 successful_launches = 26;
+  optional int32 total_launch_count = 27;
+  SpacecraftConfigType type = 28;
+  string url = 29;
+  string wiki_link = 30;
+}
+
+message SpacecraftConfigFamilyDetailed {
+  optional int32 attempted_landings = 1;
+  string description = 2;
+  optional int32 failed_landings = 3;
+  optional int32 failed_launches = 4;
+  int32 id = 5;
+  optional string maiden_flight = 6;
+  AgencyNormal manufacturer = 7;
+  string name = 8;
+  SpacecraftConfigFamilyNormal parent = 9;
+  string response_mode = 10;
+  optional int32 spacecraft_flown = 11;
+  optional int32 successful_landings = 12;
+  optional int32 successful_launches = 13;
+  optional int32 total_launch_count = 14;
+}
+
+message SpacecraftConfigFamilyMini {
+  int32 id = 1;
+  string name = 2;
+  string response_mode = 3;
+}
+
+message SpacecraftConfigFamilyNormal {
+  string description = 1;
+  int32 id = 2;
+  optional string maiden_flight = 3;
+  AgencyMini manufacturer = 4;
+  string name = 5;
+  SpacecraftConfigFamilyMini parent = 6;
+  string response_mode = 7;
+}
+
+message SpacecraftConfigNormal {
+  AgencyMini agency = 1;
+  repeated SpacecraftConfigFamilyNormal family = 2;
+  int32 id = 3;
+  Image image = 4;
+  bool in_use = 5;
+  string name = 6;
+  string response_mode = 7;
+  SpacecraftConfigType type = 8;
+  string url = 9;
+}
+
+message SpacecraftConfigType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SpacecraftDetailed {
+  string description = 1;
+  optional string fastest_turnaround = 2;
+  optional int32 flights_count = 3;
+  int32 id = 4;
+  Image image = 5;
+  bool in_space = 6;
+  bool is_placeholder = 7;
+  optional int32 mission_ends_count = 8;
+  string name = 9;
+  string response_mode = 10;
+  optional string serial_number = 11;
+  SpacecraftConfigDetailed spacecraft_config = 12;
+  SpacecraftStatus status = 13;
+  optional string time_docked = 14;
+  optional string time_in_space = 15;
+  string url = 16;
+}
+
+message SpacecraftFlightDetailed {
+  optional string destination = 1;
+  repeated DockingEventForChaserNormal docking_events = 2;
+  string duration = 3;
+  int32 id = 4;
+  Landing landing = 5;
+  repeated AstronautFlight landing_crew = 6;
+  LaunchNormal launch = 7;
+  repeated AstronautFlight launch_crew = 8;
+  optional string mission_end = 9;
+  repeated AstronautFlight onboard_crew = 10;
+  string response_mode = 11;
+  SpacecraftDetailed spacecraft = 12;
+  string turn_around_time = 13;
+  string url = 14;
+}
+
+message SpacecraftFlightNormal {
+  optional string destination = 1;
+  string duration = 2;
+  int32 id = 3;
+  Landing landing = 4;
+  LaunchNormal launch = 5;
+  optional string mission_end = 6;
+  string response_mode = 7;
+  SpacecraftNormal spacecraft = 8;
+  string turn_around_time = 9;
+  string url = 10;
+}
+
+message SpacecraftNormal {
+  string description = 1;
+  optional string fastest_turnaround = 2;
+  optional int32 flights_count = 3;
+  int32 id = 4;
+  Image image = 5;
+  bool in_space = 6;
+  bool is_placeholder = 7;
+  optional int32 mission_ends_count = 8;
+  string name = 9;
+  string response_mode = 10;
+  optional string serial_number = 11;
+  SpacecraftConfigNormal spacecraft_config = 12;
+  SpacecraftStatus status = 13;
+  optional string time_docked = 14;
+  optional string time_in_space = 15;
+  string url = 16;
+}
+
+message SpacecraftStatus {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Spacewalk {
+  repeated AstronautFlight crew = 1;
+  optional string duration = 2;
+  optional string end = 3;
+  EventNormal event = 4;
+  ExpeditionNormalSerializerForSpacewalk expedition = 5;
+  int32 id = 6;
+  optional string location = 7;
+  string name = 8;
+  repeated ProgramNormal program = 9;
+  string response_mode = 10;
+  SpacecraftFlightDetailed spacecraft_flight = 11;
+  SpaceStationNormal spacestation = 12;
+  optional string start = 13;
+  string url = 14;
+}
+
+message VidURL {
+  optional string description = 1;
+  optional string end_time = 2;
+  optional string feature_image = 3;
+  Language language = 4;
+  bool live = 5;
+  int32 priority = 6;
+  optional string publisher = 7;
+  optional string source = 8;
+  optional string start_time = 9;
+  optional string title = 10;
+  VidURLType type = 11;
+  string url = 12;
+}
+
+message VidURLType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message ListSpacewalksRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+  string search = 3;
+  string mode = 4;
+}
+
+message ListSpacewalksResponse {
+  int32 count = 1;
+  string next = 2;
+  string previous = 3;
+  repeated Spacewalk results = 4;
+}
+
+message GetSpacewalkRequest {
+  int32 id = 1;
+  string mode = 2;
+}
+
+message GetSpacewalkResponse {
+  Spacewalk spacewalk = 1;
+}
+
+service SpacewalkService {
+  rpc ListSpacewalks(ListSpacewalksRequest) returns (ListSpacewalksResponse);
+  rpc GetSpacewalk(GetSpacewalkRequest) returns (GetSpacewalkResponse);
+}

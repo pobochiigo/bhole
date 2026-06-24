@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package celestial_body.v1;
+
+option go_package = "com.gitlab/pobochiigo/bhole/proto/celestial_body/v1;celestial_bodyv1";
+
+message CelestialBody {
+  bool atmosphere = 1;
+  optional string description = 2;
+  optional float diameter = 3;
+  int32 failed_landings = 4;
+  int32 failed_launches = 5;
+  optional float gravity = 6;
+  int32 id = 7;
+  Image image = 8;
+  optional string length_of_day = 9;
+  repeated LocationSerializerNoCelestialBody locations = 10;
+  optional float mass = 11;
+  string name = 12;
+  string response_mode = 13;
+  int32 successful_landings = 14;
+  int32 successful_launches = 15;
+  int32 total_attempted_landings = 16;
+  int32 total_attempted_launches = 17;
+  CelestialBodyType type = 18;
+  optional string wiki_url = 19;
+}
+
+message CelestialBodyType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Country {
+  string alpha_2_code = 1;
+  string alpha_3_code = 2;
+  int32 id = 3;
+  string name = 4;
+  string nationality_name = 5;
+  string nationality_name_composed = 6;
+}
+
+message Image {
+  optional string credit = 1;
+  int32 id = 2;
+  string image_url = 3;
+  ImageLicense license = 4;
+  string name = 5;
+  bool single_use = 6;
+  string thumbnail_url = 7;
+  repeated ImageVariant variants = 8;
+}
+
+message ImageLicense {
+  int32 id = 1;
+  optional string link = 2;
+  string name = 3;
+  int32 priority = 4;
+}
+
+message ImageVariant {
+  int32 id = 1;
+  string image_url = 2;
+  ImageVariantType type = 3;
+}
+
+message ImageVariantType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message LocationSerializerNoCelestialBody {
+  bool active = 1;
+  Country country = 2;
+  optional string description = 3;
+  int32 id = 4;
+  Image image = 5;
+  optional float latitude = 6;
+  optional float longitude = 7;
+  optional string map_image = 8;
+  string name = 9;
+  string response_mode = 10;
+  string timezone_name = 11;
+  optional int32 total_landing_count = 12;
+  optional int32 total_launch_count = 13;
+  string url = 14;
+}
+
+message ListCelestialBodiesRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+  string search = 3;
+  string mode = 4;
+}
+
+message ListCelestialBodiesResponse {
+  int32 count = 1;
+  string next = 2;
+  string previous = 3;
+  repeated CelestialBody results = 4;
+}
+
+message GetCelestialBodyRequest {
+  int32 id = 1;
+  string mode = 2;
+}
+
+message GetCelestialBodyResponse {
+  CelestialBody celestial_body = 1;
+}
+
+service CelestialBodyService {
+  rpc ListCelestialBodies(ListCelestialBodiesRequest) returns (ListCelestialBodiesResponse);
+  rpc GetCelestialBody(GetCelestialBodyRequest) returns (GetCelestialBodyResponse);
+}

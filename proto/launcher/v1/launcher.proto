@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package launcher.v1;
+
+option go_package = "com.gitlab/pobochiigo/bhole/proto/launcher/v1;launcherv1";
+
+message Image {
+  optional string credit = 1;
+  int32 id = 2;
+  string image_url = 3;
+  ImageLicense license = 4;
+  string name = 5;
+  bool single_use = 6;
+  string thumbnail_url = 7;
+  repeated ImageVariant variants = 8;
+}
+
+message ImageLicense {
+  int32 id = 1;
+  optional string link = 2;
+  string name = 3;
+  int32 priority = 4;
+}
+
+message ImageVariant {
+  int32 id = 1;
+  string image_url = 2;
+  ImageVariantType type = 3;
+}
+
+message ImageVariantType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message LauncherConfigFamilyMini {
+  int32 id = 1;
+  string name = 2;
+  string response_mode = 3;
+}
+
+message LauncherConfigList {
+  repeated LauncherConfigFamilyMini families = 1;
+  string full_name = 2;
+  int32 id = 3;
+  string name = 4;
+  string response_mode = 5;
+  string url = 6;
+  string variant = 7;
+}
+
+message Launcher {
+  optional int32 attempted_landings = 1;
+  string details = 2;
+  optional string fastest_turnaround = 3;
+  optional string first_launch_date = 4;
+  bool flight_proven = 5;
+  optional int32 flights = 6;
+  int32 id = 7;
+  Image image = 8;
+  bool is_placeholder = 9;
+  optional string last_launch_date = 10;
+  LauncherConfigList launcher_config = 11;
+  string response_mode = 12;
+  optional string serial_number = 13;
+  LauncherStatus status = 14;
+  optional int32 successful_landings = 15;
+  string url = 16;
+}
+
+message LauncherStatus {
+  int32 id = 1;
+  string name = 2;
+}
+
+message ListLaunchersRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+  string search = 3;
+  string mode = 4;
+}
+
+message ListLaunchersResponse {
+  int32 count = 1;
+  string next = 2;
+  string previous = 3;
+  repeated Launcher results = 4;
+}
+
+message GetLauncherRequest {
+  int32 id = 1;
+  string mode = 2;
+}
+
+message GetLauncherResponse {
+  Launcher launcher = 1;
+}
+
+service LauncherService {
+  rpc ListLaunchers(ListLaunchersRequest) returns (ListLaunchersResponse);
+  rpc GetLauncher(GetLauncherRequest) returns (GetLauncherResponse);
+}

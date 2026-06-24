@@ -1,0 +1,279 @@
+syntax = "proto3";
+
+package event.v1;
+
+option go_package = "com.gitlab/pobochiigo/bhole/proto/event/v1;eventv1";
+
+message AgencyMini {
+  string abbrev = 1;
+  int32 id = 2;
+  string name = 3;
+  string response_mode = 4;
+  AgencyType type = 5;
+  string url = 6;
+}
+
+message AgencyType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message AstronautNormal {
+  AgencyMini agency = 1;
+  int32 id = 2;
+  Image image = 3;
+  string name = 4;
+  AstronautStatus status = 5;
+  string url = 6;
+}
+
+message AstronautStatus {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Event {
+  repeated AgencyMini agencies = 1;
+  repeated AstronautNormal astronauts = 2;
+  string date = 3;
+  NetPrecision date_precision = 4;
+  string description = 5;
+  optional string duration = 6;
+  repeated ExpeditionNormal expeditions = 7;
+  int32 id = 8;
+  Image image = 9;
+  repeated InfoURL info_urls = 10;
+  string last_updated = 11;
+  repeated LaunchBasic launches = 12;
+  optional string location = 13;
+  string name = 14;
+  repeated ProgramNormal program = 15;
+  string response_mode = 16;
+  string slug = 17;
+  repeated SpaceStationNormal spacestations = 18;
+  EventType type = 19;
+  repeated Update updates = 20;
+  string url = 21;
+  repeated VidURL vid_urls = 22;
+  bool webcast_live = 23;
+}
+
+message EventType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message ExpeditionNormal {
+  optional string end = 1;
+  int32 id = 2;
+  repeated MissionPatch mission_patches = 3;
+  string name = 4;
+  string response_mode = 5;
+  SpaceStationNormal spacestation = 6;
+  repeated SpacewalkList spacewalks = 7;
+  string start = 8;
+  string url = 9;
+}
+
+message Image {
+  optional string credit = 1;
+  int32 id = 2;
+  string image_url = 3;
+  ImageLicense license = 4;
+  string name = 5;
+  bool single_use = 6;
+  string thumbnail_url = 7;
+  repeated ImageVariant variants = 8;
+}
+
+message ImageLicense {
+  int32 id = 1;
+  optional string link = 2;
+  string name = 3;
+  int32 priority = 4;
+}
+
+message ImageVariant {
+  int32 id = 1;
+  string image_url = 2;
+  ImageVariantType type = 3;
+}
+
+message ImageVariantType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message InfoURL {
+  optional string description = 1;
+  optional string feature_image = 2;
+  Language language = 3;
+  int32 priority = 4;
+  optional string source = 5;
+  optional string title = 6;
+  InfoURLType type = 7;
+  string url = 8;
+}
+
+message InfoURLType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Language {
+  string code = 1;
+  int32 id = 2;
+  string name = 3;
+}
+
+message LaunchBasic {
+  string id = 1;
+  Image image = 2;
+  optional string infographic = 3;
+  string last_updated = 4;
+  optional string launch_designator = 5;
+  string name = 6;
+  string net = 7;
+  NetPrecision net_precision = 8;
+  string response_mode = 9;
+  string slug = 10;
+  LaunchStatus status = 11;
+  string url = 12;
+  string window_end = 13;
+  string window_start = 14;
+}
+
+message LaunchStatus {
+  string abbrev = 1;
+  string description = 2;
+  int32 id = 3;
+  string name = 4;
+}
+
+message MissionPatch {
+  AgencyMini agency = 1;
+  int32 id = 2;
+  string image_url = 3;
+  string name = 4;
+  int32 priority = 5;
+  string response_mode = 6;
+}
+
+message NetPrecision {
+  string abbrev = 1;
+  string description = 2;
+  int32 id = 3;
+  string name = 4;
+}
+
+message ProgramNormal {
+  repeated AgencyMini agencies = 1;
+  optional string description = 2;
+  optional string end_date = 3;
+  int32 id = 4;
+  Image image = 5;
+  optional string info_url = 6;
+  repeated MissionPatch mission_patches = 7;
+  string name = 8;
+  string response_mode = 9;
+  optional string start_date = 10;
+  ProgramType type = 11;
+  string url = 12;
+  optional string wiki_url = 13;
+}
+
+message ProgramType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SpaceStationNormal {
+  optional string deorbited = 1;
+  string description = 2;
+  string founded = 3;
+  int32 id = 4;
+  Image image = 5;
+  string name = 6;
+  optional string orbit = 7;
+  SpaceStationStatus status = 8;
+  SpaceStationType type = 9;
+  string url = 10;
+}
+
+message SpaceStationStatus {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SpaceStationType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SpacewalkList {
+  optional string duration = 1;
+  optional string end = 2;
+  int32 id = 3;
+  optional string location = 4;
+  string name = 5;
+  string response_mode = 6;
+  optional string start = 7;
+  string url = 8;
+}
+
+message Update {
+  optional string comment = 1;
+  optional string created_by = 2;
+  string created_on = 3;
+  int32 id = 4;
+  optional string info_url = 5;
+  optional string profile_image = 6;
+}
+
+message VidURL {
+  optional string description = 1;
+  optional string end_time = 2;
+  optional string feature_image = 3;
+  Language language = 4;
+  bool live = 5;
+  int32 priority = 6;
+  optional string publisher = 7;
+  optional string source = 8;
+  optional string start_time = 9;
+  optional string title = 10;
+  VidURLType type = 11;
+  string url = 12;
+}
+
+message VidURLType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message ListEventsRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+  string search = 3;
+  string mode = 4;
+}
+
+message ListEventsResponse {
+  int32 count = 1;
+  string next = 2;
+  string previous = 3;
+  repeated Event results = 4;
+}
+
+message GetEventRequest {
+  int32 id = 1;
+  string mode = 2;
+}
+
+message GetEventResponse {
+  Event event = 1;
+}
+
+service EventService {
+  rpc ListEvents(ListEventsRequest) returns (ListEventsResponse);
+  rpc GetEvent(GetEventRequest) returns (GetEventResponse);
+}

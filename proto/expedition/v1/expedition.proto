@@ -1,0 +1,220 @@
+syntax = "proto3";
+
+package expedition.v1;
+
+option go_package = "com.gitlab/pobochiigo/bhole/proto/expedition/v1;expeditionv1";
+
+message AgencyMini {
+  string abbrev = 1;
+  int32 id = 2;
+  string name = 3;
+  string response_mode = 4;
+  AgencyType type = 5;
+  string url = 6;
+}
+
+message AgencyNormal {
+  string abbrev = 1;
+  optional string administrator = 2;
+  repeated Country country = 3;
+  optional string description = 4;
+  bool featured = 5;
+  optional int32 founding_year = 6;
+  int32 id = 7;
+  Image image = 8;
+  string launchers = 9;
+  Image logo = 10;
+  string name = 11;
+  optional string parent = 12;
+  string response_mode = 13;
+  Image social_logo = 14;
+  string spacecraft = 15;
+  AgencyType type = 16;
+  string url = 17;
+}
+
+message AgencyType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message AstronautDetailed {
+  optional int32 age = 1;
+  AgencyMini agency = 2;
+  string bio = 3;
+  optional string date_of_birth = 4;
+  optional string date_of_death = 5;
+  string eva_time = 6;
+  optional string first_flight = 7;
+  int32 id = 8;
+  Image image = 9;
+  bool in_space = 10;
+  optional string last_flight = 11;
+  string name = 12;
+  repeated Country nationality = 13;
+  string response_mode = 14;
+  repeated SocialMediaLink social_media_links = 15;
+  AstronautStatus status = 16;
+  optional string time_in_space = 17;
+  AstronautType type = 18;
+  string url = 19;
+  optional string wiki = 20;
+}
+
+message AstronautFlight {
+  AstronautDetailed astronaut = 1;
+  int32 id = 2;
+  AstronautRole role = 3;
+}
+
+message AstronautRole {
+  int32 id = 1;
+  int32 priority = 2;
+  string role = 3;
+}
+
+message AstronautStatus {
+  int32 id = 1;
+  string name = 2;
+}
+
+message AstronautType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Country {
+  string alpha_2_code = 1;
+  string alpha_3_code = 2;
+  int32 id = 3;
+  string name = 4;
+  string nationality_name = 5;
+  string nationality_name_composed = 6;
+}
+
+message Expedition {
+  repeated AstronautFlight crew = 1;
+  optional string end = 2;
+  int32 id = 3;
+  repeated MissionPatch mission_patches = 4;
+  string name = 5;
+  string response_mode = 6;
+  SpaceStationDetailed spacestation = 7;
+  repeated SpacewalkList spacewalks = 8;
+  string start = 9;
+  string url = 10;
+}
+
+message Image {
+  optional string credit = 1;
+  int32 id = 2;
+  string image_url = 3;
+  ImageLicense license = 4;
+  string name = 5;
+  bool single_use = 6;
+  string thumbnail_url = 7;
+  repeated ImageVariant variants = 8;
+}
+
+message ImageLicense {
+  int32 id = 1;
+  optional string link = 2;
+  string name = 3;
+  int32 priority = 4;
+}
+
+message ImageVariant {
+  int32 id = 1;
+  string image_url = 2;
+  ImageVariantType type = 3;
+}
+
+message ImageVariantType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message MissionPatch {
+  AgencyMini agency = 1;
+  int32 id = 2;
+  string image_url = 3;
+  string name = 4;
+  int32 priority = 5;
+  string response_mode = 6;
+}
+
+message SocialMedia {
+  int32 id = 1;
+  Image logo = 2;
+  string name = 3;
+  optional string url = 4;
+}
+
+message SocialMediaLink {
+  int32 id = 1;
+  SocialMedia social_media = 2;
+  optional string url = 3;
+}
+
+message SpaceStationDetailed {
+  optional string deorbited = 1;
+  string description = 2;
+  string founded = 3;
+  int32 id = 4;
+  Image image = 5;
+  string name = 6;
+  optional string orbit = 7;
+  repeated AgencyNormal owners = 8;
+  SpaceStationStatus status = 9;
+  SpaceStationType type = 10;
+  string url = 11;
+}
+
+message SpaceStationStatus {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SpaceStationType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SpacewalkList {
+  optional string duration = 1;
+  optional string end = 2;
+  int32 id = 3;
+  optional string location = 4;
+  string name = 5;
+  string response_mode = 6;
+  optional string start = 7;
+  string url = 8;
+}
+
+message ListExpeditionsRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+  string search = 3;
+  string mode = 4;
+}
+
+message ListExpeditionsResponse {
+  int32 count = 1;
+  string next = 2;
+  string previous = 3;
+  repeated Expedition results = 4;
+}
+
+message GetExpeditionRequest {
+  int32 id = 1;
+  string mode = 2;
+}
+
+message GetExpeditionResponse {
+  Expedition expedition = 1;
+}
+
+service ExpeditionService {
+  rpc ListExpeditions(ListExpeditionsRequest) returns (ListExpeditionsResponse);
+  rpc GetExpedition(GetExpeditionRequest) returns (GetExpeditionResponse);
+}

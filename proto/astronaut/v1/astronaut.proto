@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+package astronaut.v1;
+
+option go_package = "com.gitlab/pobochiigo/bhole/proto/astronaut/v1;astronautv1";
+
+message AgencyMini {
+  string abbrev = 1;
+  int32 id = 2;
+  string name = 3;
+  string response_mode = 4;
+  AgencyType type = 5;
+  string url = 6;
+}
+
+message AgencyType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Astronaut {
+  optional int32 age = 1;
+  AgencyMini agency = 2;
+  string bio = 3;
+  optional string date_of_birth = 4;
+  optional string date_of_death = 5;
+  string eva_time = 6;
+  optional string first_flight = 7;
+  int32 id = 8;
+  Image image = 9;
+  bool in_space = 10;
+  optional string last_flight = 11;
+  string name = 12;
+  repeated Country nationality = 13;
+  string response_mode = 14;
+  repeated SocialMediaLink social_media_links = 15;
+  AstronautStatus status = 16;
+  optional string time_in_space = 17;
+  AstronautType type = 18;
+  string url = 19;
+  optional string wiki = 20;
+}
+
+message AstronautStatus {
+  int32 id = 1;
+  string name = 2;
+}
+
+message AstronautType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Country {
+  string alpha_2_code = 1;
+  string alpha_3_code = 2;
+  int32 id = 3;
+  string name = 4;
+  string nationality_name = 5;
+  string nationality_name_composed = 6;
+}
+
+message Image {
+  optional string credit = 1;
+  int32 id = 2;
+  string image_url = 3;
+  ImageLicense license = 4;
+  string name = 5;
+  bool single_use = 6;
+  string thumbnail_url = 7;
+  repeated ImageVariant variants = 8;
+}
+
+message ImageLicense {
+  int32 id = 1;
+  optional string link = 2;
+  string name = 3;
+  int32 priority = 4;
+}
+
+message ImageVariant {
+  int32 id = 1;
+  string image_url = 2;
+  ImageVariantType type = 3;
+}
+
+message ImageVariantType {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SocialMedia {
+  int32 id = 1;
+  Image logo = 2;
+  string name = 3;
+  optional string url = 4;
+}
+
+message SocialMediaLink {
+  int32 id = 1;
+  SocialMedia social_media = 2;
+  optional string url = 3;
+}
+
+message ListAstronautsRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+  string search = 3;
+  string mode = 4;
+}
+
+message ListAstronautsResponse {
+  int32 count = 1;
+  string next = 2;
+  string previous = 3;
+  repeated Astronaut results = 4;
+}
+
+message GetAstronautRequest {
+  int32 id = 1;
+  string mode = 2;
+}
+
+message GetAstronautResponse {
+  Astronaut astronaut = 1;
+}
+
+service AstronautService {
+  rpc ListAstronauts(ListAstronautsRequest) returns (ListAstronautsResponse);
+  rpc GetAstronaut(GetAstronautRequest) returns (GetAstronautResponse);
+}

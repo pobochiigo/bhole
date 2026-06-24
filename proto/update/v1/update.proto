@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package update.v1;
+
+option go_package = "com.gitlab/pobochiigo/bhole/proto/update/v1;updatev1";
+
+message Update {
+  optional string comment = 1;
+  optional string created_by = 2;
+  string created_on = 3;
+  int32 id = 4;
+  optional string info_url = 5;
+  optional string profile_image = 6;
+}
+
+message ListUpdatesRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+  string search = 3;
+  string mode = 4;
+}
+
+message ListUpdatesResponse {
+  int32 count = 1;
+  string next = 2;
+  string previous = 3;
+  repeated Update results = 4;
+}
+
+message GetUpdateRequest {
+  int32 id = 1;
+  string mode = 2;
+}
+
+message GetUpdateResponse {
+  Update update = 1;
+}
+
+service UpdateService {
+  rpc ListUpdates(ListUpdatesRequest) returns (ListUpdatesResponse);
+  rpc GetUpdate(GetUpdateRequest) returns (GetUpdateResponse);
+}

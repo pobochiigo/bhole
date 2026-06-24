@@ -1,0 +1,17 @@
+# Go binaries and testing artifacts
+/example
+/cmd/server/server
+*.test
+*.out
+
+# Node and TypeScript client artifacts
+node_modules/
+/client/ts/node_modules/
+/client/ts/dist/
+/client/ts/src/gen/
+
+# Editor and System files
+.idea/
+.vscode/
+.DS_Store
+*.log
