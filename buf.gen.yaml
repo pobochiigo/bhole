@@ -10,5 +10,9 @@ plugins:
     path: client/ts/node_modules/.bin/protoc-gen-es
     out: client/ts/src/gen
     opt: target=ts
+  - name: doc
+    path: /Users/28soft/go/bin/protoc-gen-doc
+    out: docs/proto
+    opt: html,index.html
 
 

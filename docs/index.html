@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLACKHOLE • Space Operations Control Dashboard</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Meta tags for premium SEO and styling -->
+    <meta name="description" content="Blackhole is a premium Space Operations Control Center Dashboard featuring ConnectRPC API bindings and client SDK integrations." />
+    <script type="module" crossorigin src="/assets/index-ohlDn3JH.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-qZ-ySXnL.css">
+  </head>
+  <body>
+    <!-- App background container with grid-glowing patterns -->
+    <div class="stars-bg"></div>
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    
+    <div id="app">
+      <!-- Sidebar / Navigation Panel -->
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-logo">
+            <svg viewBox="0 0 100 100" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="40" stroke="url(#logo-grad)" stroke-width="6" />
+              <circle cx="50" cy="50" r="24" fill="url(#logo-grad-inner)" />
+              <path d="M50 10C65 10 75 25 75 50C75 75 65 90 50 90" stroke="#a855f7" stroke-width="2" stroke-dasharray="4 2" />
+              <defs>
+                <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#ec4899" />
+                  <stop offset="50%" stop-color="#8b5cf6" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+                <linearGradient id="logo-grad-inner" x1="26" y1="26" x2="74" y2="74" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#0f091c" />
+                  <stop offset="100%" stop-color="#020005" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">BLACKHOLE</span>
+        </div>
+        
+        <nav class="nav-menu">
+          <button class="nav-item active" data-tab="launches">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5h20c0-2.31-1-4.24-2.5-5.5"></path><path d="M12 2L9 9h6l-3-7z"></path><path d="M9 9v7.5a3 3 0 0 0 6 0V9"></path></svg>
+            <span>Launches</span>
+          </button>
+          
+          <button class="nav-item" data-tab="agencies">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Agencies</span>
+          </button>
+          
+          <button class="nav-item" data-tab="stations">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0-6-8-8-8-8s-8 2-8 8c0 7 8 12 8 12s8-5 8-12z"></path><line x1="12" y1="2" x2="12" y2="22"></line><line x1="4" y1="10" x2="20" y2="10"></line></svg>
+            <span>Space Stations</span>
+          </button>
+          
+          <button class="nav-item" data-tab="bodies">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+            <span>Celestial Bodies</span>
+          </button>
+          
+          <div class="nav-separator"></div>
+          <div class="nav-section-title">Developer Docs</div>
+          
+          <a class="nav-item" href="./proto/index.html" target="_blank">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <span>Protobuf API Docs</span>
+          </a>
+          
+          <a class="nav-item" href="./sdk/index.html" target="_blank">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            <span>TypeScript SDK Docs</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="system-time">
+            <span class="label">SYS_UTC:</span>
+            <span class="value" id="utc-clock">00:00:00</span>
+          </div>
+          <div class="engine-ver">SDK v1.0.0</div>
+        </div>
+      </aside>
+      
+      <!-- Main Content Area -->
+      <main class="main-content">
+        <!-- Top Control Bar -->
+        <header class="top-bar">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="global-search" placeholder="Query launch logs, agencies, configurations..." />
+          </div>
+          
+          <div class="connection-status-panel">
+            <div class="status-indicator" id="connect-rpc-status" title="Local ConnectRPC API Server Status">
+              <span class="indicator-dot offline"></span>
+              <span class="indicator-label">ConnectRPC</span>
+            </div>
+            
+            <div class="status-indicator" id="rest-api-status" title="LaunchLibrary Rest API Fallback Status">
+              <span class="indicator-dot offline"></span>
+              <span class="indicator-label">LaunchLibrary REST</span>
+            </div>
+            
+            <div class="mode-badge" id="app-mode-badge">
+              OFFLINE STUBS
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Body Dashboard Section -->
+        <div class="dashboard-viewport">
+          <!-- Active Tab Header -->
+          <div class="viewport-header">
+            <div class="title-area">
+              <h1 id="tab-title">Space Launches</h1>
+              <p id="tab-subtitle">Real-time status monitor of upcoming and historical space operations</p>
+            </div>
+            <div class="stats-counter-badge">
+              <span class="count-value" id="total-count">0</span>
+              <span class="count-label">entries loaded</span>
+            </div>
+          </div>
+
+          <!-- Loader element -->
+          <div id="loader" class="loader-container hidden">
+            <div class="loader-spinner"></div>
+            <p>Syncing telemetry links...</p>
+          </div>
+
+          <!-- Error/Warning Display Banner -->
+          <div id="status-banner" class="banner hidden"></div>
+
+          <!-- Card Deck Grid -->
+          <div class="grid-layout" id="deck-grid">
+            <!-- Dynamically populated via main.ts -->
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Interactive Details Modal -->
+    <div id="details-modal" class="modal-overlay hidden">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <span class="modal-category" id="modal-category">CATEGORY</span>
+            <h2 id="modal-title">Launch Title</h2>
+          </div>
+          <button class="modal-close" id="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body" id="modal-content">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
