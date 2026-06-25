@@ -1,5 +1,5 @@
 import './style.css';
-import { createClient, createConnectTransport, Launch, Agency, SpaceStation, CelestialBody } from 'bhole-client';
+import { createClient, createConnectTransport, Launch, Agency, SpaceStation, CelestialBody } from '@pobochiigo/bhole-client';
 
 // Define the API base URLs
 const urlParams = new URLSearchParams(window.location.search);
