@@ -35,6 +35,8 @@ jobs:
         run: npm run build --prefix client/ts
 
       - name: Publish to npm
-        run: npm publish --prefix client/ts --access public
+        run: |
+          cd client/ts
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
