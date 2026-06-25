@@ -1,0 +1,40 @@
+name: Publish TS Client to npm
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+          cache-dependency-path: client/ts/package-lock.json
+
+      - name: Setup Buf
+        uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+
+      - name: Install Dependencies
+        run: npm ci --prefix client/ts
+
+      - name: Generate TypeScript SDK
+        run: buf generate --template '{"version":"v1","plugins":[{"name":"es","path":"client/ts/node_modules/.bin/protoc-gen-es","out":"client/ts/src/gen","opt":"target=ts"}]}'
+
+      - name: Build Package
+        run: npm run build --prefix client/ts
+
+      - name: Publish to npm
+        run: npm publish --prefix client/ts --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
