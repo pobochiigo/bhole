@@ -22,6 +22,18 @@ let searchQuery = '';
 let currentSource: 'connectrpc' | 'rest' | 'stubs' = 'connectrpc';
 let loadedData: any[] = [];
 
+// Telemetry State variables for SpaceX Live Flight Dashboard
+let telemetryInterval: any = null;
+let telemetryTime = 0; // in seconds
+let telemetrySpeed = 0; // km/h
+let telemetryAlt = 0; // km
+let telemetryDist = 0; // km downrange
+let telemetryStage1Fuel = 100; // %
+let telemetryStage2Fuel = 100; // %
+let telemetryAborted = false;
+let telemetryThrottle = 100; // %
+let telemetryChartPoints: { x: number, y: number }[] = [];
+
 // Curated high-resolution fallback space images
 const IMG_LAUNCH = 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=800&q=80';
 const IMG_AGENCY = 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80';
@@ -565,121 +577,586 @@ function showModal(item: any) {
   catEl.textContent = activeTab.toUpperCase();
   titleEl.textContent = item.name;
   
+  const card = modal.querySelector('.modal-card');
   let bodyHTML = '';
   
   if (activeTab === 'launches') {
-    const launchDate = new Date(item.net);
-    const dateFormatted = launchDate.toLocaleDateString(undefined, {
-      weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
-    });
+    card?.classList.add('modal-spacex');
+    bodyHTML = `
+      <div class="abort-alert-overlay" id="abort-overlay"></div>
+      <div class="spacex-console">
+        <!-- Milestone Stepper -->
+        <div class="milestone-stepper">
+          <div class="milestone-step active" id="step-countdown">
+            <div class="step-marker">1</div>
+            <div class="step-info">
+              <span class="step-title">Countdown</span>
+              <span class="step-time" id="step-countdown-time">T-10.0s</span>
+            </div>
+          </div>
+          <div class="milestone-step" id="step-liftoff">
+            <div class="step-marker">2</div>
+            <div class="step-info">
+              <span class="step-title">Liftoff</span>
+              <span class="step-time">T+0.0s</span>
+            </div>
+          </div>
+          <div class="milestone-step" id="step-maxq">
+            <div class="step-marker">3</div>
+            <div class="step-info">
+              <span class="step-title">Max Q</span>
+              <span class="step-time">T+60.0s</span>
+            </div>
+          </div>
+          <div class="milestone-step" id="step-meco">
+            <div class="step-marker">4</div>
+            <div class="step-info">
+              <span class="step-title">MECO</span>
+              <span class="step-time">T+150.0s</span>
+            </div>
+          </div>
+          <div class="milestone-step" id="step-sep">
+            <div class="step-marker">5</div>
+            <div class="step-info">
+              <span class="step-title">Stage Sep</span>
+              <span class="step-time">T+160.0s</span>
+            </div>
+          </div>
+          <div class="milestone-step" id="step-orbit">
+            <div class="step-marker">6</div>
+            <div class="step-info">
+              <span class="step-title">Orbit Insertion</span>
+              <span class="step-time">T+500.0s</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry Panel -->
+        <div class="telemetry-panel">
+          <div class="telemetry-deck">
+            <div class="telemetry-card-spacex">
+              <div class="telemetry-label-spacex">Speed</div>
+              <div class="telemetry-value-spacex" id="telemetry-speed">0 <span class="telemetry-unit-spacex">km/h</span></div>
+            </div>
+            <div class="telemetry-card-spacex alt">
+              <div class="telemetry-label-spacex">Altitude</div>
+              <div class="telemetry-value-spacex" id="telemetry-alt">0.0 <span class="telemetry-unit-spacex">km</span></div>
+            </div>
+            <div class="telemetry-card-spacex">
+              <div class="telemetry-label-spacex">Downrange</div>
+              <div class="telemetry-value-spacex" id="telemetry-dist">0.0 <span class="telemetry-unit-spacex">km</span></div>
+            </div>
+          </div>
+
+          <!-- Fuel progress -->
+          <div class="fuel-tank-wrap">
+            <div class="tank-label">
+              <span>Stage 1 Propellant</span>
+              <span id="fuel-stage1-val">100%</span>
+            </div>
+            <div class="tank-progress">
+              <div class="tank-fill" id="fuel-stage1-fill" style="width: 100%;"></div>
+            </div>
+            <div style="margin-top: 10px;" class="tank-label">
+              <span>Stage 2 Propellant</span>
+              <span id="fuel-stage2-val">100%</span>
+            </div>
+            <div class="tank-progress">
+              <div class="tank-fill stage2" id="fuel-stage2-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <!-- Canvas Chart -->
+          <div class="chart-container-spacex">
+            <canvas class="chart-canvas" id="telemetry-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- Right Control Panel -->
+        <div class="control-section-spacex">
+          <div class="flight-clock-panel">
+            <span class="clock-title-spacex">Mission Clock</span>
+            <span class="clock-value-spacex" id="telemetry-clock">T-10.0s</span>
+          </div>
+
+          <div class="override-panel-spacex">
+            <div class="slider-value-wrap">
+              <span class="override-label-spacex">Engine Thrust</span>
+              <span class="slider-percentage" id="throttle-val">100%</span>
+            </div>
+            <input type="range" min="0" max="150" value="100" class="override-slider-spacex" id="throttle-override" />
+          </div>
+
+          <button class="abort-btn-spacex" id="abort-btn">Abort Mission</button>
+
+          <div class="terminal-log-spacex" id="telemetry-terminal">
+            <div class="log-line green">[SYSTEM] Telemetry simulation ready.</div>
+            <div class="log-line cyan">[SYSTEM] Awaiting T-10 countdown...</div>
+          </div>
+        </div>
+      </div>
+    `;
+    contentEl.innerHTML = bodyHTML;
+    modal.classList.remove('hidden');
     
-    const locationName = item.pad?.location?.name || 'N/A';
-    const padName = item.pad?.name || 'N/A';
-    const statusText = item.status?.name || 'Unknown';
-    const provider = item.launchServiceProvider?.name || 'N/A';
-    const desc = item.mission?.description || item.status?.description || 'No additional mission details available.';
+    // Start telemetry simulation
+    startTelemetrySimulation();
 
-    bodyHTML = `
-      <img src="${item.image?.imageUrl || IMG_LAUNCH}" class="modal-hero-img" alt="${item.name}" onerror="this.src='${IMG_LAUNCH}'" />
-      <div class="modal-section">
-        <div class="modal-section-title">Flight Mission Profile</div>
-        <p class="modal-desc">${desc}</p>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">Telemetry Parameters</div>
-        <div class="meta-grid">
-          <div class="stat-row"><span class="stat-label">Launch Status</span><span class="stat-value" style="color: var(--cyan);">${statusText}</span></div>
-          <div class="stat-row"><span class="stat-label">Operator</span><span class="stat-value">${provider}</span></div>
-          <div class="stat-row"><span class="stat-label">Scheduled Lift-Off</span><span class="stat-value">${dateFormatted}</span></div>
-          <div class="stat-row"><span class="stat-label">Launch Pad</span><span class="stat-value">${padName}</span></div>
-          <div class="stat-row" style="grid-column: 1 / -1;"><span class="stat-label">Location Site</span><span class="stat-value">${locationName}</span></div>
+  } else {
+    card?.classList.remove('modal-spacex');
+    if (activeTab === 'agencies') {
+      const admin = item.administrator || 'N/A';
+      const founding = item.foundingYear || 'N/A';
+      const country = item.country?.[0]?.name || 'N/A';
+      const type = item.typeVal?.name || 'N/A';
+      const launches = item.totalLaunchCount || 0;
+      const successes = item.successfulLaunches || 0;
+      const failures = item.failedLaunches || 0;
+      
+      bodyHTML = `
+        <img src="${item.image?.imageUrl || IMG_AGENCY}" class="modal-hero-img" alt="${item.name}" onerror="this.src='${IMG_AGENCY}'" />
+        <div class="modal-section">
+          <div class="modal-section-title">Agency Overview</div>
+          <p class="modal-desc">${item.description || 'No detailed biography loaded.'}</p>
         </div>
-      </div>
-    `;
-  } else if (activeTab === 'agencies') {
-    const admin = item.administrator || 'N/A';
-    const founding = item.foundingYear || 'N/A';
-    const country = item.country?.[0]?.name || 'N/A';
-    const type = item.typeVal?.name || 'N/A';
-    const launches = item.totalLaunchCount || 0;
-    const successes = item.successfulLaunches || 0;
-    const failures = item.failedLaunches || 0;
-    
-    bodyHTML = `
-      <img src="${item.image?.imageUrl || IMG_AGENCY}" class="modal-hero-img" alt="${item.name}" onerror="this.src='${IMG_AGENCY}'" />
-      <div class="modal-section">
-        <div class="modal-section-title">Agency Overview</div>
-        <p class="modal-desc">${item.description || 'No detailed biography loaded.'}</p>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">Profile Parameters</div>
-        <div class="meta-grid">
-          <div class="stat-row"><span class="stat-label">Authority Type</span><span class="stat-value">${type}</span></div>
-          <div class="stat-row"><span class="stat-label">HQ Region</span><span class="stat-value">${country}</span></div>
-          <div class="stat-row"><span class="stat-label">Founding Year</span><span class="stat-value">${founding}</span></div>
-          <div class="stat-row"><span class="stat-label">Current Admin</span><span class="stat-value">${admin}</span></div>
-          <div class="stat-row"><span class="stat-label">Total Missions</span><span class="stat-value">${launches}</span></div>
-          <div class="stat-row"><span class="stat-label">Success Rate</span><span class="stat-value" style="color: var(--status-success);">${launches > 0 ? ((successes / launches) * 100).toFixed(1) : 0}%</span></div>
-          <div class="stat-row"><span class="stat-label">Successes</span><span class="stat-value">${successes}</span></div>
-          <div class="stat-row"><span class="stat-label">Failures</span><span class="stat-value">${failures}</span></div>
+        <div class="modal-section">
+          <div class="modal-section-title">Profile Parameters</div>
+          <div class="meta-grid">
+            <div class="stat-row"><span class="stat-label">Authority Type</span><span class="stat-value">${type}</span></div>
+            <div class="stat-row"><span class="stat-label">HQ Region</span><span class="stat-value">${country}</span></div>
+            <div class="stat-row"><span class="stat-label">Founding Year</span><span class="stat-value">${founding}</span></div>
+            <div class="stat-row"><span class="stat-label">Current Admin</span><span class="stat-value">${admin}</span></div>
+            <div class="stat-row"><span class="stat-label">Total Missions</span><span class="stat-value">${launches}</span></div>
+            <div class="stat-row"><span class="stat-label">Success Rate</span><span class="stat-value" style="color: var(--status-success);">${launches > 0 ? ((successes / launches) * 100).toFixed(1) : 0}%</span></div>
+            <div class="stat-row"><span class="stat-label">Successes</span><span class="stat-value">${successes}</span></div>
+            <div class="stat-row"><span class="stat-label">Failures</span><span class="stat-value">${failures}</span></div>
+          </div>
         </div>
-      </div>
-    `;
-  } else if (activeTab === 'stations') {
-    const orbit = item.orbit || 'N/A';
-    const founded = item.founded ? new Date(item.founded).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : 'N/A';
-    const type = item.type?.name || 'N/A';
-    const status = item.status?.name || 'N/A';
+      `;
+    } else if (activeTab === 'stations') {
+      const orbit = item.orbit || 'N/A';
+      const founded = item.founded ? new Date(item.founded).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : 'N/A';
+      const type = item.type?.name || 'N/A';
+      const status = item.status?.name || 'N/A';
 
-    bodyHTML = `
-      <img src="${item.image?.imageUrl || IMG_STATION}" class="modal-hero-img" alt="${item.name}" onerror="this.src='${IMG_STATION}'" />
-      <div class="modal-section">
-        <div class="modal-section-title">Orbital Facility Specs</div>
-        <p class="modal-desc">${item.description || 'No station description available.'}</p>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">Logistics Parameters</div>
-        <div class="meta-grid">
-          <div class="stat-row"><span class="stat-label">Facility Status</span><span class="stat-value" style="color: var(--cyan);">${status}</span></div>
-          <div class="stat-row"><span class="stat-label">Station Type</span><span class="stat-value">${type}</span></div>
-          <div class="stat-row"><span class="stat-label">Launch Inception</span><span class="stat-value">${founded}</span></div>
-          <div class="stat-row"><span class="stat-label">Orbital Regime</span><span class="stat-value">${orbit}</span></div>
+      bodyHTML = `
+        <img src="${item.image?.imageUrl || IMG_STATION}" class="modal-hero-img" alt="${item.name}" onerror="this.src='${IMG_STATION}'" />
+        <div class="modal-section">
+          <div class="modal-section-title">Orbital Facility Specs</div>
+          <p class="modal-desc">${item.description || 'No station description available.'}</p>
         </div>
-      </div>
-    `;
-  } else if (activeTab === 'bodies') {
-    const mass = item.mass ? `${item.mass.toExponential(3)} kg` : 'N/A';
-    const gravity = item.gravity ? `${item.gravity.toFixed(3)} m/s²` : 'N/A';
-    const diameter = item.diameter ? `${item.diameter.toLocaleString()} km` : 'N/A';
-    const atmosphere = item.atmosphere ? 'Yes' : 'No';
+        <div class="modal-section">
+          <div class="modal-section-title">Logistics Parameters</div>
+          <div class="meta-grid">
+            <div class="stat-row"><span class="stat-label">Facility Status</span><span class="stat-value" style="color: var(--cyan);">${status}</span></div>
+            <div class="stat-row"><span class="stat-label">Station Type</span><span class="stat-value">${type}</span></div>
+            <div class="stat-row"><span class="stat-label">Launch Inception</span><span class="stat-value">${founded}</span></div>
+            <div class="stat-row"><span class="stat-label">Orbital Regime</span><span class="stat-value">${orbit}</span></div>
+          </div>
+        </div>
+      `;
+    } else if (activeTab === 'bodies') {
+      const mass = item.mass ? `${item.mass.toExponential(3)} kg` : 'N/A';
+      const gravity = item.gravity ? `${item.gravity.toFixed(3)} m/s²` : 'N/A';
+      const diameter = item.diameter ? `${item.diameter.toLocaleString()} km` : 'N/A';
+      const atmosphere = item.atmosphere ? 'Yes' : 'No';
 
-    bodyHTML = `
-      <img src="${item.image?.imageUrl || IMG_BODY}" class="modal-hero-img" alt="${item.name}" onerror="this.src='${IMG_BODY}'" />
-      <div class="modal-section">
-        <div class="modal-section-title">Planetological Data</div>
-        <p class="modal-desc">${item.description || 'No planetological description currently loaded.'}</p>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">Astrophysical Specifications</div>
-        <div class="meta-grid">
-          <div class="stat-row"><span class="stat-label">Planetology Class</span><span class="stat-value">${item.type?.name || 'N/A'}</span></div>
-          <div class="stat-row"><span class="stat-label">Physical Diameter</span><span class="stat-value">${diameter}</span></div>
-          <div class="stat-row"><span class="stat-label">Planetary Mass</span><span class="stat-value">${mass}</span></div>
-          <div class="stat-row"><span class="stat-label">Surface Gravity</span><span class="stat-value">${gravity}</span></div>
-          <div class="stat-row" style="grid-column: 1 / -1;"><span class="stat-label">Sustained Atmosphere</span><span class="stat-value">${atmosphere}</span></div>
+      bodyHTML = `
+        <img src="${item.image?.imageUrl || IMG_BODY}" class="modal-hero-img" alt="${item.name}" onerror="this.src='${IMG_BODY}'" />
+        <div class="modal-section">
+          <div class="modal-section-title">Planetological Data</div>
+          <p class="modal-desc">${item.description || 'No planetological description currently loaded.'}</p>
         </div>
-      </div>
-    `;
+        <div class="modal-section">
+          <div class="modal-section-title">Astrophysical Specifications</div>
+          <div class="meta-grid">
+            <div class="stat-row"><span class="stat-label">Planetology Class</span><span class="stat-value">${item.type?.name || 'N/A'}</span></div>
+            <div class="stat-row"><span class="stat-label">Physical Diameter</span><span class="stat-value">${diameter}</span></div>
+            <div class="stat-row"><span class="stat-label">Planetary Mass</span><span class="stat-value">${mass}</span></div>
+            <div class="stat-row"><span class="stat-label">Surface Gravity</span><span class="stat-value">${gravity}</span></div>
+            <div class="stat-row" style="grid-column: 1 / -1;"><span class="stat-label">Sustained Atmosphere</span><span class="stat-value">${atmosphere}</span></div>
+          </div>
+        </div>
+      `;
+    }
+    contentEl.innerHTML = bodyHTML;
+    modal.classList.remove('hidden');
   }
-  
-  contentEl.innerHTML = bodyHTML;
-  modal.classList.remove('hidden');
 }
 
 // Close modal view
 function closeModal() {
   const modal = document.getElementById('details-modal');
-  if (modal) modal.classList.add('hidden');
+  if (modal) {
+    modal.classList.add('hidden');
+    const card = modal.querySelector('.modal-card');
+    card?.classList.remove('modal-spacex');
+  }
+  if (telemetryInterval) {
+    clearInterval(telemetryInterval);
+    telemetryInterval = null;
+  }
+}
+
+function setActiveStep(stepId: string) {
+  const steps = ['step-countdown', 'step-liftoff', 'step-maxq', 'step-meco', 'step-sep', 'step-orbit'];
+  const activeIdx = steps.indexOf(stepId);
+  if (activeIdx === -1) return;
+  
+  steps.forEach((id, idx) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (idx < activeIdx) {
+      el.classList.remove('active');
+      el.classList.add('completed');
+    } else if (idx === activeIdx) {
+      el.classList.remove('completed');
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active', 'completed');
+    }
+  });
+}
+
+function addLogLine(text: string, color: 'cyan' | 'pink' | 'red' | 'green' | 'white' = 'white') {
+  const terminal = document.getElementById('telemetry-terminal');
+  if (!terminal) return;
+  const line = document.createElement('div');
+  line.className = `log-line ${color}`;
+  
+  let timeStr = '';
+  if (telemetryTime < 0) {
+    timeStr = `T${telemetryTime.toFixed(1)}s`;
+  } else {
+    const minutes = Math.floor(telemetryTime / 60);
+    const seconds = Math.floor(telemetryTime % 60);
+    timeStr = `T+${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+  line.textContent = `[${timeStr}] ${text}`;
+  terminal.appendChild(line);
+  terminal.scrollTop = terminal.scrollHeight;
+}
+
+function initiateAbort() {
+  telemetryAborted = true;
+  telemetryThrottle = 0;
+  
+  addLogLine('!!! EMERGENCY ABORT SEQUENCE ACTIVATED !!!', 'red');
+  addLogLine('[SAFETY] Initiating Stage 1 Engine Cutoff (MECO).', 'red');
+  addLogLine('[SAFETY] Commanding Stage separation & capsule escape thrusters.', 'pink');
+  addLogLine('[SAFETY] Flight controls locked. Re-vectoring to ballistic descent.', 'red');
+
+  const abortOverlay = document.getElementById('abort-overlay');
+  if (abortOverlay) abortOverlay.classList.add('active');
+
+  const abortBtn = document.getElementById('abort-btn');
+  if (abortBtn) {
+    abortBtn.textContent = 'ABORTED';
+    abortBtn.classList.add('aborted');
+  }
+
+  const throttleSlider = document.getElementById('throttle-override') as HTMLInputElement;
+  if (throttleSlider) {
+    throttleSlider.disabled = true;
+  }
+}
+
+function drawTelemetryChart() {
+  const canvas = document.getElementById('telemetry-chart') as HTMLCanvasElement;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  
+  ctx.save();
+  ctx.scale(dpr, dpr);
+
+  const w = rect.width;
+  const h = rect.height;
+
+  // Clear background
+  ctx.fillStyle = '#040308';
+  ctx.fillRect(0, 0, w, h);
+
+  // Draw Grid Lines (Grey dashed)
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4, 4]);
+
+  const maxDist = 1200; // km
+  const maxAlt = 300; // km
+
+  // Vertical Grid Lines (Dist)
+  for (let d = 200; d <= maxDist; d += 200) {
+    const x = (d / maxDist) * (w - 40) + 30;
+    ctx.beginPath();
+    ctx.moveTo(x, 10);
+    ctx.lineTo(x, h - 20);
+    ctx.stroke();
+  }
+
+  // Horizontal Grid Lines (Alt)
+  for (let a = 50; a <= maxAlt; a += 50) {
+    const y = h - 20 - (a / maxAlt) * (h - 30);
+    ctx.beginPath();
+    ctx.moveTo(30, y);
+    ctx.lineTo(w - 10, y);
+    ctx.stroke();
+  }
+
+  // Draw Grid Axis Labels
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  ctx.setLineDash([]); // Reset line dash
+
+  // Altitude Labels (Y-axis)
+  for (let a = 0; a <= maxAlt; a += 100) {
+    const y = h - 20 - (a / maxAlt) * (h - 30);
+    ctx.fillText(`${a}`, 25, y);
+  }
+
+  // Downrange Labels (X-axis)
+  ctx.textAlign = 'center';
+  for (let d = 0; d <= maxDist; d += 400) {
+    const x = (d / maxDist) * (w - 40) + 30;
+    ctx.fillText(`${d}`, x, h - 8);
+  }
+
+  // Draw nominal trajectory path
+  ctx.strokeStyle = 'rgba(6, 182, 212, 0.15)';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([6, 3]);
+  ctx.beginPath();
+  
+  const nominalPoints = [
+    { d: 0, a: 0 },
+    { d: 50, a: 25 },
+    { d: 150, a: 80 },
+    { d: 400, a: 180 },
+    { d: 800, a: 240 },
+    { d: 1200, a: 250 }
+  ];
+
+  nominalPoints.forEach((pt, idx) => {
+    const x = (pt.d / maxDist) * (w - 40) + 30;
+    const y = h - 20 - (pt.a / maxAlt) * (h - 30);
+    if (idx === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+  ctx.setLineDash([]); // Reset
+
+  // Draw actual trajectory path
+  if (telemetryChartPoints.length > 0) {
+    ctx.strokeStyle = telemetryAborted ? 'rgba(239, 68, 68, 0.8)' : 'rgba(6, 182, 212, 0.85)';
+    ctx.lineWidth = 3;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = telemetryAborted ? 'rgba(239, 68, 68, 0.5)' : 'rgba(6, 182, 212, 0.5)';
+    ctx.beginPath();
+
+    telemetryChartPoints.forEach((pt, idx) => {
+      const clampedX = Math.min(pt.x, maxDist);
+      const clampedY = Math.min(pt.y, maxAlt);
+
+      const x = (clampedX / maxDist) * (w - 40) + 30;
+      const y = h - 20 - (clampedY / maxAlt) * (h - 30);
+      if (idx === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+    
+    ctx.shadowBlur = 0;
+
+    const lastPt = telemetryChartPoints[telemetryChartPoints.length - 1];
+    const clampedX = Math.min(lastPt.x, maxDist);
+    const clampedY = Math.min(lastPt.y, maxAlt);
+    const rX = (clampedX / maxDist) * (w - 40) + 30;
+    const rY = h - 20 - (clampedY / maxAlt) * (h - 30);
+
+    ctx.fillStyle = telemetryAborted ? '#ef4444' : '#06b6d4';
+    ctx.beginPath();
+    ctx.arc(rX, rY, 5, 0, Math.PI * 2);
+    ctx.fill();
+
+    const pulseRadius = 5 + (Math.sin(Date.now() / 150) + 1) * 3;
+    ctx.strokeStyle = telemetryAborted ? 'rgba(239, 68, 68, 0.4)' : 'rgba(6, 182, 212, 0.4)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(rX, rY, pulseRadius, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+function startTelemetrySimulation() {
+  // Reset all state
+  telemetryTime = -10;
+  telemetrySpeed = 0;
+  telemetryAlt = 0;
+  telemetryDist = 0;
+  telemetryStage1Fuel = 100;
+  telemetryStage2Fuel = 100;
+  telemetryAborted = false;
+  telemetryThrottle = 100;
+  telemetryChartPoints = [];
+
+  // Setup UI references
+  const speedEl = document.getElementById('telemetry-speed');
+  const altEl = document.getElementById('telemetry-alt');
+  const distEl = document.getElementById('telemetry-dist');
+  
+  if (speedEl) speedEl.innerHTML = `0 <span class="telemetry-unit-spacex">km/h</span>`;
+  if (altEl) altEl.innerHTML = `0.0 <span class="telemetry-unit-spacex">km</span>`;
+  if (distEl) distEl.innerHTML = `0.0 <span class="telemetry-unit-spacex">km</span>`;
+
+  // Attach controls
+  const throttleSlider = document.getElementById('throttle-override') as HTMLInputElement;
+  const throttleVal = document.getElementById('throttle-val');
+  if (throttleSlider) {
+    throttleSlider.value = '100';
+    throttleSlider.disabled = false;
+    throttleSlider.addEventListener('input', (e) => {
+      if (telemetryAborted) return;
+      telemetryThrottle = parseInt((e.target as HTMLInputElement).value);
+      if (throttleVal) throttleVal.textContent = `${telemetryThrottle}%`;
+    });
+  }
+
+  const abortBtn = document.getElementById('abort-btn');
+  if (abortBtn) {
+    abortBtn.textContent = 'Abort Mission';
+    abortBtn.className = 'abort-btn-spacex';
+    abortBtn.addEventListener('click', () => {
+      if (telemetryAborted) return;
+      initiateAbort();
+    });
+  }
+
+  const abortOverlay = document.getElementById('abort-overlay');
+  if (abortOverlay) abortOverlay.classList.remove('active');
+
+  // Trigger initial chart draw
+  drawTelemetryChart();
+
+  if (telemetryInterval) clearInterval(telemetryInterval);
+  
+  telemetryInterval = setInterval(() => {
+    if (telemetryTime < 0) {
+      telemetryTime += 0.1;
+      const countdownTimeEl = document.getElementById('step-countdown-time');
+      if (countdownTimeEl) countdownTimeEl.textContent = `T${telemetryTime.toFixed(1)}s`;
+      
+      const clockEl = document.getElementById('telemetry-clock');
+      if (clockEl) clockEl.textContent = `T${telemetryTime.toFixed(1)}s`;
+      
+      if (Math.abs(telemetryTime) < 0.05) {
+        telemetryTime = 0;
+        addLogLine('LIFTOFF! Go Falcon Heavy! Go Psyche!', 'green');
+        setActiveStep('step-liftoff');
+      }
+    } else {
+      const dt = 2.0;
+      telemetryTime += dt;
+
+      const clockEl = document.getElementById('telemetry-clock');
+      if (clockEl) {
+        const minutes = Math.floor(telemetryTime / 60);
+        const seconds = Math.floor(telemetryTime % 60);
+        clockEl.textContent = `T+${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+
+      if (!telemetryAborted) {
+        if (telemetryTime < 150) {
+          telemetryStage1Fuel = Math.max(0, telemetryStage1Fuel - (telemetryThrottle / 100) * 1.33);
+          
+          telemetrySpeed += Math.round((telemetryThrottle / 100) * 40 * (1.2 - telemetryAlt / 100)); 
+          telemetryAlt += (telemetryThrottle / 100) * 0.5 * (1 + telemetrySpeed / 4000);
+          telemetryDist += (telemetrySpeed / 3600) * dt;
+
+          if (telemetryTime >= 60 && telemetryTime - dt < 60) {
+            setActiveStep('step-maxq');
+            addLogLine('MAXIMUM AERODYNAMIC PRESSURE (MAX Q) REACHED.', 'cyan');
+          }
+        } else if (telemetryTime >= 150 && telemetryTime < 160) {
+          telemetrySpeed = Math.max(0, telemetrySpeed - 5);
+          telemetryAlt += 0.1;
+          telemetryDist += (telemetrySpeed / 3600) * dt;
+
+          if (telemetryTime >= 150 && telemetryTime - dt < 150) {
+            setActiveStep('step-meco');
+            addLogLine('MAIN ENGINE CUTOFF (MECO) CONFIRMED.', 'cyan');
+          }
+          if (telemetryTime >= 158 && telemetryTime - dt < 158) {
+            setActiveStep('step-sep');
+            addLogLine('STAGE 1 SEPARATION CONFIRMED.', 'green');
+            addLogLine('[STAGE 2] Vacuum engine ignition.', 'cyan');
+          }
+        } else if (telemetryTime >= 160 && telemetryTime < 500) {
+          telemetryStage2Fuel = Math.max(0, telemetryStage2Fuel - (telemetryThrottle / 100) * 0.29);
+
+          telemetrySpeed += Math.round((telemetryThrottle / 100) * 62);
+          if (telemetrySpeed > 27000) telemetrySpeed = 27000;
+
+          telemetryAlt += 0.5 * (1 - (telemetryAlt - 80) / 250);
+          if (telemetryAlt > 250) telemetryAlt = 250;
+
+          telemetryDist += (telemetrySpeed / 3600) * dt;
+        } else {
+          telemetrySpeed = 27000;
+          telemetryAlt = 250;
+          telemetryDist += (telemetrySpeed / 3600) * dt;
+
+          if (telemetryTime >= 500 && telemetryTime - dt < 500) {
+            setActiveStep('step-orbit');
+            addLogLine('ORBIT INSERTION COMPLETED. Nominal orbit established.', 'green');
+            addLogLine('[MISSION SUCCESS] Flight controls normal.', 'green');
+            clearInterval(telemetryInterval);
+            telemetryInterval = null;
+          }
+        }
+      } else {
+        telemetrySpeed = Math.max(0, telemetrySpeed - 150);
+        telemetryAlt = Math.max(0, telemetryAlt - 2.5);
+        if (telemetryAlt > 0) {
+          telemetryDist += (telemetrySpeed / 3600) * dt;
+        } else {
+          telemetrySpeed = 0;
+        }
+
+        if (telemetryAlt <= 0.05 && telemetryAlt > 0) {
+          telemetryAlt = 0;
+          addLogLine('[SAFETY] Ocean splashdown confirmed. Capsule telemetry terminated.', 'green');
+          clearInterval(telemetryInterval);
+          telemetryInterval = null;
+        }
+      }
+
+      telemetryChartPoints.push({ x: telemetryDist, y: telemetryAlt });
+
+      if (speedEl) speedEl.innerHTML = `${telemetrySpeed.toLocaleString()} <span class="telemetry-unit-spacex">km/h</span>`;
+      if (altEl) altEl.innerHTML = `${telemetryAlt.toFixed(1)} <span class="telemetry-unit-spacex">km</span>`;
+      if (distEl) distEl.innerHTML = `${telemetryDist.toFixed(1)} <span class="telemetry-unit-spacex">km</span>`;
+
+      const fuel1Val = document.getElementById('fuel-stage1-val');
+      const fuel1Fill = document.getElementById('fuel-stage1-fill');
+      const fuel2Val = document.getElementById('fuel-stage2-val');
+      const fuel2Fill = document.getElementById('fuel-stage2-fill');
+
+      if (fuel1Val) fuel1Val.textContent = `${Math.round(telemetryStage1Fuel)}%`;
+      if (fuel1Fill) fuel1Fill.style.width = `${telemetryStage1Fuel}%`;
+      if (fuel2Val) fuel2Val.textContent = `${Math.round(telemetryStage2Fuel)}%`;
+      if (fuel2Fill) fuel2Fill.style.width = `${telemetryStage2Fuel}%`;
+    }
+
+    drawTelemetryChart();
+  }, 100);
 }
 
 // Global clock tick
