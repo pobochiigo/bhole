@@ -3,15 +3,15 @@ package pad
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	padv1 "github.com/pobochiigo/bhole/proto/pad/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/pad/v1/padv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListPads transport.Handler[padv1.ListPadsRequest, padv1.ListPadsResponse]
-	getPad    transport.Handler[padv1.GetPadRequest, padv1.GetPadResponse]
+	listListPads connectrpc.Handler[padv1.ListPadsRequest, padv1.ListPadsResponse]
+	getPad    connectrpc.Handler[padv1.GetPadRequest, padv1.GetPadResponse]
 }
 
 func (s *server) ListPads(ctx context.Context, req *connect.Request[padv1.ListPadsRequest]) (*connect.Response[padv1.ListPadsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetPad(ctx context.Context, req *connect.Request[padv1.GetPadRe
 func NewPadHandler(svc Service) v1connect.PadServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListPads: transport.NewConnectServer(
+		listListPads: connectrpc.NewConnectServer(
 			eps.listListPads,
 			decodeListPadsRequest,
 			encodeListPadsResponse,
 		),
-		getPad: transport.NewConnectServer(
+		getPad: connectrpc.NewConnectServer(
 			eps.getPad,
 			decodeGetPadRequest,
 			encodeGetPadResponse,

@@ -3,7 +3,7 @@ package expedition
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/silo/endpoint"
 	bizexpedition "github.com/pobochiigo/bhole/internal/expedition"
 )
 

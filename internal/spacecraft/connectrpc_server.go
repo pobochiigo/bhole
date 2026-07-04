@@ -3,15 +3,15 @@ package spacecraft
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	spacecraftv1 "github.com/pobochiigo/bhole/proto/spacecraft/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/spacecraft/v1/spacecraftv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListSpacecrafts transport.Handler[spacecraftv1.ListSpacecraftsRequest, spacecraftv1.ListSpacecraftsResponse]
-	getSpacecraft    transport.Handler[spacecraftv1.GetSpacecraftRequest, spacecraftv1.GetSpacecraftResponse]
+	listListSpacecrafts connectrpc.Handler[spacecraftv1.ListSpacecraftsRequest, spacecraftv1.ListSpacecraftsResponse]
+	getSpacecraft    connectrpc.Handler[spacecraftv1.GetSpacecraftRequest, spacecraftv1.GetSpacecraftResponse]
 }
 
 func (s *server) ListSpacecrafts(ctx context.Context, req *connect.Request[spacecraftv1.ListSpacecraftsRequest]) (*connect.Response[spacecraftv1.ListSpacecraftsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetSpacecraft(ctx context.Context, req *connect.Request[spacecr
 func NewSpacecraftHandler(svc Service) v1connect.SpacecraftServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListSpacecrafts: transport.NewConnectServer(
+		listListSpacecrafts: connectrpc.NewConnectServer(
 			eps.listListSpacecrafts,
 			decodeListSpacecraftsRequest,
 			encodeListSpacecraftsResponse,
 		),
-		getSpacecraft: transport.NewConnectServer(
+		getSpacecraft: connectrpc.NewConnectServer(
 			eps.getSpacecraft,
 			decodeGetSpacecraftRequest,
 			encodeGetSpacecraftResponse,

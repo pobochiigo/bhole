@@ -3,7 +3,7 @@ package expedition
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizexpedition "github.com/pobochiigo/bhole/internal/expedition"
 	expeditionv1 "github.com/pobochiigo/bhole/proto/expedition/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/expedition/v1/expeditionv1connect"
@@ -14,12 +14,12 @@ func NewExpeditionClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	connectClient := v1connect.NewExpeditionServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListExpeditions: transport.NewConnectClient(
+		listListExpeditions: connectrpc.NewConnectClient(
 			connectClient.ListExpeditions,
 			encodeListExpeditionsRequest,
 			decodeListExpeditionsResponse,
 		),
-		getExpedition: transport.NewConnectClient(
+		getExpedition: connectrpc.NewConnectClient(
 			connectClient.GetExpedition,
 			encodeGetExpeditionRequest,
 			decodeGetExpeditionResponse,

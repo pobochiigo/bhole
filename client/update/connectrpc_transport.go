@@ -3,7 +3,7 @@ package update
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizupdate "github.com/pobochiigo/bhole/internal/update"
 	updatev1 "github.com/pobochiigo/bhole/proto/update/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/update/v1/updatev1connect"
@@ -14,12 +14,12 @@ func NewUpdateClient(httpClient connect.HTTPClient, baseURL string, opts ...conn
 	connectClient := v1connect.NewUpdateServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListUpdates: transport.NewConnectClient(
+		listListUpdates: connectrpc.NewConnectClient(
 			connectClient.ListUpdates,
 			encodeListUpdatesRequest,
 			decodeListUpdatesResponse,
 		),
-		getUpdate: transport.NewConnectClient(
+		getUpdate: connectrpc.NewConnectClient(
 			connectClient.GetUpdate,
 			encodeGetUpdateRequest,
 			decodeGetUpdateResponse,

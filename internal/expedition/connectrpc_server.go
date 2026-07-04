@@ -3,15 +3,15 @@ package expedition
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	expeditionv1 "github.com/pobochiigo/bhole/proto/expedition/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/expedition/v1/expeditionv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListExpeditions transport.Handler[expeditionv1.ListExpeditionsRequest, expeditionv1.ListExpeditionsResponse]
-	getExpedition    transport.Handler[expeditionv1.GetExpeditionRequest, expeditionv1.GetExpeditionResponse]
+	listListExpeditions connectrpc.Handler[expeditionv1.ListExpeditionsRequest, expeditionv1.ListExpeditionsResponse]
+	getExpedition    connectrpc.Handler[expeditionv1.GetExpeditionRequest, expeditionv1.GetExpeditionResponse]
 }
 
 func (s *server) ListExpeditions(ctx context.Context, req *connect.Request[expeditionv1.ListExpeditionsRequest]) (*connect.Response[expeditionv1.ListExpeditionsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetExpedition(ctx context.Context, req *connect.Request[expedit
 func NewExpeditionHandler(svc Service) v1connect.ExpeditionServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListExpeditions: transport.NewConnectServer(
+		listListExpeditions: connectrpc.NewConnectServer(
 			eps.listListExpeditions,
 			decodeListExpeditionsRequest,
 			encodeListExpeditionsResponse,
 		),
-		getExpedition: transport.NewConnectServer(
+		getExpedition: connectrpc.NewConnectServer(
 			eps.getExpedition,
 			decodeGetExpeditionRequest,
 			encodeGetExpeditionResponse,

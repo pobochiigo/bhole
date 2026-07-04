@@ -3,7 +3,7 @@ package landing
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/silo/endpoint"
 	bizlanding "github.com/pobochiigo/bhole/internal/landing"
 )
 

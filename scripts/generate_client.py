@@ -500,7 +500,7 @@ type Service interface {{
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/silo/endpoint"
 	biz{feature} "github.com/pobochiigo/bhole/internal/{feature}"
 )
 
@@ -526,7 +526,7 @@ func (c *endpoints) Get{feature_camel}(ctx context.Context, req *biz{feature}.Ge
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	biz{feature} "github.com/pobochiigo/bhole/internal/{feature}"
 	{feature}v1 "github.com/pobochiigo/bhole/proto/{feature}/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"
@@ -537,12 +537,12 @@ func New{feature_camel}Client(httpClient connect.HTTPClient, baseURL string, opt
 	connectClient := v1connect.New{feature_camel}ServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{{
-		list{plural_method}: transport.NewConnectClient(
+		list{plural_method}: connectrpc.NewConnectClient(
 			connectClient.{plural_method},
 			encode{plural_method}Request,
 			decode{plural_method}Response,
 		),
-		get{feature_camel}: transport.NewConnectClient(
+		get{feature_camel}: connectrpc.NewConnectClient(
 			connectClient.Get{feature_camel},
 			encodeGet{feature_camel}Request,
 			decodeGet{feature_camel}Response,

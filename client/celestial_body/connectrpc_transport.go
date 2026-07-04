@@ -3,7 +3,7 @@ package celestial_body
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizcelestial_body "github.com/pobochiigo/bhole/internal/celestial_body"
 	celestial_bodyv1 "github.com/pobochiigo/bhole/proto/celestial_body/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/celestial_body/v1/celestial_bodyv1connect"
@@ -14,12 +14,12 @@ func NewCelestialBodyClient(httpClient connect.HTTPClient, baseURL string, opts 
 	connectClient := v1connect.NewCelestialBodyServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListCelestialBodies: transport.NewConnectClient(
+		listListCelestialBodies: connectrpc.NewConnectClient(
 			connectClient.ListCelestialBodies,
 			encodeListCelestialBodiesRequest,
 			decodeListCelestialBodiesResponse,
 		),
-		getCelestialBody: transport.NewConnectClient(
+		getCelestialBody: connectrpc.NewConnectClient(
 			connectClient.GetCelestialBody,
 			encodeGetCelestialBodyRequest,
 			decodeGetCelestialBodyResponse,

@@ -3,7 +3,7 @@ package astronaut
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizastronaut "github.com/pobochiigo/bhole/internal/astronaut"
 	astronautv1 "github.com/pobochiigo/bhole/proto/astronaut/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/astronaut/v1/astronautv1connect"
@@ -14,12 +14,12 @@ func NewAstronautClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 	connectClient := v1connect.NewAstronautServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListAstronauts: transport.NewConnectClient(
+		listListAstronauts: connectrpc.NewConnectClient(
 			connectClient.ListAstronauts,
 			encodeListAstronautsRequest,
 			decodeListAstronautsResponse,
 		),
-		getAstronaut: transport.NewConnectClient(
+		getAstronaut: connectrpc.NewConnectClient(
 			connectClient.GetAstronaut,
 			encodeGetAstronautRequest,
 			decodeGetAstronautResponse,

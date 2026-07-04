@@ -3,15 +3,15 @@ package event
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	eventv1 "github.com/pobochiigo/bhole/proto/event/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/event/v1/eventv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListEvents transport.Handler[eventv1.ListEventsRequest, eventv1.ListEventsResponse]
-	getEvent    transport.Handler[eventv1.GetEventRequest, eventv1.GetEventResponse]
+	listListEvents connectrpc.Handler[eventv1.ListEventsRequest, eventv1.ListEventsResponse]
+	getEvent    connectrpc.Handler[eventv1.GetEventRequest, eventv1.GetEventResponse]
 }
 
 func (s *server) ListEvents(ctx context.Context, req *connect.Request[eventv1.ListEventsRequest]) (*connect.Response[eventv1.ListEventsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetEvent(ctx context.Context, req *connect.Request[eventv1.GetE
 func NewEventHandler(svc Service) v1connect.EventServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListEvents: transport.NewConnectServer(
+		listListEvents: connectrpc.NewConnectServer(
 			eps.listListEvents,
 			decodeListEventsRequest,
 			encodeListEventsResponse,
 		),
-		getEvent: transport.NewConnectServer(
+		getEvent: connectrpc.NewConnectServer(
 			eps.getEvent,
 			decodeGetEventRequest,
 			encodeGetEventResponse,

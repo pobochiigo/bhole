@@ -3,7 +3,7 @@ package location
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizlocation "github.com/pobochiigo/bhole/internal/location"
 	locationv1 "github.com/pobochiigo/bhole/proto/location/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/location/v1/locationv1connect"
@@ -14,12 +14,12 @@ func NewLocationClient(httpClient connect.HTTPClient, baseURL string, opts ...co
 	connectClient := v1connect.NewLocationServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListLocations: transport.NewConnectClient(
+		listListLocations: connectrpc.NewConnectClient(
 			connectClient.ListLocations,
 			encodeListLocationsRequest,
 			decodeListLocationsResponse,
 		),
-		getLocation: transport.NewConnectClient(
+		getLocation: connectrpc.NewConnectClient(
 			connectClient.GetLocation,
 			encodeGetLocationRequest,
 			decodeGetLocationResponse,

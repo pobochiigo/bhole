@@ -3,7 +3,7 @@ package landing
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizlanding "github.com/pobochiigo/bhole/internal/landing"
 	landingv1 "github.com/pobochiigo/bhole/proto/landing/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/landing/v1/landingv1connect"
@@ -14,12 +14,12 @@ func NewLandingClient(httpClient connect.HTTPClient, baseURL string, opts ...con
 	connectClient := v1connect.NewLandingServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListLandings: transport.NewConnectClient(
+		listListLandings: connectrpc.NewConnectClient(
 			connectClient.ListLandings,
 			encodeListLandingsRequest,
 			decodeListLandingsResponse,
 		),
-		getLanding: transport.NewConnectClient(
+		getLanding: connectrpc.NewConnectClient(
 			connectClient.GetLanding,
 			encodeGetLandingRequest,
 			decodeGetLandingResponse,

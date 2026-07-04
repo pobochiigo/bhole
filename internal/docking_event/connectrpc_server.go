@@ -3,15 +3,15 @@ package docking_event
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	docking_eventv1 "github.com/pobochiigo/bhole/proto/docking_event/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/docking_event/v1/docking_eventv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListDockingEvents transport.Handler[docking_eventv1.ListDockingEventsRequest, docking_eventv1.ListDockingEventsResponse]
-	getDockingEvent    transport.Handler[docking_eventv1.GetDockingEventRequest, docking_eventv1.GetDockingEventResponse]
+	listListDockingEvents connectrpc.Handler[docking_eventv1.ListDockingEventsRequest, docking_eventv1.ListDockingEventsResponse]
+	getDockingEvent    connectrpc.Handler[docking_eventv1.GetDockingEventRequest, docking_eventv1.GetDockingEventResponse]
 }
 
 func (s *server) ListDockingEvents(ctx context.Context, req *connect.Request[docking_eventv1.ListDockingEventsRequest]) (*connect.Response[docking_eventv1.ListDockingEventsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetDockingEvent(ctx context.Context, req *connect.Request[docki
 func NewDockingEventHandler(svc Service) v1connect.DockingEventServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListDockingEvents: transport.NewConnectServer(
+		listListDockingEvents: connectrpc.NewConnectServer(
 			eps.listListDockingEvents,
 			decodeListDockingEventsRequest,
 			encodeListDockingEventsResponse,
 		),
-		getDockingEvent: transport.NewConnectServer(
+		getDockingEvent: connectrpc.NewConnectServer(
 			eps.getDockingEvent,
 			decodeGetDockingEventRequest,
 			encodeGetDockingEventResponse,

@@ -289,7 +289,7 @@ def main():
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/silo/endpoint"
 )
 
 type Endpoints struct {{
@@ -325,15 +325,15 @@ func makeGet{feature_camel}Endpoint(svc Service) endpoint.Endpoint[*Get{feature_
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	{feature}v1 "github.com/pobochiigo/bhole/proto/{feature}/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {{
-	list{plural_method} transport.Handler[{feature}v1.{plural_method}Request, {feature}v1.{plural_method}Response]
-	get{feature_camel}    transport.Handler[{feature}v1.Get{feature_camel}Request, {feature}v1.Get{feature_camel}Response]
+	list{plural_method} connectrpc.Handler[{feature}v1.{plural_method}Request, {feature}v1.{plural_method}Response]
+	get{feature_camel}    connectrpc.Handler[{feature}v1.Get{feature_camel}Request, {feature}v1.Get{feature_camel}Response]
 }}
 
 func (s *server) {plural_method}(ctx context.Context, req *connect.Request[{feature}v1.{plural_method}Request]) (*connect.Response[{feature}v1.{plural_method}Response], error) {{
@@ -347,12 +347,12 @@ func (s *server) Get{feature_camel}(ctx context.Context, req *connect.Request[{f
 func New{feature_camel}Handler(svc Service) v1connect.{feature_camel}ServiceHandler {{
 	eps := MakeEndpoints(svc)
 	return &server{{
-		list{plural_method}: transport.NewConnectServer(
+		list{plural_method}: connectrpc.NewConnectServer(
 			eps.list{plural_method},
 			decode{plural_method}Request,
 			encode{plural_method}Response,
 		),
-		get{feature_camel}: transport.NewConnectServer(
+		get{feature_camel}: connectrpc.NewConnectServer(
 			eps.get{feature_camel},
 			decodeGet{feature_camel}Request,
 			encodeGet{feature_camel}Response,

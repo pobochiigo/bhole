@@ -3,7 +3,7 @@ package launcher_configuration
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizlauncher_configuration "github.com/pobochiigo/bhole/internal/launcher_configuration"
 	launcher_configurationv1 "github.com/pobochiigo/bhole/proto/launcher_configuration/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/launcher_configuration/v1/launcher_configurationv1connect"
@@ -14,12 +14,12 @@ func NewLauncherConfigurationClient(httpClient connect.HTTPClient, baseURL strin
 	connectClient := v1connect.NewLauncherConfigurationServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListLauncherConfigurations: transport.NewConnectClient(
+		listListLauncherConfigurations: connectrpc.NewConnectClient(
 			connectClient.ListLauncherConfigurations,
 			encodeListLauncherConfigurationsRequest,
 			decodeListLauncherConfigurationsResponse,
 		),
-		getLauncherConfiguration: transport.NewConnectClient(
+		getLauncherConfiguration: connectrpc.NewConnectClient(
 			connectClient.GetLauncherConfiguration,
 			encodeGetLauncherConfigurationRequest,
 			decodeGetLauncherConfigurationResponse,

@@ -3,7 +3,7 @@ package docking_event
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizdocking_event "github.com/pobochiigo/bhole/internal/docking_event"
 	docking_eventv1 "github.com/pobochiigo/bhole/proto/docking_event/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/docking_event/v1/docking_eventv1connect"
@@ -14,12 +14,12 @@ func NewDockingEventClient(httpClient connect.HTTPClient, baseURL string, opts .
 	connectClient := v1connect.NewDockingEventServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListDockingEvents: transport.NewConnectClient(
+		listListDockingEvents: connectrpc.NewConnectClient(
 			connectClient.ListDockingEvents,
 			encodeListDockingEventsRequest,
 			decodeListDockingEventsResponse,
 		),
-		getDockingEvent: transport.NewConnectClient(
+		getDockingEvent: connectrpc.NewConnectClient(
 			connectClient.GetDockingEvent,
 			encodeGetDockingEventRequest,
 			decodeGetDockingEventResponse,

@@ -3,7 +3,7 @@ package pad
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizpad "github.com/pobochiigo/bhole/internal/pad"
 	padv1 "github.com/pobochiigo/bhole/proto/pad/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/pad/v1/padv1connect"
@@ -14,12 +14,12 @@ func NewPadClient(httpClient connect.HTTPClient, baseURL string, opts ...connect
 	connectClient := v1connect.NewPadServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListPads: transport.NewConnectClient(
+		listListPads: connectrpc.NewConnectClient(
 			connectClient.ListPads,
 			encodeListPadsRequest,
 			decodeListPadsResponse,
 		),
-		getPad: transport.NewConnectClient(
+		getPad: connectrpc.NewConnectClient(
 			connectClient.GetPad,
 			encodeGetPadRequest,
 			decodeGetPadResponse,

@@ -3,7 +3,7 @@ package payload
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/silo/endpoint"
 	bizpayload "github.com/pobochiigo/bhole/internal/payload"
 )
 

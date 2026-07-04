@@ -3,15 +3,15 @@ package location
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	locationv1 "github.com/pobochiigo/bhole/proto/location/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/location/v1/locationv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListLocations transport.Handler[locationv1.ListLocationsRequest, locationv1.ListLocationsResponse]
-	getLocation    transport.Handler[locationv1.GetLocationRequest, locationv1.GetLocationResponse]
+	listListLocations connectrpc.Handler[locationv1.ListLocationsRequest, locationv1.ListLocationsResponse]
+	getLocation    connectrpc.Handler[locationv1.GetLocationRequest, locationv1.GetLocationResponse]
 }
 
 func (s *server) ListLocations(ctx context.Context, req *connect.Request[locationv1.ListLocationsRequest]) (*connect.Response[locationv1.ListLocationsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetLocation(ctx context.Context, req *connect.Request[locationv
 func NewLocationHandler(svc Service) v1connect.LocationServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListLocations: transport.NewConnectServer(
+		listListLocations: connectrpc.NewConnectServer(
 			eps.listListLocations,
 			decodeListLocationsRequest,
 			encodeListLocationsResponse,
 		),
-		getLocation: transport.NewConnectServer(
+		getLocation: connectrpc.NewConnectServer(
 			eps.getLocation,
 			decodeGetLocationRequest,
 			encodeGetLocationResponse,

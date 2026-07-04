@@ -3,15 +3,15 @@ package space_station
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	space_stationv1 "github.com/pobochiigo/bhole/proto/space_station/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/space_station/v1/space_stationv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListSpaceStations transport.Handler[space_stationv1.ListSpaceStationsRequest, space_stationv1.ListSpaceStationsResponse]
-	getSpaceStation    transport.Handler[space_stationv1.GetSpaceStationRequest, space_stationv1.GetSpaceStationResponse]
+	listListSpaceStations connectrpc.Handler[space_stationv1.ListSpaceStationsRequest, space_stationv1.ListSpaceStationsResponse]
+	getSpaceStation    connectrpc.Handler[space_stationv1.GetSpaceStationRequest, space_stationv1.GetSpaceStationResponse]
 }
 
 func (s *server) ListSpaceStations(ctx context.Context, req *connect.Request[space_stationv1.ListSpaceStationsRequest]) (*connect.Response[space_stationv1.ListSpaceStationsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetSpaceStation(ctx context.Context, req *connect.Request[space
 func NewSpaceStationHandler(svc Service) v1connect.SpaceStationServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListSpaceStations: transport.NewConnectServer(
+		listListSpaceStations: connectrpc.NewConnectServer(
 			eps.listListSpaceStations,
 			decodeListSpaceStationsRequest,
 			encodeListSpaceStationsResponse,
 		),
-		getSpaceStation: transport.NewConnectServer(
+		getSpaceStation: connectrpc.NewConnectServer(
 			eps.getSpaceStation,
 			decodeGetSpaceStationRequest,
 			encodeGetSpaceStationResponse,

@@ -3,7 +3,7 @@ package payload
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizpayload "github.com/pobochiigo/bhole/internal/payload"
 	payloadv1 "github.com/pobochiigo/bhole/proto/payload/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/payload/v1/payloadv1connect"
@@ -14,12 +14,12 @@ func NewPayloadClient(httpClient connect.HTTPClient, baseURL string, opts ...con
 	connectClient := v1connect.NewPayloadServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListPayloads: transport.NewConnectClient(
+		listListPayloads: connectrpc.NewConnectClient(
 			connectClient.ListPayloads,
 			encodeListPayloadsRequest,
 			decodeListPayloadsResponse,
 		),
-		getPayload: transport.NewConnectClient(
+		getPayload: connectrpc.NewConnectClient(
 			connectClient.GetPayload,
 			encodeGetPayloadRequest,
 			decodeGetPayloadResponse,

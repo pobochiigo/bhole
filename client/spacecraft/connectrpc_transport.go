@@ -3,7 +3,7 @@ package spacecraft
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizspacecraft "github.com/pobochiigo/bhole/internal/spacecraft"
 	spacecraftv1 "github.com/pobochiigo/bhole/proto/spacecraft/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/spacecraft/v1/spacecraftv1connect"
@@ -14,12 +14,12 @@ func NewSpacecraftClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	connectClient := v1connect.NewSpacecraftServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListSpacecrafts: transport.NewConnectClient(
+		listListSpacecrafts: connectrpc.NewConnectClient(
 			connectClient.ListSpacecrafts,
 			encodeListSpacecraftsRequest,
 			decodeListSpacecraftsResponse,
 		),
-		getSpacecraft: transport.NewConnectClient(
+		getSpacecraft: connectrpc.NewConnectClient(
 			connectClient.GetSpacecraft,
 			encodeGetSpacecraftRequest,
 			decodeGetSpacecraftResponse,

@@ -3,7 +3,7 @@ package space_station
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizspace_station "github.com/pobochiigo/bhole/internal/space_station"
 	space_stationv1 "github.com/pobochiigo/bhole/proto/space_station/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/space_station/v1/space_stationv1connect"
@@ -14,12 +14,12 @@ func NewSpaceStationClient(httpClient connect.HTTPClient, baseURL string, opts .
 	connectClient := v1connect.NewSpaceStationServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListSpaceStations: transport.NewConnectClient(
+		listListSpaceStations: connectrpc.NewConnectClient(
 			connectClient.ListSpaceStations,
 			encodeListSpaceStationsRequest,
 			decodeListSpaceStationsResponse,
 		),
-		getSpaceStation: transport.NewConnectClient(
+		getSpaceStation: connectrpc.NewConnectClient(
 			connectClient.GetSpaceStation,
 			encodeGetSpaceStationRequest,
 			decodeGetSpaceStationResponse,

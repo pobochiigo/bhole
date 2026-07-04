@@ -3,7 +3,7 @@ package launch
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizlaunch "github.com/pobochiigo/bhole/internal/launch"
 	launchv1 "github.com/pobochiigo/bhole/proto/launch/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/launch/v1/launchv1connect"
@@ -14,12 +14,12 @@ func NewLaunchClient(httpClient connect.HTTPClient, baseURL string, opts ...conn
 	connectClient := v1connect.NewLaunchServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListLaunches: transport.NewConnectClient(
+		listListLaunches: connectrpc.NewConnectClient(
 			connectClient.ListLaunches,
 			encodeListLaunchesRequest,
 			decodeListLaunchesResponse,
 		),
-		getLaunch: transport.NewConnectClient(
+		getLaunch: connectrpc.NewConnectClient(
 			connectClient.GetLaunch,
 			encodeGetLaunchRequest,
 			decodeGetLaunchResponse,

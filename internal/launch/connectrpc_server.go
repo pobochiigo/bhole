@@ -3,15 +3,15 @@ package launch
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	launchv1 "github.com/pobochiigo/bhole/proto/launch/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/launch/v1/launchv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListLaunches transport.Handler[launchv1.ListLaunchesRequest, launchv1.ListLaunchesResponse]
-	getLaunch    transport.Handler[launchv1.GetLaunchRequest, launchv1.GetLaunchResponse]
+	listListLaunches connectrpc.Handler[launchv1.ListLaunchesRequest, launchv1.ListLaunchesResponse]
+	getLaunch    connectrpc.Handler[launchv1.GetLaunchRequest, launchv1.GetLaunchResponse]
 }
 
 func (s *server) ListLaunches(ctx context.Context, req *connect.Request[launchv1.ListLaunchesRequest]) (*connect.Response[launchv1.ListLaunchesResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetLaunch(ctx context.Context, req *connect.Request[launchv1.Ge
 func NewLaunchHandler(svc Service) v1connect.LaunchServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListLaunches: transport.NewConnectServer(
+		listListLaunches: connectrpc.NewConnectServer(
 			eps.listListLaunches,
 			decodeListLaunchesRequest,
 			encodeListLaunchesResponse,
 		),
-		getLaunch: transport.NewConnectServer(
+		getLaunch: connectrpc.NewConnectServer(
 			eps.getLaunch,
 			decodeGetLaunchRequest,
 			encodeGetLaunchResponse,

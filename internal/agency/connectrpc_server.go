@@ -3,15 +3,15 @@ package agency
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	agencyv1 "github.com/pobochiigo/bhole/proto/agency/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListAgencies transport.Handler[agencyv1.ListAgenciesRequest, agencyv1.ListAgenciesResponse]
-	getAgency    transport.Handler[agencyv1.GetAgencyRequest, agencyv1.GetAgencyResponse]
+	listListAgencies connectrpc.Handler[agencyv1.ListAgenciesRequest, agencyv1.ListAgenciesResponse]
+	getAgency    connectrpc.Handler[agencyv1.GetAgencyRequest, agencyv1.GetAgencyResponse]
 }
 
 func (s *server) ListAgencies(ctx context.Context, req *connect.Request[agencyv1.ListAgenciesRequest]) (*connect.Response[agencyv1.ListAgenciesResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetAgency(ctx context.Context, req *connect.Request[agencyv1.Ge
 func NewAgencyHandler(svc Service) v1connect.AgencyServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListAgencies: transport.NewConnectServer(
+		listListAgencies: connectrpc.NewConnectServer(
 			eps.listListAgencies,
 			decodeListAgenciesRequest,
 			encodeListAgenciesResponse,
 		),
-		getAgency: transport.NewConnectServer(
+		getAgency: connectrpc.NewConnectServer(
 			eps.getAgency,
 			decodeGetAgencyRequest,
 			encodeGetAgencyResponse,

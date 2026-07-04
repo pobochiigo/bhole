@@ -3,7 +3,7 @@ package spacecraft
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/silo/endpoint"
 	bizspacecraft "github.com/pobochiigo/bhole/internal/spacecraft"
 )
 

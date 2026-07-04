@@ -3,15 +3,15 @@ package launcher
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	launcherv1 "github.com/pobochiigo/bhole/proto/launcher/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/launcher/v1/launcherv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListLaunchers transport.Handler[launcherv1.ListLaunchersRequest, launcherv1.ListLaunchersResponse]
-	getLauncher    transport.Handler[launcherv1.GetLauncherRequest, launcherv1.GetLauncherResponse]
+	listListLaunchers connectrpc.Handler[launcherv1.ListLaunchersRequest, launcherv1.ListLaunchersResponse]
+	getLauncher    connectrpc.Handler[launcherv1.GetLauncherRequest, launcherv1.GetLauncherResponse]
 }
 
 func (s *server) ListLaunchers(ctx context.Context, req *connect.Request[launcherv1.ListLaunchersRequest]) (*connect.Response[launcherv1.ListLaunchersResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetLauncher(ctx context.Context, req *connect.Request[launcherv
 func NewLauncherHandler(svc Service) v1connect.LauncherServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListLaunchers: transport.NewConnectServer(
+		listListLaunchers: connectrpc.NewConnectServer(
 			eps.listListLaunchers,
 			decodeListLaunchersRequest,
 			encodeListLaunchersResponse,
 		),
-		getLauncher: transport.NewConnectServer(
+		getLauncher: connectrpc.NewConnectServer(
 			eps.getLauncher,
 			decodeGetLauncherRequest,
 			encodeGetLauncherResponse,

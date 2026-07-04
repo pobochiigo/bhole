@@ -3,15 +3,15 @@ package launcher_configuration
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	launcher_configurationv1 "github.com/pobochiigo/bhole/proto/launcher_configuration/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/launcher_configuration/v1/launcher_configurationv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListLauncherConfigurations transport.Handler[launcher_configurationv1.ListLauncherConfigurationsRequest, launcher_configurationv1.ListLauncherConfigurationsResponse]
-	getLauncherConfiguration    transport.Handler[launcher_configurationv1.GetLauncherConfigurationRequest, launcher_configurationv1.GetLauncherConfigurationResponse]
+	listListLauncherConfigurations connectrpc.Handler[launcher_configurationv1.ListLauncherConfigurationsRequest, launcher_configurationv1.ListLauncherConfigurationsResponse]
+	getLauncherConfiguration    connectrpc.Handler[launcher_configurationv1.GetLauncherConfigurationRequest, launcher_configurationv1.GetLauncherConfigurationResponse]
 }
 
 func (s *server) ListLauncherConfigurations(ctx context.Context, req *connect.Request[launcher_configurationv1.ListLauncherConfigurationsRequest]) (*connect.Response[launcher_configurationv1.ListLauncherConfigurationsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetLauncherConfiguration(ctx context.Context, req *connect.Requ
 func NewLauncherConfigurationHandler(svc Service) v1connect.LauncherConfigurationServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListLauncherConfigurations: transport.NewConnectServer(
+		listListLauncherConfigurations: connectrpc.NewConnectServer(
 			eps.listListLauncherConfigurations,
 			decodeListLauncherConfigurationsRequest,
 			encodeListLauncherConfigurationsResponse,
 		),
-		getLauncherConfiguration: transport.NewConnectServer(
+		getLauncherConfiguration: connectrpc.NewConnectServer(
 			eps.getLauncherConfiguration,
 			decodeGetLauncherConfigurationRequest,
 			encodeGetLauncherConfigurationResponse,

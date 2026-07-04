@@ -3,15 +3,15 @@ package update
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	updatev1 "github.com/pobochiigo/bhole/proto/update/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/update/v1/updatev1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListUpdates transport.Handler[updatev1.ListUpdatesRequest, updatev1.ListUpdatesResponse]
-	getUpdate    transport.Handler[updatev1.GetUpdateRequest, updatev1.GetUpdateResponse]
+	listListUpdates connectrpc.Handler[updatev1.ListUpdatesRequest, updatev1.ListUpdatesResponse]
+	getUpdate    connectrpc.Handler[updatev1.GetUpdateRequest, updatev1.GetUpdateResponse]
 }
 
 func (s *server) ListUpdates(ctx context.Context, req *connect.Request[updatev1.ListUpdatesRequest]) (*connect.Response[updatev1.ListUpdatesResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetUpdate(ctx context.Context, req *connect.Request[updatev1.Ge
 func NewUpdateHandler(svc Service) v1connect.UpdateServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListUpdates: transport.NewConnectServer(
+		listListUpdates: connectrpc.NewConnectServer(
 			eps.listListUpdates,
 			decodeListUpdatesRequest,
 			encodeListUpdatesResponse,
 		),
-		getUpdate: transport.NewConnectServer(
+		getUpdate: connectrpc.NewConnectServer(
 			eps.getUpdate,
 			decodeGetUpdateRequest,
 			encodeGetUpdateResponse,

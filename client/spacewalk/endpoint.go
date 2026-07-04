@@ -3,7 +3,7 @@ package spacewalk
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/silo/endpoint"
 	bizspacewalk "github.com/pobochiigo/bhole/internal/spacewalk"
 )
 

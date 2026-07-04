@@ -3,15 +3,15 @@ package astronaut
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	astronautv1 "github.com/pobochiigo/bhole/proto/astronaut/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/astronaut/v1/astronautv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListAstronauts transport.Handler[astronautv1.ListAstronautsRequest, astronautv1.ListAstronautsResponse]
-	getAstronaut    transport.Handler[astronautv1.GetAstronautRequest, astronautv1.GetAstronautResponse]
+	listListAstronauts connectrpc.Handler[astronautv1.ListAstronautsRequest, astronautv1.ListAstronautsResponse]
+	getAstronaut    connectrpc.Handler[astronautv1.GetAstronautRequest, astronautv1.GetAstronautResponse]
 }
 
 func (s *server) ListAstronauts(ctx context.Context, req *connect.Request[astronautv1.ListAstronautsRequest]) (*connect.Response[astronautv1.ListAstronautsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetAstronaut(ctx context.Context, req *connect.Request[astronau
 func NewAstronautHandler(svc Service) v1connect.AstronautServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListAstronauts: transport.NewConnectServer(
+		listListAstronauts: connectrpc.NewConnectServer(
 			eps.listListAstronauts,
 			decodeListAstronautsRequest,
 			encodeListAstronautsResponse,
 		),
-		getAstronaut: transport.NewConnectServer(
+		getAstronaut: connectrpc.NewConnectServer(
 			eps.getAstronaut,
 			decodeGetAstronautRequest,
 			encodeGetAstronautResponse,

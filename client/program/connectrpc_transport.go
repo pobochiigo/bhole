@@ -3,7 +3,7 @@ package program
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizprogram "github.com/pobochiigo/bhole/internal/program"
 	programv1 "github.com/pobochiigo/bhole/proto/program/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/program/v1/programv1connect"
@@ -14,12 +14,12 @@ func NewProgramClient(httpClient connect.HTTPClient, baseURL string, opts ...con
 	connectClient := v1connect.NewProgramServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListPrograms: transport.NewConnectClient(
+		listListPrograms: connectrpc.NewConnectClient(
 			connectClient.ListPrograms,
 			encodeListProgramsRequest,
 			decodeListProgramsResponse,
 		),
-		getProgram: transport.NewConnectClient(
+		getProgram: connectrpc.NewConnectClient(
 			connectClient.GetProgram,
 			encodeGetProgramRequest,
 			decodeGetProgramResponse,

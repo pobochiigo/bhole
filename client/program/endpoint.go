@@ -3,7 +3,7 @@ package program
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/silo/endpoint"
 	bizprogram "github.com/pobochiigo/bhole/internal/program"
 )
 

@@ -3,7 +3,7 @@ package agency
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizagency "github.com/pobochiigo/bhole/internal/agency"
 	agencyv1 "github.com/pobochiigo/bhole/proto/agency/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
@@ -14,12 +14,12 @@ func NewAgencyClient(httpClient connect.HTTPClient, baseURL string, opts ...conn
 	connectClient := v1connect.NewAgencyServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListAgencies: transport.NewConnectClient(
+		listListAgencies: connectrpc.NewConnectClient(
 			connectClient.ListAgencies,
 			encodeListAgenciesRequest,
 			decodeListAgenciesResponse,
 		),
-		getAgency: transport.NewConnectClient(
+		getAgency: connectrpc.NewConnectClient(
 			connectClient.GetAgency,
 			encodeGetAgencyRequest,
 			decodeGetAgencyResponse,

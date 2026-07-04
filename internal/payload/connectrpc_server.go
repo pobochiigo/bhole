@@ -3,15 +3,15 @@ package payload
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	payloadv1 "github.com/pobochiigo/bhole/proto/payload/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/payload/v1/payloadv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListPayloads transport.Handler[payloadv1.ListPayloadsRequest, payloadv1.ListPayloadsResponse]
-	getPayload    transport.Handler[payloadv1.GetPayloadRequest, payloadv1.GetPayloadResponse]
+	listListPayloads connectrpc.Handler[payloadv1.ListPayloadsRequest, payloadv1.ListPayloadsResponse]
+	getPayload    connectrpc.Handler[payloadv1.GetPayloadRequest, payloadv1.GetPayloadResponse]
 }
 
 func (s *server) ListPayloads(ctx context.Context, req *connect.Request[payloadv1.ListPayloadsRequest]) (*connect.Response[payloadv1.ListPayloadsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetPayload(ctx context.Context, req *connect.Request[payloadv1.
 func NewPayloadHandler(svc Service) v1connect.PayloadServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListPayloads: transport.NewConnectServer(
+		listListPayloads: connectrpc.NewConnectServer(
 			eps.listListPayloads,
 			decodeListPayloadsRequest,
 			encodeListPayloadsResponse,
 		),
-		getPayload: transport.NewConnectServer(
+		getPayload: connectrpc.NewConnectServer(
 			eps.getPayload,
 			decodeGetPayloadRequest,
 			encodeGetPayloadResponse,

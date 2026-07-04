@@ -3,15 +3,15 @@ package celestial_body
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	celestial_bodyv1 "github.com/pobochiigo/bhole/proto/celestial_body/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/celestial_body/v1/celestial_bodyv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListCelestialBodies transport.Handler[celestial_bodyv1.ListCelestialBodiesRequest, celestial_bodyv1.ListCelestialBodiesResponse]
-	getCelestialBody    transport.Handler[celestial_bodyv1.GetCelestialBodyRequest, celestial_bodyv1.GetCelestialBodyResponse]
+	listListCelestialBodies connectrpc.Handler[celestial_bodyv1.ListCelestialBodiesRequest, celestial_bodyv1.ListCelestialBodiesResponse]
+	getCelestialBody    connectrpc.Handler[celestial_bodyv1.GetCelestialBodyRequest, celestial_bodyv1.GetCelestialBodyResponse]
 }
 
 func (s *server) ListCelestialBodies(ctx context.Context, req *connect.Request[celestial_bodyv1.ListCelestialBodiesRequest]) (*connect.Response[celestial_bodyv1.ListCelestialBodiesResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetCelestialBody(ctx context.Context, req *connect.Request[cele
 func NewCelestialBodyHandler(svc Service) v1connect.CelestialBodyServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListCelestialBodies: transport.NewConnectServer(
+		listListCelestialBodies: connectrpc.NewConnectServer(
 			eps.listListCelestialBodies,
 			decodeListCelestialBodiesRequest,
 			encodeListCelestialBodiesResponse,
 		),
-		getCelestialBody: transport.NewConnectServer(
+		getCelestialBody: connectrpc.NewConnectServer(
 			eps.getCelestialBody,
 			decodeGetCelestialBodyRequest,
 			encodeGetCelestialBodyResponse,

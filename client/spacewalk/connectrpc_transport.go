@@ -3,7 +3,7 @@ package spacewalk
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizspacewalk "github.com/pobochiigo/bhole/internal/spacewalk"
 	spacewalkv1 "github.com/pobochiigo/bhole/proto/spacewalk/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/spacewalk/v1/spacewalkv1connect"
@@ -14,12 +14,12 @@ func NewSpacewalkClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 	connectClient := v1connect.NewSpacewalkServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListSpacewalks: transport.NewConnectClient(
+		listListSpacewalks: connectrpc.NewConnectClient(
 			connectClient.ListSpacewalks,
 			encodeListSpacewalksRequest,
 			decodeListSpacewalksResponse,
 		),
-		getSpacewalk: transport.NewConnectClient(
+		getSpacewalk: connectrpc.NewConnectClient(
 			connectClient.GetSpacewalk,
 			encodeGetSpacewalkRequest,
 			decodeGetSpacewalkResponse,

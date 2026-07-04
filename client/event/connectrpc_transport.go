@@ -3,7 +3,7 @@ package event
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	bizevent "github.com/pobochiigo/bhole/internal/event"
 	eventv1 "github.com/pobochiigo/bhole/proto/event/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/event/v1/eventv1connect"
@@ -14,12 +14,12 @@ func NewEventClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 	connectClient := v1connect.NewEventServiceClient(httpClient, baseURL, opts...)
 
 	return &endpoints{
-		listListEvents: transport.NewConnectClient(
+		listListEvents: connectrpc.NewConnectClient(
 			connectClient.ListEvents,
 			encodeListEventsRequest,
 			decodeListEventsResponse,
 		),
-		getEvent: transport.NewConnectClient(
+		getEvent: connectrpc.NewConnectClient(
 			connectClient.GetEvent,
 			encodeGetEventRequest,
 			decodeGetEventResponse,

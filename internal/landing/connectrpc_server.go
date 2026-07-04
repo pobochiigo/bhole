@@ -3,15 +3,15 @@ package landing
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	landingv1 "github.com/pobochiigo/bhole/proto/landing/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/landing/v1/landingv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListLandings transport.Handler[landingv1.ListLandingsRequest, landingv1.ListLandingsResponse]
-	getLanding    transport.Handler[landingv1.GetLandingRequest, landingv1.GetLandingResponse]
+	listListLandings connectrpc.Handler[landingv1.ListLandingsRequest, landingv1.ListLandingsResponse]
+	getLanding    connectrpc.Handler[landingv1.GetLandingRequest, landingv1.GetLandingResponse]
 }
 
 func (s *server) ListLandings(ctx context.Context, req *connect.Request[landingv1.ListLandingsRequest]) (*connect.Response[landingv1.ListLandingsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetLanding(ctx context.Context, req *connect.Request[landingv1.
 func NewLandingHandler(svc Service) v1connect.LandingServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListLandings: transport.NewConnectServer(
+		listListLandings: connectrpc.NewConnectServer(
 			eps.listListLandings,
 			decodeListLandingsRequest,
 			encodeListLandingsResponse,
 		),
-		getLanding: transport.NewConnectServer(
+		getLanding: connectrpc.NewConnectServer(
 			eps.getLanding,
 			decodeGetLandingRequest,
 			encodeGetLandingResponse,

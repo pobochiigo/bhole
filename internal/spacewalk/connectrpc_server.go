@@ -3,15 +3,15 @@ package spacewalk
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	spacewalkv1 "github.com/pobochiigo/bhole/proto/spacewalk/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/spacewalk/v1/spacewalkv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListSpacewalks transport.Handler[spacewalkv1.ListSpacewalksRequest, spacewalkv1.ListSpacewalksResponse]
-	getSpacewalk    transport.Handler[spacewalkv1.GetSpacewalkRequest, spacewalkv1.GetSpacewalkResponse]
+	listListSpacewalks connectrpc.Handler[spacewalkv1.ListSpacewalksRequest, spacewalkv1.ListSpacewalksResponse]
+	getSpacewalk    connectrpc.Handler[spacewalkv1.GetSpacewalkRequest, spacewalkv1.GetSpacewalkResponse]
 }
 
 func (s *server) ListSpacewalks(ctx context.Context, req *connect.Request[spacewalkv1.ListSpacewalksRequest]) (*connect.Response[spacewalkv1.ListSpacewalksResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetSpacewalk(ctx context.Context, req *connect.Request[spacewal
 func NewSpacewalkHandler(svc Service) v1connect.SpacewalkServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListSpacewalks: transport.NewConnectServer(
+		listListSpacewalks: connectrpc.NewConnectServer(
 			eps.listListSpacewalks,
 			decodeListSpacewalksRequest,
 			encodeListSpacewalksResponse,
 		),
-		getSpacewalk: transport.NewConnectServer(
+		getSpacewalk: connectrpc.NewConnectServer(
 			eps.getSpacewalk,
 			decodeGetSpacewalkRequest,
 			encodeGetSpacewalkResponse,

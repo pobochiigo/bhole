@@ -3,7 +3,7 @@ package event
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/client/endpoint"
+	"github.com/pobochiigo/silo/endpoint"
 	bizevent "github.com/pobochiigo/bhole/internal/event"
 )
 

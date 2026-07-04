@@ -3,15 +3,15 @@ package program
 import (
 	"context"
 
-	"github.com/pobochiigo/bhole/internal/transport"
+	"github.com/pobochiigo/silo/connectrpc"
 	programv1 "github.com/pobochiigo/bhole/proto/program/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/program/v1/programv1connect"
 	"connectrpc.com/connect"
 )
 
 type server struct {
-	listListPrograms transport.Handler[programv1.ListProgramsRequest, programv1.ListProgramsResponse]
-	getProgram    transport.Handler[programv1.GetProgramRequest, programv1.GetProgramResponse]
+	listListPrograms connectrpc.Handler[programv1.ListProgramsRequest, programv1.ListProgramsResponse]
+	getProgram    connectrpc.Handler[programv1.GetProgramRequest, programv1.GetProgramResponse]
 }
 
 func (s *server) ListPrograms(ctx context.Context, req *connect.Request[programv1.ListProgramsRequest]) (*connect.Response[programv1.ListProgramsResponse], error) {
@@ -25,12 +25,12 @@ func (s *server) GetProgram(ctx context.Context, req *connect.Request[programv1.
 func NewProgramHandler(svc Service) v1connect.ProgramServiceHandler {
 	eps := MakeEndpoints(svc)
 	return &server{
-		listListPrograms: transport.NewConnectServer(
+		listListPrograms: connectrpc.NewConnectServer(
 			eps.listListPrograms,
 			decodeListProgramsRequest,
 			encodeListProgramsResponse,
 		),
-		getProgram: transport.NewConnectServer(
+		getProgram: connectrpc.NewConnectServer(
 			eps.getProgram,
 			decodeGetProgramRequest,
 			encodeGetProgramResponse,
