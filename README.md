@@ -16,12 +16,11 @@ The codebase separates concerns between pure business domains, generic transport
 │   ├── ts/                 # TypeScript client package (Connect-ES v2.x)
 │   └── transport/          # REST-mapping ConnectRPC HTTP client (RESTClient)
 │
-├── pkg/                    # Public Domain Models, Service Interfaces & Server Handlers
-│   └── {feature}/          # Feature package (e.g. pkg/launch)
-│       ├── {feature}.go    # Domain structs (request/response and resource models)
-│       ├── service.go      # Service interface implemented by clients and servers alike
-│       ├── endpoint.go     # Go-kit server endpoints
-│       └── connectrpc_server.go # ConnectRPC service handler, encoders/decoders & mappers
+├── {feature}/              # Feature Package at the module root (e.g. launch/, agency/)
+│   ├── {feature}.go        # Domain structs (request/response and resource models)
+│   ├── service.go          # Service interface implemented by clients and servers alike
+│   ├── endpoint.go         # Go-kit server endpoints
+│   └── connectrpc_server.go # ConnectRPC service handler, encoders/decoders & mappers
 │
 ├── cmd/                    # Binaries
 │   ├── example/            # Go client demonstration calling the public LL2 REST API
@@ -32,7 +31,7 @@ The codebase separates concerns between pure business domains, generic transport
 └── scripts/                # Code generation engines
 ```
 
-Domain models and `Service` interfaces live in `pkg/` (not `internal/`) so that other Go modules can import the client SDK and construct requests.
+Domain models and `Service` interfaces live in top-level packages (`github.com/pobochiigo/bhole/launch`, `.../agency`, ...) rather than under `internal/`, so other Go modules can import the client SDK and construct requests.
 
 ---
 
@@ -47,7 +46,7 @@ python3 scripts/generate_client.py
 ```
 
 ### 2. Generate Go Server Handlers
-Generates endpoint bindings, encoders, decoders, and business-to-proto mappers inside `pkg/{feature}`:
+Generates endpoint bindings, encoders, decoders, and business-to-proto mappers inside each `{feature}/` package:
 ```bash
 python3 scripts/generate_server.py
 ```
@@ -98,7 +97,7 @@ The server listens at `http://localhost:8080` by default and shuts down graceful
 import (
     "github.com/pobochiigo/bhole/client/transport"
     launchclient "github.com/pobochiigo/bhole/client/launch"
-    "github.com/pobochiigo/bhole/pkg/launch"
+    "github.com/pobochiigo/bhole/launch"
 )
 
 rest := transport.NewRESTClient("https://lldev.thespacedevs.com", nil)

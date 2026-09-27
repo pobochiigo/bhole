@@ -3,7 +3,7 @@ package agency
 import (
 	"context"
 
-	bizagency "github.com/pobochiigo/bhole/pkg/agency"
+	bizagency "github.com/pobochiigo/bhole/agency"
 	"github.com/pobochiigo/silo/endpoint"
 )
 

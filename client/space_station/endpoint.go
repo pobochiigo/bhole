@@ -3,7 +3,7 @@ package space_station
 import (
 	"context"
 
-	bizspace_station "github.com/pobochiigo/bhole/pkg/space_station"
+	bizspace_station "github.com/pobochiigo/bhole/space_station"
 	"github.com/pobochiigo/silo/endpoint"
 )
 

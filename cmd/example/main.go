@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/pobochiigo/bhole/agency"
 	agencyclient "github.com/pobochiigo/bhole/client/agency"
 	launchclient "github.com/pobochiigo/bhole/client/launch"
 	"github.com/pobochiigo/bhole/client/transport"
-	"github.com/pobochiigo/bhole/pkg/agency"
-	"github.com/pobochiigo/bhole/pkg/launch"
+	"github.com/pobochiigo/bhole/launch"
 )
 
 func main() {

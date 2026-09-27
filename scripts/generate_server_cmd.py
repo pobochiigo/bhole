@@ -55,7 +55,7 @@ def main():
     for feature in sorted(RESOURCES.keys()):
         feature_camel = camel_case(feature)
         project_imports.append(f'{feature}client "github.com/pobochiigo/bhole/client/{feature}"')
-        project_imports.append(f'{feature} "github.com/pobochiigo/bhole/pkg/{feature}"')
+        project_imports.append(f'{feature} "github.com/pobochiigo/bhole/{feature}"')
         project_imports.append(f'{feature}v1connect "github.com/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"')
 
     nl = "\n\t"

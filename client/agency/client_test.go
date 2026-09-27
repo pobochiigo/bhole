@@ -8,8 +8,8 @@ import (
 
 	"connectrpc.com/connect"
 
+	"github.com/pobochiigo/bhole/agency"
 	agencyclient "github.com/pobochiigo/bhole/client/agency"
-	"github.com/pobochiigo/bhole/pkg/agency"
 	agencyv1 "github.com/pobochiigo/bhole/proto/agency/v1"
 	"github.com/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
 )

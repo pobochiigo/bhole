@@ -377,7 +377,7 @@ def main():
         
         # Make directories
         os.makedirs(f"proto/{feature}/v1", exist_ok=True)
-        os.makedirs(f"pkg/{feature}", exist_ok=True)
+        os.makedirs(f"{feature}", exist_ok=True)
         os.makedirs(f"client/{feature}", exist_ok=True)
         
         # --- A. Generate PROTO ---
@@ -487,7 +487,7 @@ type Get{feature_camel}Request struct {{
 	Mode string
 }}
 """
-        with open(f"pkg/{feature}/{feature}.go", "w") as mf:
+        with open(f"{feature}/{feature}.go", "w") as mf:
             mf.write(go_models_content)
             
         # --- C. Generate INTERNAL SERVICE INTERFACE ---
@@ -500,7 +500,7 @@ type Service interface {{
 	Get{feature_camel}(ctx context.Context, req *Get{feature_camel}Request) (*{feature_camel}, error)
 }}
 """
-        with open(f"pkg/{feature}/service.go", "w") as sf:
+        with open(f"{feature}/service.go", "w") as sf:
             sf.write(go_svc_content)
             
         # --- D. Generate CONNECTRPC CLIENT (GO-KIT GENERICS STYLE) ---
@@ -511,7 +511,7 @@ import (
 	"context"
 
 	"github.com/pobochiigo/silo/endpoint"
-	biz{feature} "github.com/pobochiigo/bhole/pkg/{feature}"
+	biz{feature} "github.com/pobochiigo/bhole/{feature}"
 )
 
 type endpoints struct {{
@@ -538,7 +538,7 @@ import (
 	"errors"
 
 	"github.com/pobochiigo/silo/connectrpc"
-	biz{feature} "github.com/pobochiigo/bhole/pkg/{feature}"
+	biz{feature} "github.com/pobochiigo/bhole/{feature}"
 	{feature}v1 "github.com/pobochiigo/bhole/proto/{feature}/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"
 	"connectrpc.com/connect"
@@ -980,7 +980,7 @@ func writeResponse(reqContentType string, msg proto.Message) (*http.Response, er
     with open("client/transport/rest_client.go", "w") as rf:
         rf.write(rest_go_content)
         
-    run_gofmt(["client", "pkg"])
+    run_gofmt(["client", *sorted(RESOURCES)])
     print("Code generation completed successfully!")
 
 if __name__ == "__main__":

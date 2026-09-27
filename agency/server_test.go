@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"connectrpc.com/connect"
-	"github.com/pobochiigo/bhole/pkg/agency"
+	"github.com/pobochiigo/bhole/agency"
 	agencyv1 "github.com/pobochiigo/bhole/proto/agency/v1"
 	"github.com/pobochiigo/bhole/proto/agency/v1/agencyv1connect"
 )

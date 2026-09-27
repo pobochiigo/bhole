@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizlauncher "github.com/pobochiigo/bhole/pkg/launcher"
+	bizlauncher "github.com/pobochiigo/bhole/launcher"
 	launcherv1 "github.com/pobochiigo/bhole/proto/launcher/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/launcher/v1/launcherv1connect"
 	"github.com/pobochiigo/silo/connectrpc"

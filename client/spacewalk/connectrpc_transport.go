@@ -5,9 +5,9 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizspacewalk "github.com/pobochiigo/bhole/pkg/spacewalk"
 	spacewalkv1 "github.com/pobochiigo/bhole/proto/spacewalk/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/spacewalk/v1/spacewalkv1connect"
+	bizspacewalk "github.com/pobochiigo/bhole/spacewalk"
 	"github.com/pobochiigo/silo/connectrpc"
 )
 

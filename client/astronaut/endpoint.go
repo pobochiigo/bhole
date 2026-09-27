@@ -3,7 +3,7 @@ package astronaut
 import (
 	"context"
 
-	bizastronaut "github.com/pobochiigo/bhole/pkg/astronaut"
+	bizastronaut "github.com/pobochiigo/bhole/astronaut"
 	"github.com/pobochiigo/silo/endpoint"
 )
 

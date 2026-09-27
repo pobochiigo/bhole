@@ -3,7 +3,7 @@ package pad
 import (
 	"context"
 
-	bizpad "github.com/pobochiigo/bhole/pkg/pad"
+	bizpad "github.com/pobochiigo/bhole/pad"
 	"github.com/pobochiigo/silo/endpoint"
 )
 

@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizdocking_event "github.com/pobochiigo/bhole/pkg/docking_event"
+	bizdocking_event "github.com/pobochiigo/bhole/docking_event"
 	docking_eventv1 "github.com/pobochiigo/bhole/proto/docking_event/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/docking_event/v1/docking_eventv1connect"
 	"github.com/pobochiigo/silo/connectrpc"

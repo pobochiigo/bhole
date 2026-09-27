@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizlanding "github.com/pobochiigo/bhole/pkg/landing"
+	bizlanding "github.com/pobochiigo/bhole/landing"
 	landingv1 "github.com/pobochiigo/bhole/proto/landing/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/landing/v1/landingv1connect"
 	"github.com/pobochiigo/silo/connectrpc"

@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizpad "github.com/pobochiigo/bhole/pkg/pad"
+	bizpad "github.com/pobochiigo/bhole/pad"
 	padv1 "github.com/pobochiigo/bhole/proto/pad/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/pad/v1/padv1connect"
 	"github.com/pobochiigo/silo/connectrpc"
