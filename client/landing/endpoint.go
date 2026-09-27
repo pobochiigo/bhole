@@ -3,13 +3,13 @@ package landing
 import (
 	"context"
 
+	bizlanding "github.com/pobochiigo/bhole/pkg/landing"
 	"github.com/pobochiigo/silo/endpoint"
-	bizlanding "github.com/pobochiigo/bhole/internal/landing"
 )
 
 type endpoints struct {
 	listListLandings endpoint.Endpoint[*bizlanding.ListLandingsRequest, *bizlanding.ListLandingsResponse]
-	getLanding    endpoint.Endpoint[*bizlanding.GetLandingRequest, *bizlanding.Landing]
+	getLanding       endpoint.Endpoint[*bizlanding.GetLandingRequest, *bizlanding.Landing]
 }
 
 func (c *endpoints) ListLandings(ctx context.Context, req *bizlanding.ListLandingsRequest) (*bizlanding.ListLandingsResponse, error) {

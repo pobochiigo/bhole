@@ -2,12 +2,13 @@ package launcher_configuration
 
 import (
 	"context"
+	"errors"
 
-	"github.com/pobochiigo/silo/connectrpc"
-	bizlauncher_configuration "github.com/pobochiigo/bhole/internal/launcher_configuration"
+	"connectrpc.com/connect"
+	bizlauncher_configuration "github.com/pobochiigo/bhole/pkg/launcher_configuration"
 	launcher_configurationv1 "github.com/pobochiigo/bhole/proto/launcher_configuration/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/launcher_configuration/v1/launcher_configurationv1connect"
-	"connectrpc.com/connect"
+	"github.com/pobochiigo/silo/connectrpc"
 )
 
 func NewLauncherConfigurationClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) bizlauncher_configuration.Service {
@@ -58,7 +59,7 @@ func decodeListLauncherConfigurationsResponse(ctx context.Context, resp *launche
 
 func decodeGetLauncherConfigurationResponse(ctx context.Context, resp *launcher_configurationv1.GetLauncherConfigurationResponse) (*bizlauncher_configuration.LauncherConfiguration, error) {
 	if resp.LauncherConfiguration == nil {
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("launcher_configuration: empty response"))
 	}
 	return mapProtoToBizLauncherConfiguration(resp.LauncherConfiguration), nil
 }
@@ -68,11 +69,11 @@ func mapProtoToBizAgencyDetailed(r *launcher_configurationv1.AgencyDetailed) *bi
 		return nil
 	}
 	return &bizlauncher_configuration.AgencyDetailed{
-		Abbrev: r.Abbrev,
-		Administrator: r.Administrator,
-		AttemptedLandings: r.AttemptedLandings,
-		AttemptedLandingsPayload: r.AttemptedLandingsPayload,
-		AttemptedLandingsSpacecraft: r.AttemptedLandingsSpacecraft,
+		Abbrev:                        r.Abbrev,
+		Administrator:                 r.Administrator,
+		AttemptedLandings:             r.AttemptedLandings,
+		AttemptedLandingsPayload:      r.AttemptedLandingsPayload,
+		AttemptedLandingsSpacecraft:   r.AttemptedLandingsSpacecraft,
 		ConsecutiveSuccessfulLandings: r.ConsecutiveSuccessfulLandings,
 		ConsecutiveSuccessfulLaunches: r.ConsecutiveSuccessfulLaunches,
 		Country: func() []bizlauncher_configuration.Country {
@@ -85,23 +86,23 @@ func mapProtoToBizAgencyDetailed(r *launcher_configurationv1.AgencyDetailed) *bi
 			}
 			return res
 		}(),
-		Description: r.Description,
-		FailedLandings: r.FailedLandings,
-		FailedLandingsPayload: r.FailedLandingsPayload,
+		Description:              r.Description,
+		FailedLandings:           r.FailedLandings,
+		FailedLandingsPayload:    r.FailedLandingsPayload,
 		FailedLandingsSpacecraft: r.FailedLandingsSpacecraft,
-		FailedLaunches: r.FailedLaunches,
-		Featured: r.Featured,
-		FoundingYear: r.FoundingYear,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
-		Launchers: r.Launchers,
-		Logo: mapProtoToBizImage(r.Logo),
-		Name: r.Name,
-		Parent: r.Parent,
-		PendingLaunches: r.PendingLaunches,
-		ResponseMode: r.ResponseMode,
-		SocialLogo: mapProtoToBizImage(r.SocialLogo),
+		FailedLaunches:           r.FailedLaunches,
+		Featured:                 r.Featured,
+		FoundingYear:             r.FoundingYear,
+		Id:                       r.Id,
+		Image:                    mapProtoToBizImage(r.Image),
+		InfoUrl:                  r.InfoUrl,
+		Launchers:                r.Launchers,
+		Logo:                     mapProtoToBizImage(r.Logo),
+		Name:                     r.Name,
+		Parent:                   r.Parent,
+		PendingLaunches:          r.PendingLaunches,
+		ResponseMode:             r.ResponseMode,
+		SocialLogo:               mapProtoToBizImage(r.SocialLogo),
 		SocialMediaLinks: func() []bizlauncher_configuration.SocialMediaLink {
 			if r.SocialMediaLinks == nil {
 				return nil
@@ -112,15 +113,15 @@ func mapProtoToBizAgencyDetailed(r *launcher_configurationv1.AgencyDetailed) *bi
 			}
 			return res
 		}(),
-		Spacecraft: r.Spacecraft,
-		SuccessfulLandings: r.SuccessfulLandings,
-		SuccessfulLandingsPayload: r.SuccessfulLandingsPayload,
+		Spacecraft:                   r.Spacecraft,
+		SuccessfulLandings:           r.SuccessfulLandings,
+		SuccessfulLandingsPayload:    r.SuccessfulLandingsPayload,
 		SuccessfulLandingsSpacecraft: r.SuccessfulLandingsSpacecraft,
-		SuccessfulLaunches: r.SuccessfulLaunches,
-		TotalLaunchCount: r.TotalLaunchCount,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
-		WikiUrl: r.WikiUrl,
+		SuccessfulLaunches:           r.SuccessfulLaunches,
+		TotalLaunchCount:             r.TotalLaunchCount,
+		TypeVal:                      mapProtoToBizAgencyType(r.Type),
+		Url:                          r.Url,
+		WikiUrl:                      r.WikiUrl,
 	}
 }
 
@@ -129,12 +130,12 @@ func mapProtoToBizAgencyMini(r *launcher_configurationv1.AgencyMini) *bizlaunche
 		return nil
 	}
 	return &bizlauncher_configuration.AgencyMini{
-		Abbrev: r.Abbrev,
-		Id: r.Id,
-		Name: r.Name,
+		Abbrev:       r.Abbrev,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
+		TypeVal:      mapProtoToBizAgencyType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -143,7 +144,7 @@ func mapProtoToBizAgencyNormal(r *launcher_configurationv1.AgencyNormal) *bizlau
 		return nil
 	}
 	return &bizlauncher_configuration.AgencyNormal{
-		Abbrev: r.Abbrev,
+		Abbrev:        r.Abbrev,
 		Administrator: r.Administrator,
 		Country: func() []bizlauncher_configuration.Country {
 			if r.Country == nil {
@@ -155,20 +156,20 @@ func mapProtoToBizAgencyNormal(r *launcher_configurationv1.AgencyNormal) *bizlau
 			}
 			return res
 		}(),
-		Description: r.Description,
-		Featured: r.Featured,
+		Description:  r.Description,
+		Featured:     r.Featured,
 		FoundingYear: r.FoundingYear,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Launchers: r.Launchers,
-		Logo: mapProtoToBizImage(r.Logo),
-		Name: r.Name,
-		Parent: r.Parent,
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
+		Launchers:    r.Launchers,
+		Logo:         mapProtoToBizImage(r.Logo),
+		Name:         r.Name,
+		Parent:       r.Parent,
 		ResponseMode: r.ResponseMode,
-		SocialLogo: mapProtoToBizImage(r.SocialLogo),
-		Spacecraft: r.Spacecraft,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
+		SocialLogo:   mapProtoToBizImage(r.SocialLogo),
+		Spacecraft:   r.Spacecraft,
+		TypeVal:      mapProtoToBizAgencyType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -177,7 +178,7 @@ func mapProtoToBizAgencyType(r *launcher_configurationv1.AgencyType) *bizlaunche
 		return nil
 	}
 	return &bizlauncher_configuration.AgencyType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -187,11 +188,11 @@ func mapProtoToBizCountry(r *launcher_configurationv1.Country) *bizlauncher_conf
 		return nil
 	}
 	return &bizlauncher_configuration.Country{
-		Alpha2Code: r.Alpha_2Code,
-		Alpha3Code: r.Alpha_3Code,
-		Id: r.Id,
-		Name: r.Name,
-		NationalityName: r.NationalityName,
+		Alpha2Code:              r.Alpha_2Code,
+		Alpha3Code:              r.Alpha_3Code,
+		Id:                      r.Id,
+		Name:                    r.Name,
+		NationalityName:         r.NationalityName,
 		NationalityNameComposed: r.NationalityNameComposed,
 	}
 }
@@ -201,12 +202,12 @@ func mapProtoToBizImage(r *launcher_configurationv1.Image) *bizlauncher_configur
 		return nil
 	}
 	return &bizlauncher_configuration.Image{
-		Credit: r.Credit,
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		License: mapProtoToBizImageLicense(r.License),
-		Name: r.Name,
-		SingleUse: r.SingleUse,
+		Credit:       r.Credit,
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		License:      mapProtoToBizImageLicense(r.License),
+		Name:         r.Name,
+		SingleUse:    r.SingleUse,
 		ThumbnailUrl: r.ThumbnailUrl,
 		Variants: func() []bizlauncher_configuration.ImageVariant {
 			if r.Variants == nil {
@@ -226,9 +227,9 @@ func mapProtoToBizImageLicense(r *launcher_configurationv1.ImageLicense) *bizlau
 		return nil
 	}
 	return &bizlauncher_configuration.ImageLicense{
-		Id: r.Id,
-		Link: r.Link,
-		Name: r.Name,
+		Id:       r.Id,
+		Link:     r.Link,
+		Name:     r.Name,
 		Priority: r.Priority,
 	}
 }
@@ -238,9 +239,9 @@ func mapProtoToBizImageVariant(r *launcher_configurationv1.ImageVariant) *bizlau
 		return nil
 	}
 	return &bizlauncher_configuration.ImageVariant{
-		Id: r.Id,
+		Id:       r.Id,
 		ImageUrl: r.ImageUrl,
-		TypeVal: mapProtoToBizImageVariantType(r.Type),
+		TypeVal:  mapProtoToBizImageVariantType(r.Type),
 	}
 }
 
@@ -249,7 +250,7 @@ func mapProtoToBizImageVariantType(r *launcher_configurationv1.ImageVariantType)
 		return nil
 	}
 	return &bizlauncher_configuration.ImageVariantType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -259,16 +260,16 @@ func mapProtoToBizLauncherConfiguration(r *launcher_configurationv1.LauncherConf
 		return nil
 	}
 	return &bizlauncher_configuration.LauncherConfiguration{
-		Active: r.Active,
-		Alias: r.Alias,
-		Apogee: r.Apogee,
-		AttemptedLandings: r.AttemptedLandings,
+		Active:                        r.Active,
+		Alias:                         r.Alias,
+		Apogee:                        r.Apogee,
+		AttemptedLandings:             r.AttemptedLandings,
 		ConsecutiveSuccessfulLandings: r.ConsecutiveSuccessfulLandings,
 		ConsecutiveSuccessfulLaunches: r.ConsecutiveSuccessfulLaunches,
-		Description: r.Description,
-		Diameter: r.Diameter,
-		FailedLandings: r.FailedLandings,
-		FailedLaunches: r.FailedLaunches,
+		Description:                   r.Description,
+		Diameter:                      r.Diameter,
+		FailedLandings:                r.FailedLandings,
+		FailedLaunches:                r.FailedLaunches,
 		Families: func() []bizlauncher_configuration.LauncherConfigFamilyDetailed {
 			if r.Families == nil {
 				return nil
@@ -280,23 +281,23 @@ func mapProtoToBizLauncherConfiguration(r *launcher_configurationv1.LauncherConf
 			return res
 		}(),
 		FastestTurnaround: r.FastestTurnaround,
-		FullName: r.FullName,
-		GeoCapacity: r.GeoCapacity,
-		GtoCapacity: r.GtoCapacity,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
-		IsPlaceholder: r.IsPlaceholder,
-		LaunchCost: r.LaunchCost,
-		LaunchMass: r.LaunchMass,
-		Length: r.Length,
-		LeoCapacity: r.LeoCapacity,
-		MaidenFlight: r.MaidenFlight,
-		Manufacturer: mapProtoToBizAgencyDetailed(r.Manufacturer),
-		MaxStage: r.MaxStage,
-		MinStage: r.MinStage,
-		Name: r.Name,
-		PendingLaunches: r.PendingLaunches,
+		FullName:          r.FullName,
+		GeoCapacity:       r.GeoCapacity,
+		GtoCapacity:       r.GtoCapacity,
+		Id:                r.Id,
+		Image:             mapProtoToBizImage(r.Image),
+		InfoUrl:           r.InfoUrl,
+		IsPlaceholder:     r.IsPlaceholder,
+		LaunchCost:        r.LaunchCost,
+		LaunchMass:        r.LaunchMass,
+		Length:            r.Length,
+		LeoCapacity:       r.LeoCapacity,
+		MaidenFlight:      r.MaidenFlight,
+		Manufacturer:      mapProtoToBizAgencyDetailed(r.Manufacturer),
+		MaxStage:          r.MaxStage,
+		MinStage:          r.MinStage,
+		Name:              r.Name,
+		PendingLaunches:   r.PendingLaunches,
 		Program: func() []bizlauncher_configuration.ProgramNormal {
 			if r.Program == nil {
 				return nil
@@ -307,16 +308,16 @@ func mapProtoToBizLauncherConfiguration(r *launcher_configurationv1.LauncherConf
 			}
 			return res
 		}(),
-		ResponseMode: r.ResponseMode,
-		Reusable: r.Reusable,
-		SsoCapacity: r.SsoCapacity,
+		ResponseMode:       r.ResponseMode,
+		Reusable:           r.Reusable,
+		SsoCapacity:        r.SsoCapacity,
 		SuccessfulLandings: r.SuccessfulLandings,
 		SuccessfulLaunches: r.SuccessfulLaunches,
-		ToThrust: r.ToThrust,
-		TotalLaunchCount: r.TotalLaunchCount,
-		Url: r.Url,
-		Variant: r.Variant,
-		WikiUrl: r.WikiUrl,
+		ToThrust:           r.ToThrust,
+		TotalLaunchCount:   r.TotalLaunchCount,
+		Url:                r.Url,
+		Variant:            r.Variant,
+		WikiUrl:            r.WikiUrl,
 	}
 }
 
@@ -325,15 +326,15 @@ func mapProtoToBizLauncherConfigFamilyDetailed(r *launcher_configurationv1.Launc
 		return nil
 	}
 	return &bizlauncher_configuration.LauncherConfigFamilyDetailed{
-		Active: r.Active,
-		AttemptedLandings: r.AttemptedLandings,
+		Active:                        r.Active,
+		AttemptedLandings:             r.AttemptedLandings,
 		ConsecutiveSuccessfulLandings: r.ConsecutiveSuccessfulLandings,
 		ConsecutiveSuccessfulLaunches: r.ConsecutiveSuccessfulLaunches,
-		Description: r.Description,
-		FailedLandings: r.FailedLandings,
-		FailedLaunches: r.FailedLaunches,
-		Id: r.Id,
-		MaidenFlight: r.MaidenFlight,
+		Description:                   r.Description,
+		FailedLandings:                r.FailedLandings,
+		FailedLaunches:                r.FailedLaunches,
+		Id:                            r.Id,
+		MaidenFlight:                  r.MaidenFlight,
 		Manufacturer: func() []bizlauncher_configuration.AgencyDetailed {
 			if r.Manufacturer == nil {
 				return nil
@@ -344,13 +345,13 @@ func mapProtoToBizLauncherConfigFamilyDetailed(r *launcher_configurationv1.Launc
 			}
 			return res
 		}(),
-		Name: r.Name,
-		Parent: mapProtoToBizLauncherConfigFamilyNormal(r.Parent),
-		PendingLaunches: r.PendingLaunches,
-		ResponseMode: r.ResponseMode,
+		Name:               r.Name,
+		Parent:             mapProtoToBizLauncherConfigFamilyNormal(r.Parent),
+		PendingLaunches:    r.PendingLaunches,
+		ResponseMode:       r.ResponseMode,
 		SuccessfulLandings: r.SuccessfulLandings,
 		SuccessfulLaunches: r.SuccessfulLaunches,
-		TotalLaunchCount: r.TotalLaunchCount,
+		TotalLaunchCount:   r.TotalLaunchCount,
 	}
 }
 
@@ -359,8 +360,8 @@ func mapProtoToBizLauncherConfigFamilyMini(r *launcher_configurationv1.LauncherC
 		return nil
 	}
 	return &bizlauncher_configuration.LauncherConfigFamilyMini{
-		Id: r.Id,
-		Name: r.Name,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -381,8 +382,8 @@ func mapProtoToBizLauncherConfigFamilyNormal(r *launcher_configurationv1.Launche
 			}
 			return res
 		}(),
-		Name: r.Name,
-		Parent: mapProtoToBizLauncherConfigFamilyMini(r.Parent),
+		Name:         r.Name,
+		Parent:       mapProtoToBizLauncherConfigFamilyMini(r.Parent),
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -392,11 +393,11 @@ func mapProtoToBizMissionPatch(r *launcher_configurationv1.MissionPatch) *bizlau
 		return nil
 	}
 	return &bizlauncher_configuration.MissionPatch{
-		Agency: mapProtoToBizAgencyMini(r.Agency),
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		Name: r.Name,
-		Priority: r.Priority,
+		Agency:       mapProtoToBizAgencyMini(r.Agency),
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		Name:         r.Name,
+		Priority:     r.Priority,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -417,10 +418,10 @@ func mapProtoToBizProgramNormal(r *launcher_configurationv1.ProgramNormal) *bizl
 			return res
 		}(),
 		Description: r.Description,
-		EndDate: r.EndDate,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
+		EndDate:     r.EndDate,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		InfoUrl:     r.InfoUrl,
 		MissionPatches: func() []bizlauncher_configuration.MissionPatch {
 			if r.MissionPatches == nil {
 				return nil
@@ -431,12 +432,12 @@ func mapProtoToBizProgramNormal(r *launcher_configurationv1.ProgramNormal) *bizl
 			}
 			return res
 		}(),
-		Name: r.Name,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		StartDate: r.StartDate,
-		TypeVal: mapProtoToBizProgramType(r.Type),
-		Url: r.Url,
-		WikiUrl: r.WikiUrl,
+		StartDate:    r.StartDate,
+		TypeVal:      mapProtoToBizProgramType(r.Type),
+		Url:          r.Url,
+		WikiUrl:      r.WikiUrl,
 	}
 }
 
@@ -445,7 +446,7 @@ func mapProtoToBizProgramType(r *launcher_configurationv1.ProgramType) *bizlaunc
 		return nil
 	}
 	return &bizlauncher_configuration.ProgramType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -455,10 +456,10 @@ func mapProtoToBizSocialMedia(r *launcher_configurationv1.SocialMedia) *bizlaunc
 		return nil
 	}
 	return &bizlauncher_configuration.SocialMedia{
-		Id: r.Id,
+		Id:   r.Id,
 		Logo: mapProtoToBizImage(r.Logo),
 		Name: r.Name,
-		Url: r.Url,
+		Url:  r.Url,
 	}
 }
 
@@ -467,9 +468,8 @@ func mapProtoToBizSocialMediaLink(r *launcher_configurationv1.SocialMediaLink) *
 		return nil
 	}
 	return &bizlauncher_configuration.SocialMediaLink{
-		Id: r.Id,
+		Id:          r.Id,
 		SocialMedia: mapProtoToBizSocialMedia(r.SocialMedia),
-		Url: r.Url,
+		Url:         r.Url,
 	}
 }
-

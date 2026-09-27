@@ -15,3 +15,9 @@ node_modules/
 .vscode/
 .DS_Store
 *.log
+
+# Generated documentation (typedoc / protoc-gen-doc)
+/docs/
+
+# Python bytecode from the generator scripts
+__pycache__/

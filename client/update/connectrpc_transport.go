@@ -2,12 +2,13 @@ package update
 
 import (
 	"context"
+	"errors"
 
-	"github.com/pobochiigo/silo/connectrpc"
-	bizupdate "github.com/pobochiigo/bhole/internal/update"
+	"connectrpc.com/connect"
+	bizupdate "github.com/pobochiigo/bhole/pkg/update"
 	updatev1 "github.com/pobochiigo/bhole/proto/update/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/update/v1/updatev1connect"
-	"connectrpc.com/connect"
+	"github.com/pobochiigo/silo/connectrpc"
 )
 
 func NewUpdateClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) bizupdate.Service {
@@ -58,7 +59,7 @@ func decodeListUpdatesResponse(ctx context.Context, resp *updatev1.ListUpdatesRe
 
 func decodeGetUpdateResponse(ctx context.Context, resp *updatev1.GetUpdateResponse) (*bizupdate.Update, error) {
 	if resp.Update == nil {
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("update: empty response"))
 	}
 	return mapProtoToBizUpdate(resp.Update), nil
 }
@@ -68,12 +69,11 @@ func mapProtoToBizUpdate(r *updatev1.Update) *bizupdate.Update {
 		return nil
 	}
 	return &bizupdate.Update{
-		Comment: r.Comment,
-		CreatedBy: r.CreatedBy,
-		CreatedOn: r.CreatedOn,
-		Id: r.Id,
-		InfoUrl: r.InfoUrl,
+		Comment:      r.Comment,
+		CreatedBy:    r.CreatedBy,
+		CreatedOn:    r.CreatedOn,
+		Id:           r.Id,
+		InfoUrl:      r.InfoUrl,
 		ProfileImage: r.ProfileImage,
 	}
 }
-

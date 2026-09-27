@@ -2,12 +2,13 @@ package payload
 
 import (
 	"context"
+	"errors"
 
-	"github.com/pobochiigo/silo/connectrpc"
-	bizpayload "github.com/pobochiigo/bhole/internal/payload"
+	"connectrpc.com/connect"
+	bizpayload "github.com/pobochiigo/bhole/pkg/payload"
 	payloadv1 "github.com/pobochiigo/bhole/proto/payload/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/payload/v1/payloadv1connect"
-	"connectrpc.com/connect"
+	"github.com/pobochiigo/silo/connectrpc"
 )
 
 func NewPayloadClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) bizpayload.Service {
@@ -58,7 +59,7 @@ func decodeListPayloadsResponse(ctx context.Context, resp *payloadv1.ListPayload
 
 func decodeGetPayloadResponse(ctx context.Context, resp *payloadv1.GetPayloadResponse) (*bizpayload.Payload, error) {
 	if resp.Payload == nil {
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("payload: empty response"))
 	}
 	return mapProtoToBizPayload(resp.Payload), nil
 }
@@ -68,11 +69,11 @@ func mapProtoToBizAgencyDetailed(r *payloadv1.AgencyDetailed) *bizpayload.Agency
 		return nil
 	}
 	return &bizpayload.AgencyDetailed{
-		Abbrev: r.Abbrev,
-		Administrator: r.Administrator,
-		AttemptedLandings: r.AttemptedLandings,
-		AttemptedLandingsPayload: r.AttemptedLandingsPayload,
-		AttemptedLandingsSpacecraft: r.AttemptedLandingsSpacecraft,
+		Abbrev:                        r.Abbrev,
+		Administrator:                 r.Administrator,
+		AttemptedLandings:             r.AttemptedLandings,
+		AttemptedLandingsPayload:      r.AttemptedLandingsPayload,
+		AttemptedLandingsSpacecraft:   r.AttemptedLandingsSpacecraft,
 		ConsecutiveSuccessfulLandings: r.ConsecutiveSuccessfulLandings,
 		ConsecutiveSuccessfulLaunches: r.ConsecutiveSuccessfulLaunches,
 		Country: func() []bizpayload.Country {
@@ -85,23 +86,23 @@ func mapProtoToBizAgencyDetailed(r *payloadv1.AgencyDetailed) *bizpayload.Agency
 			}
 			return res
 		}(),
-		Description: r.Description,
-		FailedLandings: r.FailedLandings,
-		FailedLandingsPayload: r.FailedLandingsPayload,
+		Description:              r.Description,
+		FailedLandings:           r.FailedLandings,
+		FailedLandingsPayload:    r.FailedLandingsPayload,
 		FailedLandingsSpacecraft: r.FailedLandingsSpacecraft,
-		FailedLaunches: r.FailedLaunches,
-		Featured: r.Featured,
-		FoundingYear: r.FoundingYear,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
-		Launchers: r.Launchers,
-		Logo: mapProtoToBizImage(r.Logo),
-		Name: r.Name,
-		Parent: r.Parent,
-		PendingLaunches: r.PendingLaunches,
-		ResponseMode: r.ResponseMode,
-		SocialLogo: mapProtoToBizImage(r.SocialLogo),
+		FailedLaunches:           r.FailedLaunches,
+		Featured:                 r.Featured,
+		FoundingYear:             r.FoundingYear,
+		Id:                       r.Id,
+		Image:                    mapProtoToBizImage(r.Image),
+		InfoUrl:                  r.InfoUrl,
+		Launchers:                r.Launchers,
+		Logo:                     mapProtoToBizImage(r.Logo),
+		Name:                     r.Name,
+		Parent:                   r.Parent,
+		PendingLaunches:          r.PendingLaunches,
+		ResponseMode:             r.ResponseMode,
+		SocialLogo:               mapProtoToBizImage(r.SocialLogo),
 		SocialMediaLinks: func() []bizpayload.SocialMediaLink {
 			if r.SocialMediaLinks == nil {
 				return nil
@@ -112,15 +113,15 @@ func mapProtoToBizAgencyDetailed(r *payloadv1.AgencyDetailed) *bizpayload.Agency
 			}
 			return res
 		}(),
-		Spacecraft: r.Spacecraft,
-		SuccessfulLandings: r.SuccessfulLandings,
-		SuccessfulLandingsPayload: r.SuccessfulLandingsPayload,
+		Spacecraft:                   r.Spacecraft,
+		SuccessfulLandings:           r.SuccessfulLandings,
+		SuccessfulLandingsPayload:    r.SuccessfulLandingsPayload,
 		SuccessfulLandingsSpacecraft: r.SuccessfulLandingsSpacecraft,
-		SuccessfulLaunches: r.SuccessfulLaunches,
-		TotalLaunchCount: r.TotalLaunchCount,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
-		WikiUrl: r.WikiUrl,
+		SuccessfulLaunches:           r.SuccessfulLaunches,
+		TotalLaunchCount:             r.TotalLaunchCount,
+		TypeVal:                      mapProtoToBizAgencyType(r.Type),
+		Url:                          r.Url,
+		WikiUrl:                      r.WikiUrl,
 	}
 }
 
@@ -129,12 +130,12 @@ func mapProtoToBizAgencyMini(r *payloadv1.AgencyMini) *bizpayload.AgencyMini {
 		return nil
 	}
 	return &bizpayload.AgencyMini{
-		Abbrev: r.Abbrev,
-		Id: r.Id,
-		Name: r.Name,
+		Abbrev:       r.Abbrev,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
+		TypeVal:      mapProtoToBizAgencyType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -143,7 +144,7 @@ func mapProtoToBizAgencyType(r *payloadv1.AgencyType) *bizpayload.AgencyType {
 		return nil
 	}
 	return &bizpayload.AgencyType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -153,11 +154,11 @@ func mapProtoToBizCountry(r *payloadv1.Country) *bizpayload.Country {
 		return nil
 	}
 	return &bizpayload.Country{
-		Alpha2Code: r.Alpha_2Code,
-		Alpha3Code: r.Alpha_3Code,
-		Id: r.Id,
-		Name: r.Name,
-		NationalityName: r.NationalityName,
+		Alpha2Code:              r.Alpha_2Code,
+		Alpha3Code:              r.Alpha_3Code,
+		Id:                      r.Id,
+		Name:                    r.Name,
+		NationalityName:         r.NationalityName,
 		NationalityNameComposed: r.NationalityNameComposed,
 	}
 }
@@ -167,12 +168,12 @@ func mapProtoToBizImage(r *payloadv1.Image) *bizpayload.Image {
 		return nil
 	}
 	return &bizpayload.Image{
-		Credit: r.Credit,
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		License: mapProtoToBizImageLicense(r.License),
-		Name: r.Name,
-		SingleUse: r.SingleUse,
+		Credit:       r.Credit,
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		License:      mapProtoToBizImageLicense(r.License),
+		Name:         r.Name,
+		SingleUse:    r.SingleUse,
 		ThumbnailUrl: r.ThumbnailUrl,
 		Variants: func() []bizpayload.ImageVariant {
 			if r.Variants == nil {
@@ -192,9 +193,9 @@ func mapProtoToBizImageLicense(r *payloadv1.ImageLicense) *bizpayload.ImageLicen
 		return nil
 	}
 	return &bizpayload.ImageLicense{
-		Id: r.Id,
-		Link: r.Link,
-		Name: r.Name,
+		Id:       r.Id,
+		Link:     r.Link,
+		Name:     r.Name,
 		Priority: r.Priority,
 	}
 }
@@ -204,9 +205,9 @@ func mapProtoToBizImageVariant(r *payloadv1.ImageVariant) *bizpayload.ImageVaria
 		return nil
 	}
 	return &bizpayload.ImageVariant{
-		Id: r.Id,
+		Id:       r.Id,
 		ImageUrl: r.ImageUrl,
-		TypeVal: mapProtoToBizImageVariantType(r.Type),
+		TypeVal:  mapProtoToBizImageVariantType(r.Type),
 	}
 }
 
@@ -215,7 +216,7 @@ func mapProtoToBizImageVariantType(r *payloadv1.ImageVariantType) *bizpayload.Im
 		return nil
 	}
 	return &bizpayload.ImageVariantType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -225,11 +226,11 @@ func mapProtoToBizMissionPatch(r *payloadv1.MissionPatch) *bizpayload.MissionPat
 		return nil
 	}
 	return &bizpayload.MissionPatch{
-		Agency: mapProtoToBizAgencyMini(r.Agency),
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		Name: r.Name,
-		Priority: r.Priority,
+		Agency:       mapProtoToBizAgencyMini(r.Agency),
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		Name:         r.Name,
+		Priority:     r.Priority,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -239,15 +240,15 @@ func mapProtoToBizPayload(r *payloadv1.Payload) *bizpayload.Payload {
 		return nil
 	}
 	return &bizpayload.Payload{
-		Cost: r.Cost,
-		Description: r.Description,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoLink: r.InfoLink,
+		Cost:         r.Cost,
+		Description:  r.Description,
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
+		InfoLink:     r.InfoLink,
 		Manufacturer: mapProtoToBizAgencyDetailed(r.Manufacturer),
-		Mass: r.Mass,
-		Name: r.Name,
-		Operator: mapProtoToBizAgencyDetailed(r.Operator),
+		Mass:         r.Mass,
+		Name:         r.Name,
+		Operator:     mapProtoToBizAgencyDetailed(r.Operator),
 		Program: func() []bizpayload.ProgramNormal {
 			if r.Program == nil {
 				return nil
@@ -259,8 +260,8 @@ func mapProtoToBizPayload(r *payloadv1.Payload) *bizpayload.Payload {
 			return res
 		}(),
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizPayloadType(r.Type),
-		WikiLink: r.WikiLink,
+		TypeVal:      mapProtoToBizPayloadType(r.Type),
+		WikiLink:     r.WikiLink,
 	}
 }
 
@@ -269,7 +270,7 @@ func mapProtoToBizPayloadType(r *payloadv1.PayloadType) *bizpayload.PayloadType 
 		return nil
 	}
 	return &bizpayload.PayloadType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -290,10 +291,10 @@ func mapProtoToBizProgramNormal(r *payloadv1.ProgramNormal) *bizpayload.ProgramN
 			return res
 		}(),
 		Description: r.Description,
-		EndDate: r.EndDate,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
+		EndDate:     r.EndDate,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		InfoUrl:     r.InfoUrl,
 		MissionPatches: func() []bizpayload.MissionPatch {
 			if r.MissionPatches == nil {
 				return nil
@@ -304,12 +305,12 @@ func mapProtoToBizProgramNormal(r *payloadv1.ProgramNormal) *bizpayload.ProgramN
 			}
 			return res
 		}(),
-		Name: r.Name,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		StartDate: r.StartDate,
-		TypeVal: mapProtoToBizProgramType(r.Type),
-		Url: r.Url,
-		WikiUrl: r.WikiUrl,
+		StartDate:    r.StartDate,
+		TypeVal:      mapProtoToBizProgramType(r.Type),
+		Url:          r.Url,
+		WikiUrl:      r.WikiUrl,
 	}
 }
 
@@ -318,7 +319,7 @@ func mapProtoToBizProgramType(r *payloadv1.ProgramType) *bizpayload.ProgramType 
 		return nil
 	}
 	return &bizpayload.ProgramType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -328,10 +329,10 @@ func mapProtoToBizSocialMedia(r *payloadv1.SocialMedia) *bizpayload.SocialMedia 
 		return nil
 	}
 	return &bizpayload.SocialMedia{
-		Id: r.Id,
+		Id:   r.Id,
 		Logo: mapProtoToBizImage(r.Logo),
 		Name: r.Name,
-		Url: r.Url,
+		Url:  r.Url,
 	}
 }
 
@@ -340,9 +341,8 @@ func mapProtoToBizSocialMediaLink(r *payloadv1.SocialMediaLink) *bizpayload.Soci
 		return nil
 	}
 	return &bizpayload.SocialMediaLink{
-		Id: r.Id,
+		Id:          r.Id,
 		SocialMedia: mapProtoToBizSocialMedia(r.SocialMedia),
-		Url: r.Url,
+		Url:         r.Url,
 	}
 }
-

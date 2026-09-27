@@ -3,13 +3,13 @@ package spacewalk
 import (
 	"context"
 
+	bizspacewalk "github.com/pobochiigo/bhole/pkg/spacewalk"
 	"github.com/pobochiigo/silo/endpoint"
-	bizspacewalk "github.com/pobochiigo/bhole/internal/spacewalk"
 )
 
 type endpoints struct {
 	listListSpacewalks endpoint.Endpoint[*bizspacewalk.ListSpacewalksRequest, *bizspacewalk.ListSpacewalksResponse]
-	getSpacewalk    endpoint.Endpoint[*bizspacewalk.GetSpacewalkRequest, *bizspacewalk.Spacewalk]
+	getSpacewalk       endpoint.Endpoint[*bizspacewalk.GetSpacewalkRequest, *bizspacewalk.Spacewalk]
 }
 
 func (c *endpoints) ListSpacewalks(ctx context.Context, req *bizspacewalk.ListSpacewalksRequest) (*bizspacewalk.ListSpacewalksResponse, error) {

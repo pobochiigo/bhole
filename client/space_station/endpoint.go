@@ -3,13 +3,13 @@ package space_station
 import (
 	"context"
 
+	bizspace_station "github.com/pobochiigo/bhole/pkg/space_station"
 	"github.com/pobochiigo/silo/endpoint"
-	bizspace_station "github.com/pobochiigo/bhole/internal/space_station"
 )
 
 type endpoints struct {
 	listListSpaceStations endpoint.Endpoint[*bizspace_station.ListSpaceStationsRequest, *bizspace_station.ListSpaceStationsResponse]
-	getSpaceStation    endpoint.Endpoint[*bizspace_station.GetSpaceStationRequest, *bizspace_station.SpaceStation]
+	getSpaceStation       endpoint.Endpoint[*bizspace_station.GetSpaceStationRequest, *bizspace_station.SpaceStation]
 }
 
 func (c *endpoints) ListSpaceStations(ctx context.Context, req *bizspace_station.ListSpaceStationsRequest) (*bizspace_station.ListSpaceStationsResponse, error) {

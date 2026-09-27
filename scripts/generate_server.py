@@ -1,6 +1,16 @@
 import json
 import os
 import re
+import shutil
+import subprocess
+
+
+def run_gofmt(paths):
+    """Format generated Go files so the tree is gofmt-clean without a manual pass."""
+    if shutil.which("gofmt") is None:
+        print("warning: gofmt not found in PATH; generated Go files were not formatted")
+        return
+    subprocess.run(["gofmt", "-w", *paths], check=True)
 
 # Mapping of the 18 primary LL2 API resources to their path and configuration
 RESOURCES = {
@@ -281,7 +291,7 @@ def main():
         plural_method = config["plural_method"]
         
         # Make directories
-        os.makedirs(f"internal/{feature}", exist_ok=True)
+        os.makedirs(f"pkg/{feature}", exist_ok=True)
         
         # --- A. Generate endpoint.go ---
         endpoint_content = f"""package {feature}
@@ -316,7 +326,7 @@ func makeGet{feature_camel}Endpoint(svc Service) endpoint.Endpoint[*Get{feature_
 	}}
 }}
 """
-        with open(f"internal/{feature}/endpoint.go", "w") as ef:
+        with open(f"pkg/{feature}/endpoint.go", "w") as ef:
             ef.write(endpoint_content)
             
         # --- B. Generate connectrpc_server.go ---
@@ -429,9 +439,10 @@ func encodeGet{feature_camel}Response(ctx context.Context, resp *{feature_camel}
                     
             server_content += "\t}\n}\n\n"
             
-        with open(f"internal/{feature}/connectrpc_server.go", "w") as sf:
+        with open(f"pkg/{feature}/connectrpc_server.go", "w") as sf:
             sf.write(server_content)
 
+    run_gofmt(["pkg"])
     print("Server files generation completed successfully!")
 
 if __name__ == "__main__":

@@ -2,12 +2,13 @@ package event
 
 import (
 	"context"
+	"errors"
 
-	"github.com/pobochiigo/silo/connectrpc"
-	bizevent "github.com/pobochiigo/bhole/internal/event"
+	"connectrpc.com/connect"
+	bizevent "github.com/pobochiigo/bhole/pkg/event"
 	eventv1 "github.com/pobochiigo/bhole/proto/event/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/event/v1/eventv1connect"
-	"connectrpc.com/connect"
+	"github.com/pobochiigo/silo/connectrpc"
 )
 
 func NewEventClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) bizevent.Service {
@@ -58,7 +59,7 @@ func decodeListEventsResponse(ctx context.Context, resp *eventv1.ListEventsRespo
 
 func decodeGetEventResponse(ctx context.Context, resp *eventv1.GetEventResponse) (*bizevent.Event, error) {
 	if resp.Event == nil {
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("event: empty response"))
 	}
 	return mapProtoToBizEvent(resp.Event), nil
 }
@@ -68,12 +69,12 @@ func mapProtoToBizAgencyMini(r *eventv1.AgencyMini) *bizevent.AgencyMini {
 		return nil
 	}
 	return &bizevent.AgencyMini{
-		Abbrev: r.Abbrev,
-		Id: r.Id,
-		Name: r.Name,
+		Abbrev:       r.Abbrev,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
+		TypeVal:      mapProtoToBizAgencyType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -82,7 +83,7 @@ func mapProtoToBizAgencyType(r *eventv1.AgencyType) *bizevent.AgencyType {
 		return nil
 	}
 	return &bizevent.AgencyType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -93,11 +94,11 @@ func mapProtoToBizAstronautNormal(r *eventv1.AstronautNormal) *bizevent.Astronau
 	}
 	return &bizevent.AstronautNormal{
 		Agency: mapProtoToBizAgencyMini(r.Agency),
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Name: r.Name,
+		Id:     r.Id,
+		Image:  mapProtoToBizImage(r.Image),
+		Name:   r.Name,
 		Status: mapProtoToBizAstronautStatus(r.Status),
-		Url: r.Url,
+		Url:    r.Url,
 	}
 }
 
@@ -106,7 +107,7 @@ func mapProtoToBizAstronautStatus(r *eventv1.AstronautStatus) *bizevent.Astronau
 		return nil
 	}
 	return &bizevent.AstronautStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -136,10 +137,10 @@ func mapProtoToBizEvent(r *eventv1.Event) *bizevent.Event {
 			}
 			return res
 		}(),
-		Date: r.Date,
+		Date:          r.Date,
 		DatePrecision: mapProtoToBizNetPrecision(r.DatePrecision),
-		Description: r.Description,
-		Duration: r.Duration,
+		Description:   r.Description,
+		Duration:      r.Duration,
 		Expeditions: func() []bizevent.ExpeditionNormal {
 			if r.Expeditions == nil {
 				return nil
@@ -150,7 +151,7 @@ func mapProtoToBizEvent(r *eventv1.Event) *bizevent.Event {
 			}
 			return res
 		}(),
-		Id: r.Id,
+		Id:    r.Id,
 		Image: mapProtoToBizImage(r.Image),
 		InfoUrls: func() []bizevent.InfoURL {
 			if r.InfoUrls == nil {
@@ -174,7 +175,7 @@ func mapProtoToBizEvent(r *eventv1.Event) *bizevent.Event {
 			return res
 		}(),
 		Location: r.Location,
-		Name: r.Name,
+		Name:     r.Name,
 		Program: func() []bizevent.ProgramNormal {
 			if r.Program == nil {
 				return nil
@@ -186,7 +187,7 @@ func mapProtoToBizEvent(r *eventv1.Event) *bizevent.Event {
 			return res
 		}(),
 		ResponseMode: r.ResponseMode,
-		Slug: r.Slug,
+		Slug:         r.Slug,
 		Spacestations: func() []bizevent.SpaceStationNormal {
 			if r.Spacestations == nil {
 				return nil
@@ -228,7 +229,7 @@ func mapProtoToBizEventType(r *eventv1.EventType) *bizevent.EventType {
 		return nil
 	}
 	return &bizevent.EventType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -239,7 +240,7 @@ func mapProtoToBizExpeditionNormal(r *eventv1.ExpeditionNormal) *bizevent.Expedi
 	}
 	return &bizevent.ExpeditionNormal{
 		End: r.End,
-		Id: r.Id,
+		Id:  r.Id,
 		MissionPatches: func() []bizevent.MissionPatch {
 			if r.MissionPatches == nil {
 				return nil
@@ -250,7 +251,7 @@ func mapProtoToBizExpeditionNormal(r *eventv1.ExpeditionNormal) *bizevent.Expedi
 			}
 			return res
 		}(),
-		Name: r.Name,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
 		Spacestation: mapProtoToBizSpaceStationNormal(r.Spacestation),
 		Spacewalks: func() []bizevent.SpacewalkList {
@@ -264,7 +265,7 @@ func mapProtoToBizExpeditionNormal(r *eventv1.ExpeditionNormal) *bizevent.Expedi
 			return res
 		}(),
 		Start: r.Start,
-		Url: r.Url,
+		Url:   r.Url,
 	}
 }
 
@@ -273,12 +274,12 @@ func mapProtoToBizImage(r *eventv1.Image) *bizevent.Image {
 		return nil
 	}
 	return &bizevent.Image{
-		Credit: r.Credit,
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		License: mapProtoToBizImageLicense(r.License),
-		Name: r.Name,
-		SingleUse: r.SingleUse,
+		Credit:       r.Credit,
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		License:      mapProtoToBizImageLicense(r.License),
+		Name:         r.Name,
+		SingleUse:    r.SingleUse,
 		ThumbnailUrl: r.ThumbnailUrl,
 		Variants: func() []bizevent.ImageVariant {
 			if r.Variants == nil {
@@ -298,9 +299,9 @@ func mapProtoToBizImageLicense(r *eventv1.ImageLicense) *bizevent.ImageLicense {
 		return nil
 	}
 	return &bizevent.ImageLicense{
-		Id: r.Id,
-		Link: r.Link,
-		Name: r.Name,
+		Id:       r.Id,
+		Link:     r.Link,
+		Name:     r.Name,
 		Priority: r.Priority,
 	}
 }
@@ -310,9 +311,9 @@ func mapProtoToBizImageVariant(r *eventv1.ImageVariant) *bizevent.ImageVariant {
 		return nil
 	}
 	return &bizevent.ImageVariant{
-		Id: r.Id,
+		Id:       r.Id,
 		ImageUrl: r.ImageUrl,
-		TypeVal: mapProtoToBizImageVariantType(r.Type),
+		TypeVal:  mapProtoToBizImageVariantType(r.Type),
 	}
 }
 
@@ -321,7 +322,7 @@ func mapProtoToBizImageVariantType(r *eventv1.ImageVariantType) *bizevent.ImageV
 		return nil
 	}
 	return &bizevent.ImageVariantType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -331,14 +332,14 @@ func mapProtoToBizInfoURL(r *eventv1.InfoURL) *bizevent.InfoURL {
 		return nil
 	}
 	return &bizevent.InfoURL{
-		Description: r.Description,
+		Description:  r.Description,
 		FeatureImage: r.FeatureImage,
-		Language: mapProtoToBizLanguage(r.Language),
-		Priority: r.Priority,
-		Source: r.Source,
-		Title: r.Title,
-		TypeVal: mapProtoToBizInfoURLType(r.Type),
-		Url: r.Url,
+		Language:     mapProtoToBizLanguage(r.Language),
+		Priority:     r.Priority,
+		Source:       r.Source,
+		Title:        r.Title,
+		TypeVal:      mapProtoToBizInfoURLType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -347,7 +348,7 @@ func mapProtoToBizInfoURLType(r *eventv1.InfoURLType) *bizevent.InfoURLType {
 		return nil
 	}
 	return &bizevent.InfoURLType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -358,7 +359,7 @@ func mapProtoToBizLanguage(r *eventv1.Language) *bizevent.Language {
 	}
 	return &bizevent.Language{
 		Code: r.Code,
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -368,20 +369,20 @@ func mapProtoToBizLaunchBasic(r *eventv1.LaunchBasic) *bizevent.LaunchBasic {
 		return nil
 	}
 	return &bizevent.LaunchBasic{
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Infographic: r.Infographic,
-		LastUpdated: r.LastUpdated,
+		Id:               r.Id,
+		Image:            mapProtoToBizImage(r.Image),
+		Infographic:      r.Infographic,
+		LastUpdated:      r.LastUpdated,
 		LaunchDesignator: r.LaunchDesignator,
-		Name: r.Name,
-		Net: r.Net,
-		NetPrecision: mapProtoToBizNetPrecision(r.NetPrecision),
-		ResponseMode: r.ResponseMode,
-		Slug: r.Slug,
-		Status: mapProtoToBizLaunchStatus(r.Status),
-		Url: r.Url,
-		WindowEnd: r.WindowEnd,
-		WindowStart: r.WindowStart,
+		Name:             r.Name,
+		Net:              r.Net,
+		NetPrecision:     mapProtoToBizNetPrecision(r.NetPrecision),
+		ResponseMode:     r.ResponseMode,
+		Slug:             r.Slug,
+		Status:           mapProtoToBizLaunchStatus(r.Status),
+		Url:              r.Url,
+		WindowEnd:        r.WindowEnd,
+		WindowStart:      r.WindowStart,
 	}
 }
 
@@ -390,10 +391,10 @@ func mapProtoToBizLaunchStatus(r *eventv1.LaunchStatus) *bizevent.LaunchStatus {
 		return nil
 	}
 	return &bizevent.LaunchStatus{
-		Abbrev: r.Abbrev,
+		Abbrev:      r.Abbrev,
 		Description: r.Description,
-		Id: r.Id,
-		Name: r.Name,
+		Id:          r.Id,
+		Name:        r.Name,
 	}
 }
 
@@ -402,11 +403,11 @@ func mapProtoToBizMissionPatch(r *eventv1.MissionPatch) *bizevent.MissionPatch {
 		return nil
 	}
 	return &bizevent.MissionPatch{
-		Agency: mapProtoToBizAgencyMini(r.Agency),
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		Name: r.Name,
-		Priority: r.Priority,
+		Agency:       mapProtoToBizAgencyMini(r.Agency),
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		Name:         r.Name,
+		Priority:     r.Priority,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -416,10 +417,10 @@ func mapProtoToBizNetPrecision(r *eventv1.NetPrecision) *bizevent.NetPrecision {
 		return nil
 	}
 	return &bizevent.NetPrecision{
-		Abbrev: r.Abbrev,
+		Abbrev:      r.Abbrev,
 		Description: r.Description,
-		Id: r.Id,
-		Name: r.Name,
+		Id:          r.Id,
+		Name:        r.Name,
 	}
 }
 
@@ -439,10 +440,10 @@ func mapProtoToBizProgramNormal(r *eventv1.ProgramNormal) *bizevent.ProgramNorma
 			return res
 		}(),
 		Description: r.Description,
-		EndDate: r.EndDate,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
+		EndDate:     r.EndDate,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		InfoUrl:     r.InfoUrl,
 		MissionPatches: func() []bizevent.MissionPatch {
 			if r.MissionPatches == nil {
 				return nil
@@ -453,12 +454,12 @@ func mapProtoToBizProgramNormal(r *eventv1.ProgramNormal) *bizevent.ProgramNorma
 			}
 			return res
 		}(),
-		Name: r.Name,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		StartDate: r.StartDate,
-		TypeVal: mapProtoToBizProgramType(r.Type),
-		Url: r.Url,
-		WikiUrl: r.WikiUrl,
+		StartDate:    r.StartDate,
+		TypeVal:      mapProtoToBizProgramType(r.Type),
+		Url:          r.Url,
+		WikiUrl:      r.WikiUrl,
 	}
 }
 
@@ -467,7 +468,7 @@ func mapProtoToBizProgramType(r *eventv1.ProgramType) *bizevent.ProgramType {
 		return nil
 	}
 	return &bizevent.ProgramType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -477,16 +478,16 @@ func mapProtoToBizSpaceStationNormal(r *eventv1.SpaceStationNormal) *bizevent.Sp
 		return nil
 	}
 	return &bizevent.SpaceStationNormal{
-		Deorbited: r.Deorbited,
+		Deorbited:   r.Deorbited,
 		Description: r.Description,
-		Founded: r.Founded,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Name: r.Name,
-		Orbit: r.Orbit,
-		Status: mapProtoToBizSpaceStationStatus(r.Status),
-		TypeVal: mapProtoToBizSpaceStationType(r.Type),
-		Url: r.Url,
+		Founded:     r.Founded,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		Name:        r.Name,
+		Orbit:       r.Orbit,
+		Status:      mapProtoToBizSpaceStationStatus(r.Status),
+		TypeVal:     mapProtoToBizSpaceStationType(r.Type),
+		Url:         r.Url,
 	}
 }
 
@@ -495,7 +496,7 @@ func mapProtoToBizSpaceStationStatus(r *eventv1.SpaceStationStatus) *bizevent.Sp
 		return nil
 	}
 	return &bizevent.SpaceStationStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -505,7 +506,7 @@ func mapProtoToBizSpaceStationType(r *eventv1.SpaceStationType) *bizevent.SpaceS
 		return nil
 	}
 	return &bizevent.SpaceStationType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -515,14 +516,14 @@ func mapProtoToBizSpacewalkList(r *eventv1.SpacewalkList) *bizevent.SpacewalkLis
 		return nil
 	}
 	return &bizevent.SpacewalkList{
-		Duration: r.Duration,
-		End: r.End,
-		Id: r.Id,
-		Location: r.Location,
-		Name: r.Name,
+		Duration:     r.Duration,
+		End:          r.End,
+		Id:           r.Id,
+		Location:     r.Location,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		Start: r.Start,
-		Url: r.Url,
+		Start:        r.Start,
+		Url:          r.Url,
 	}
 }
 
@@ -531,11 +532,11 @@ func mapProtoToBizUpdate(r *eventv1.Update) *bizevent.Update {
 		return nil
 	}
 	return &bizevent.Update{
-		Comment: r.Comment,
-		CreatedBy: r.CreatedBy,
-		CreatedOn: r.CreatedOn,
-		Id: r.Id,
-		InfoUrl: r.InfoUrl,
+		Comment:      r.Comment,
+		CreatedBy:    r.CreatedBy,
+		CreatedOn:    r.CreatedOn,
+		Id:           r.Id,
+		InfoUrl:      r.InfoUrl,
 		ProfileImage: r.ProfileImage,
 	}
 }
@@ -545,18 +546,18 @@ func mapProtoToBizVidURL(r *eventv1.VidURL) *bizevent.VidURL {
 		return nil
 	}
 	return &bizevent.VidURL{
-		Description: r.Description,
-		EndTime: r.EndTime,
+		Description:  r.Description,
+		EndTime:      r.EndTime,
 		FeatureImage: r.FeatureImage,
-		Language: mapProtoToBizLanguage(r.Language),
-		Live: r.Live,
-		Priority: r.Priority,
-		Publisher: r.Publisher,
-		Source: r.Source,
-		StartTime: r.StartTime,
-		Title: r.Title,
-		TypeVal: mapProtoToBizVidURLType(r.Type),
-		Url: r.Url,
+		Language:     mapProtoToBizLanguage(r.Language),
+		Live:         r.Live,
+		Priority:     r.Priority,
+		Publisher:    r.Publisher,
+		Source:       r.Source,
+		StartTime:    r.StartTime,
+		Title:        r.Title,
+		TypeVal:      mapProtoToBizVidURLType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -565,8 +566,7 @@ func mapProtoToBizVidURLType(r *eventv1.VidURLType) *bizevent.VidURLType {
 		return nil
 	}
 	return &bizevent.VidURLType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
-

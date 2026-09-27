@@ -3,13 +3,13 @@ package docking_event
 import (
 	"context"
 
+	bizdocking_event "github.com/pobochiigo/bhole/pkg/docking_event"
 	"github.com/pobochiigo/silo/endpoint"
-	bizdocking_event "github.com/pobochiigo/bhole/internal/docking_event"
 )
 
 type endpoints struct {
 	listListDockingEvents endpoint.Endpoint[*bizdocking_event.ListDockingEventsRequest, *bizdocking_event.ListDockingEventsResponse]
-	getDockingEvent    endpoint.Endpoint[*bizdocking_event.GetDockingEventRequest, *bizdocking_event.DockingEvent]
+	getDockingEvent       endpoint.Endpoint[*bizdocking_event.GetDockingEventRequest, *bizdocking_event.DockingEvent]
 }
 
 func (c *endpoints) ListDockingEvents(ctx context.Context, req *bizdocking_event.ListDockingEventsRequest) (*bizdocking_event.ListDockingEventsResponse, error) {

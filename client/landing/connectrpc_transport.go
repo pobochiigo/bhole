@@ -2,12 +2,13 @@ package landing
 
 import (
 	"context"
+	"errors"
 
-	"github.com/pobochiigo/silo/connectrpc"
-	bizlanding "github.com/pobochiigo/bhole/internal/landing"
+	"connectrpc.com/connect"
+	bizlanding "github.com/pobochiigo/bhole/pkg/landing"
 	landingv1 "github.com/pobochiigo/bhole/proto/landing/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/landing/v1/landingv1connect"
-	"connectrpc.com/connect"
+	"github.com/pobochiigo/silo/connectrpc"
 )
 
 func NewLandingClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) bizlanding.Service {
@@ -58,7 +59,7 @@ func decodeListLandingsResponse(ctx context.Context, resp *landingv1.ListLanding
 
 func decodeGetLandingResponse(ctx context.Context, resp *landingv1.GetLandingResponse) (*bizlanding.Landing, error) {
 	if resp.Landing == nil {
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("landing: empty response"))
 	}
 	return mapProtoToBizLanding(resp.Landing), nil
 }
@@ -68,11 +69,11 @@ func mapProtoToBizAgencyDetailed(r *landingv1.AgencyDetailed) *bizlanding.Agency
 		return nil
 	}
 	return &bizlanding.AgencyDetailed{
-		Abbrev: r.Abbrev,
-		Administrator: r.Administrator,
-		AttemptedLandings: r.AttemptedLandings,
-		AttemptedLandingsPayload: r.AttemptedLandingsPayload,
-		AttemptedLandingsSpacecraft: r.AttemptedLandingsSpacecraft,
+		Abbrev:                        r.Abbrev,
+		Administrator:                 r.Administrator,
+		AttemptedLandings:             r.AttemptedLandings,
+		AttemptedLandingsPayload:      r.AttemptedLandingsPayload,
+		AttemptedLandingsSpacecraft:   r.AttemptedLandingsSpacecraft,
 		ConsecutiveSuccessfulLandings: r.ConsecutiveSuccessfulLandings,
 		ConsecutiveSuccessfulLaunches: r.ConsecutiveSuccessfulLaunches,
 		Country: func() []bizlanding.Country {
@@ -85,23 +86,23 @@ func mapProtoToBizAgencyDetailed(r *landingv1.AgencyDetailed) *bizlanding.Agency
 			}
 			return res
 		}(),
-		Description: r.Description,
-		FailedLandings: r.FailedLandings,
-		FailedLandingsPayload: r.FailedLandingsPayload,
+		Description:              r.Description,
+		FailedLandings:           r.FailedLandings,
+		FailedLandingsPayload:    r.FailedLandingsPayload,
 		FailedLandingsSpacecraft: r.FailedLandingsSpacecraft,
-		FailedLaunches: r.FailedLaunches,
-		Featured: r.Featured,
-		FoundingYear: r.FoundingYear,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
-		Launchers: r.Launchers,
-		Logo: mapProtoToBizImage(r.Logo),
-		Name: r.Name,
-		Parent: r.Parent,
-		PendingLaunches: r.PendingLaunches,
-		ResponseMode: r.ResponseMode,
-		SocialLogo: mapProtoToBizImage(r.SocialLogo),
+		FailedLaunches:           r.FailedLaunches,
+		Featured:                 r.Featured,
+		FoundingYear:             r.FoundingYear,
+		Id:                       r.Id,
+		Image:                    mapProtoToBizImage(r.Image),
+		InfoUrl:                  r.InfoUrl,
+		Launchers:                r.Launchers,
+		Logo:                     mapProtoToBizImage(r.Logo),
+		Name:                     r.Name,
+		Parent:                   r.Parent,
+		PendingLaunches:          r.PendingLaunches,
+		ResponseMode:             r.ResponseMode,
+		SocialLogo:               mapProtoToBizImage(r.SocialLogo),
 		SocialMediaLinks: func() []bizlanding.SocialMediaLink {
 			if r.SocialMediaLinks == nil {
 				return nil
@@ -112,15 +113,15 @@ func mapProtoToBizAgencyDetailed(r *landingv1.AgencyDetailed) *bizlanding.Agency
 			}
 			return res
 		}(),
-		Spacecraft: r.Spacecraft,
-		SuccessfulLandings: r.SuccessfulLandings,
-		SuccessfulLandingsPayload: r.SuccessfulLandingsPayload,
+		Spacecraft:                   r.Spacecraft,
+		SuccessfulLandings:           r.SuccessfulLandings,
+		SuccessfulLandingsPayload:    r.SuccessfulLandingsPayload,
 		SuccessfulLandingsSpacecraft: r.SuccessfulLandingsSpacecraft,
-		SuccessfulLaunches: r.SuccessfulLaunches,
-		TotalLaunchCount: r.TotalLaunchCount,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
-		WikiUrl: r.WikiUrl,
+		SuccessfulLaunches:           r.SuccessfulLaunches,
+		TotalLaunchCount:             r.TotalLaunchCount,
+		TypeVal:                      mapProtoToBizAgencyType(r.Type),
+		Url:                          r.Url,
+		WikiUrl:                      r.WikiUrl,
 	}
 }
 
@@ -129,12 +130,12 @@ func mapProtoToBizAgencyMini(r *landingv1.AgencyMini) *bizlanding.AgencyMini {
 		return nil
 	}
 	return &bizlanding.AgencyMini{
-		Abbrev: r.Abbrev,
-		Id: r.Id,
-		Name: r.Name,
+		Abbrev:       r.Abbrev,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
+		TypeVal:      mapProtoToBizAgencyType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -143,7 +144,7 @@ func mapProtoToBizAgencyNormal(r *landingv1.AgencyNormal) *bizlanding.AgencyNorm
 		return nil
 	}
 	return &bizlanding.AgencyNormal{
-		Abbrev: r.Abbrev,
+		Abbrev:        r.Abbrev,
 		Administrator: r.Administrator,
 		Country: func() []bizlanding.Country {
 			if r.Country == nil {
@@ -155,20 +156,20 @@ func mapProtoToBizAgencyNormal(r *landingv1.AgencyNormal) *bizlanding.AgencyNorm
 			}
 			return res
 		}(),
-		Description: r.Description,
-		Featured: r.Featured,
+		Description:  r.Description,
+		Featured:     r.Featured,
 		FoundingYear: r.FoundingYear,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Launchers: r.Launchers,
-		Logo: mapProtoToBizImage(r.Logo),
-		Name: r.Name,
-		Parent: r.Parent,
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
+		Launchers:    r.Launchers,
+		Logo:         mapProtoToBizImage(r.Logo),
+		Name:         r.Name,
+		Parent:       r.Parent,
 		ResponseMode: r.ResponseMode,
-		SocialLogo: mapProtoToBizImage(r.SocialLogo),
-		Spacecraft: r.Spacecraft,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
+		SocialLogo:   mapProtoToBizImage(r.SocialLogo),
+		Spacecraft:   r.Spacecraft,
+		TypeVal:      mapProtoToBizAgencyType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -177,7 +178,7 @@ func mapProtoToBizAgencyType(r *landingv1.AgencyType) *bizlanding.AgencyType {
 		return nil
 	}
 	return &bizlanding.AgencyType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -187,18 +188,18 @@ func mapProtoToBizAstronautDetailed(r *landingv1.AstronautDetailed) *bizlanding.
 		return nil
 	}
 	return &bizlanding.AstronautDetailed{
-		Age: r.Age,
-		Agency: mapProtoToBizAgencyMini(r.Agency),
-		Bio: r.Bio,
+		Age:         r.Age,
+		Agency:      mapProtoToBizAgencyMini(r.Agency),
+		Bio:         r.Bio,
 		DateOfBirth: r.DateOfBirth,
 		DateOfDeath: r.DateOfDeath,
-		EvaTime: r.EvaTime,
+		EvaTime:     r.EvaTime,
 		FirstFlight: r.FirstFlight,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InSpace: r.InSpace,
-		LastFlight: r.LastFlight,
-		Name: r.Name,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		InSpace:     r.InSpace,
+		LastFlight:  r.LastFlight,
+		Name:        r.Name,
 		Nationality: func() []bizlanding.Country {
 			if r.Nationality == nil {
 				return nil
@@ -220,11 +221,11 @@ func mapProtoToBizAstronautDetailed(r *landingv1.AstronautDetailed) *bizlanding.
 			}
 			return res
 		}(),
-		Status: mapProtoToBizAstronautStatus(r.Status),
+		Status:      mapProtoToBizAstronautStatus(r.Status),
 		TimeInSpace: r.TimeInSpace,
-		TypeVal: mapProtoToBizAstronautType(r.Type),
-		Url: r.Url,
-		Wiki: r.Wiki,
+		TypeVal:     mapProtoToBizAstronautType(r.Type),
+		Url:         r.Url,
+		Wiki:        r.Wiki,
 	}
 }
 
@@ -234,8 +235,8 @@ func mapProtoToBizAstronautFlight(r *landingv1.AstronautFlight) *bizlanding.Astr
 	}
 	return &bizlanding.AstronautFlight{
 		Astronaut: mapProtoToBizAstronautDetailed(r.Astronaut),
-		Id: r.Id,
-		Role: mapProtoToBizAstronautRole(r.Role),
+		Id:        r.Id,
+		Role:      mapProtoToBizAstronautRole(r.Role),
 	}
 }
 
@@ -244,9 +245,9 @@ func mapProtoToBizAstronautRole(r *landingv1.AstronautRole) *bizlanding.Astronau
 		return nil
 	}
 	return &bizlanding.AstronautRole{
-		Id: r.Id,
+		Id:       r.Id,
 		Priority: r.Priority,
-		Role: r.Role,
+		Role:     r.Role,
 	}
 }
 
@@ -255,7 +256,7 @@ func mapProtoToBizAstronautStatus(r *landingv1.AstronautStatus) *bizlanding.Astr
 		return nil
 	}
 	return &bizlanding.AstronautStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -265,7 +266,7 @@ func mapProtoToBizAstronautType(r *landingv1.AstronautType) *bizlanding.Astronau
 		return nil
 	}
 	return &bizlanding.AstronautType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -275,24 +276,24 @@ func mapProtoToBizCelestialBodyDetailed(r *landingv1.CelestialBodyDetailed) *biz
 		return nil
 	}
 	return &bizlanding.CelestialBodyDetailed{
-		Atmosphere: r.Atmosphere,
-		Description: r.Description,
-		Diameter: r.Diameter,
-		FailedLandings: r.FailedLandings,
-		FailedLaunches: r.FailedLaunches,
-		Gravity: r.Gravity,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		LengthOfDay: r.LengthOfDay,
-		Mass: r.Mass,
-		Name: r.Name,
-		ResponseMode: r.ResponseMode,
-		SuccessfulLandings: r.SuccessfulLandings,
-		SuccessfulLaunches: r.SuccessfulLaunches,
+		Atmosphere:             r.Atmosphere,
+		Description:            r.Description,
+		Diameter:               r.Diameter,
+		FailedLandings:         r.FailedLandings,
+		FailedLaunches:         r.FailedLaunches,
+		Gravity:                r.Gravity,
+		Id:                     r.Id,
+		Image:                  mapProtoToBizImage(r.Image),
+		LengthOfDay:            r.LengthOfDay,
+		Mass:                   r.Mass,
+		Name:                   r.Name,
+		ResponseMode:           r.ResponseMode,
+		SuccessfulLandings:     r.SuccessfulLandings,
+		SuccessfulLaunches:     r.SuccessfulLaunches,
 		TotalAttemptedLandings: r.TotalAttemptedLandings,
 		TotalAttemptedLaunches: r.TotalAttemptedLaunches,
-		TypeVal: mapProtoToBizCelestialBodyType(r.Type),
-		WikiUrl: r.WikiUrl,
+		TypeVal:                mapProtoToBizCelestialBodyType(r.Type),
+		WikiUrl:                r.WikiUrl,
 	}
 }
 
@@ -301,8 +302,8 @@ func mapProtoToBizCelestialBodyMini(r *landingv1.CelestialBodyMini) *bizlanding.
 		return nil
 	}
 	return &bizlanding.CelestialBodyMini{
-		Id: r.Id,
-		Name: r.Name,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -312,18 +313,18 @@ func mapProtoToBizCelestialBodyNormal(r *landingv1.CelestialBodyNormal) *bizland
 		return nil
 	}
 	return &bizlanding.CelestialBodyNormal{
-		Atmosphere: r.Atmosphere,
-		Description: r.Description,
-		Diameter: r.Diameter,
-		Gravity: r.Gravity,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		LengthOfDay: r.LengthOfDay,
-		Mass: r.Mass,
-		Name: r.Name,
+		Atmosphere:   r.Atmosphere,
+		Description:  r.Description,
+		Diameter:     r.Diameter,
+		Gravity:      r.Gravity,
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
+		LengthOfDay:  r.LengthOfDay,
+		Mass:         r.Mass,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizCelestialBodyType(r.Type),
-		WikiUrl: r.WikiUrl,
+		TypeVal:      mapProtoToBizCelestialBodyType(r.Type),
+		WikiUrl:      r.WikiUrl,
 	}
 }
 
@@ -332,7 +333,7 @@ func mapProtoToBizCelestialBodyType(r *landingv1.CelestialBodyType) *bizlanding.
 		return nil
 	}
 	return &bizlanding.CelestialBodyType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -342,11 +343,11 @@ func mapProtoToBizCountry(r *landingv1.Country) *bizlanding.Country {
 		return nil
 	}
 	return &bizlanding.Country{
-		Alpha2Code: r.Alpha_2Code,
-		Alpha3Code: r.Alpha_3Code,
-		Id: r.Id,
-		Name: r.Name,
-		NationalityName: r.NationalityName,
+		Alpha2Code:              r.Alpha_2Code,
+		Alpha3Code:              r.Alpha_3Code,
+		Id:                      r.Id,
+		Name:                    r.Name,
+		NationalityName:         r.NationalityName,
 		NationalityNameComposed: r.NationalityNameComposed,
 	}
 }
@@ -356,14 +357,14 @@ func mapProtoToBizDockingEventForChaserNormal(r *landingv1.DockingEventForChaser
 		return nil
 	}
 	return &bizlanding.DockingEventForChaserNormal{
-		Departure: r.Departure,
-		Docking: r.Docking,
-		DockingLocation: mapProtoToBizDockingLocation(r.DockingLocation),
+		Departure:           r.Departure,
+		Docking:             r.Docking,
+		DockingLocation:     mapProtoToBizDockingLocation(r.DockingLocation),
 		FlightVehicleTarget: mapProtoToBizSpacecraftFlightNormal(r.FlightVehicleTarget),
-		Id: r.Id,
+		Id:                  r.Id,
 		PayloadFlightTarget: mapProtoToBizPayloadFlightNormal(r.PayloadFlightTarget),
-		SpaceStationTarget: mapProtoToBizSpaceStationNormal(r.SpaceStationTarget),
-		Url: r.Url,
+		SpaceStationTarget:  mapProtoToBizSpaceStationNormal(r.SpaceStationTarget),
+		Url:                 r.Url,
 	}
 }
 
@@ -372,10 +373,10 @@ func mapProtoToBizDockingLocation(r *landingv1.DockingLocation) *bizlanding.Dock
 		return nil
 	}
 	return &bizlanding.DockingLocation{
-		Id: r.Id,
-		Name: r.Name,
-		Payload: mapProtoToBizPayloadMini(r.Payload),
-		Spacecraft: mapProtoToBizSpacecraftConfigNormal(r.Spacecraft),
+		Id:           r.Id,
+		Name:         r.Name,
+		Payload:      mapProtoToBizPayloadMini(r.Payload),
+		Spacecraft:   mapProtoToBizSpacecraftConfigNormal(r.Spacecraft),
 		Spacestation: mapProtoToBizSpaceStationMini(r.Spacestation),
 	}
 }
@@ -385,14 +386,14 @@ func mapProtoToBizFirstStageDetailedSerializerNoLanding(r *landingv1.FirstStageD
 		return nil
 	}
 	return &bizlanding.FirstStageDetailedSerializerNoLanding{
-		Id: r.Id,
-		Launcher: mapProtoToBizLauncherNormal(r.Launcher),
+		Id:                   r.Id,
+		Launcher:             mapProtoToBizLauncherNormal(r.Launcher),
 		LauncherFlightNumber: r.LauncherFlightNumber,
-		PreviousFlight: mapProtoToBizLaunchNormal(r.PreviousFlight),
-		PreviousFlightDate: r.PreviousFlightDate,
-		Reused: r.Reused,
-		TurnAroundTime: r.TurnAroundTime,
-		TypeVal: r.Type,
+		PreviousFlight:       mapProtoToBizLaunchNormal(r.PreviousFlight),
+		PreviousFlightDate:   r.PreviousFlightDate,
+		Reused:               r.Reused,
+		TurnAroundTime:       r.TurnAroundTime,
+		TypeVal:              r.Type,
 	}
 }
 
@@ -401,12 +402,12 @@ func mapProtoToBizImage(r *landingv1.Image) *bizlanding.Image {
 		return nil
 	}
 	return &bizlanding.Image{
-		Credit: r.Credit,
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		License: mapProtoToBizImageLicense(r.License),
-		Name: r.Name,
-		SingleUse: r.SingleUse,
+		Credit:       r.Credit,
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		License:      mapProtoToBizImageLicense(r.License),
+		Name:         r.Name,
+		SingleUse:    r.SingleUse,
 		ThumbnailUrl: r.ThumbnailUrl,
 		Variants: func() []bizlanding.ImageVariant {
 			if r.Variants == nil {
@@ -426,9 +427,9 @@ func mapProtoToBizImageLicense(r *landingv1.ImageLicense) *bizlanding.ImageLicen
 		return nil
 	}
 	return &bizlanding.ImageLicense{
-		Id: r.Id,
-		Link: r.Link,
-		Name: r.Name,
+		Id:       r.Id,
+		Link:     r.Link,
+		Name:     r.Name,
 		Priority: r.Priority,
 	}
 }
@@ -438,9 +439,9 @@ func mapProtoToBizImageVariant(r *landingv1.ImageVariant) *bizlanding.ImageVaria
 		return nil
 	}
 	return &bizlanding.ImageVariant{
-		Id: r.Id,
+		Id:       r.Id,
 		ImageUrl: r.ImageUrl,
-		TypeVal: mapProtoToBizImageVariantType(r.Type),
+		TypeVal:  mapProtoToBizImageVariantType(r.Type),
 	}
 }
 
@@ -449,7 +450,7 @@ func mapProtoToBizImageVariantType(r *landingv1.ImageVariantType) *bizlanding.Im
 		return nil
 	}
 	return &bizlanding.ImageVariantType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -459,14 +460,14 @@ func mapProtoToBizInfoURL(r *landingv1.InfoURL) *bizlanding.InfoURL {
 		return nil
 	}
 	return &bizlanding.InfoURL{
-		Description: r.Description,
+		Description:  r.Description,
 		FeatureImage: r.FeatureImage,
-		Language: mapProtoToBizLanguage(r.Language),
-		Priority: r.Priority,
-		Source: r.Source,
-		Title: r.Title,
-		TypeVal: mapProtoToBizInfoURLType(r.Type),
-		Url: r.Url,
+		Language:     mapProtoToBizLanguage(r.Language),
+		Priority:     r.Priority,
+		Source:       r.Source,
+		Title:        r.Title,
+		TypeVal:      mapProtoToBizInfoURLType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -475,7 +476,7 @@ func mapProtoToBizInfoURLType(r *landingv1.InfoURLType) *bizlanding.InfoURLType 
 		return nil
 	}
 	return &bizlanding.InfoURLType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -485,14 +486,14 @@ func mapProtoToBizLandingRecord(r *landingv1.LandingRecord) *bizlanding.LandingR
 		return nil
 	}
 	return &bizlanding.LandingRecord{
-		Attempt: r.Attempt,
-		Description: r.Description,
+		Attempt:           r.Attempt,
+		Description:       r.Description,
 		DownrangeDistance: r.DownrangeDistance,
-		Id: r.Id,
-		LandingLocation: mapProtoToBizLandingLocation(r.LandingLocation),
-		Success: r.Success,
-		TypeVal: mapProtoToBizLandingType(r.Type),
-		Url: r.Url,
+		Id:                r.Id,
+		LandingLocation:   mapProtoToBizLandingLocation(r.LandingLocation),
+		Success:           r.Success,
+		TypeVal:           mapProtoToBizLandingType(r.Type),
+		Url:               r.Url,
 	}
 }
 
@@ -501,18 +502,18 @@ func mapProtoToBizLanding(r *landingv1.Landing) *bizlanding.Landing {
 		return nil
 	}
 	return &bizlanding.Landing{
-		Attempt: r.Attempt,
-		Description: r.Description,
+		Attempt:           r.Attempt,
+		Description:       r.Description,
 		DownrangeDistance: r.DownrangeDistance,
-		Firststage: mapProtoToBizFirstStageDetailedSerializerNoLanding(r.Firststage),
-		Id: r.Id,
-		LandingLocation: mapProtoToBizLandingLocation(r.LandingLocation),
-		Payloadflight: mapProtoToBizPayloadFlightDetailedSerializerNoLanding(r.Payloadflight),
-		ResponseMode: r.ResponseMode,
-		Spacecraftflight: mapProtoToBizSpacecraftFlightDetailedSerializerNoLanding(r.Spacecraftflight),
-		Success: r.Success,
-		TypeVal: mapProtoToBizLandingType(r.Type),
-		Url: r.Url,
+		Firststage:        mapProtoToBizFirstStageDetailedSerializerNoLanding(r.Firststage),
+		Id:                r.Id,
+		LandingLocation:   mapProtoToBizLandingLocation(r.LandingLocation),
+		Payloadflight:     mapProtoToBizPayloadFlightDetailedSerializerNoLanding(r.Payloadflight),
+		ResponseMode:      r.ResponseMode,
+		Spacecraftflight:  mapProtoToBizSpacecraftFlightDetailedSerializerNoLanding(r.Spacecraftflight),
+		Success:           r.Success,
+		TypeVal:           mapProtoToBizLandingType(r.Type),
+		Url:               r.Url,
 	}
 }
 
@@ -521,18 +522,18 @@ func mapProtoToBizLandingLocation(r *landingv1.LandingLocation) *bizlanding.Land
 		return nil
 	}
 	return &bizlanding.LandingLocation{
-		Abbrev: r.Abbrev,
-		Active: r.Active,
-		AttemptedLandings: r.AttemptedLandings,
-		CelestialBody: mapProtoToBizCelestialBodyNormal(r.CelestialBody),
-		Description: r.Description,
-		FailedLandings: r.FailedLandings,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Latitude: r.Latitude,
-		Location: mapProtoToBizLocationSerializerNoCelestialBody(r.Location),
-		Longitude: r.Longitude,
-		Name: r.Name,
+		Abbrev:             r.Abbrev,
+		Active:             r.Active,
+		AttemptedLandings:  r.AttemptedLandings,
+		CelestialBody:      mapProtoToBizCelestialBodyNormal(r.CelestialBody),
+		Description:        r.Description,
+		FailedLandings:     r.FailedLandings,
+		Id:                 r.Id,
+		Image:              mapProtoToBizImage(r.Image),
+		Latitude:           r.Latitude,
+		Location:           mapProtoToBizLocationSerializerNoCelestialBody(r.Location),
+		Longitude:          r.Longitude,
+		Name:               r.Name,
 		SuccessfulLandings: r.SuccessfulLandings,
 	}
 }
@@ -542,10 +543,10 @@ func mapProtoToBizLandingType(r *landingv1.LandingType) *bizlanding.LandingType 
 		return nil
 	}
 	return &bizlanding.LandingType{
-		Abbrev: r.Abbrev,
+		Abbrev:      r.Abbrev,
 		Description: r.Description,
-		Id: r.Id,
-		Name: r.Name,
+		Id:          r.Id,
+		Name:        r.Name,
 	}
 }
 
@@ -555,7 +556,7 @@ func mapProtoToBizLanguage(r *landingv1.Language) *bizlanding.Language {
 	}
 	return &bizlanding.Language{
 		Code: r.Code,
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -565,28 +566,28 @@ func mapProtoToBizLaunchNormal(r *landingv1.LaunchNormal) *bizlanding.LaunchNorm
 		return nil
 	}
 	return &bizlanding.LaunchNormal{
-		AgencyLaunchAttemptCount: r.AgencyLaunchAttemptCount,
-		AgencyLaunchAttemptCountYear: r.AgencyLaunchAttemptCountYear,
-		Failreason: r.Failreason,
-		Hashtag: r.Hashtag,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Infographic: r.Infographic,
-		LastUpdated: r.LastUpdated,
-		LaunchDesignator: r.LaunchDesignator,
-		LaunchServiceProvider: mapProtoToBizAgencyMini(r.LaunchServiceProvider),
-		LocationLaunchAttemptCount: r.LocationLaunchAttemptCount,
+		AgencyLaunchAttemptCount:       r.AgencyLaunchAttemptCount,
+		AgencyLaunchAttemptCountYear:   r.AgencyLaunchAttemptCountYear,
+		Failreason:                     r.Failreason,
+		Hashtag:                        r.Hashtag,
+		Id:                             r.Id,
+		Image:                          mapProtoToBizImage(r.Image),
+		Infographic:                    r.Infographic,
+		LastUpdated:                    r.LastUpdated,
+		LaunchDesignator:               r.LaunchDesignator,
+		LaunchServiceProvider:          mapProtoToBizAgencyMini(r.LaunchServiceProvider),
+		LocationLaunchAttemptCount:     r.LocationLaunchAttemptCount,
 		LocationLaunchAttemptCountYear: r.LocationLaunchAttemptCountYear,
-		Mission: mapProtoToBizMission(r.Mission),
-		Name: r.Name,
-		Net: r.Net,
-		NetPrecision: mapProtoToBizNetPrecision(r.NetPrecision),
-		OrbitalLaunchAttemptCount: r.OrbitalLaunchAttemptCount,
-		OrbitalLaunchAttemptCountYear: r.OrbitalLaunchAttemptCountYear,
-		Pad: mapProtoToBizPad(r.Pad),
-		PadLaunchAttemptCount: r.PadLaunchAttemptCount,
-		PadLaunchAttemptCountYear: r.PadLaunchAttemptCountYear,
-		Probability: r.Probability,
+		Mission:                        mapProtoToBizMission(r.Mission),
+		Name:                           r.Name,
+		Net:                            r.Net,
+		NetPrecision:                   mapProtoToBizNetPrecision(r.NetPrecision),
+		OrbitalLaunchAttemptCount:      r.OrbitalLaunchAttemptCount,
+		OrbitalLaunchAttemptCountYear:  r.OrbitalLaunchAttemptCountYear,
+		Pad:                            mapProtoToBizPad(r.Pad),
+		PadLaunchAttemptCount:          r.PadLaunchAttemptCount,
+		PadLaunchAttemptCountYear:      r.PadLaunchAttemptCountYear,
+		Probability:                    r.Probability,
 		Program: func() []bizlanding.ProgramNormal {
 			if r.Program == nil {
 				return nil
@@ -597,15 +598,15 @@ func mapProtoToBizLaunchNormal(r *landingv1.LaunchNormal) *bizlanding.LaunchNorm
 			}
 			return res
 		}(),
-		ResponseMode: r.ResponseMode,
-		Rocket: mapProtoToBizRocketNormal(r.Rocket),
-		Slug: r.Slug,
-		Status: mapProtoToBizLaunchStatus(r.Status),
-		Url: r.Url,
+		ResponseMode:    r.ResponseMode,
+		Rocket:          mapProtoToBizRocketNormal(r.Rocket),
+		Slug:            r.Slug,
+		Status:          mapProtoToBizLaunchStatus(r.Status),
+		Url:             r.Url,
 		WeatherConcerns: r.WeatherConcerns,
-		WebcastLive: r.WebcastLive,
-		WindowEnd: r.WindowEnd,
-		WindowStart: r.WindowStart,
+		WebcastLive:     r.WebcastLive,
+		WindowEnd:       r.WindowEnd,
+		WindowStart:     r.WindowStart,
 	}
 }
 
@@ -614,10 +615,10 @@ func mapProtoToBizLaunchStatus(r *landingv1.LaunchStatus) *bizlanding.LaunchStat
 		return nil
 	}
 	return &bizlanding.LaunchStatus{
-		Abbrev: r.Abbrev,
+		Abbrev:      r.Abbrev,
 		Description: r.Description,
-		Id: r.Id,
-		Name: r.Name,
+		Id:          r.Id,
+		Name:        r.Name,
 	}
 }
 
@@ -626,8 +627,8 @@ func mapProtoToBizLauncherConfigFamilyMini(r *landingv1.LauncherConfigFamilyMini
 		return nil
 	}
 	return &bizlanding.LauncherConfigFamilyMini{
-		Id: r.Id,
-		Name: r.Name,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -647,12 +648,12 @@ func mapProtoToBizLauncherConfigList(r *landingv1.LauncherConfigList) *bizlandin
 			}
 			return res
 		}(),
-		FullName: r.FullName,
-		Id: r.Id,
-		Name: r.Name,
+		FullName:     r.FullName,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		Url: r.Url,
-		Variant: r.Variant,
+		Url:          r.Url,
+		Variant:      r.Variant,
 	}
 }
 
@@ -661,21 +662,21 @@ func mapProtoToBizLauncherNormal(r *landingv1.LauncherNormal) *bizlanding.Launch
 		return nil
 	}
 	return &bizlanding.LauncherNormal{
-		AttemptedLandings: r.AttemptedLandings,
-		Details: r.Details,
-		FastestTurnaround: r.FastestTurnaround,
-		FirstLaunchDate: r.FirstLaunchDate,
-		FlightProven: r.FlightProven,
-		Flights: r.Flights,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		IsPlaceholder: r.IsPlaceholder,
-		LastLaunchDate: r.LastLaunchDate,
-		ResponseMode: r.ResponseMode,
-		SerialNumber: r.SerialNumber,
-		Status: mapProtoToBizLauncherStatus(r.Status),
+		AttemptedLandings:  r.AttemptedLandings,
+		Details:            r.Details,
+		FastestTurnaround:  r.FastestTurnaround,
+		FirstLaunchDate:    r.FirstLaunchDate,
+		FlightProven:       r.FlightProven,
+		Flights:            r.Flights,
+		Id:                 r.Id,
+		Image:              mapProtoToBizImage(r.Image),
+		IsPlaceholder:      r.IsPlaceholder,
+		LastLaunchDate:     r.LastLaunchDate,
+		ResponseMode:       r.ResponseMode,
+		SerialNumber:       r.SerialNumber,
+		Status:             mapProtoToBizLauncherStatus(r.Status),
 		SuccessfulLandings: r.SuccessfulLandings,
-		Url: r.Url,
+		Url:                r.Url,
 	}
 }
 
@@ -684,7 +685,7 @@ func mapProtoToBizLauncherStatus(r *landingv1.LauncherStatus) *bizlanding.Launch
 		return nil
 	}
 	return &bizlanding.LauncherStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -694,21 +695,21 @@ func mapProtoToBizLocation(r *landingv1.Location) *bizlanding.Location {
 		return nil
 	}
 	return &bizlanding.Location{
-		Active: r.Active,
-		CelestialBody: mapProtoToBizCelestialBodyDetailed(r.CelestialBody),
-		Country: mapProtoToBizCountry(r.Country),
-		Description: r.Description,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Latitude: r.Latitude,
-		Longitude: r.Longitude,
-		MapImage: r.MapImage,
-		Name: r.Name,
-		ResponseMode: r.ResponseMode,
-		TimezoneName: r.TimezoneName,
+		Active:            r.Active,
+		CelestialBody:     mapProtoToBizCelestialBodyDetailed(r.CelestialBody),
+		Country:           mapProtoToBizCountry(r.Country),
+		Description:       r.Description,
+		Id:                r.Id,
+		Image:             mapProtoToBizImage(r.Image),
+		Latitude:          r.Latitude,
+		Longitude:         r.Longitude,
+		MapImage:          r.MapImage,
+		Name:              r.Name,
+		ResponseMode:      r.ResponseMode,
+		TimezoneName:      r.TimezoneName,
 		TotalLandingCount: r.TotalLandingCount,
-		TotalLaunchCount: r.TotalLaunchCount,
-		Url: r.Url,
+		TotalLaunchCount:  r.TotalLaunchCount,
+		Url:               r.Url,
 	}
 }
 
@@ -717,20 +718,20 @@ func mapProtoToBizLocationSerializerNoCelestialBody(r *landingv1.LocationSeriali
 		return nil
 	}
 	return &bizlanding.LocationSerializerNoCelestialBody{
-		Active: r.Active,
-		Country: mapProtoToBizCountry(r.Country),
-		Description: r.Description,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Latitude: r.Latitude,
-		Longitude: r.Longitude,
-		MapImage: r.MapImage,
-		Name: r.Name,
-		ResponseMode: r.ResponseMode,
-		TimezoneName: r.TimezoneName,
+		Active:            r.Active,
+		Country:           mapProtoToBizCountry(r.Country),
+		Description:       r.Description,
+		Id:                r.Id,
+		Image:             mapProtoToBizImage(r.Image),
+		Latitude:          r.Latitude,
+		Longitude:         r.Longitude,
+		MapImage:          r.MapImage,
+		Name:              r.Name,
+		ResponseMode:      r.ResponseMode,
+		TimezoneName:      r.TimezoneName,
 		TotalLandingCount: r.TotalLandingCount,
-		TotalLaunchCount: r.TotalLaunchCount,
-		Url: r.Url,
+		TotalLaunchCount:  r.TotalLaunchCount,
+		Url:               r.Url,
 	}
 }
 
@@ -750,8 +751,8 @@ func mapProtoToBizMission(r *landingv1.Mission) *bizlanding.Mission {
 			return res
 		}(),
 		Description: r.Description,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
 		InfoUrls: func() []bizlanding.InfoURL {
 			if r.InfoUrls == nil {
 				return nil
@@ -762,8 +763,8 @@ func mapProtoToBizMission(r *landingv1.Mission) *bizlanding.Mission {
 			}
 			return res
 		}(),
-		Name: r.Name,
-		Orbit: mapProtoToBizOrbit(r.Orbit),
+		Name:    r.Name,
+		Orbit:   mapProtoToBizOrbit(r.Orbit),
 		TypeVal: r.Type,
 		VidUrls: func() []bizlanding.VidURL {
 			if r.VidUrls == nil {
@@ -783,11 +784,11 @@ func mapProtoToBizMissionPatch(r *landingv1.MissionPatch) *bizlanding.MissionPat
 		return nil
 	}
 	return &bizlanding.MissionPatch{
-		Agency: mapProtoToBizAgencyMini(r.Agency),
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		Name: r.Name,
-		Priority: r.Priority,
+		Agency:       mapProtoToBizAgencyMini(r.Agency),
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		Name:         r.Name,
+		Priority:     r.Priority,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -797,10 +798,10 @@ func mapProtoToBizNetPrecision(r *landingv1.NetPrecision) *bizlanding.NetPrecisi
 		return nil
 	}
 	return &bizlanding.NetPrecision{
-		Abbrev: r.Abbrev,
+		Abbrev:      r.Abbrev,
 		Description: r.Description,
-		Id: r.Id,
-		Name: r.Name,
+		Id:          r.Id,
+		Name:        r.Name,
 	}
 }
 
@@ -809,10 +810,10 @@ func mapProtoToBizOrbit(r *landingv1.Orbit) *bizlanding.Orbit {
 		return nil
 	}
 	return &bizlanding.Orbit{
-		Abbrev: r.Abbrev,
+		Abbrev:        r.Abbrev,
 		CelestialBody: mapProtoToBizCelestialBodyMini(r.CelestialBody),
-		Id: r.Id,
-		Name: r.Name,
+		Id:            r.Id,
+		Name:          r.Name,
 	}
 }
 
@@ -832,22 +833,22 @@ func mapProtoToBizPad(r *landingv1.Pad) *bizlanding.Pad {
 			}
 			return res
 		}(),
-		Country: mapProtoToBizCountry(r.Country),
-		Description: r.Description,
-		FastestTurnaround: r.FastestTurnaround,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
-		Latitude: r.Latitude,
-		Location: mapProtoToBizLocation(r.Location),
-		Longitude: r.Longitude,
-		MapImage: r.MapImage,
-		MapUrl: r.MapUrl,
-		Name: r.Name,
+		Country:                   mapProtoToBizCountry(r.Country),
+		Description:               r.Description,
+		FastestTurnaround:         r.FastestTurnaround,
+		Id:                        r.Id,
+		Image:                     mapProtoToBizImage(r.Image),
+		InfoUrl:                   r.InfoUrl,
+		Latitude:                  r.Latitude,
+		Location:                  mapProtoToBizLocation(r.Location),
+		Longitude:                 r.Longitude,
+		MapImage:                  r.MapImage,
+		MapUrl:                    r.MapUrl,
+		Name:                      r.Name,
 		OrbitalLaunchAttemptCount: r.OrbitalLaunchAttemptCount,
-		TotalLaunchCount: r.TotalLaunchCount,
-		Url: r.Url,
-		WikiUrl: r.WikiUrl,
+		TotalLaunchCount:          r.TotalLaunchCount,
+		Url:                       r.Url,
+		WikiUrl:                   r.WikiUrl,
 	}
 }
 
@@ -856,15 +857,15 @@ func mapProtoToBizPayloadDetailed(r *landingv1.PayloadDetailed) *bizlanding.Payl
 		return nil
 	}
 	return &bizlanding.PayloadDetailed{
-		Cost: r.Cost,
-		Description: r.Description,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoLink: r.InfoLink,
+		Cost:         r.Cost,
+		Description:  r.Description,
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
+		InfoLink:     r.InfoLink,
 		Manufacturer: mapProtoToBizAgencyDetailed(r.Manufacturer),
-		Mass: r.Mass,
-		Name: r.Name,
-		Operator: mapProtoToBizAgencyDetailed(r.Operator),
+		Mass:         r.Mass,
+		Name:         r.Name,
+		Operator:     mapProtoToBizAgencyDetailed(r.Operator),
 		Program: func() []bizlanding.ProgramNormal {
 			if r.Program == nil {
 				return nil
@@ -876,8 +877,8 @@ func mapProtoToBizPayloadDetailed(r *landingv1.PayloadDetailed) *bizlanding.Payl
 			return res
 		}(),
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizPayloadType(r.Type),
-		WikiLink: r.WikiLink,
+		TypeVal:      mapProtoToBizPayloadType(r.Type),
+		WikiLink:     r.WikiLink,
 	}
 }
 
@@ -886,7 +887,7 @@ func mapProtoToBizPayloadFlightDetailedSerializerNoLanding(r *landingv1.PayloadF
 		return nil
 	}
 	return &bizlanding.PayloadFlightDetailedSerializerNoLanding{
-		Amount: r.Amount,
+		Amount:      r.Amount,
 		Destination: r.Destination,
 		DockingEvents: func() []bizlanding.DockingEventForChaserNormal {
 			if r.DockingEvents == nil {
@@ -898,11 +899,11 @@ func mapProtoToBizPayloadFlightDetailedSerializerNoLanding(r *landingv1.PayloadF
 			}
 			return res
 		}(),
-		Id: r.Id,
-		Launch: mapProtoToBizLaunchNormal(r.Launch),
-		Payload: mapProtoToBizPayloadDetailed(r.Payload),
+		Id:           r.Id,
+		Launch:       mapProtoToBizLaunchNormal(r.Launch),
+		Payload:      mapProtoToBizPayloadDetailed(r.Payload),
 		ResponseMode: r.ResponseMode,
-		Url: r.Url,
+		Url:          r.Url,
 	}
 }
 
@@ -911,14 +912,14 @@ func mapProtoToBizPayloadFlightNormal(r *landingv1.PayloadFlightNormal) *bizland
 		return nil
 	}
 	return &bizlanding.PayloadFlightNormal{
-		Amount: r.Amount,
-		Destination: r.Destination,
-		Id: r.Id,
-		Landing: mapProtoToBizLandingRecord(r.Landing),
-		Launch: mapProtoToBizLaunchNormal(r.Launch),
-		Payload: mapProtoToBizPayloadNormal(r.Payload),
+		Amount:       r.Amount,
+		Destination:  r.Destination,
+		Id:           r.Id,
+		Landing:      mapProtoToBizLandingRecord(r.Landing),
+		Launch:       mapProtoToBizLaunchNormal(r.Launch),
+		Payload:      mapProtoToBizPayloadNormal(r.Payload),
 		ResponseMode: r.ResponseMode,
-		Url: r.Url,
+		Url:          r.Url,
 	}
 }
 
@@ -927,13 +928,13 @@ func mapProtoToBizPayloadMini(r *landingv1.PayloadMini) *bizlanding.PayloadMini 
 		return nil
 	}
 	return &bizlanding.PayloadMini{
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
 		Manufacturer: mapProtoToBizAgencyMini(r.Manufacturer),
-		Name: r.Name,
-		Operator: mapProtoToBizAgencyMini(r.Operator),
+		Name:         r.Name,
+		Operator:     mapProtoToBizAgencyMini(r.Operator),
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizPayloadType(r.Type),
+		TypeVal:      mapProtoToBizPayloadType(r.Type),
 	}
 }
 
@@ -942,15 +943,15 @@ func mapProtoToBizPayloadNormal(r *landingv1.PayloadNormal) *bizlanding.PayloadN
 		return nil
 	}
 	return &bizlanding.PayloadNormal{
-		Cost: r.Cost,
-		Description: r.Description,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoLink: r.InfoLink,
+		Cost:         r.Cost,
+		Description:  r.Description,
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
+		InfoLink:     r.InfoLink,
 		Manufacturer: mapProtoToBizAgencyNormal(r.Manufacturer),
-		Mass: r.Mass,
-		Name: r.Name,
-		Operator: mapProtoToBizAgencyNormal(r.Operator),
+		Mass:         r.Mass,
+		Name:         r.Name,
+		Operator:     mapProtoToBizAgencyNormal(r.Operator),
 		Program: func() []bizlanding.ProgramMini {
 			if r.Program == nil {
 				return nil
@@ -962,8 +963,8 @@ func mapProtoToBizPayloadNormal(r *landingv1.PayloadNormal) *bizlanding.PayloadN
 			return res
 		}(),
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizPayloadType(r.Type),
-		WikiLink: r.WikiLink,
+		TypeVal:      mapProtoToBizPayloadType(r.Type),
+		WikiLink:     r.WikiLink,
 	}
 }
 
@@ -972,7 +973,7 @@ func mapProtoToBizPayloadType(r *landingv1.PayloadType) *bizlanding.PayloadType 
 		return nil
 	}
 	return &bizlanding.PayloadType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -982,13 +983,13 @@ func mapProtoToBizProgramMini(r *landingv1.ProgramMini) *bizlanding.ProgramMini 
 		return nil
 	}
 	return &bizlanding.ProgramMini{
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
-		Name: r.Name,
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
+		InfoUrl:      r.InfoUrl,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		Url: r.Url,
-		WikiUrl: r.WikiUrl,
+		Url:          r.Url,
+		WikiUrl:      r.WikiUrl,
 	}
 }
 
@@ -1008,10 +1009,10 @@ func mapProtoToBizProgramNormal(r *landingv1.ProgramNormal) *bizlanding.ProgramN
 			return res
 		}(),
 		Description: r.Description,
-		EndDate: r.EndDate,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InfoUrl: r.InfoUrl,
+		EndDate:     r.EndDate,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		InfoUrl:     r.InfoUrl,
 		MissionPatches: func() []bizlanding.MissionPatch {
 			if r.MissionPatches == nil {
 				return nil
@@ -1022,12 +1023,12 @@ func mapProtoToBizProgramNormal(r *landingv1.ProgramNormal) *bizlanding.ProgramN
 			}
 			return res
 		}(),
-		Name: r.Name,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		StartDate: r.StartDate,
-		TypeVal: mapProtoToBizProgramType(r.Type),
-		Url: r.Url,
-		WikiUrl: r.WikiUrl,
+		StartDate:    r.StartDate,
+		TypeVal:      mapProtoToBizProgramType(r.Type),
+		Url:          r.Url,
+		WikiUrl:      r.WikiUrl,
 	}
 }
 
@@ -1036,7 +1037,7 @@ func mapProtoToBizProgramType(r *landingv1.ProgramType) *bizlanding.ProgramType 
 		return nil
 	}
 	return &bizlanding.ProgramType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -1047,7 +1048,7 @@ func mapProtoToBizRocketNormal(r *landingv1.RocketNormal) *bizlanding.RocketNorm
 	}
 	return &bizlanding.RocketNormal{
 		Configuration: mapProtoToBizLauncherConfigList(r.Configuration),
-		Id: r.Id,
+		Id:            r.Id,
 	}
 }
 
@@ -1056,10 +1057,10 @@ func mapProtoToBizSocialMedia(r *landingv1.SocialMedia) *bizlanding.SocialMedia 
 		return nil
 	}
 	return &bizlanding.SocialMedia{
-		Id: r.Id,
+		Id:   r.Id,
 		Logo: mapProtoToBizImage(r.Logo),
 		Name: r.Name,
-		Url: r.Url,
+		Url:  r.Url,
 	}
 }
 
@@ -1068,9 +1069,9 @@ func mapProtoToBizSocialMediaLink(r *landingv1.SocialMediaLink) *bizlanding.Soci
 		return nil
 	}
 	return &bizlanding.SocialMediaLink{
-		Id: r.Id,
+		Id:          r.Id,
 		SocialMedia: mapProtoToBizSocialMedia(r.SocialMedia),
-		Url: r.Url,
+		Url:         r.Url,
 	}
 }
 
@@ -1079,10 +1080,10 @@ func mapProtoToBizSpaceStationMini(r *landingv1.SpaceStationMini) *bizlanding.Sp
 		return nil
 	}
 	return &bizlanding.SpaceStationMini{
-		Id: r.Id,
+		Id:    r.Id,
 		Image: mapProtoToBizImage(r.Image),
-		Name: r.Name,
-		Url: r.Url,
+		Name:  r.Name,
+		Url:   r.Url,
 	}
 }
 
@@ -1091,16 +1092,16 @@ func mapProtoToBizSpaceStationNormal(r *landingv1.SpaceStationNormal) *bizlandin
 		return nil
 	}
 	return &bizlanding.SpaceStationNormal{
-		Deorbited: r.Deorbited,
+		Deorbited:   r.Deorbited,
 		Description: r.Description,
-		Founded: r.Founded,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Name: r.Name,
-		Orbit: r.Orbit,
-		Status: mapProtoToBizSpaceStationStatus(r.Status),
-		TypeVal: mapProtoToBizSpaceStationType(r.Type),
-		Url: r.Url,
+		Founded:     r.Founded,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		Name:        r.Name,
+		Orbit:       r.Orbit,
+		Status:      mapProtoToBizSpaceStationStatus(r.Status),
+		TypeVal:     mapProtoToBizSpaceStationType(r.Type),
+		Url:         r.Url,
 	}
 }
 
@@ -1109,7 +1110,7 @@ func mapProtoToBizSpaceStationStatus(r *landingv1.SpaceStationStatus) *bizlandin
 		return nil
 	}
 	return &bizlanding.SpaceStationStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -1119,7 +1120,7 @@ func mapProtoToBizSpaceStationType(r *landingv1.SpaceStationType) *bizlanding.Sp
 		return nil
 	}
 	return &bizlanding.SpaceStationType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -1129,14 +1130,14 @@ func mapProtoToBizSpacecraftConfigDetailed(r *landingv1.SpacecraftConfigDetailed
 		return nil
 	}
 	return &bizlanding.SpacecraftConfigDetailed{
-		Agency: mapProtoToBizAgencyNormal(r.Agency),
+		Agency:            mapProtoToBizAgencyNormal(r.Agency),
 		AttemptedLandings: r.AttemptedLandings,
-		Capability: r.Capability,
-		CrewCapacity: r.CrewCapacity,
-		Details: r.Details,
-		Diameter: r.Diameter,
-		FailedLandings: r.FailedLandings,
-		FailedLaunches: r.FailedLaunches,
+		Capability:        r.Capability,
+		CrewCapacity:      r.CrewCapacity,
+		Details:           r.Details,
+		Diameter:          r.Diameter,
+		FailedLandings:    r.FailedLandings,
+		FailedLaunches:    r.FailedLaunches,
 		Family: func() []bizlanding.SpacecraftConfigFamilyDetailed {
 			if r.Family == nil {
 				return nil
@@ -1147,27 +1148,27 @@ func mapProtoToBizSpacecraftConfigDetailed(r *landingv1.SpacecraftConfigDetailed
 			}
 			return res
 		}(),
-		FastestTurnaround: r.FastestTurnaround,
-		FlightLife: r.FlightLife,
-		Height: r.Height,
-		History: r.History,
-		HumanRated: r.HumanRated,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InUse: r.InUse,
-		InfoLink: r.InfoLink,
-		MaidenFlight: r.MaidenFlight,
-		Name: r.Name,
-		PayloadCapacity: r.PayloadCapacity,
+		FastestTurnaround:     r.FastestTurnaround,
+		FlightLife:            r.FlightLife,
+		Height:                r.Height,
+		History:               r.History,
+		HumanRated:            r.HumanRated,
+		Id:                    r.Id,
+		Image:                 mapProtoToBizImage(r.Image),
+		InUse:                 r.InUse,
+		InfoLink:              r.InfoLink,
+		MaidenFlight:          r.MaidenFlight,
+		Name:                  r.Name,
+		PayloadCapacity:       r.PayloadCapacity,
 		PayloadReturnCapacity: r.PayloadReturnCapacity,
-		ResponseMode: r.ResponseMode,
-		SpacecraftFlown: r.SpacecraftFlown,
-		SuccessfulLandings: r.SuccessfulLandings,
-		SuccessfulLaunches: r.SuccessfulLaunches,
-		TotalLaunchCount: r.TotalLaunchCount,
-		TypeVal: mapProtoToBizSpacecraftConfigType(r.Type),
-		Url: r.Url,
-		WikiLink: r.WikiLink,
+		ResponseMode:          r.ResponseMode,
+		SpacecraftFlown:       r.SpacecraftFlown,
+		SuccessfulLandings:    r.SuccessfulLandings,
+		SuccessfulLaunches:    r.SuccessfulLaunches,
+		TotalLaunchCount:      r.TotalLaunchCount,
+		TypeVal:               mapProtoToBizSpacecraftConfigType(r.Type),
+		Url:                   r.Url,
+		WikiLink:              r.WikiLink,
 	}
 }
 
@@ -1176,20 +1177,20 @@ func mapProtoToBizSpacecraftConfigFamilyDetailed(r *landingv1.SpacecraftConfigFa
 		return nil
 	}
 	return &bizlanding.SpacecraftConfigFamilyDetailed{
-		AttemptedLandings: r.AttemptedLandings,
-		Description: r.Description,
-		FailedLandings: r.FailedLandings,
-		FailedLaunches: r.FailedLaunches,
-		Id: r.Id,
-		MaidenFlight: r.MaidenFlight,
-		Manufacturer: mapProtoToBizAgencyNormal(r.Manufacturer),
-		Name: r.Name,
-		Parent: mapProtoToBizSpacecraftConfigFamilyNormal(r.Parent),
-		ResponseMode: r.ResponseMode,
-		SpacecraftFlown: r.SpacecraftFlown,
+		AttemptedLandings:  r.AttemptedLandings,
+		Description:        r.Description,
+		FailedLandings:     r.FailedLandings,
+		FailedLaunches:     r.FailedLaunches,
+		Id:                 r.Id,
+		MaidenFlight:       r.MaidenFlight,
+		Manufacturer:       mapProtoToBizAgencyNormal(r.Manufacturer),
+		Name:               r.Name,
+		Parent:             mapProtoToBizSpacecraftConfigFamilyNormal(r.Parent),
+		ResponseMode:       r.ResponseMode,
+		SpacecraftFlown:    r.SpacecraftFlown,
 		SuccessfulLandings: r.SuccessfulLandings,
 		SuccessfulLaunches: r.SuccessfulLaunches,
-		TotalLaunchCount: r.TotalLaunchCount,
+		TotalLaunchCount:   r.TotalLaunchCount,
 	}
 }
 
@@ -1198,8 +1199,8 @@ func mapProtoToBizSpacecraftConfigFamilyMini(r *landingv1.SpacecraftConfigFamily
 		return nil
 	}
 	return &bizlanding.SpacecraftConfigFamilyMini{
-		Id: r.Id,
-		Name: r.Name,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -1209,12 +1210,12 @@ func mapProtoToBizSpacecraftConfigFamilyNormal(r *landingv1.SpacecraftConfigFami
 		return nil
 	}
 	return &bizlanding.SpacecraftConfigFamilyNormal{
-		Description: r.Description,
-		Id: r.Id,
+		Description:  r.Description,
+		Id:           r.Id,
 		MaidenFlight: r.MaidenFlight,
 		Manufacturer: mapProtoToBizAgencyMini(r.Manufacturer),
-		Name: r.Name,
-		Parent: mapProtoToBizSpacecraftConfigFamilyMini(r.Parent),
+		Name:         r.Name,
+		Parent:       mapProtoToBizSpacecraftConfigFamilyMini(r.Parent),
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -1235,13 +1236,13 @@ func mapProtoToBizSpacecraftConfigNormal(r *landingv1.SpacecraftConfigNormal) *b
 			}
 			return res
 		}(),
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InUse: r.InUse,
-		Name: r.Name,
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
+		InUse:        r.InUse,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizSpacecraftConfigType(r.Type),
-		Url: r.Url,
+		TypeVal:      mapProtoToBizSpacecraftConfigType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -1250,7 +1251,7 @@ func mapProtoToBizSpacecraftConfigType(r *landingv1.SpacecraftConfigType) *bizla
 		return nil
 	}
 	return &bizlanding.SpacecraftConfigType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -1260,22 +1261,22 @@ func mapProtoToBizSpacecraftDetailed(r *landingv1.SpacecraftDetailed) *bizlandin
 		return nil
 	}
 	return &bizlanding.SpacecraftDetailed{
-		Description: r.Description,
+		Description:       r.Description,
 		FastestTurnaround: r.FastestTurnaround,
-		FlightsCount: r.FlightsCount,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InSpace: r.InSpace,
-		IsPlaceholder: r.IsPlaceholder,
-		MissionEndsCount: r.MissionEndsCount,
-		Name: r.Name,
-		ResponseMode: r.ResponseMode,
-		SerialNumber: r.SerialNumber,
-		SpacecraftConfig: mapProtoToBizSpacecraftConfigDetailed(r.SpacecraftConfig),
-		Status: mapProtoToBizSpacecraftStatus(r.Status),
-		TimeDocked: r.TimeDocked,
-		TimeInSpace: r.TimeInSpace,
-		Url: r.Url,
+		FlightsCount:      r.FlightsCount,
+		Id:                r.Id,
+		Image:             mapProtoToBizImage(r.Image),
+		InSpace:           r.InSpace,
+		IsPlaceholder:     r.IsPlaceholder,
+		MissionEndsCount:  r.MissionEndsCount,
+		Name:              r.Name,
+		ResponseMode:      r.ResponseMode,
+		SerialNumber:      r.SerialNumber,
+		SpacecraftConfig:  mapProtoToBizSpacecraftConfigDetailed(r.SpacecraftConfig),
+		Status:            mapProtoToBizSpacecraftStatus(r.Status),
+		TimeDocked:        r.TimeDocked,
+		TimeInSpace:       r.TimeInSpace,
+		Url:               r.Url,
 	}
 }
 
@@ -1296,7 +1297,7 @@ func mapProtoToBizSpacecraftFlightDetailedSerializerNoLanding(r *landingv1.Space
 			return res
 		}(),
 		Duration: r.Duration,
-		Id: r.Id,
+		Id:       r.Id,
 		LandingCrew: func() []bizlanding.AstronautFlight {
 			if r.LandingCrew == nil {
 				return nil
@@ -1329,10 +1330,10 @@ func mapProtoToBizSpacecraftFlightDetailedSerializerNoLanding(r *landingv1.Space
 			}
 			return res
 		}(),
-		ResponseMode: r.ResponseMode,
-		Spacecraft: mapProtoToBizSpacecraftDetailed(r.Spacecraft),
+		ResponseMode:   r.ResponseMode,
+		Spacecraft:     mapProtoToBizSpacecraftDetailed(r.Spacecraft),
 		TurnAroundTime: r.TurnAroundTime,
-		Url: r.Url,
+		Url:            r.Url,
 	}
 }
 
@@ -1341,16 +1342,16 @@ func mapProtoToBizSpacecraftFlightNormal(r *landingv1.SpacecraftFlightNormal) *b
 		return nil
 	}
 	return &bizlanding.SpacecraftFlightNormal{
-		Destination: r.Destination,
-		Duration: r.Duration,
-		Id: r.Id,
-		Landing: mapProtoToBizLandingRecord(r.Landing),
-		Launch: mapProtoToBizLaunchNormal(r.Launch),
-		MissionEnd: r.MissionEnd,
-		ResponseMode: r.ResponseMode,
-		Spacecraft: mapProtoToBizSpacecraftNormal(r.Spacecraft),
+		Destination:    r.Destination,
+		Duration:       r.Duration,
+		Id:             r.Id,
+		Landing:        mapProtoToBizLandingRecord(r.Landing),
+		Launch:         mapProtoToBizLaunchNormal(r.Launch),
+		MissionEnd:     r.MissionEnd,
+		ResponseMode:   r.ResponseMode,
+		Spacecraft:     mapProtoToBizSpacecraftNormal(r.Spacecraft),
 		TurnAroundTime: r.TurnAroundTime,
-		Url: r.Url,
+		Url:            r.Url,
 	}
 }
 
@@ -1359,22 +1360,22 @@ func mapProtoToBizSpacecraftNormal(r *landingv1.SpacecraftNormal) *bizlanding.Sp
 		return nil
 	}
 	return &bizlanding.SpacecraftNormal{
-		Description: r.Description,
+		Description:       r.Description,
 		FastestTurnaround: r.FastestTurnaround,
-		FlightsCount: r.FlightsCount,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InSpace: r.InSpace,
-		IsPlaceholder: r.IsPlaceholder,
-		MissionEndsCount: r.MissionEndsCount,
-		Name: r.Name,
-		ResponseMode: r.ResponseMode,
-		SerialNumber: r.SerialNumber,
-		SpacecraftConfig: mapProtoToBizSpacecraftConfigNormal(r.SpacecraftConfig),
-		Status: mapProtoToBizSpacecraftStatus(r.Status),
-		TimeDocked: r.TimeDocked,
-		TimeInSpace: r.TimeInSpace,
-		Url: r.Url,
+		FlightsCount:      r.FlightsCount,
+		Id:                r.Id,
+		Image:             mapProtoToBizImage(r.Image),
+		InSpace:           r.InSpace,
+		IsPlaceholder:     r.IsPlaceholder,
+		MissionEndsCount:  r.MissionEndsCount,
+		Name:              r.Name,
+		ResponseMode:      r.ResponseMode,
+		SerialNumber:      r.SerialNumber,
+		SpacecraftConfig:  mapProtoToBizSpacecraftConfigNormal(r.SpacecraftConfig),
+		Status:            mapProtoToBizSpacecraftStatus(r.Status),
+		TimeDocked:        r.TimeDocked,
+		TimeInSpace:       r.TimeInSpace,
+		Url:               r.Url,
 	}
 }
 
@@ -1383,7 +1384,7 @@ func mapProtoToBizSpacecraftStatus(r *landingv1.SpacecraftStatus) *bizlanding.Sp
 		return nil
 	}
 	return &bizlanding.SpacecraftStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -1393,18 +1394,18 @@ func mapProtoToBizVidURL(r *landingv1.VidURL) *bizlanding.VidURL {
 		return nil
 	}
 	return &bizlanding.VidURL{
-		Description: r.Description,
-		EndTime: r.EndTime,
+		Description:  r.Description,
+		EndTime:      r.EndTime,
 		FeatureImage: r.FeatureImage,
-		Language: mapProtoToBizLanguage(r.Language),
-		Live: r.Live,
-		Priority: r.Priority,
-		Publisher: r.Publisher,
-		Source: r.Source,
-		StartTime: r.StartTime,
-		Title: r.Title,
-		TypeVal: mapProtoToBizVidURLType(r.Type),
-		Url: r.Url,
+		Language:     mapProtoToBizLanguage(r.Language),
+		Live:         r.Live,
+		Priority:     r.Priority,
+		Publisher:    r.Publisher,
+		Source:       r.Source,
+		StartTime:    r.StartTime,
+		Title:        r.Title,
+		TypeVal:      mapProtoToBizVidURLType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -1413,8 +1414,7 @@ func mapProtoToBizVidURLType(r *landingv1.VidURLType) *bizlanding.VidURLType {
 		return nil
 	}
 	return &bizlanding.VidURLType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
-

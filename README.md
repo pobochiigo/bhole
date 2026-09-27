@@ -14,42 +14,46 @@ The codebase separates concerns between pure business domains, generic transport
 │   │   ├── endpoint.go     # Declares the business service endpoints struct
 │   │   └── connectrpc_transport.go # Declares ConnectRPC transport constructors & mappings
 │   ├── ts/                 # TypeScript client package (Connect-ES v2.x)
-│   └── transport/          # REST Interceptor & HTTP transport helper
+│   └── transport/          # REST-mapping ConnectRPC HTTP client (RESTClient)
 │
-├── internal/               # Server & Business Logic
-│   ├── {feature}/          # Feature Business Logic (e.g. internal/launch)
-│   │   ├── endpoint.go     # Declares Go-kit server endpoints
-│   │   └── connectrpc_server.go # ConnectRPC service handler, encoders/decoders & mappers
-│   └── transport/          # Generic server-side transport handlers
+├── pkg/                    # Public Domain Models, Service Interfaces & Server Handlers
+│   └── {feature}/          # Feature package (e.g. pkg/launch)
+│       ├── {feature}.go    # Domain structs (request/response and resource models)
+│       ├── service.go      # Service interface implemented by clients and servers alike
+│       ├── endpoint.go     # Go-kit server endpoints
+│       └── connectrpc_server.go # ConnectRPC service handler, encoders/decoders & mappers
 │
 ├── cmd/                    # Binaries
-│   ├── example/            # Go client demonstration calling public LL2 REST API
-│   └── server/             # API gateway server hosting all 18 ConnectRPC handlers
+│   ├── example/            # Go client demonstration calling the public LL2 REST API
+│   └── server/             # ConnectRPC gateway hosting all 18 services, backed by LL2 REST
 │
+├── web/                    # Vite demo web app using the TypeScript client
 ├── proto/                  # Protobuf Schemas (Buf module)
 └── scripts/                # Code generation engines
 ```
+
+Domain models and `Service` interfaces live in `pkg/` (not `internal/`) so that other Go modules can import the client SDK and construct requests.
 
 ---
 
 ## 🛠️ Code Generation Workflow
 
-Due to the massive size of the LL2 API (18 primary resources, 50+ schemas, hundreds of fields), both Go client/server architectures are fully automated via generation engines:
+Due to the massive size of the LL2 API (18 primary resources, 50+ schemas, hundreds of fields), both Go client/server architectures are fully automated via generation engines. Every generator formats its output with `gofmt`, so the tree stays format-clean after regeneration.
 
 ### 1. Generate Go Client SDK
-Generates type-safe client endpoint files and legacy file cleanup:
+Generates protos, domain models, service interfaces, client endpoint files and the REST-mapping transport:
 ```bash
 python3 scripts/generate_client.py
 ```
 
 ### 2. Generate Go Server Handlers
-Generates endpoint bindings, encoders, decoders, and business-to-proto mappers inside `internal/{feature}`:
+Generates endpoint bindings, encoders, decoders, and business-to-proto mappers inside `pkg/{feature}`:
 ```bash
 python3 scripts/generate_server.py
 ```
 
 ### 3. Generate API Server Command
-Generates `cmd/server/main.go` registering all services and stubs:
+Generates `cmd/server/main.go` registering all services on top of the REST-backed clients:
 ```bash
 python3 scripts/generate_server_cmd.py
 ```
@@ -60,25 +64,50 @@ Uses `buf` to compile schemas into Go client/server bindings and TypeScript defi
 buf generate
 ```
 
+Optional HTML reference docs for the schemas (requires `protoc-gen-doc` on `PATH`, output is gitignored):
+```bash
+buf generate --template buf.gen.docs.yaml
+```
+
 ---
 
 ## 🚀 Getting Started
 
 ### Run the Go Client Example
-The Go client utilizes a custom [RESTClient](file:///Users/28soft/GitLab/pobochiigo/bhole/client/transport/rest_client.go) that intercepts ConnectRPC requests and maps them directly to the public REST API, requiring **no local running server**:
+The Go client uses the `RESTClient` in `client/transport`, which intercepts ConnectRPC requests and maps them directly to the public REST API, requiring **no local running server**:
 ```bash
-go run cmd/example/main.go
+go run ./cmd/example
 ```
 
-### Run the ConnectRPC API Server
-Spins up a local HTTP/2 cleartext (h2c) server hosting all 18 ConnectRPC service handlers with built-in CORS support:
+The REST client propagates the caller's `context.Context` (cancellation, deadlines, Connect timeouts) and forwards an `Authorization` header when one is set on the Connect request, so LL2 API tokens work unchanged. Upstream HTTP errors surface as `*connect.Error` values with matching codes (`404` → `CodeNotFound`, `429` → `CodeResourceExhausted`, and so on).
+
+### Run the ConnectRPC API Gateway
+Spins up a local HTTP/1.1 + cleartext HTTP/2 (h2c) server hosting all 18 ConnectRPC service handlers with CORS support. Each handler is backed by the REST-mapping client, so responses contain real LL2 data:
 ```bash
-go run cmd/server/main.go
+go run ./cmd/server
 ```
-The server will listen at `http://localhost:8080`.
+The server listens at `http://localhost:8080` by default and shuts down gracefully on `SIGINT`/`SIGTERM`.
+
+| Variable       | Default                            | Purpose                       |
+|----------------|------------------------------------|-------------------------------|
+| `LL2_BASE_URL` | `https://lldev.thespacedevs.com`   | Upstream LL2 REST base URL    |
+| `BHOLE_ADDR`   | `:8080`                            | Listen address                |
+
+### Use the Go SDK from another module
+```go
+import (
+    "github.com/pobochiigo/bhole/client/transport"
+    launchclient "github.com/pobochiigo/bhole/client/launch"
+    "github.com/pobochiigo/bhole/pkg/launch"
+)
+
+rest := transport.NewRESTClient("https://lldev.thespacedevs.com", nil)
+svc := launchclient.NewLaunchClient(rest, "https://lldev.thespacedevs.com")
+resp, err := svc.ListLaunches(ctx, &launch.ListLaunchesRequest{Limit: 5})
+```
 
 ### Build the TypeScript Web Client
-Compile the compiled TypeScript/ES ConnectRPC client package:
+Compile the TypeScript/ES ConnectRPC client package:
 ```bash
 cd client/ts
 npm install
@@ -88,8 +117,9 @@ Build assets, typing definitions, and source maps will be generated in `client/t
 
 ---
 
-## 🧪 Running Tests
-All mock-based client/server integration tests can be run using the standard Go test command:
+## 🧪 Running Tests & Checks
 ```bash
 go test ./...
+gofmt -l .            # must print nothing
+golangci-lint run     # config in .golangci.yml
 ```
