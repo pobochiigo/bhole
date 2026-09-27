@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizexpedition "github.com/pobochiigo/bhole/pkg/expedition"
+	bizexpedition "github.com/pobochiigo/bhole/expedition"
 	expeditionv1 "github.com/pobochiigo/bhole/proto/expedition/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/expedition/v1/expeditionv1connect"
 	"github.com/pobochiigo/silo/connectrpc"

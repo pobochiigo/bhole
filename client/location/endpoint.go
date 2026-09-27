@@ -3,7 +3,7 @@ package location
 import (
 	"context"
 
-	bizlocation "github.com/pobochiigo/bhole/pkg/location"
+	bizlocation "github.com/pobochiigo/bhole/location"
 	"github.com/pobochiigo/silo/endpoint"
 )
 

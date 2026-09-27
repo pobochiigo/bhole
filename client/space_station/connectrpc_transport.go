@@ -5,9 +5,9 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizspace_station "github.com/pobochiigo/bhole/pkg/space_station"
 	space_stationv1 "github.com/pobochiigo/bhole/proto/space_station/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/space_station/v1/space_stationv1connect"
+	bizspace_station "github.com/pobochiigo/bhole/space_station"
 	"github.com/pobochiigo/silo/connectrpc"
 )
 

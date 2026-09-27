@@ -5,9 +5,9 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizupdate "github.com/pobochiigo/bhole/pkg/update"
 	updatev1 "github.com/pobochiigo/bhole/proto/update/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/update/v1/updatev1connect"
+	bizupdate "github.com/pobochiigo/bhole/update"
 	"github.com/pobochiigo/silo/connectrpc"
 )
 

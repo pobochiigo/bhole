@@ -3,7 +3,7 @@ package celestial_body
 import (
 	"context"
 
-	bizcelestial_body "github.com/pobochiigo/bhole/pkg/celestial_body"
+	bizcelestial_body "github.com/pobochiigo/bhole/celestial_body"
 	"github.com/pobochiigo/silo/endpoint"
 )
 

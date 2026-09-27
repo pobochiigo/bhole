@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizcelestial_body "github.com/pobochiigo/bhole/pkg/celestial_body"
+	bizcelestial_body "github.com/pobochiigo/bhole/celestial_body"
 	celestial_bodyv1 "github.com/pobochiigo/bhole/proto/celestial_body/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/celestial_body/v1/celestial_bodyv1connect"
 	"github.com/pobochiigo/silo/connectrpc"

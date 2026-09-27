@@ -3,7 +3,7 @@ package update
 import (
 	"context"
 
-	bizupdate "github.com/pobochiigo/bhole/pkg/update"
+	bizupdate "github.com/pobochiigo/bhole/update"
 	"github.com/pobochiigo/silo/endpoint"
 )
 

@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	bizastronaut "github.com/pobochiigo/bhole/pkg/astronaut"
+	bizastronaut "github.com/pobochiigo/bhole/astronaut"
 	astronautv1 "github.com/pobochiigo/bhole/proto/astronaut/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/astronaut/v1/astronautv1connect"
 	"github.com/pobochiigo/silo/connectrpc"

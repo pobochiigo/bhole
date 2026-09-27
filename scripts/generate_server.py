@@ -291,7 +291,7 @@ def main():
         plural_method = config["plural_method"]
         
         # Make directories
-        os.makedirs(f"pkg/{feature}", exist_ok=True)
+        os.makedirs(f"{feature}", exist_ok=True)
         
         # --- A. Generate endpoint.go ---
         endpoint_content = f"""package {feature}
@@ -326,7 +326,7 @@ func makeGet{feature_camel}Endpoint(svc Service) endpoint.Endpoint[*Get{feature_
 	}}
 }}
 """
-        with open(f"pkg/{feature}/endpoint.go", "w") as ef:
+        with open(f"{feature}/endpoint.go", "w") as ef:
             ef.write(endpoint_content)
             
         # --- B. Generate connectrpc_server.go ---
@@ -439,10 +439,10 @@ func encodeGet{feature_camel}Response(ctx context.Context, resp *{feature_camel}
                     
             server_content += "\t}\n}\n\n"
             
-        with open(f"pkg/{feature}/connectrpc_server.go", "w") as sf:
+        with open(f"{feature}/connectrpc_server.go", "w") as sf:
             sf.write(server_content)
 
-    run_gofmt(["pkg"])
+    run_gofmt(sorted(RESOURCES))
     print("Server files generation completed successfully!")
 
 if __name__ == "__main__":

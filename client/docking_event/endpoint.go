@@ -3,7 +3,7 @@ package docking_event
 import (
 	"context"
 
-	bizdocking_event "github.com/pobochiigo/bhole/pkg/docking_event"
+	bizdocking_event "github.com/pobochiigo/bhole/docking_event"
 	"github.com/pobochiigo/silo/endpoint"
 )
 

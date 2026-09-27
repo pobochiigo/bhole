@@ -3,7 +3,7 @@ package launch
 import (
 	"context"
 
-	bizlaunch "github.com/pobochiigo/bhole/pkg/launch"
+	bizlaunch "github.com/pobochiigo/bhole/launch"
 	"github.com/pobochiigo/silo/endpoint"
 )
 
