@@ -2,12 +2,13 @@ package expedition
 
 import (
 	"context"
+	"errors"
 
-	"github.com/pobochiigo/silo/connectrpc"
-	bizexpedition "github.com/pobochiigo/bhole/internal/expedition"
+	"connectrpc.com/connect"
+	bizexpedition "github.com/pobochiigo/bhole/pkg/expedition"
 	expeditionv1 "github.com/pobochiigo/bhole/proto/expedition/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/expedition/v1/expeditionv1connect"
-	"connectrpc.com/connect"
+	"github.com/pobochiigo/silo/connectrpc"
 )
 
 func NewExpeditionClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) bizexpedition.Service {
@@ -58,7 +59,7 @@ func decodeListExpeditionsResponse(ctx context.Context, resp *expeditionv1.ListE
 
 func decodeGetExpeditionResponse(ctx context.Context, resp *expeditionv1.GetExpeditionResponse) (*bizexpedition.Expedition, error) {
 	if resp.Expedition == nil {
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("expedition: empty response"))
 	}
 	return mapProtoToBizExpedition(resp.Expedition), nil
 }
@@ -68,12 +69,12 @@ func mapProtoToBizAgencyMini(r *expeditionv1.AgencyMini) *bizexpedition.AgencyMi
 		return nil
 	}
 	return &bizexpedition.AgencyMini{
-		Abbrev: r.Abbrev,
-		Id: r.Id,
-		Name: r.Name,
+		Abbrev:       r.Abbrev,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
+		TypeVal:      mapProtoToBizAgencyType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -82,7 +83,7 @@ func mapProtoToBizAgencyNormal(r *expeditionv1.AgencyNormal) *bizexpedition.Agen
 		return nil
 	}
 	return &bizexpedition.AgencyNormal{
-		Abbrev: r.Abbrev,
+		Abbrev:        r.Abbrev,
 		Administrator: r.Administrator,
 		Country: func() []bizexpedition.Country {
 			if r.Country == nil {
@@ -94,20 +95,20 @@ func mapProtoToBizAgencyNormal(r *expeditionv1.AgencyNormal) *bizexpedition.Agen
 			}
 			return res
 		}(),
-		Description: r.Description,
-		Featured: r.Featured,
+		Description:  r.Description,
+		Featured:     r.Featured,
 		FoundingYear: r.FoundingYear,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Launchers: r.Launchers,
-		Logo: mapProtoToBizImage(r.Logo),
-		Name: r.Name,
-		Parent: r.Parent,
+		Id:           r.Id,
+		Image:        mapProtoToBizImage(r.Image),
+		Launchers:    r.Launchers,
+		Logo:         mapProtoToBizImage(r.Logo),
+		Name:         r.Name,
+		Parent:       r.Parent,
 		ResponseMode: r.ResponseMode,
-		SocialLogo: mapProtoToBizImage(r.SocialLogo),
-		Spacecraft: r.Spacecraft,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
+		SocialLogo:   mapProtoToBizImage(r.SocialLogo),
+		Spacecraft:   r.Spacecraft,
+		TypeVal:      mapProtoToBizAgencyType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -116,7 +117,7 @@ func mapProtoToBizAgencyType(r *expeditionv1.AgencyType) *bizexpedition.AgencyTy
 		return nil
 	}
 	return &bizexpedition.AgencyType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -126,18 +127,18 @@ func mapProtoToBizAstronautDetailed(r *expeditionv1.AstronautDetailed) *bizexped
 		return nil
 	}
 	return &bizexpedition.AstronautDetailed{
-		Age: r.Age,
-		Agency: mapProtoToBizAgencyMini(r.Agency),
-		Bio: r.Bio,
+		Age:         r.Age,
+		Agency:      mapProtoToBizAgencyMini(r.Agency),
+		Bio:         r.Bio,
 		DateOfBirth: r.DateOfBirth,
 		DateOfDeath: r.DateOfDeath,
-		EvaTime: r.EvaTime,
+		EvaTime:     r.EvaTime,
 		FirstFlight: r.FirstFlight,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InSpace: r.InSpace,
-		LastFlight: r.LastFlight,
-		Name: r.Name,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		InSpace:     r.InSpace,
+		LastFlight:  r.LastFlight,
+		Name:        r.Name,
 		Nationality: func() []bizexpedition.Country {
 			if r.Nationality == nil {
 				return nil
@@ -159,11 +160,11 @@ func mapProtoToBizAstronautDetailed(r *expeditionv1.AstronautDetailed) *bizexped
 			}
 			return res
 		}(),
-		Status: mapProtoToBizAstronautStatus(r.Status),
+		Status:      mapProtoToBizAstronautStatus(r.Status),
 		TimeInSpace: r.TimeInSpace,
-		TypeVal: mapProtoToBizAstronautType(r.Type),
-		Url: r.Url,
-		Wiki: r.Wiki,
+		TypeVal:     mapProtoToBizAstronautType(r.Type),
+		Url:         r.Url,
+		Wiki:        r.Wiki,
 	}
 }
 
@@ -173,8 +174,8 @@ func mapProtoToBizAstronautFlight(r *expeditionv1.AstronautFlight) *bizexpeditio
 	}
 	return &bizexpedition.AstronautFlight{
 		Astronaut: mapProtoToBizAstronautDetailed(r.Astronaut),
-		Id: r.Id,
-		Role: mapProtoToBizAstronautRole(r.Role),
+		Id:        r.Id,
+		Role:      mapProtoToBizAstronautRole(r.Role),
 	}
 }
 
@@ -183,9 +184,9 @@ func mapProtoToBizAstronautRole(r *expeditionv1.AstronautRole) *bizexpedition.As
 		return nil
 	}
 	return &bizexpedition.AstronautRole{
-		Id: r.Id,
+		Id:       r.Id,
 		Priority: r.Priority,
-		Role: r.Role,
+		Role:     r.Role,
 	}
 }
 
@@ -194,7 +195,7 @@ func mapProtoToBizAstronautStatus(r *expeditionv1.AstronautStatus) *bizexpeditio
 		return nil
 	}
 	return &bizexpedition.AstronautStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -204,7 +205,7 @@ func mapProtoToBizAstronautType(r *expeditionv1.AstronautType) *bizexpedition.As
 		return nil
 	}
 	return &bizexpedition.AstronautType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -214,11 +215,11 @@ func mapProtoToBizCountry(r *expeditionv1.Country) *bizexpedition.Country {
 		return nil
 	}
 	return &bizexpedition.Country{
-		Alpha2Code: r.Alpha_2Code,
-		Alpha3Code: r.Alpha_3Code,
-		Id: r.Id,
-		Name: r.Name,
-		NationalityName: r.NationalityName,
+		Alpha2Code:              r.Alpha_2Code,
+		Alpha3Code:              r.Alpha_3Code,
+		Id:                      r.Id,
+		Name:                    r.Name,
+		NationalityName:         r.NationalityName,
 		NationalityNameComposed: r.NationalityNameComposed,
 	}
 }
@@ -239,7 +240,7 @@ func mapProtoToBizExpedition(r *expeditionv1.Expedition) *bizexpedition.Expediti
 			return res
 		}(),
 		End: r.End,
-		Id: r.Id,
+		Id:  r.Id,
 		MissionPatches: func() []bizexpedition.MissionPatch {
 			if r.MissionPatches == nil {
 				return nil
@@ -250,7 +251,7 @@ func mapProtoToBizExpedition(r *expeditionv1.Expedition) *bizexpedition.Expediti
 			}
 			return res
 		}(),
-		Name: r.Name,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
 		Spacestation: mapProtoToBizSpaceStationDetailed(r.Spacestation),
 		Spacewalks: func() []bizexpedition.SpacewalkList {
@@ -264,7 +265,7 @@ func mapProtoToBizExpedition(r *expeditionv1.Expedition) *bizexpedition.Expediti
 			return res
 		}(),
 		Start: r.Start,
-		Url: r.Url,
+		Url:   r.Url,
 	}
 }
 
@@ -273,12 +274,12 @@ func mapProtoToBizImage(r *expeditionv1.Image) *bizexpedition.Image {
 		return nil
 	}
 	return &bizexpedition.Image{
-		Credit: r.Credit,
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		License: mapProtoToBizImageLicense(r.License),
-		Name: r.Name,
-		SingleUse: r.SingleUse,
+		Credit:       r.Credit,
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		License:      mapProtoToBizImageLicense(r.License),
+		Name:         r.Name,
+		SingleUse:    r.SingleUse,
 		ThumbnailUrl: r.ThumbnailUrl,
 		Variants: func() []bizexpedition.ImageVariant {
 			if r.Variants == nil {
@@ -298,9 +299,9 @@ func mapProtoToBizImageLicense(r *expeditionv1.ImageLicense) *bizexpedition.Imag
 		return nil
 	}
 	return &bizexpedition.ImageLicense{
-		Id: r.Id,
-		Link: r.Link,
-		Name: r.Name,
+		Id:       r.Id,
+		Link:     r.Link,
+		Name:     r.Name,
 		Priority: r.Priority,
 	}
 }
@@ -310,9 +311,9 @@ func mapProtoToBizImageVariant(r *expeditionv1.ImageVariant) *bizexpedition.Imag
 		return nil
 	}
 	return &bizexpedition.ImageVariant{
-		Id: r.Id,
+		Id:       r.Id,
 		ImageUrl: r.ImageUrl,
-		TypeVal: mapProtoToBizImageVariantType(r.Type),
+		TypeVal:  mapProtoToBizImageVariantType(r.Type),
 	}
 }
 
@@ -321,7 +322,7 @@ func mapProtoToBizImageVariantType(r *expeditionv1.ImageVariantType) *bizexpedit
 		return nil
 	}
 	return &bizexpedition.ImageVariantType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -331,11 +332,11 @@ func mapProtoToBizMissionPatch(r *expeditionv1.MissionPatch) *bizexpedition.Miss
 		return nil
 	}
 	return &bizexpedition.MissionPatch{
-		Agency: mapProtoToBizAgencyMini(r.Agency),
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		Name: r.Name,
-		Priority: r.Priority,
+		Agency:       mapProtoToBizAgencyMini(r.Agency),
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		Name:         r.Name,
+		Priority:     r.Priority,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -345,10 +346,10 @@ func mapProtoToBizSocialMedia(r *expeditionv1.SocialMedia) *bizexpedition.Social
 		return nil
 	}
 	return &bizexpedition.SocialMedia{
-		Id: r.Id,
+		Id:   r.Id,
 		Logo: mapProtoToBizImage(r.Logo),
 		Name: r.Name,
-		Url: r.Url,
+		Url:  r.Url,
 	}
 }
 
@@ -357,9 +358,9 @@ func mapProtoToBizSocialMediaLink(r *expeditionv1.SocialMediaLink) *bizexpeditio
 		return nil
 	}
 	return &bizexpedition.SocialMediaLink{
-		Id: r.Id,
+		Id:          r.Id,
 		SocialMedia: mapProtoToBizSocialMedia(r.SocialMedia),
-		Url: r.Url,
+		Url:         r.Url,
 	}
 }
 
@@ -368,13 +369,13 @@ func mapProtoToBizSpaceStationDetailed(r *expeditionv1.SpaceStationDetailed) *bi
 		return nil
 	}
 	return &bizexpedition.SpaceStationDetailed{
-		Deorbited: r.Deorbited,
+		Deorbited:   r.Deorbited,
 		Description: r.Description,
-		Founded: r.Founded,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Name: r.Name,
-		Orbit: r.Orbit,
+		Founded:     r.Founded,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		Name:        r.Name,
+		Orbit:       r.Orbit,
 		Owners: func() []bizexpedition.AgencyNormal {
 			if r.Owners == nil {
 				return nil
@@ -385,9 +386,9 @@ func mapProtoToBizSpaceStationDetailed(r *expeditionv1.SpaceStationDetailed) *bi
 			}
 			return res
 		}(),
-		Status: mapProtoToBizSpaceStationStatus(r.Status),
+		Status:  mapProtoToBizSpaceStationStatus(r.Status),
 		TypeVal: mapProtoToBizSpaceStationType(r.Type),
-		Url: r.Url,
+		Url:     r.Url,
 	}
 }
 
@@ -396,7 +397,7 @@ func mapProtoToBizSpaceStationStatus(r *expeditionv1.SpaceStationStatus) *bizexp
 		return nil
 	}
 	return &bizexpedition.SpaceStationStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -406,7 +407,7 @@ func mapProtoToBizSpaceStationType(r *expeditionv1.SpaceStationType) *bizexpedit
 		return nil
 	}
 	return &bizexpedition.SpaceStationType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -416,14 +417,13 @@ func mapProtoToBizSpacewalkList(r *expeditionv1.SpacewalkList) *bizexpedition.Sp
 		return nil
 	}
 	return &bizexpedition.SpacewalkList{
-		Duration: r.Duration,
-		End: r.End,
-		Id: r.Id,
-		Location: r.Location,
-		Name: r.Name,
+		Duration:     r.Duration,
+		End:          r.End,
+		Id:           r.Id,
+		Location:     r.Location,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		Start: r.Start,
-		Url: r.Url,
+		Start:        r.Start,
+		Url:          r.Url,
 	}
 }
-

@@ -3,13 +3,13 @@ package update
 import (
 	"context"
 
+	bizupdate "github.com/pobochiigo/bhole/pkg/update"
 	"github.com/pobochiigo/silo/endpoint"
-	bizupdate "github.com/pobochiigo/bhole/internal/update"
 )
 
 type endpoints struct {
 	listListUpdates endpoint.Endpoint[*bizupdate.ListUpdatesRequest, *bizupdate.ListUpdatesResponse]
-	getUpdate    endpoint.Endpoint[*bizupdate.GetUpdateRequest, *bizupdate.Update]
+	getUpdate       endpoint.Endpoint[*bizupdate.GetUpdateRequest, *bizupdate.Update]
 }
 
 func (c *endpoints) ListUpdates(ctx context.Context, req *bizupdate.ListUpdatesRequest) (*bizupdate.ListUpdatesResponse, error) {

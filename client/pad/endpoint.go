@@ -3,13 +3,13 @@ package pad
 import (
 	"context"
 
+	bizpad "github.com/pobochiigo/bhole/pkg/pad"
 	"github.com/pobochiigo/silo/endpoint"
-	bizpad "github.com/pobochiigo/bhole/internal/pad"
 )
 
 type endpoints struct {
 	listListPads endpoint.Endpoint[*bizpad.ListPadsRequest, *bizpad.ListPadsResponse]
-	getPad    endpoint.Endpoint[*bizpad.GetPadRequest, *bizpad.Pad]
+	getPad       endpoint.Endpoint[*bizpad.GetPadRequest, *bizpad.Pad]
 }
 
 func (c *endpoints) ListPads(ctx context.Context, req *bizpad.ListPadsRequest) (*bizpad.ListPadsResponse, error) {

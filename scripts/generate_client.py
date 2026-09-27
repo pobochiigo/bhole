@@ -1,6 +1,16 @@
 import json
 import os
 import re
+import shutil
+import subprocess
+
+
+def run_gofmt(paths):
+    """Format generated Go files so the tree is gofmt-clean without a manual pass."""
+    if shutil.which("gofmt") is None:
+        print("warning: gofmt not found in PATH; generated Go files were not formatted")
+        return
+    subprocess.run(["gofmt", "-w", *paths], check=True)
 
 # Mapping of the 18 primary LL2 API resources to their path and configuration
 RESOURCES = {
@@ -9,126 +19,126 @@ RESOURCES = {
         "plural_method": "ListAgencies",
         "singular": "Agency",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "astronaut": {
         "path": "/2.3.0/astronauts/", 
         "plural_method": "ListAstronauts",
         "singular": "Astronaut",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "celestial_body": {
         "path": "/2.3.0/celestial_bodies/", 
         "plural_method": "ListCelestialBodies",
         "singular": "CelestialBody",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "docking_event": {
         "path": "/2.3.0/docking_events/", 
         "plural_method": "ListDockingEvents",
         "singular": "DockingEvent",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "event": {
         "path": "/2.3.0/events/", 
         "plural_method": "ListEvents",
         "singular": "Event",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "expedition": {
         "path": "/2.3.0/expeditions/", 
         "plural_method": "ListExpeditions",
         "singular": "Expedition",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "landing": {
         "path": "/2.3.0/landings/", 
         "plural_method": "ListLandings",
         "singular": "Landing",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "launcher": {
         "path": "/2.3.0/launchers/", 
         "plural_method": "ListLaunchers",
         "singular": "Launcher",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "launcher_configuration": {
         "path": "/2.3.0/launcher_configurations/", 
         "plural_method": "ListLauncherConfigurations",
         "singular": "LauncherConfiguration",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "launch": {
         "path": "/2.3.0/launches/", 
         "plural_method": "ListLaunches",
         "singular": "Launch",
         "id_type": "string",
-        "parse_id": "protoReq.Id"
+        "parse_id": "url.PathEscape(protoReq.Id)"
     },
     "location": {
         "path": "/2.3.0/locations/", 
         "plural_method": "ListLocations",
         "singular": "Location",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "pad": {
         "path": "/2.3.0/pads/", 
         "plural_method": "ListPads",
         "singular": "Pad",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "payload": {
         "path": "/2.3.0/payloads/", 
         "plural_method": "ListPayloads",
         "singular": "Payload",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "program": {
         "path": "/2.3.0/programs/", 
         "plural_method": "ListPrograms",
         "singular": "Program",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "space_station": {
         "path": "/2.3.0/space_stations/", 
         "plural_method": "ListSpaceStations",
         "singular": "SpaceStation",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "spacecraft": {
         "path": "/2.3.0/spacecraft/", 
         "plural_method": "ListSpacecrafts",
         "singular": "Spacecraft",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "spacewalk": {
         "path": "/2.3.0/spacewalks/", 
         "plural_method": "ListSpacewalks",
         "singular": "Spacewalk",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     },
     "update": {
         "path": "/2.3.0/updates/", 
         "plural_method": "ListUpdates",
         "singular": "Update",
         "id_type": "int32",
-        "parse_id": "int(protoReq.Id)"
+        "parse_id": "strconv.Itoa(int(protoReq.Id))"
     }
 }
 
@@ -367,7 +377,7 @@ def main():
         
         # Make directories
         os.makedirs(f"proto/{feature}/v1", exist_ok=True)
-        os.makedirs(f"internal/{feature}", exist_ok=True)
+        os.makedirs(f"pkg/{feature}", exist_ok=True)
         os.makedirs(f"client/{feature}", exist_ok=True)
         
         # --- A. Generate PROTO ---
@@ -477,7 +487,7 @@ type Get{feature_camel}Request struct {{
 	Mode string
 }}
 """
-        with open(f"internal/{feature}/{feature}.go", "w") as mf:
+        with open(f"pkg/{feature}/{feature}.go", "w") as mf:
             mf.write(go_models_content)
             
         # --- C. Generate INTERNAL SERVICE INTERFACE ---
@@ -490,7 +500,7 @@ type Service interface {{
 	Get{feature_camel}(ctx context.Context, req *Get{feature_camel}Request) (*{feature_camel}, error)
 }}
 """
-        with open(f"internal/{feature}/service.go", "w") as sf:
+        with open(f"pkg/{feature}/service.go", "w") as sf:
             sf.write(go_svc_content)
             
         # --- D. Generate CONNECTRPC CLIENT (GO-KIT GENERICS STYLE) ---
@@ -501,7 +511,7 @@ import (
 	"context"
 
 	"github.com/pobochiigo/silo/endpoint"
-	biz{feature} "github.com/pobochiigo/bhole/internal/{feature}"
+	biz{feature} "github.com/pobochiigo/bhole/pkg/{feature}"
 )
 
 type endpoints struct {{
@@ -525,9 +535,10 @@ func (c *endpoints) Get{feature_camel}(ctx context.Context, req *biz{feature}.Ge
 
 import (
 	"context"
+	"errors"
 
 	"github.com/pobochiigo/silo/connectrpc"
-	biz{feature} "github.com/pobochiigo/bhole/internal/{feature}"
+	biz{feature} "github.com/pobochiigo/bhole/pkg/{feature}"
 	{feature}v1 "github.com/pobochiigo/bhole/proto/{feature}/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/{feature}/v1/{feature}v1connect"
 	"connectrpc.com/connect"
@@ -583,7 +594,7 @@ func encodeGet{feature_camel}Request(_ context.Context, req *biz{feature}.Get{fe
 
 func decodeGet{feature_camel}Response(ctx context.Context, resp *{feature}v1.Get{feature_camel}Response) (*biz{feature}.{feature_camel}, error) {{
 	if resp.{feature_camel} == nil {{
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("{feature}: empty response"))
 	}}
 	return mapProtoToBiz{feature_camel}(resp.{feature_camel}), nil
 }}
@@ -651,6 +662,7 @@ import (
 	"strconv"
 	"strings"
 
+	"connectrpc.com/connect"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 """
@@ -672,6 +684,90 @@ func NewRESTClient(baseURL string, client *http.Client) *RESTClient {
 		client:  client,
 		baseURL: strings.TrimSuffix(baseURL, "/"),
 	}
+}
+
+// maxErrorBodyBytes bounds how much of an upstream error body is echoed back.
+const maxErrorBodyBytes = 4096
+
+// get performs the outbound REST call for an incoming ConnectRPC request. It
+// propagates the caller's context (cancellation, deadlines, Connect timeouts)
+// and Authorization header, and turns any non-200 upstream status into a
+// *connect.Error carrying the matching Connect code.
+func (c *RESTClient) get(req *http.Request, restURL string) (*http.Response, error) {
+	httpReq, err := http.NewRequestWithContext(req.Context(), http.MethodGet, restURL, nil)
+	if err != nil {
+		return nil, connect.NewError(connect.CodeInternal, err)
+	}
+	httpReq.Header.Set("Accept", "application/json")
+	if auth := req.Header.Get("Authorization"); auth != "" {
+		httpReq.Header.Set("Authorization", auth)
+	}
+
+	resp, err := c.client.Do(httpReq)
+	if err != nil {
+		return nil, err
+	}
+	if resp.StatusCode != http.StatusOK {
+		defer func() { _ = resp.Body.Close() }()
+		return nil, errorFromResponse(resp)
+	}
+	return resp, nil
+}
+
+// buildURL joins the base URL, resource path and query string, omitting the
+// "?" when there are no query parameters.
+func buildURL(base, path string, q url.Values) string {
+	if enc := q.Encode(); enc != "" {
+		return base + path + "?" + enc
+	}
+	return base + path
+}
+
+// decodeJSON decodes an upstream JSON body, reporting failures as CodeInternal.
+func decodeJSON(body io.Reader, v any) error {
+	if err := json.NewDecoder(body).Decode(v); err != nil {
+		return connect.NewError(connect.CodeInternal, fmt.Errorf("decoding REST response: %w", err))
+	}
+	return nil
+}
+
+// errorFromResponse maps a non-200 upstream response to a *connect.Error.
+func errorFromResponse(resp *http.Response) error {
+	body, _ := io.ReadAll(io.LimitReader(resp.Body, maxErrorBodyBytes))
+	msg := strings.TrimSpace(string(body))
+	if msg == "" {
+		msg = http.StatusText(resp.StatusCode)
+	}
+	return connect.NewError(
+		codeForStatus(resp.StatusCode),
+		fmt.Errorf("REST API returned status %d: %s", resp.StatusCode, msg),
+	)
+}
+
+// codeForStatus maps an HTTP status code to the closest Connect error code.
+func codeForStatus(status int) connect.Code {
+	switch status {
+	case http.StatusBadRequest:
+		return connect.CodeInvalidArgument
+	case http.StatusUnauthorized:
+		return connect.CodeUnauthenticated
+	case http.StatusForbidden:
+		return connect.CodePermissionDenied
+	case http.StatusNotFound:
+		return connect.CodeNotFound
+	case http.StatusRequestTimeout, http.StatusGatewayTimeout:
+		return connect.CodeDeadlineExceeded
+	case http.StatusTooManyRequests:
+		return connect.CodeResourceExhausted
+	case http.StatusNotImplemented:
+		return connect.CodeUnimplemented
+	case http.StatusBadGateway, http.StatusServiceUnavailable:
+		return connect.CodeUnavailable
+	}
+	if status >= 500 {
+		return connect.CodeInternal
+	}
+	return connect.CodeUnknown
 }
 """
     
@@ -730,19 +826,14 @@ func NewRESTClient(baseURL string, client *http.Client) *RESTClient {
 			q.Set("mode", protoReq.Mode)
 		}}
 
-		restURL := fmt.Sprintf("%s{config['path']}?%s", c.baseURL, q.Encode())
-		restResp, err := c.client.Get(restURL)
+		restResp, err := c.get(req, buildURL(c.baseURL, "{config['path']}", q))
 		if err != nil {{
 			return nil, err
 		}}
-		defer func() {{{{ _ = restResp.Body.Close() }}}}()
-
-		if restResp.StatusCode != http.StatusOK {{
-			return makeErrorResponse(restResp)
-		}}
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		var jsonResp {config['plural_method']}ResponseJSON
-		if err := json.NewDecoder(restResp.Body).Decode(&jsonResp); err != nil {{
+		if err := decodeJSON(restResp.Body, &jsonResp); err != nil {{
 			return nil, err
 		}}
 
@@ -770,20 +861,15 @@ func NewRESTClient(baseURL string, client *http.Client) *RESTClient {
 			q.Set("mode", protoReq.Mode)
 		}}
 
-		// Map to REST URL path format with ID
-		restURL := fmt.Sprintf("%s{config['path']}%v/?%s", c.baseURL, {config['parse_id']}, q.Encode())
-		restResp, err := c.client.Get(restURL)
+		// Detail resources live at <path><id>/; the ID is escaped or stringified per resource.
+		restResp, err := c.get(req, buildURL(c.baseURL, "{config['path']}"+{config['parse_id']}+"/", q))
 		if err != nil {{
 			return nil, err
 		}}
-		defer func() {{{{ _ = restResp.Body.Close() }}}}()
-
-		if restResp.StatusCode != http.StatusOK {{
-			return makeErrorResponse(restResp)
-		}}
+		defer func() {{ _ = restResp.Body.Close() }}()
 
 		var jsonResp {main_schema}JSON
-		if err := json.NewDecoder(restResp.Body).Decode(&jsonResp); err != nil {{
+		if err := decodeJSON(restResp.Body, &jsonResp); err != nil {{
 			return nil, err
 		}}
 
@@ -797,20 +883,25 @@ func NewRESTClient(baseURL string, client *http.Client) *RESTClient {
 
     # Add default case
     rest_go_content += """\tdefault:
-		return nil, fmt.Errorf("unsupported connectrpc method path: %s", path)
+		return nil, connect.NewError(connect.CodeUnimplemented, fmt.Errorf("unsupported connectrpc method path: %s", path))
 	}
 }
 
 func unmarshalRequest(req *http.Request, msg proto.Message) error {
 	bodyBytes, err := io.ReadAll(req.Body)
 	if err != nil {
-		return err
+		return connect.NewError(connect.CodeInvalidArgument, err)
 	}
 	contentType := req.Header.Get("Content-Type")
 	if strings.Contains(contentType, "application/json") {
-		return protojson.Unmarshal(bodyBytes, msg)
+		err = protojson.Unmarshal(bodyBytes, msg)
+	} else {
+		err = proto.Unmarshal(bodyBytes, msg)
 	}
-	return proto.Unmarshal(bodyBytes, msg)
+	if err != nil {
+		return connect.NewError(connect.CodeInvalidArgument, err)
+	}
+	return nil
 }
 
 func writeResponse(reqContentType string, msg proto.Message) (*http.Response, error) {
@@ -841,11 +932,6 @@ func writeResponse(reqContentType string, msg proto.Message) (*http.Response, er
 	}
 	resp.Header.Set("Content-Type", contentType)
 	return resp, nil
-}
-
-func makeErrorResponse(resp *http.Response) (*http.Response, error) {
-	bodyBytes, _ := io.ReadAll(resp.Body)
-	return nil, fmt.Errorf("REST API returned status %d: %s", resp.StatusCode, string(bodyBytes))
 }
 """
     
@@ -894,6 +980,7 @@ func makeErrorResponse(resp *http.Response) (*http.Response, error) {
     with open("client/transport/rest_client.go", "w") as rf:
         rf.write(rest_go_content)
         
+    run_gofmt(["client", "pkg"])
     print("Code generation completed successfully!")
 
 if __name__ == "__main__":

@@ -3,13 +3,13 @@ package event
 import (
 	"context"
 
+	bizevent "github.com/pobochiigo/bhole/pkg/event"
 	"github.com/pobochiigo/silo/endpoint"
-	bizevent "github.com/pobochiigo/bhole/internal/event"
 )
 
 type endpoints struct {
 	listListEvents endpoint.Endpoint[*bizevent.ListEventsRequest, *bizevent.ListEventsResponse]
-	getEvent    endpoint.Endpoint[*bizevent.GetEventRequest, *bizevent.Event]
+	getEvent       endpoint.Endpoint[*bizevent.GetEventRequest, *bizevent.Event]
 }
 
 func (c *endpoints) ListEvents(ctx context.Context, req *bizevent.ListEventsRequest) (*bizevent.ListEventsResponse, error) {

@@ -3,13 +3,13 @@ package expedition
 import (
 	"context"
 
+	bizexpedition "github.com/pobochiigo/bhole/pkg/expedition"
 	"github.com/pobochiigo/silo/endpoint"
-	bizexpedition "github.com/pobochiigo/bhole/internal/expedition"
 )
 
 type endpoints struct {
 	listListExpeditions endpoint.Endpoint[*bizexpedition.ListExpeditionsRequest, *bizexpedition.ListExpeditionsResponse]
-	getExpedition    endpoint.Endpoint[*bizexpedition.GetExpeditionRequest, *bizexpedition.Expedition]
+	getExpedition       endpoint.Endpoint[*bizexpedition.GetExpeditionRequest, *bizexpedition.Expedition]
 }
 
 func (c *endpoints) ListExpeditions(ctx context.Context, req *bizexpedition.ListExpeditionsRequest) (*bizexpedition.ListExpeditionsResponse, error) {

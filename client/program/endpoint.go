@@ -3,13 +3,13 @@ package program
 import (
 	"context"
 
+	bizprogram "github.com/pobochiigo/bhole/pkg/program"
 	"github.com/pobochiigo/silo/endpoint"
-	bizprogram "github.com/pobochiigo/bhole/internal/program"
 )
 
 type endpoints struct {
 	listListPrograms endpoint.Endpoint[*bizprogram.ListProgramsRequest, *bizprogram.ListProgramsResponse]
-	getProgram    endpoint.Endpoint[*bizprogram.GetProgramRequest, *bizprogram.Program]
+	getProgram       endpoint.Endpoint[*bizprogram.GetProgramRequest, *bizprogram.Program]
 }
 
 func (c *endpoints) ListPrograms(ctx context.Context, req *bizprogram.ListProgramsRequest) (*bizprogram.ListProgramsResponse, error) {

@@ -37,7 +37,7 @@ You can integrate this client into any frontend web application (React, Vue, Sve
 
 ### 1. Initialize Transport & Client
 ```typescript
-import { createClient, createConnectTransport, Launch } from "bhole-client";
+import { createClient, createConnectTransport, Launch } from "@pobochiigo/bhole-client";
 
 // Create the ConnectRPC web transport pointing to your API gateway/server
 const transport = createConnectTransport({

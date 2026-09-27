@@ -3,13 +3,13 @@ package launcher
 import (
 	"context"
 
+	bizlauncher "github.com/pobochiigo/bhole/pkg/launcher"
 	"github.com/pobochiigo/silo/endpoint"
-	bizlauncher "github.com/pobochiigo/bhole/internal/launcher"
 )
 
 type endpoints struct {
 	listListLaunchers endpoint.Endpoint[*bizlauncher.ListLaunchersRequest, *bizlauncher.ListLaunchersResponse]
-	getLauncher    endpoint.Endpoint[*bizlauncher.GetLauncherRequest, *bizlauncher.Launcher]
+	getLauncher       endpoint.Endpoint[*bizlauncher.GetLauncherRequest, *bizlauncher.Launcher]
 }
 
 func (c *endpoints) ListLaunchers(ctx context.Context, req *bizlauncher.ListLaunchersRequest) (*bizlauncher.ListLaunchersResponse, error) {

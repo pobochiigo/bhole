@@ -1,0 +1,9 @@
+# Optional HTML reference for the proto schemas. Requires protoc-gen-doc on PATH:
+#   go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
+#   buf generate --template buf.gen.docs.yaml
+# Output lands in docs/proto, which is gitignored.
+version: v1
+plugins:
+  - name: doc
+    out: docs/proto
+    opt: html,index.html

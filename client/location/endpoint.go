@@ -3,13 +3,13 @@ package location
 import (
 	"context"
 
+	bizlocation "github.com/pobochiigo/bhole/pkg/location"
 	"github.com/pobochiigo/silo/endpoint"
-	bizlocation "github.com/pobochiigo/bhole/internal/location"
 )
 
 type endpoints struct {
 	listListLocations endpoint.Endpoint[*bizlocation.ListLocationsRequest, *bizlocation.ListLocationsResponse]
-	getLocation    endpoint.Endpoint[*bizlocation.GetLocationRequest, *bizlocation.Location]
+	getLocation       endpoint.Endpoint[*bizlocation.GetLocationRequest, *bizlocation.Location]
 }
 
 func (c *endpoints) ListLocations(ctx context.Context, req *bizlocation.ListLocationsRequest) (*bizlocation.ListLocationsResponse, error) {

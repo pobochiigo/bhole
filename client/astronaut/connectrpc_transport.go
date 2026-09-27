@@ -2,12 +2,13 @@ package astronaut
 
 import (
 	"context"
+	"errors"
 
-	"github.com/pobochiigo/silo/connectrpc"
-	bizastronaut "github.com/pobochiigo/bhole/internal/astronaut"
+	"connectrpc.com/connect"
+	bizastronaut "github.com/pobochiigo/bhole/pkg/astronaut"
 	astronautv1 "github.com/pobochiigo/bhole/proto/astronaut/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/astronaut/v1/astronautv1connect"
-	"connectrpc.com/connect"
+	"github.com/pobochiigo/silo/connectrpc"
 )
 
 func NewAstronautClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) bizastronaut.Service {
@@ -58,7 +59,7 @@ func decodeListAstronautsResponse(ctx context.Context, resp *astronautv1.ListAst
 
 func decodeGetAstronautResponse(ctx context.Context, resp *astronautv1.GetAstronautResponse) (*bizastronaut.Astronaut, error) {
 	if resp.Astronaut == nil {
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("astronaut: empty response"))
 	}
 	return mapProtoToBizAstronaut(resp.Astronaut), nil
 }
@@ -68,12 +69,12 @@ func mapProtoToBizAgencyMini(r *astronautv1.AgencyMini) *bizastronaut.AgencyMini
 		return nil
 	}
 	return &bizastronaut.AgencyMini{
-		Abbrev: r.Abbrev,
-		Id: r.Id,
-		Name: r.Name,
+		Abbrev:       r.Abbrev,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		TypeVal: mapProtoToBizAgencyType(r.Type),
-		Url: r.Url,
+		TypeVal:      mapProtoToBizAgencyType(r.Type),
+		Url:          r.Url,
 	}
 }
 
@@ -82,7 +83,7 @@ func mapProtoToBizAgencyType(r *astronautv1.AgencyType) *bizastronaut.AgencyType
 		return nil
 	}
 	return &bizastronaut.AgencyType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -92,18 +93,18 @@ func mapProtoToBizAstronaut(r *astronautv1.Astronaut) *bizastronaut.Astronaut {
 		return nil
 	}
 	return &bizastronaut.Astronaut{
-		Age: r.Age,
-		Agency: mapProtoToBizAgencyMini(r.Agency),
-		Bio: r.Bio,
+		Age:         r.Age,
+		Agency:      mapProtoToBizAgencyMini(r.Agency),
+		Bio:         r.Bio,
 		DateOfBirth: r.DateOfBirth,
 		DateOfDeath: r.DateOfDeath,
-		EvaTime: r.EvaTime,
+		EvaTime:     r.EvaTime,
 		FirstFlight: r.FirstFlight,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		InSpace: r.InSpace,
-		LastFlight: r.LastFlight,
-		Name: r.Name,
+		Id:          r.Id,
+		Image:       mapProtoToBizImage(r.Image),
+		InSpace:     r.InSpace,
+		LastFlight:  r.LastFlight,
+		Name:        r.Name,
 		Nationality: func() []bizastronaut.Country {
 			if r.Nationality == nil {
 				return nil
@@ -125,11 +126,11 @@ func mapProtoToBizAstronaut(r *astronautv1.Astronaut) *bizastronaut.Astronaut {
 			}
 			return res
 		}(),
-		Status: mapProtoToBizAstronautStatus(r.Status),
+		Status:      mapProtoToBizAstronautStatus(r.Status),
 		TimeInSpace: r.TimeInSpace,
-		TypeVal: mapProtoToBizAstronautType(r.Type),
-		Url: r.Url,
-		Wiki: r.Wiki,
+		TypeVal:     mapProtoToBizAstronautType(r.Type),
+		Url:         r.Url,
+		Wiki:        r.Wiki,
 	}
 }
 
@@ -138,7 +139,7 @@ func mapProtoToBizAstronautStatus(r *astronautv1.AstronautStatus) *bizastronaut.
 		return nil
 	}
 	return &bizastronaut.AstronautStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -148,7 +149,7 @@ func mapProtoToBizAstronautType(r *astronautv1.AstronautType) *bizastronaut.Astr
 		return nil
 	}
 	return &bizastronaut.AstronautType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -158,11 +159,11 @@ func mapProtoToBizCountry(r *astronautv1.Country) *bizastronaut.Country {
 		return nil
 	}
 	return &bizastronaut.Country{
-		Alpha2Code: r.Alpha_2Code,
-		Alpha3Code: r.Alpha_3Code,
-		Id: r.Id,
-		Name: r.Name,
-		NationalityName: r.NationalityName,
+		Alpha2Code:              r.Alpha_2Code,
+		Alpha3Code:              r.Alpha_3Code,
+		Id:                      r.Id,
+		Name:                    r.Name,
+		NationalityName:         r.NationalityName,
 		NationalityNameComposed: r.NationalityNameComposed,
 	}
 }
@@ -172,12 +173,12 @@ func mapProtoToBizImage(r *astronautv1.Image) *bizastronaut.Image {
 		return nil
 	}
 	return &bizastronaut.Image{
-		Credit: r.Credit,
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		License: mapProtoToBizImageLicense(r.License),
-		Name: r.Name,
-		SingleUse: r.SingleUse,
+		Credit:       r.Credit,
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		License:      mapProtoToBizImageLicense(r.License),
+		Name:         r.Name,
+		SingleUse:    r.SingleUse,
 		ThumbnailUrl: r.ThumbnailUrl,
 		Variants: func() []bizastronaut.ImageVariant {
 			if r.Variants == nil {
@@ -197,9 +198,9 @@ func mapProtoToBizImageLicense(r *astronautv1.ImageLicense) *bizastronaut.ImageL
 		return nil
 	}
 	return &bizastronaut.ImageLicense{
-		Id: r.Id,
-		Link: r.Link,
-		Name: r.Name,
+		Id:       r.Id,
+		Link:     r.Link,
+		Name:     r.Name,
 		Priority: r.Priority,
 	}
 }
@@ -209,9 +210,9 @@ func mapProtoToBizImageVariant(r *astronautv1.ImageVariant) *bizastronaut.ImageV
 		return nil
 	}
 	return &bizastronaut.ImageVariant{
-		Id: r.Id,
+		Id:       r.Id,
 		ImageUrl: r.ImageUrl,
-		TypeVal: mapProtoToBizImageVariantType(r.Type),
+		TypeVal:  mapProtoToBizImageVariantType(r.Type),
 	}
 }
 
@@ -220,7 +221,7 @@ func mapProtoToBizImageVariantType(r *astronautv1.ImageVariantType) *bizastronau
 		return nil
 	}
 	return &bizastronaut.ImageVariantType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -230,10 +231,10 @@ func mapProtoToBizSocialMedia(r *astronautv1.SocialMedia) *bizastronaut.SocialMe
 		return nil
 	}
 	return &bizastronaut.SocialMedia{
-		Id: r.Id,
+		Id:   r.Id,
 		Logo: mapProtoToBizImage(r.Logo),
 		Name: r.Name,
-		Url: r.Url,
+		Url:  r.Url,
 	}
 }
 
@@ -242,9 +243,8 @@ func mapProtoToBizSocialMediaLink(r *astronautv1.SocialMediaLink) *bizastronaut.
 		return nil
 	}
 	return &bizastronaut.SocialMediaLink{
-		Id: r.Id,
+		Id:          r.Id,
 		SocialMedia: mapProtoToBizSocialMedia(r.SocialMedia),
-		Url: r.Url,
+		Url:         r.Url,
 	}
 }
-

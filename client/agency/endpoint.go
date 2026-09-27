@@ -3,13 +3,13 @@ package agency
 import (
 	"context"
 
+	bizagency "github.com/pobochiigo/bhole/pkg/agency"
 	"github.com/pobochiigo/silo/endpoint"
-	bizagency "github.com/pobochiigo/bhole/internal/agency"
 )
 
 type endpoints struct {
 	listListAgencies endpoint.Endpoint[*bizagency.ListAgenciesRequest, *bizagency.ListAgenciesResponse]
-	getAgency    endpoint.Endpoint[*bizagency.GetAgencyRequest, *bizagency.Agency]
+	getAgency        endpoint.Endpoint[*bizagency.GetAgencyRequest, *bizagency.Agency]
 }
 
 func (c *endpoints) ListAgencies(ctx context.Context, req *bizagency.ListAgenciesRequest) (*bizagency.ListAgenciesResponse, error) {

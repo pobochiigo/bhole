@@ -3,13 +3,13 @@ package launcher_configuration
 import (
 	"context"
 
+	bizlauncher_configuration "github.com/pobochiigo/bhole/pkg/launcher_configuration"
 	"github.com/pobochiigo/silo/endpoint"
-	bizlauncher_configuration "github.com/pobochiigo/bhole/internal/launcher_configuration"
 )
 
 type endpoints struct {
 	listListLauncherConfigurations endpoint.Endpoint[*bizlauncher_configuration.ListLauncherConfigurationsRequest, *bizlauncher_configuration.ListLauncherConfigurationsResponse]
-	getLauncherConfiguration    endpoint.Endpoint[*bizlauncher_configuration.GetLauncherConfigurationRequest, *bizlauncher_configuration.LauncherConfiguration]
+	getLauncherConfiguration       endpoint.Endpoint[*bizlauncher_configuration.GetLauncherConfigurationRequest, *bizlauncher_configuration.LauncherConfiguration]
 }
 
 func (c *endpoints) ListLauncherConfigurations(ctx context.Context, req *bizlauncher_configuration.ListLauncherConfigurationsRequest) (*bizlauncher_configuration.ListLauncherConfigurationsResponse, error) {

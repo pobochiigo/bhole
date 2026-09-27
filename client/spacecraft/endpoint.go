@@ -3,13 +3,13 @@ package spacecraft
 import (
 	"context"
 
+	bizspacecraft "github.com/pobochiigo/bhole/pkg/spacecraft"
 	"github.com/pobochiigo/silo/endpoint"
-	bizspacecraft "github.com/pobochiigo/bhole/internal/spacecraft"
 )
 
 type endpoints struct {
 	listListSpacecrafts endpoint.Endpoint[*bizspacecraft.ListSpacecraftsRequest, *bizspacecraft.ListSpacecraftsResponse]
-	getSpacecraft    endpoint.Endpoint[*bizspacecraft.GetSpacecraftRequest, *bizspacecraft.Spacecraft]
+	getSpacecraft       endpoint.Endpoint[*bizspacecraft.GetSpacecraftRequest, *bizspacecraft.Spacecraft]
 }
 
 func (c *endpoints) ListSpacecrafts(ctx context.Context, req *bizspacecraft.ListSpacecraftsRequest) (*bizspacecraft.ListSpacecraftsResponse, error) {

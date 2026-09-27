@@ -2,12 +2,13 @@ package celestial_body
 
 import (
 	"context"
+	"errors"
 
-	"github.com/pobochiigo/silo/connectrpc"
-	bizcelestial_body "github.com/pobochiigo/bhole/internal/celestial_body"
+	"connectrpc.com/connect"
+	bizcelestial_body "github.com/pobochiigo/bhole/pkg/celestial_body"
 	celestial_bodyv1 "github.com/pobochiigo/bhole/proto/celestial_body/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/celestial_body/v1/celestial_bodyv1connect"
-	"connectrpc.com/connect"
+	"github.com/pobochiigo/silo/connectrpc"
 )
 
 func NewCelestialBodyClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) bizcelestial_body.Service {
@@ -58,7 +59,7 @@ func decodeListCelestialBodiesResponse(ctx context.Context, resp *celestial_body
 
 func decodeGetCelestialBodyResponse(ctx context.Context, resp *celestial_bodyv1.GetCelestialBodyResponse) (*bizcelestial_body.CelestialBody, error) {
 	if resp.CelestialBody == nil {
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("celestial_body: empty response"))
 	}
 	return mapProtoToBizCelestialBody(resp.CelestialBody), nil
 }
@@ -68,15 +69,15 @@ func mapProtoToBizCelestialBody(r *celestial_bodyv1.CelestialBody) *bizcelestial
 		return nil
 	}
 	return &bizcelestial_body.CelestialBody{
-		Atmosphere: r.Atmosphere,
-		Description: r.Description,
-		Diameter: r.Diameter,
+		Atmosphere:     r.Atmosphere,
+		Description:    r.Description,
+		Diameter:       r.Diameter,
 		FailedLandings: r.FailedLandings,
 		FailedLaunches: r.FailedLaunches,
-		Gravity: r.Gravity,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		LengthOfDay: r.LengthOfDay,
+		Gravity:        r.Gravity,
+		Id:             r.Id,
+		Image:          mapProtoToBizImage(r.Image),
+		LengthOfDay:    r.LengthOfDay,
 		Locations: func() []bizcelestial_body.LocationSerializerNoCelestialBody {
 			if r.Locations == nil {
 				return nil
@@ -87,15 +88,15 @@ func mapProtoToBizCelestialBody(r *celestial_bodyv1.CelestialBody) *bizcelestial
 			}
 			return res
 		}(),
-		Mass: r.Mass,
-		Name: r.Name,
-		ResponseMode: r.ResponseMode,
-		SuccessfulLandings: r.SuccessfulLandings,
-		SuccessfulLaunches: r.SuccessfulLaunches,
+		Mass:                   r.Mass,
+		Name:                   r.Name,
+		ResponseMode:           r.ResponseMode,
+		SuccessfulLandings:     r.SuccessfulLandings,
+		SuccessfulLaunches:     r.SuccessfulLaunches,
 		TotalAttemptedLandings: r.TotalAttemptedLandings,
 		TotalAttemptedLaunches: r.TotalAttemptedLaunches,
-		TypeVal: mapProtoToBizCelestialBodyType(r.Type),
-		WikiUrl: r.WikiUrl,
+		TypeVal:                mapProtoToBizCelestialBodyType(r.Type),
+		WikiUrl:                r.WikiUrl,
 	}
 }
 
@@ -104,7 +105,7 @@ func mapProtoToBizCelestialBodyType(r *celestial_bodyv1.CelestialBodyType) *bizc
 		return nil
 	}
 	return &bizcelestial_body.CelestialBodyType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -114,11 +115,11 @@ func mapProtoToBizCountry(r *celestial_bodyv1.Country) *bizcelestial_body.Countr
 		return nil
 	}
 	return &bizcelestial_body.Country{
-		Alpha2Code: r.Alpha_2Code,
-		Alpha3Code: r.Alpha_3Code,
-		Id: r.Id,
-		Name: r.Name,
-		NationalityName: r.NationalityName,
+		Alpha2Code:              r.Alpha_2Code,
+		Alpha3Code:              r.Alpha_3Code,
+		Id:                      r.Id,
+		Name:                    r.Name,
+		NationalityName:         r.NationalityName,
 		NationalityNameComposed: r.NationalityNameComposed,
 	}
 }
@@ -128,12 +129,12 @@ func mapProtoToBizImage(r *celestial_bodyv1.Image) *bizcelestial_body.Image {
 		return nil
 	}
 	return &bizcelestial_body.Image{
-		Credit: r.Credit,
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		License: mapProtoToBizImageLicense(r.License),
-		Name: r.Name,
-		SingleUse: r.SingleUse,
+		Credit:       r.Credit,
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		License:      mapProtoToBizImageLicense(r.License),
+		Name:         r.Name,
+		SingleUse:    r.SingleUse,
 		ThumbnailUrl: r.ThumbnailUrl,
 		Variants: func() []bizcelestial_body.ImageVariant {
 			if r.Variants == nil {
@@ -153,9 +154,9 @@ func mapProtoToBizImageLicense(r *celestial_bodyv1.ImageLicense) *bizcelestial_b
 		return nil
 	}
 	return &bizcelestial_body.ImageLicense{
-		Id: r.Id,
-		Link: r.Link,
-		Name: r.Name,
+		Id:       r.Id,
+		Link:     r.Link,
+		Name:     r.Name,
 		Priority: r.Priority,
 	}
 }
@@ -165,9 +166,9 @@ func mapProtoToBizImageVariant(r *celestial_bodyv1.ImageVariant) *bizcelestial_b
 		return nil
 	}
 	return &bizcelestial_body.ImageVariant{
-		Id: r.Id,
+		Id:       r.Id,
 		ImageUrl: r.ImageUrl,
-		TypeVal: mapProtoToBizImageVariantType(r.Type),
+		TypeVal:  mapProtoToBizImageVariantType(r.Type),
 	}
 }
 
@@ -176,7 +177,7 @@ func mapProtoToBizImageVariantType(r *celestial_bodyv1.ImageVariantType) *bizcel
 		return nil
 	}
 	return &bizcelestial_body.ImageVariantType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -186,20 +187,19 @@ func mapProtoToBizLocationSerializerNoCelestialBody(r *celestial_bodyv1.Location
 		return nil
 	}
 	return &bizcelestial_body.LocationSerializerNoCelestialBody{
-		Active: r.Active,
-		Country: mapProtoToBizCountry(r.Country),
-		Description: r.Description,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		Latitude: r.Latitude,
-		Longitude: r.Longitude,
-		MapImage: r.MapImage,
-		Name: r.Name,
-		ResponseMode: r.ResponseMode,
-		TimezoneName: r.TimezoneName,
+		Active:            r.Active,
+		Country:           mapProtoToBizCountry(r.Country),
+		Description:       r.Description,
+		Id:                r.Id,
+		Image:             mapProtoToBizImage(r.Image),
+		Latitude:          r.Latitude,
+		Longitude:         r.Longitude,
+		MapImage:          r.MapImage,
+		Name:              r.Name,
+		ResponseMode:      r.ResponseMode,
+		TimezoneName:      r.TimezoneName,
 		TotalLandingCount: r.TotalLandingCount,
-		TotalLaunchCount: r.TotalLaunchCount,
-		Url: r.Url,
+		TotalLaunchCount:  r.TotalLaunchCount,
+		Url:               r.Url,
 	}
 }
-

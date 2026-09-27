@@ -7,10 +7,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"connectrpc.com/connect"
 	"github.com/pobochiigo/bhole/client/transport"
 	launchv1 "github.com/pobochiigo/bhole/proto/launch/v1"
 	"github.com/pobochiigo/bhole/proto/launch/v1/launchv1connect"
-	"connectrpc.com/connect"
 )
 
 func TestRESTClient_ListLaunches(t *testing.T) {

@@ -2,12 +2,13 @@ package launcher
 
 import (
 	"context"
+	"errors"
 
-	"github.com/pobochiigo/silo/connectrpc"
-	bizlauncher "github.com/pobochiigo/bhole/internal/launcher"
+	"connectrpc.com/connect"
+	bizlauncher "github.com/pobochiigo/bhole/pkg/launcher"
 	launcherv1 "github.com/pobochiigo/bhole/proto/launcher/v1"
 	v1connect "github.com/pobochiigo/bhole/proto/launcher/v1/launcherv1connect"
-	"connectrpc.com/connect"
+	"github.com/pobochiigo/silo/connectrpc"
 )
 
 func NewLauncherClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) bizlauncher.Service {
@@ -58,7 +59,7 @@ func decodeListLaunchersResponse(ctx context.Context, resp *launcherv1.ListLaunc
 
 func decodeGetLauncherResponse(ctx context.Context, resp *launcherv1.GetLauncherResponse) (*bizlauncher.Launcher, error) {
 	if resp.Launcher == nil {
-		return nil, nil
+		return nil, connect.NewError(connect.CodeNotFound, errors.New("launcher: empty response"))
 	}
 	return mapProtoToBizLauncher(resp.Launcher), nil
 }
@@ -68,12 +69,12 @@ func mapProtoToBizImage(r *launcherv1.Image) *bizlauncher.Image {
 		return nil
 	}
 	return &bizlauncher.Image{
-		Credit: r.Credit,
-		Id: r.Id,
-		ImageUrl: r.ImageUrl,
-		License: mapProtoToBizImageLicense(r.License),
-		Name: r.Name,
-		SingleUse: r.SingleUse,
+		Credit:       r.Credit,
+		Id:           r.Id,
+		ImageUrl:     r.ImageUrl,
+		License:      mapProtoToBizImageLicense(r.License),
+		Name:         r.Name,
+		SingleUse:    r.SingleUse,
 		ThumbnailUrl: r.ThumbnailUrl,
 		Variants: func() []bizlauncher.ImageVariant {
 			if r.Variants == nil {
@@ -93,9 +94,9 @@ func mapProtoToBizImageLicense(r *launcherv1.ImageLicense) *bizlauncher.ImageLic
 		return nil
 	}
 	return &bizlauncher.ImageLicense{
-		Id: r.Id,
-		Link: r.Link,
-		Name: r.Name,
+		Id:       r.Id,
+		Link:     r.Link,
+		Name:     r.Name,
 		Priority: r.Priority,
 	}
 }
@@ -105,9 +106,9 @@ func mapProtoToBizImageVariant(r *launcherv1.ImageVariant) *bizlauncher.ImageVar
 		return nil
 	}
 	return &bizlauncher.ImageVariant{
-		Id: r.Id,
+		Id:       r.Id,
 		ImageUrl: r.ImageUrl,
-		TypeVal: mapProtoToBizImageVariantType(r.Type),
+		TypeVal:  mapProtoToBizImageVariantType(r.Type),
 	}
 }
 
@@ -116,7 +117,7 @@ func mapProtoToBizImageVariantType(r *launcherv1.ImageVariantType) *bizlauncher.
 		return nil
 	}
 	return &bizlauncher.ImageVariantType{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
@@ -126,8 +127,8 @@ func mapProtoToBizLauncherConfigFamilyMini(r *launcherv1.LauncherConfigFamilyMin
 		return nil
 	}
 	return &bizlauncher.LauncherConfigFamilyMini{
-		Id: r.Id,
-		Name: r.Name,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
 	}
 }
@@ -147,12 +148,12 @@ func mapProtoToBizLauncherConfigList(r *launcherv1.LauncherConfigList) *bizlaunc
 			}
 			return res
 		}(),
-		FullName: r.FullName,
-		Id: r.Id,
-		Name: r.Name,
+		FullName:     r.FullName,
+		Id:           r.Id,
+		Name:         r.Name,
 		ResponseMode: r.ResponseMode,
-		Url: r.Url,
-		Variant: r.Variant,
+		Url:          r.Url,
+		Variant:      r.Variant,
 	}
 }
 
@@ -161,22 +162,22 @@ func mapProtoToBizLauncher(r *launcherv1.Launcher) *bizlauncher.Launcher {
 		return nil
 	}
 	return &bizlauncher.Launcher{
-		AttemptedLandings: r.AttemptedLandings,
-		Details: r.Details,
-		FastestTurnaround: r.FastestTurnaround,
-		FirstLaunchDate: r.FirstLaunchDate,
-		FlightProven: r.FlightProven,
-		Flights: r.Flights,
-		Id: r.Id,
-		Image: mapProtoToBizImage(r.Image),
-		IsPlaceholder: r.IsPlaceholder,
-		LastLaunchDate: r.LastLaunchDate,
-		LauncherConfig: mapProtoToBizLauncherConfigList(r.LauncherConfig),
-		ResponseMode: r.ResponseMode,
-		SerialNumber: r.SerialNumber,
-		Status: mapProtoToBizLauncherStatus(r.Status),
+		AttemptedLandings:  r.AttemptedLandings,
+		Details:            r.Details,
+		FastestTurnaround:  r.FastestTurnaround,
+		FirstLaunchDate:    r.FirstLaunchDate,
+		FlightProven:       r.FlightProven,
+		Flights:            r.Flights,
+		Id:                 r.Id,
+		Image:              mapProtoToBizImage(r.Image),
+		IsPlaceholder:      r.IsPlaceholder,
+		LastLaunchDate:     r.LastLaunchDate,
+		LauncherConfig:     mapProtoToBizLauncherConfigList(r.LauncherConfig),
+		ResponseMode:       r.ResponseMode,
+		SerialNumber:       r.SerialNumber,
+		Status:             mapProtoToBizLauncherStatus(r.Status),
 		SuccessfulLandings: r.SuccessfulLandings,
-		Url: r.Url,
+		Url:                r.Url,
 	}
 }
 
@@ -185,8 +186,7 @@ func mapProtoToBizLauncherStatus(r *launcherv1.LauncherStatus) *bizlauncher.Laun
 		return nil
 	}
 	return &bizlauncher.LauncherStatus{
-		Id: r.Id,
+		Id:   r.Id,
 		Name: r.Name,
 	}
 }
-
