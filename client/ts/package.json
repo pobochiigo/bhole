@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "docs": "typedoc --out ../../docs/sdk src/index.ts"
+    "docs": "typedoc"
   },
   "dependencies": {
     "@bufbuild/protobuf": "^2.12.0",

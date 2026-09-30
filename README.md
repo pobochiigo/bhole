@@ -63,9 +63,12 @@ Uses `buf` to compile schemas into Go client/server bindings and TypeScript defi
 buf generate
 ```
 
-Optional HTML reference docs for the schemas (requires `protoc-gen-doc` on `PATH`, output is gitignored):
+### 5. Generate Reference Docs
+Both references are gitignored and rebuilt on every GitHub Pages deploy. To build them locally:
 ```bash
-buf generate --template buf.gen.docs.yaml
+go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
+buf generate --template buf.gen.docs.yaml   # docs/proto/index.html, all 18 services
+npm run docs --prefix client/ts              # docs/sdk (typedoc)
 ```
 
 ---
@@ -113,6 +116,26 @@ npm install
 npm run build
 ```
 Build assets, typing definitions, and source maps will be generated in `client/ts/dist/`.
+
+### Run the Web Dashboard
+The Vite app in `web/` consumes the TypeScript client and talks to the gateway above (`?api=<url>` or `VITE_API_URL` override the default `http://localhost:8080`), falling back to the public LL2 REST API when the gateway is unreachable:
+```bash
+npm install --prefix web
+npm run dev --prefix web
+```
+
+---
+
+## 🌐 GitHub Pages
+`.github/workflows/deploy.yml` publishes the dashboard together with the reference docs on every push to `main` (or on demand via *Run workflow*):
+
+| Path        | Content                                   |
+|-------------|-------------------------------------------|
+| `/`         | Web dashboard (`web/dist`)                |
+| `/proto/`   | Protobuf API reference (`protoc-gen-doc`) |
+| `/sdk/`     | TypeScript SDK reference (`typedoc`)      |
+
+The workflow regenerates the TypeScript SDK and both references from source, so nothing generated is committed. Vite builds with a relative `base`, which keeps asset URLs valid under the `/bhole/` project path. Set the repository variable `VITE_API_URL` to point the published dashboard at a hosted gateway; the Pages source must be **GitHub Actions** in the repository settings.
 
 ---
 

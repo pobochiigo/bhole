@@ -1,0 +1,97 @@
+name: Deploy Dashboard to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual redeploys from the GitHub UI
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build dashboard and reference docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: |
+            client/ts/package-lock.json
+            web/package-lock.json
+
+      - name: Setup Buf
+        uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+
+      - name: Install protoc-gen-doc
+        run: go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
+
+      - name: Install dependencies
+        run: |
+          npm ci --prefix client/ts
+          npm ci --prefix web
+
+      - name: Generate TypeScript SDK
+        run: buf generate --template '{"version":"v1","plugins":[{"name":"es","path":"client/ts/node_modules/.bin/protoc-gen-es","out":"client/ts/src/gen","opt":"target=ts"}]}'
+
+      - name: Build TypeScript SDK
+        run: npm run build --prefix client/ts
+
+      # docs/ is gitignored; both references are regenerated on every deploy.
+      - name: Generate Protobuf reference (protoc-gen-doc)
+        run: buf generate --template buf.gen.docs.yaml
+
+      - name: Generate TypeScript SDK reference (typedoc)
+        run: npm run docs --prefix client/ts
+
+      - name: Build web dashboard
+        env:
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
+        run: npm run build --prefix web
+
+      - name: Bundle reference docs with the dashboard
+        run: |
+          mkdir -p web/dist/proto web/dist/sdk
+          cp -r docs/proto/. web/dist/proto/
+          cp -r docs/sdk/. web/dist/sdk/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

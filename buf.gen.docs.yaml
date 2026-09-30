@@ -7,3 +7,7 @@ plugins:
   - name: doc
     out: docs/proto
     opt: html,index.html
+    # Run the plugin once over every proto file so the single index.html covers
+    # all services; the default per-directory strategy would emit one file per
+    # package and buf would keep only the first.
+    strategy: all
